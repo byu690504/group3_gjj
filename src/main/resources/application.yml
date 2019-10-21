@@ -1,0 +1,28 @@
+spring:
+  jpa:
+    #是否显示sql
+    show-sql: true
+    #指定数据库类型
+    database: mysql
+    #方言
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    #自动建表方式
+    hibernate:
+      ddl-auto: update
+    #格式化sql
+    properties:
+      hibernate:
+        format-sql: true
+  #数据库驱动
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: liutonghui89+-
+    url: jdbc:mysql://47.98.183.4:3306/group3_gjj?characterEncoding=utf-8&useUnicode=true&useSSL=false&serverTimezone=UTC
+  mvc:
+    #视图拼接
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+server:
+  port: 8080
