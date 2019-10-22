@@ -11,7 +11,7 @@ public class Test {
 
     @RequestMapping("/hello")
     public String helloHtml(Map<String, Object> map) {
-        map.put("hello", "从 Controller 到 Html");
+        map.put("hello", "从 Controller 到 html");
         return "test";
     }
 }
