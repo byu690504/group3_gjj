@@ -1,0 +1,31 @@
+package com.zlk.gjj_01.register.entity;
+
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "unit_register")
+@Getter
+@Setter
+public class UnitRegister {
+    @Id
+    @GenericGenerator(name = "myuuid",strategy = "uuid")
+    @GeneratedValue(generator = "myuuid")
+    @Column(name = "unit_register_id")
+    private String unitRegisterId;
+    @Column(name = "principal_name")
+    private String principalName;
+    @Column(name = "principal_card_name")
+    private String principalCardName;
+    @Column(name = "principal_card_number")
+    private String principalCardNumber;
+    @Column(name = "principal_status")
+    private String principalStatus;
+    /*@Column(name = "unit_id")
+    private String unitId;*/
+    @OneToOne(targetEntity = Unit.class)
+    private Unit unit;
+}
