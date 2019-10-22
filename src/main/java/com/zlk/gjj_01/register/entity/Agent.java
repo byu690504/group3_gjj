@@ -27,9 +27,15 @@ public class Agent {
     private String cardNumber;
     @Column(name = "agent_phone")
     private String agentPhone;
-    @Column(name = "unit_id")
-    private String unitId;
-    @Column(name = "unit_register_id")
-    private String unitRegisterId;
+    /*@Column(name = "unit_id")
+    private String unitId;*/
+    /*@Column(name = "unit_register_id")
+    private String unitRegisterId;*/
+    @ManyToOne(targetEntity = Unit.class)
+    @JoinColumn(name = "unit_id")
+    private Unit unit;
+    @ManyToOne(targetEntity = UnitRegister.class)
+    @JoinColumn(name = "unit_register_id")
+    private UnitRegister unitRegister;
 
 }
