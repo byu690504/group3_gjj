@@ -17,8 +17,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
-    password: root
-    url: jdbc:mysql://localhost:3306/ssm?characterEncoding=utf-8&useUnicode=true&useSSL=true&serverTimezone=UTC
+    password: 123456
+    url: jdbc:mysql://192.168.124.6:3306/gjj?characterEncoding=utf-8
   #thymeleaf模板配置
   thymeleaf:
     prefix: classpath:/templates/
