@@ -1,4 +1,4 @@
-package com.zlk.gjj_01.register.gby;
+package com.zlk.gjj_01.register.entity;
 
 import lombok.Getter;
 import lombok.Setter;
