@@ -35,10 +35,13 @@ public class SecondAssistMessage {
     @Column(name = "dept_name ")
     private String deptName;
 
-    /*多对一关系*/
-    /*汇缴清单ID*/
+    /*多对一关系*//*
+    *//*汇缴清单ID*//*
     @Column(name = "remit_inventory_id")
-    private String remitInventoryId;
+    private String remitInventoryId;*/
+    @ManyToOne(targetEntity = RemitInventory.class)
+    @JoinColumn(name = "remit_inventory_id")
+    private RemitInventory remitInventory;
 
 
 }

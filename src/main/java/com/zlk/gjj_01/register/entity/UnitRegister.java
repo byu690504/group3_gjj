@@ -5,6 +5,7 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "unit_register")
@@ -27,5 +28,12 @@ public class UnitRegister {
     /*@Column(name = "unit_id")
     private String unitId;*/
     @OneToOne(targetEntity = Unit.class)
+    @JoinColumn(name = "unit_id")
     private Unit unit;
+    @OneToMany(targetEntity = Agent.class,mappedBy = "unitRegister")
+    private List<Agent> agentList;
+    @OneToOne(targetEntity = UnitOpenAccount.class,mappedBy = "unitRegister")
+    private UnitOpenAccount unitOpenAccount;
+    @OneToOne(targetEntity = RemitInventory.class,mappedBy = "unitRegister")
+    private RemitInventory remitInventory;
 }

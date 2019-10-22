@@ -20,11 +20,11 @@ public class UnitOpenAccount {
 
     @Id
     @GeneratedValue(generator = "paymentableGenerator")
-    @GenericGenerator(name = "paymentableGenerator",strategy = "org.hibernate.id.UUIDGenerator")
+    @GenericGenerator(name = "paymentableGenerator",strategy = "uuid")
     @Column(name = "unit_open_account_id")
     private long unitOpenAccountId;//单位开户账号
-    @Column(name = "unit_register_id")
-    private long unitRegisterId;//单位登记号
+    /*@Column(name = "unit_register_id")
+    private long unitRegisterId;//单位登记号*/
     @Column(name = "business_kind")
     private String businessKind;//业务种类
     @Column(name = "money_source")
@@ -45,4 +45,7 @@ public class UnitOpenAccount {
     private String depositProportion;//缴存比例
     @Column(name = "confirm_emp_inventory")
     private String confirmEmpInventory;//每月是否需要确认人员清册
+    @OneToOne(targetEntity = UnitRegister.class)
+    @JoinColumn(name = "unit_register_id")
+    private UnitRegister unitRegister;
 }

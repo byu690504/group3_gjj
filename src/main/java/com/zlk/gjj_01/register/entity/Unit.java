@@ -6,6 +6,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "unit")
@@ -37,4 +38,6 @@ public class Unit {
     private String unitNatureCode;
     @OneToOne(targetEntity = UnitRegister.class,mappedBy = "unit")
     private UnitRegister unitRegister;
+    @OneToMany(targetEntity = Agent.class,mappedBy = "unit")
+    private List<Agent> agentList;
 }
