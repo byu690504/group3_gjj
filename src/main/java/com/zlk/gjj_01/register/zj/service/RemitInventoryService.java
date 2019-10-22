@@ -16,5 +16,4 @@ public interface RemitInventoryService {
     //在线支付
     void onlinePayment();
 
-
 }

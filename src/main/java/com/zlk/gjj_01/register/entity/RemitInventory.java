@@ -5,8 +5,7 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 /**
  * 缴费管理实体类
@@ -21,8 +20,8 @@ public class RemitInventory {
     @GeneratedValue(generator = "myGenerator")
     @GenericGenerator(name = "myGenerator",strategy = "uuid")
     private String remitInventoryId;
-    @Column(name ="unit_register_id" )
-    private String unitRegisterId;
+    /*@Column(name ="unit_register_id" )
+    private String unitRegisterId;*/
     @Column(name = "money_source")
     private String moneySource;
     @Column(name = "emp_number")
@@ -37,6 +36,13 @@ public class RemitInventory {
     private String empCardNumber;
     @Column(name = "emp_deposite_base")
     private String empDepositeBase;
-    @OneToMany(mappedBy = "remitInventory",targetEntity =SecondAssistMessage.class,cascade = CascadeType.ALL)
-    private Set<SecondAssistMessage> secondAssistMessageSet=new HashSet<SecondAssistMessage>();
+    /*@OneToMany(mappedBy = "remitInventory",targetEntity =SecondAssistMessage.class,cascade = CascadeType.ALL)
+    private Set<SecondAssistMessage> secondAssistMessageSet=new HashSet<SecondAssistMessage>();*/
+    /*@OneToMany(mappedBy = "remitInventory",targetEntity =secondAssistMessage.class,cascade = CascadeType.ALL)
+    private Set<SecondAssistMessage> secondAssistMessageSet=new HashSet<SecondAssistMessage>();*/
+    @OneToMany(targetEntity = SecondAssistMessage.class,mappedBy = "remitInventory")
+    private List<SecondAssistMessage> secondAssistMessageList;
+    @OneToOne(targetEntity = UnitRegister.class)
+    @JoinColumn(name = "unit_register_id")
+    private UnitRegister unitRegister;
 }

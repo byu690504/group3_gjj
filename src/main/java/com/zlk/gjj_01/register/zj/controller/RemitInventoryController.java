@@ -3,36 +3,40 @@ package com.zlk.gjj_01.register.zj.controller;
  * 缴费方式控制类
  */
 
+import com.zlk.gjj_01.register.zj.service.RemitInventoryService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "/remitInventory")
 public class RemitInventoryController {
+    @Autowired
+    private RemitInventoryService remitInventoryService;
     @RequestMapping(value = "/receivables")
     public String receivables(){
         int method=0;
         switch (method){
             case 1:
-                System.out.println();
+                remitInventoryService.activeRemittance();
                 break;
             case 2:
-                System.out.println();
+                remitInventoryService.transferCheque();
                 break;
             case 3:
-                System.out.println();
+                remitInventoryService.cashPayment();
                 break;
             case 4:
-                System.out.println();
+                remitInventoryService.fiscalUnification();
                 break;
             case 5:
-                System.out.println();
+                remitInventoryService.transferPayment();
                 break;
             case 6:
-                System.out.println();
+                remitInventoryService.onlinePayment();
                 break;
             default:
-                System.out.println();
+                remitInventoryService.onsignmentCollection();
                 break;
         }
         return null;
