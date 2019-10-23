@@ -5,7 +5,6 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.Date;
 
 /**
  * @author 张照伟
@@ -19,16 +18,16 @@ import java.util.Date;
 public class UnitOpenAccount {
 
     @Id
-    @GeneratedValue(generator = "paymentableGenerator")
-    @GenericGenerator(name = "paymentableGenerator",strategy = "org.hibernate.id.UUIDGenerator")
+    @GeneratedValue(generator = "myGenerator")
+    @GenericGenerator(name = "myGenerator",strategy = "uuid")
     @Column(name = "unit_open_account_id")
-    private long unitOpenAccountId;//单位开户账号
+    private String unitOpenAccountId;//单位开户申请id
     @Column(name = "unit_register_id")
-    private long unitRegisterId;//单位登记号
+    private String unitRegisterId;//单位登记号
     @Column(name = "business_kind")
-    private String businessKind;//业务种类
+    private String businessKind;//业务种类  单选项（住房公积金、住房补贴、住房基金、维修基金等）
     @Column(name = "money_source")
-    private String moneySource;//资金来源
+    private String moneySource;//资金来源  单选项（单位自筹、财政拨款）
     @Column(name = "appropriation_unit")
     private String appropriationUnit;//拨款单位
     @Column(name = "second_assist_message")
@@ -36,13 +35,16 @@ public class UnitOpenAccount {
     @Column(name = "business_agent_dept")
     private String businessAgentDept;//业务经办部门
     @Column(name = "payoff_date")
-    private Date payoffDate;//发薪日期
+    private Integer payoffDate;//发薪日期  数字1-31
     @Column(name = "first_remit_month")
-    private Date firstRemitMonth;//首次汇缴月份
+    private Integer firstRemitMonth;//首次汇缴月份  数字1-12
     @Column(name = "approved_month_of_cross_year_inventory")
-    private Date approvedMonthOfCrossYearInventory;//跨年清册核定月份
+    private String approvedMonthOfCrossYearInventory;//跨年清册核定月份  单选项（1月、7月）
     @Column(name = "deposit_proportion")
     private String depositProportion;//缴存比例
     @Column(name = "confirm_emp_inventory")
     private String confirmEmpInventory;//每月是否需要确认人员清册
+    @OneToOne(targetEntity = UnitRegister.class,mappedBy = "unitOpenAccount",cascade = CascadeType.ALL)
+    private UnitRegister unitRegister;
+
 }
