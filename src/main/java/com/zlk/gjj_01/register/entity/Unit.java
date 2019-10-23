@@ -2,9 +2,12 @@ package com.zlk.gjj_01.register.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -36,8 +39,10 @@ public class Unit {
     private String unitCardNumber;
     @Column(name = "unit_nature_code")
     private String unitNatureCode;
-    @OneToOne(targetEntity = UnitRegister.class,mappedBy = "unit")
+    @Column(name = "superior_unit")
+    private String superiorUnit;
+    @OneToOne(targetEntity = UnitRegister.class,mappedBy = "unit",cascade = CascadeType.ALL)
     private UnitRegister unitRegister;
     @OneToMany(targetEntity = Agent.class,mappedBy = "unit")
-    private List<Agent> agentList;
+    private List<Agent> agentList=new ArrayList<>();
 }
