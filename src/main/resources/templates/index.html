@@ -5,11 +5,32 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
-    <title>首页</title>
-    <link th:href="@{layui/css/layui.css}" rel="stylesheet">
-    <script th:src="@{layui/layui.js}"></script>
+    <title>北京住房公积金网</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet" media="all">
+    <link th:href="@{/css/index.css}" rel="stylesheet">
+    <script th:src="@{/layui/layui.all.js}"></script>
 </head>
-<body>
+<body class="layui-layout-body">
+    <div id="body">
+        <div id="header">
+            <span>北京住房公积金网</span>
+        </div>
+        <div id="publicity">
 
+        </div>
+        <div id="turns">
+
+        </div>
+        <div id="business">
+            <div id="b1">
+                <i class="layui-icon layui-icon-friends"></i>
+                <a th:href="@{/}" type="button" class="layui-btn layui-btn-fluid">个人网上业务平台</a>
+            </div>
+            <div id="b2">
+                <i class="layui-icon layui-icon-component"></i>
+                <a th:href="@{/test/page2}" type="button" class="layui-btn layui-btn-fluid">单位网上业务平台</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
