@@ -49,13 +49,23 @@
                 </div>
                 <div class="layui-form-item">
                     <div class="layui-input-block layui-input-inline">
-                        <input type="submit" class="layui-btn" value="登录">
-                        <!--<input type="reset" class="layui-btn" value="重置">-->
+                        <button type="submit" class="layui-btn" lay-filter="">登录</button>
                         <a href="<%=request.getContextPath() %>/login/toRegister" type="button" class="layui-btn">注册</a>
                     </div>
                 </div>
             </form>
         </div>
     </div>
+    <script type="text/javascript">
+        layui.use(['form'], function(){
+            var form = layui.form;
+            form.render();
+            var laydate = layui.laydate;
+            //监听提交
+            form.on('submit()', function(data){
+                return true;
+            });
+        });
+    </script>
 </body>
 </html>

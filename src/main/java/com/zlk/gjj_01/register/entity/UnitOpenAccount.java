@@ -40,8 +40,10 @@ public class UnitOpenAccount {
     private Integer firstRemitMonth;//首次汇缴月份  数字1-12
     @Column(name = "approved_month_of_cross_year_inventory")
     private String approvedMonthOfCrossYearInventory;//跨年清册核定月份  单选项（1月、7月）
-    @Column(name = "deposit_proportion")
-    private String depositProportion;//缴存比例
+    @Column(name = "unit_deposit_proportion")
+    private String unitDepositProportion;//单位缴存比例
+    @Column(name = "person_deposit_proportion")
+    private String personDepositProportion;//个人缴存比例
     @Column(name = "confirm_emp_inventory")
     private String confirmEmpInventory;//每月汇缴是否需要确认人员清册
     @Column(name = "accept_the_information_service_of_the_center")

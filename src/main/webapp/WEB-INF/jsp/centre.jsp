@@ -28,12 +28,6 @@
                 <ul class="layui-nav layui-nav-tree" lay-filter="test">
                     <li class="layui-nav-item layui-nav-itemed">
                         <dl class="layui-nav-child">
-                            <%--<dd>
-                                <a href="<%=request.getContextPath() %>/" target="pageCenter">单位用户登录</a>
-                            </dd>
-                            <dd>
-                                <a href="<%=request.getContextPath() %>/" target="pageCenter">单位用户注册</a>
-                            </dd>--%>
                             <dd>
                                 <a href="<%=request.getContextPath() %>/" target="pageCenter">单位登记申请</a>
                             </dd>
@@ -41,10 +35,7 @@
                                 <a href="<%=request.getContextPath() %>/" target="pageCenter">单位经办人授权</a>
                             </dd>
                             <dd>
-                                <a href="<%=request.getContextPath() %>/" target="pageCenter">单位开户</a>
-                            </dd>
-                            <dd>
-                                <a href="<%=request.getContextPath() %>/" target="pageCenter">缴款方式管理</a>
+                                <a href="<%=request.getContextPath() %>/unitOpenAccount/toUnitOpenAccount" target="pageCenter">单位开户</a>
                             </dd>
                             <dd>
                                 <a href="<%=request.getContextPath() %>/" target="pageCenter">单位用户业务授权</a>

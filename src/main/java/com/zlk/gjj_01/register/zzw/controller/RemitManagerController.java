@@ -37,7 +37,7 @@ public class RemitManagerController {
     @RequestMapping("/remitManager1")
     @ResponseBody
     public String remitManager1(RemitManager remitManager, UnitRegister unitRegister, Map map) throws ParseException {
-        unitRegister.setUnitRegisterId("1");
+        /*unitRegister.setUnitRegisterId("1");
         remitManager.setRemitWay("委托收款");
         remitManager.setProceedsUnitName("华龙区财政局");
         remitManager.setProceedsUnitAccount("9876543212345");
@@ -46,7 +46,7 @@ public class RemitManagerController {
         remitManager.setPaySystemNumber("1234");
         remitManager.setProceedsDate(DateUtil.stringToDate("2019-10-22"));
         remitManager.setUnitRegister(unitRegister);
-        unitRegister.setRemitManager(remitManager);
+        unitRegister.setRemitManager(remitManager);*/
         remitManagerService.save1(remitManager);
 
         return "remitManager1";
@@ -56,13 +56,13 @@ public class RemitManagerController {
     @ResponseBody
     public String remitManager2(RemitManager remitManager, UnitRegister unitRegister, Map map) throws ParseException {
 
-        unitRegister.setUnitRegisterId("2");
+        /*unitRegister.setUnitRegisterId("2");
         remitManager.setRemitWay("主动汇款");
         remitManager.setRemitUnitName("中原油田");
         remitManager.setRemitUnitBank("中国工商银行");
         remitManager.setRemitUnitAccount("78437228543");
         remitManager.setUnitRegister(unitRegister);
-        unitRegister.setRemitManager(remitManager);
+        unitRegister.setRemitManager(remitManager);*/
         remitManagerService.save2(remitManager);
 
         return "remitManager2";
@@ -72,11 +72,11 @@ public class RemitManagerController {
     @ResponseBody
     public String remitManager3(RemitManager remitManager, UnitRegister unitRegister,UnitOpenAccount unitOpenAccount, Map map) throws ParseException {
 
-        unitRegister.setUnitRegisterId("2");
+        /*unitRegister.setUnitRegisterId("2");
         remitManager.setRemitWay("财政统发");
         unitOpenAccount.setAppropriationUnit("市财政");
         remitManager.setUnitRegister(unitRegister);
-        unitRegister.setRemitManager(remitManager);
+        unitRegister.setRemitManager(remitManager);*/
         remitManagerService.save3(remitManager);
 
         return "remitManager3";
