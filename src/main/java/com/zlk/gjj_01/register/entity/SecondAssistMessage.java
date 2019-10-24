@@ -37,12 +37,11 @@ public class SecondAssistMessage {
     @Column(name = "dept_name ")
     private String deptName;
 
-//    /*多对一关系*/
-//    /*汇缴清单ID*/
-//    @Column(name = "remit_inventory_id")
-//    private String remitInventoryId;
-    /*缴费管理类*/
-    @OneToMany(targetEntity = RemitInventory.class,mappedBy = "unitRegister")
+    /*一对多关系*//*
+    *//*汇缴清单ID*//*
+    @Column(name = "remit_inventory_id")
+    private String remitInventoryId;*/
+    @OneToMany(targetEntity = RemitInventory.class,mappedBy = "secondAssistMessage")
     private List<RemitInventory> remitInventoryList=new ArrayList<>();
 
 

@@ -7,6 +7,7 @@ import com.zlk.gjj_01.register.entity.RemitInventory;
 import com.zlk.gjj_01.register.entity.SecondAssistMessage;
 import com.zlk.gjj_01.register.zj.dao.RemitInventoryDao;
 import com.zlk.gjj_01.register.zj.dao.SecondAssistMessageDao;
+import com.zlk.gjj_01.register.zj.service.SecondAssistMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -22,15 +23,18 @@ public class SecondAssistMessageController {
     private SecondAssistMessageDao secondAssistMessageDao;
     @Autowired
     private RemitInventoryDao remitInventoryDao;
-
     @RequestMapping(value = "/add")
     @ResponseBody
     public String add(SecondAssistMessage secondAssistMessage){
         SecondAssistMessage secondAssistMessage1=new SecondAssistMessage();
-        secondAssistMessage1.setDeptName("销售部2");
-        secondAssistMessage1.setDeptCode("XS");
-        secondAssistMessage1.setDeptNumber("006");
-        secondAssistMessageDao.saveAndFlush(secondAssistMessage1);
+        secondAssistMessage1.setDeptName("销售部3");
+        secondAssistMessage1.setDeptCode("XS3");
+        secondAssistMessage1.setDeptNumber("007");
+        RemitInventory remitInventory=new RemitInventory();
+        remitInventory.setEmpName("小赵");
+        remitInventory.setSecondAssistMessage(secondAssistMessage1);
+        secondAssistMessage1.getRemitInventoryList().add(remitInventory);
+        secondAssistMessageDao.save(secondAssistMessage1);
         return null;
     }
     @RequestMapping(value = "/update")
@@ -49,13 +53,15 @@ public class SecondAssistMessageController {
         //联表查询 两个表
         //判断是否为空
         //调用方法 再删除
-        secondAssistMessageId="402869816df29413016df29452db0000";
+        secondAssistMessageId="402869816df37044016df37163d60000";
         List<RemitInventory> remList=remitInventoryDao.findRemBySecId(secondAssistMessageId);
         if(remList.size()!=0){
             map.put("error","仍有职工在该部门，不允许删除，到部门维护中修改后再删除");
+            System.out.println("删除失败");
             return null;
         }else {
             secondAssistMessageDao.deleteById(secondAssistMessageId);
+            System.out.println("删除成功");
         }
         return null;
     }
