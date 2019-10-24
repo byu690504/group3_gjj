@@ -26,28 +26,45 @@ public class RegisterController {
     @Autowired
     private LoginService loginService;
 
-    @RequestMapping(value = "/tounitRegister")
+    @RequestMapping(value = "/toUnitRegister")
     public String toUnitRegister(){
-        return "unitRegister";
+        return "beforeRegister";
+    }
+
+    @RequestMapping(value = "/beforeRegister")
+    @ResponseBody
+    public ModelAndView beforeRegister(String unitName){
+        ModelAndView mv=new ModelAndView();
+        unitName="腾讯";
+        Unit unit = loginService.findByUnitName(unitName);
+        if(unit!=null){
+            UnitRegister unitRegister = unitRegisterService.findUnitRegisterByUnitId(unit.getUnitId());
+            if(unitRegister!=null){
+                mv.addObject("msg","该单位已经登记");
+                mv.addObject("urId",unitRegister.getUnitRegisterId());
+                mv.addObject("uName",unitRegister.getUnit().getUnitName());
+                mv.addObject("uCode",unitRegister.getUnit().getUnitCode());
+                mv.setViewName("centre");
+                return mv;
+            }else {
+                mv.addObject("unitName",unitName);
+                mv.setViewName("unitRegister");
+                return mv;
+            }
+        }else {
+            mv.addObject("msg","该单位未注册");
+            mv.setViewName("login");
+            return mv;
+        }
     }
 
     @RequestMapping(value = "/unitRegister")
     @ResponseBody
-    public String unitRegister(Unit unit, UnitRegister unitRegister, Map map) throws ParseException {
+    public ModelAndView unitRegister(Unit unit, UnitRegister unitRegister) throws ParseException {
         unit.setUnitName("阿里巴巴");
         Unit unit1 = loginService.findByUnitName(unit.getUnitName());
-        if(unit1!=null){
-            UnitRegister unitRegister1 = unitRegisterService.findUnitRegisterByUnitId(unit1.getUnitId());
-            if(unitRegister1!=null){
-                map.put("error","该单位已经登记");
-                map.put("urId",unitRegister1.getUnitRegisterId());
-                map.put("uName",unitRegister1.getUnit().getUnitName());
-                map.put("uCode",unitRegister1.getUnit().getUnitCode());
-                return "success";
-            }
-            unit.setUnitId(unit1.getUnitId());
-            unit.setUnitEmail(unit1.getUnitEmail());
-        }
+        unit.setUnitId(unit1.getUnitId());
+        unit.setUnitEmail(unit1.getUnitEmail());
         unit.setUnitCode("000000");
         unit.setUnitCardName("企业营业执照");
         unit.setUnitCardNumber("000000000");
@@ -67,11 +84,15 @@ public class RegisterController {
         unitRegister.setUnit(unit);
         /*unitRegisterService.save(unitRegister);*/
         loginService.save(unit);
-        return "unitRegister";
+        ModelAndView mv=new ModelAndView();
+        mv.addObject("msg","登记成功，请进行经办人授权");
+        mv.setViewName("centre");
+        return mv;
     }
-    @RequestMapping(value = "/agentAuth")
+
+    @RequestMapping(value = "/toAgentAuth")
     @ResponseBody
-    public ModelAndView agentAuth(HttpServletRequest request){
+    public ModelAndView toAgentAuth(HttpServletRequest request){
         String agentName = (String)request.getSession().getAttribute("agent");
         Agent agent = loginService.findAgentByAgentName(agentName);
         ModelAndView mv=new ModelAndView();
@@ -79,7 +100,16 @@ public class RegisterController {
         mv.addObject("aCardName",agent.getCardName());
         mv.addObject("aCardNumber",agent.getCardNumber());
         mv.addObject("aPhone",agent.getAgentPhone());
-        mv.setViewName("service/agentAuth");
+        mv.setViewName("agentAuth");
+        return mv;
+    }
+
+    @RequestMapping(value = "/agentAuth")
+    @ResponseBody
+    public ModelAndView agentAuth(){
+        ModelAndView mv=new ModelAndView();
+        mv.addObject("msg","认证成功");
+        mv.setViewName("centre");
         return mv;
     }
 }
