@@ -1,6 +1,7 @@
 package com.zlk.gjj_01.register.zzw.service.impl;
 
 import com.zlk.gjj_01.register.entity.RemitManager;
+import com.zlk.gjj_01.register.entity.UnitOpenAccount;
 import com.zlk.gjj_01.register.zzw.dao.RemitManagerDao;
 import com.zlk.gjj_01.register.zzw.service.RemitManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,17 @@ public class RemitManagerServiceImpl implements RemitManagerService {
     }
 
     @Override
+    public RemitManager save3(RemitManager remitManager) {
+        return remitManagerDao.save(remitManager);
+    }
+
+    @Override
     public RemitManager findByRemitWay(String remitWay) {
         return remitManagerDao.findByRemitWay(remitWay);
+    }
+
+    @Override
+    public UnitOpenAccount findUnitOpenAccountByAppropriationUnit(String appropriationUnit) {
+        return remitManagerDao.findUnitOpenAccountByAppropriationUnit(appropriationUnit);
     }
 }

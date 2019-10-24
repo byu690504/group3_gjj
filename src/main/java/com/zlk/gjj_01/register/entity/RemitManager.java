@@ -45,7 +45,7 @@ public class RemitManager {
     @Column(name = "remit_unit_account")
     private String remitUnitAccount;//汇款单位账号
     @OneToOne(targetEntity = UnitOpenAccount.class)
-    @JoinColumn(name = "unit_open_account_id")
+    @JoinColumn(name = "appropriation_unit")
     private UnitOpenAccount unitOpenAccount;
     @OneToOne(targetEntity = UnitRegister.class)
     @JoinColumn(name = "unit_register_id")

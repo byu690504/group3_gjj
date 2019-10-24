@@ -68,16 +68,28 @@ public class RemitManagerController {
         return "remitManager2";
     }
 
-   /* @RequestMapping("/appropriationUnit")
+    @RequestMapping("/remitManager3")
+    @ResponseBody
+    public String remitManager3(RemitManager remitManager, UnitRegister unitRegister,UnitOpenAccount unitOpenAccount, Map map) throws ParseException {
+
+        unitRegister.setUnitRegisterId("2");
+        remitManager.setRemitWay("财政统发");
+        unitOpenAccount.setAppropriationUnit("市财政");
+        remitManager.setUnitRegister(unitRegister);
+        unitRegister.setRemitManager(remitManager);
+        remitManagerService.save3(remitManager);
+
+        return "remitManager3";
+    }
+
+    /*@RequestMapping("/appropriationUnit")
     @ResponseBody
     public ModelAndView appropriationUnit(HttpServletRequest request){
         String appropriationUnit = (String)request.getSession().getAttribute("unitOpenAccount");
         UnitOpenAccount unitOpenAccount = unitOpenAccountService.findUnitOpenAccountByAppropriationUnit(appropriationUnit);
         ModelAndView mv = new ModelAndView();
-        mv.addObject(String attributeName,)
-        Object attributeName;
-        mv.addObject(attributeName:"aName",unitOpenAccount.getAppropriationUnit());
-        mv.setViewName("");
+        mv.addObject(unitOpenAccount.getAppropriationUnit());
+        mv.setViewName("/remitManager/appropriationUnit");
         return mv;
     }*/
 }

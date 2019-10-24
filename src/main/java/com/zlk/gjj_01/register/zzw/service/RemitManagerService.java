@@ -1,6 +1,7 @@
 package com.zlk.gjj_01.register.zzw.service;
 
 import com.zlk.gjj_01.register.entity.RemitManager;
+import com.zlk.gjj_01.register.entity.UnitOpenAccount;
 
 /**
  * @author 张照伟
@@ -10,5 +11,7 @@ import com.zlk.gjj_01.register.entity.RemitManager;
 public interface RemitManagerService {
     RemitManager save1(RemitManager remitManager);
     RemitManager save2(RemitManager remitManager);
+    RemitManager save3(RemitManager remitManager);
     RemitManager findByRemitWay(String remitWay);
+    UnitOpenAccount findUnitOpenAccountByAppropriationUnit(String appropriationUnit);
 }

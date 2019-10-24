@@ -22,6 +22,8 @@ public class UnitOpenAccount {
     @GenericGenerator(name = "myGenerator",strategy = "uuid")
     @Column(name = "unit_open_account_id")
     private String unitOpenAccountId;//单位开户申请id
+    /*@Column(name = "unit_register_id")
+    private long unitRegisterId;//单位登记号*/
     @Column(name = "business_kind")
     private String businessKind;//业务种类  单选项（住房公积金、住房补贴、住房基金、维修基金等）
     @Column(name = "money_source")
