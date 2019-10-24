@@ -1,14 +1,18 @@
-<!DOCTYPE html>
-<!--suppress ALL-->
-<html lang="en"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<%--
+  Created by IntelliJ IDEA.
+  User: kaiguan
+  Date: 2019/10/23
+  Time: 19:34
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
     <title>单位登记申请</title>
-    <link th:href="@{/layui/css/layui.css}" rel="stylesheet" media="all">
-    <link th:href="@{/css/registerRequest.css}" rel="stylesheet">
-    <script th:src="@{/layui/layui.all.js}"></script>
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/registerRequest.css">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/layui/css/layui.css" media="all">
+    <script src="<%=request.getContextPath() %>/js/jquery.min.js"></script>
+    <script src="<%=request.getContextPath() %>/layui/layui.all.js"></script>
 </head>
 <body>
     <div id="body">
@@ -19,7 +23,7 @@
             <div id="span1">
                 <span>单位登记申请</span>
             </div>
-            <form th:action="@{/}" method="post" class="layui-form">
+            <form action="<%=request.getContextPath() %>/" method="post" class="layui-form">
                 <div class="layui-form-item">
                     <label class="layui-form-label">单位名称</label>
                     <div class="layui-input-inline">
@@ -133,7 +137,7 @@
                 </div>
                 <div class="layui-form-item">
                     <div class="layui-input-block layui-input-inline">
-                        <a th:href="@{/}" class="layui-btn" lay-submit lay-filter="registerRequest">提交</a>
+                        <button type="submit" class="layui-btn" lay-filter="registerRequest">提交</button>
                         <input type="reset" class="layui-btn" value="重置">
                     </div>
                 </div>

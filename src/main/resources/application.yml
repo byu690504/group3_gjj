@@ -23,16 +23,20 @@ spring:
     tomcat:
       max-active: 20
       max-wait: 60000
-  #thymeleaf模板配置
-  thymeleaf:
-    prefix: classpath:/templates/
-    suffix: .html
-    mode: LEGACYHTML5
-    encoding: UTF-8
-    servlet:
-      content-type: text/html
-    #关掉缓存
-    cache: false
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+#  #thymeleaf模板配置
+#  thymeleaf:
+#    prefix: classpath:/templates/
+#    suffix: .html
+#    mode: LEGACYHTML5
+#    encoding: UTF-8
+#    servlet:
+#      content-type: text/html
+#    #关掉缓存
+#    cache: false
   #所有/**请求的静态资源都会被处理
   resources:
     chain:

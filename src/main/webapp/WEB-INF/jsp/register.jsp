@@ -1,14 +1,18 @@
-<!DOCTYPE html>
-<!--suppress ALL-->
-<html lang="en"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<%--
+  Created by IntelliJ IDEA.
+  User: kaiguan
+  Date: 2019/10/23
+  Time: 19:27
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
     <title>单位用户注册</title>
-    <link th:href="@{/layui/css/layui.css}" rel="stylesheet" media="all">
-    <link th:href="@{/css/register.css}" rel="stylesheet">
-    <script th:src="@{/layui/layui.all.js}"></script>
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/register.css">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/layui/css/layui.css" media="all">
+    <script src="<%=request.getContextPath() %>/js/jquery.min.js"></script>
+    <script src="<%=request.getContextPath() %>/layui/layui.all.js"></script>
 </head>
 <body class="layui-layout-body">
     <div id="body">
@@ -19,22 +23,24 @@
             <div id="span1">
                 <span>单位注册信息</span>
             </div>
-            <form th:action="@{/}" method="post" class="layui-form">
+            <form action="<%=request.getContextPath() %>/login/register" method="post" class="layui-form">
                 <div class="layui-form-item">
                     <label class="layui-form-label">姓名</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="agentName" id="agentName" required lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">
+                        <label for="agentName"></label><input type="text" name="agentName" id="agentName" required lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">证件名称</label>
                     <div class="layui-input-inline">
-                        <select name="cardName" required lay-verify="required">
-                            <option value="">请选择证件名称</option>
-                            <option value="身份证号">身份证号</option>
-                            <option value="军官证号">军官证号</option>
-                            <option value="护照">护照</option>
-                        </select>
+                        <label>
+                            <select name="cardName" required lay-verify="required">
+                                <option value="">请选择证件名称</option>
+                                <option value="身份证号">身份证号</option>
+                                <option value="军官证号">军官证号</option>
+                                <option value="护照">护照</option>
+                            </select>
+                        </label>
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -74,9 +80,17 @@
                     </div>
                 </div>
                 <div class="layui-form-item">
+                    <label class="layui-form-label">验证码</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="code" id="code" required lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input">
+                        <br>
+                        <img src="<%=request.getContextPath() %>/checkCodeServlet">
+                    </div>
+                </div>
+                <div class="layui-form-item">
                     <div class="layui-input-block layui-input-inline">
                         <!--<input type="submit" class="layui-btn" value="提交">-->
-                        <a th:href="@{/test/page2}" class="layui-btn" lay-submit lay-filter="register">提交</a>
+                        <button type="submit" class="layui-btn" lay-filter="register">提交</button>
                         <input type="reset" class="layui-btn" value="重置">
                     </div>
                 </div>

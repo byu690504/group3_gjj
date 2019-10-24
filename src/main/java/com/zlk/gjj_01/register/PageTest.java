@@ -7,6 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/test")
 public class PageTest {
 
+    @RequestMapping("/page0")
+    public String test0(){
+        return "index";
+    }
+
     @RequestMapping("/page1")
     public String test1(){
         return "index";
@@ -14,21 +19,21 @@ public class PageTest {
 
     @RequestMapping("/page2")
     public String test2(){
-        return "service/login";
+        return "login";
     }
 
     @RequestMapping("/page3")
     public String test3(){
-        return "service/register";
+        return "register";
     }
 
     @RequestMapping("/page4")
     public String test4(){
-        return "service/centre";
+        return "centre";
     }
 
     @RequestMapping("/page5")
     public String test5(){
-        return "service/registerRequest";
+        return "registerRequest";
     }
 }

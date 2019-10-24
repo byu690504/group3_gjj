@@ -1,14 +1,18 @@
-<!DOCTYPE html>
-<!--suppress ALL-->
-<html lang="en"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<%--
+  Created by IntelliJ IDEA.
+  User: kaiguan
+  Date: 2019/10/23
+  Time: 19:19
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
     <title>单位用户登录</title>
-    <link th:href="@{/layui/css/layui.css}" rel="stylesheet" media="all">
-    <link th:href="@{/css/login.css}" rel="stylesheet">
-    <script th:src="@{/layui/layui.all.js}"></script>
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/login.css">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/layui/css/layui.css" media="all">
+    <script src="<%=request.getContextPath() %>/js/jquery.min.js"></script>
+    <script src="<%=request.getContextPath() %>/layui/layui.all.js"></script>
 </head>
 <body class="layui-layout-body">
     <div id="body">
@@ -19,9 +23,9 @@
             <div id="span1">
                 <span>单位用户登录</span>
             </div>
-            <form th:action="@{/}" method="post" class="layui-form">
+            <form action="<%=request.getContextPath() %>/login/login" method="post" class="layui-form">
                 <div class="layui-form-text layui-inline" id="span2">
-                    <span th:text="${error}">error</span>
+                    <span>${error}</span>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">用户名</label>
@@ -40,14 +44,14 @@
                     <div class="layui-input-inline">
                         <input type="text" name="code" id="code" required lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input">
                         <br>
-                        <img th:src="@{/}">
+                        <img src="<%=request.getContextPath() %>/checkCodeServlet">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <div class="layui-input-block layui-input-inline">
                         <input type="submit" class="layui-btn" value="登录">
                         <!--<input type="reset" class="layui-btn" value="重置">-->
-                        <a th:href="@{/test/page3}" type="button" class="layui-btn">注册</a>
+                        <a href="<%=request.getContextPath() %>/login/toRegister" type="button" class="layui-btn">注册</a>
                     </div>
                 </div>
             </form>

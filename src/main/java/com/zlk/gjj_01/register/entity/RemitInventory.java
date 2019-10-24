@@ -5,6 +5,7 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -37,10 +38,9 @@ public class RemitInventory {
     private String empCardNumber;
     @Column(name = "emp_deposite_base")
     private String empDepositeBase;
-    /*@OneToMany(mappedBy = "remitInventory",targetEntity =secondAssistMessage.class,cascade = CascadeType.ALL)
-    private Set<SecondAssistMessage> secondAssistMessageSet=new HashSet<SecondAssistMessage>();*/
-    @OneToMany(targetEntity = SecondAssistMessage.class,mappedBy = "remitInventory")
-    private List<SecondAssistMessage> secondAssistMessageList;
+    @ManyToOne(targetEntity = SecondAssistMessage.class)
+    @JoinColumn(name = "second_assist_message_id")
+    private SecondAssistMessage secondAssistMessage;
     @OneToOne(targetEntity = UnitRegister.class)
     @JoinColumn(name = "unit_register_id")
     private UnitRegister unitRegister;
