@@ -165,7 +165,6 @@
         layui.use(['form'], function(){
             var form = layui.form;
             form.render();
-            var laydate = layui.laydate;
             //监听提交
             form.on('submit()', function(data){
                 return true;
