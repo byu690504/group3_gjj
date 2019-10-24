@@ -17,7 +17,7 @@
 <body>
     <div id="body">
         <div id="header">
-            <span>新单位用户登记申请 --> 录入登记申请信息</span>
+            <span>单位用户登记申请 --> 录入登记申请信息</span>
         </div>
         <div id="registerRequest">
             <div id="span1">
@@ -99,7 +99,7 @@
                     <label class="layui-form-label">是否具备法人资格</label>
                     <div class="layui-input-inline">
                         <select name="cardName" required lay-verify="required">
-                            <option value="">请选择是/否</option>
+                            <option value="">请选择是否具备</option>
                             <option value="是">是</option>
                             <option value="否">否</option>
                         </select>
@@ -114,7 +114,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">上级主管单位</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="agentName" id="agentName" required lay-verify="required" placeholder="上级主管单位" autocomplete="off" class="layui-input">
+                        <input type="text" name="agentName" id="agentName" required lay-verify="required" placeholder="请输入上级主管单位" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -137,8 +137,8 @@
                 </div>
                 <div class="layui-form-item">
                     <div class="layui-input-block layui-input-inline">
-                        <button type="submit" class="layui-btn" lay-filter="registerRequest">提交</button>
-                        <input type="reset" class="layui-btn" value="重置">
+                        <button type="submit" class="layui-btn" lay-filter="">提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                     </div>
                 </div>
             </form>
@@ -162,8 +162,7 @@
             var laydate = layui.laydate;
             //监听提交
             form.on('submit(registerRequest)', function(data){
-                layer.msg(JSON.stringify(data.field));
-                return false;
+                return true;
             });
             //显示时间效果
             laydate.render({

@@ -36,4 +36,29 @@ public class PageTest {
     public String test5(){
         return "registerRequest";
     }
+
+    @RequestMapping("/page6")
+    public String test6(){
+        return "agentPower";
+    }
+
+    @RequestMapping("/page7")
+    public String test7(){
+        return "unitOpenAccount";
+    }
+
+    @RequestMapping("/page8")
+    public String test8(){
+        return "registerByUnitName";
+    }
+
+    @RequestMapping("/page9")
+    public String test9(){
+        return "unitBusinessPower";
+    }
+
+    @RequestMapping("/page10")
+    public String test10(){
+        return "secondaryManage";
+    }
 }
