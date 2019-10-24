@@ -8,8 +8,8 @@ import com.zlk.gjj_01.register.entity.UnitOpenAccount;
  * @date 2019/10/22 10:55
  */
 public interface UnitOpenAccountService {
-
-    UnitOpenAccount getUnitOpenAccount();
-
+    
     UnitOpenAccount save(UnitOpenAccount unitOpenAccount);
+    UnitOpenAccount save1(UnitOpenAccount unitOpenAccount);
+    UnitOpenAccount findUnitOpenAccountByAppropriationUnit(String appropriationUnit);
 }

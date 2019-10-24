@@ -22,8 +22,6 @@ public class UnitOpenAccount {
     @GenericGenerator(name = "myGenerator",strategy = "uuid")
     @Column(name = "unit_open_account_id")
     private String unitOpenAccountId;//单位开户申请id
-    @Column(name = "unit_register_id")
-    private String unitRegisterId;//单位登记号
     @Column(name = "business_kind")
     private String businessKind;//业务种类  单选项（住房公积金、住房补贴、住房基金、维修基金等）
     @Column(name = "money_source")
@@ -43,8 +41,14 @@ public class UnitOpenAccount {
     @Column(name = "deposit_proportion")
     private String depositProportion;//缴存比例
     @Column(name = "confirm_emp_inventory")
-    private String confirmEmpInventory;//每月是否需要确认人员清册
-    @OneToOne(targetEntity = UnitRegister.class,mappedBy = "unitOpenAccount",cascade = CascadeType.ALL)
+    private String confirmEmpInventory;//每月汇缴是否需要确认人员清册
+    @Column(name = "accept_the_information_service_of_the_center")
+    private String acceptTheInformationServiceOfTheCenter;//是否接受中心信息服务
+    @Column(name = "remit")
+    private String remit;//缴款方式
+    @OneToOne(targetEntity = UnitRegister.class)
+    @JoinColumn(name = "unit_register_id")
     private UnitRegister unitRegister;
-
+    @OneToOne(targetEntity = RemitManager.class,mappedBy = "unitOpenAccount")
+    private RemitManager remitManager;
 }

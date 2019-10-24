@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @Auther: gao
@@ -35,10 +37,12 @@ public class SecondAssistMessage {
     @Column(name = "dept_name ")
     private String deptName;
 
-    /*多对一关系*/
-    /*汇缴清单ID*/
+    /*一对多关系*//*
+    *//*汇缴清单ID*//*
     @Column(name = "remit_inventory_id")
-    private String remitInventoryId;
+    private String remitInventoryId;*/
+    @OneToMany(targetEntity = RemitInventory.class,mappedBy = "secondAssistMessage")
+    private List<RemitInventory> remitInventoryList=new ArrayList<>();
 
 
 }

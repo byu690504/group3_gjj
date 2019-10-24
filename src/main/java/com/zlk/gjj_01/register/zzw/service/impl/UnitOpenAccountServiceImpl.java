@@ -17,12 +17,18 @@ public class UnitOpenAccountServiceImpl implements UnitOpenAccountService {
     private UnitOpenAccountDao unitOpenAccountDao;
 
     @Override
-    public UnitOpenAccount getUnitOpenAccount() {
-        return null;
+    public UnitOpenAccount save(UnitOpenAccount unitOpenAccount) {
+
+        return unitOpenAccountDao.save(unitOpenAccount);
     }
 
     @Override
-    public UnitOpenAccount save(UnitOpenAccount unitOpenAccount) {
+    public UnitOpenAccount save1(UnitOpenAccount unitOpenAccount) {
         return unitOpenAccountDao.save(unitOpenAccount);
+    }
+
+    @Override
+    public UnitOpenAccount findUnitOpenAccountByAppropriationUnit(String appropriationUnit) {
+        return unitOpenAccountDao.findUnitOpenAccountByAppropriationUnit(appropriationUnit);
     }
 }

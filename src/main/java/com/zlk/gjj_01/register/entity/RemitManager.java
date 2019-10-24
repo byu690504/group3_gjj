@@ -5,11 +5,12 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
+
 
 /**
  * @author 张照伟
- * @version 1.0 缴款方式申请表
+ * @version 1.0 缴款方式管理申请表
  * @date 2019/10/22 14:32
  */
 @Entity
@@ -22,16 +23,14 @@ public class RemitManager {
     @GeneratedValue(generator = "myGenerator")
     @GenericGenerator(name = "myGenerator",strategy = "uuid")
     @Column(name = "remit_manager_id")
-    private String remit_manager_id;// 缴款方式管理id
-    @Column(name = "unit_register_id")
-    private String unitRegisterId;//单位登记号
+    private String remitManagerId;// 缴款方式管理id
     @Column(name = "remit_way")
     private String remitWay;//缴款方式
-    @Column(name = "proceeds _unit_name")
+    @Column(name = "proceeds_unit_name")
     private String proceedsUnitName;//委托收款单位名称
-    @Column(name = "proceeds _unit_account")
+    @Column(name = "proceeds_unit_account")
     private String proceedsUnitAccount;//委托收款单位账号
-    @Column(name = "proceeds _unit_bank")
+    @Column(name = "proceeds_unit_bank")
     private String proceedsUnitBank;//托收单位开户银行名称
     @Column(name = "bank_number_change")
     private String bankNumberChange;//银行交换号
@@ -45,8 +44,11 @@ public class RemitManager {
     private String remitUnitBank;//汇款单位开户银行名称
     @Column(name = "remit_unit_account")
     private String remitUnitAccount;//汇款单位账号
-    @ManyToOne(targetEntity = UnitOpenAccount.class,cascade = CascadeType.ALL)
+    @OneToOne(targetEntity = UnitOpenAccount.class)
     @JoinColumn(name = "unit_open_account_id")
     private UnitOpenAccount unitOpenAccount;
+    @OneToOne(targetEntity = UnitRegister.class)
+    @JoinColumn(name = "unit_register_id")
+    private UnitRegister unitRegister;
 
 }

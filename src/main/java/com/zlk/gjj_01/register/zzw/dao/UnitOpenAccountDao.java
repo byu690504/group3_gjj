@@ -1,6 +1,7 @@
 package com.zlk.gjj_01.register.zzw.dao;
 
 import com.zlk.gjj_01.register.entity.UnitOpenAccount;
+import com.zlk.gjj_01.register.entity.UnitRegister;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UnitOpenAccountDao extends JpaRepository<UnitOpenAccount, String> {
 
-    @Query("select unitOpenAccountId from UnitOpenAccount where unitRegisterId=?1")
-    String findByUnitRegisterId(String unitRegisterId);
+    @Query("from UnitOpenAccount where appropriationUnit = ?1")
+    public UnitOpenAccount findUnitOpenAccountByAppropriationUnit(String appropriationUnit);
 
 }
