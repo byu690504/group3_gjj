@@ -14,7 +14,13 @@
     font-family: 楷体;
     color: #0066CC;
 }
-#login{
+#span1{
+    margin-top: -55px;
+    margin-left: 115px;
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+#registerByUnitName{
     margin-left: 400px;
     margin-top: 40px;
     background-color: #FFFFFF;
@@ -22,17 +28,4 @@
     padding-bottom: 80px;
     width: 360px;
     box-shadow: 5px 5px 9px #B8B8B8;
-}
-#span1{
-    margin-top: -65px;
-    margin-left: 120px;
-    margin-bottom: 40px;
-    font-size: 20px;
-}
-#span2{
-    margin-top: -35px;
-    margin-left: 160px;
-    font-size: 20px;
-    position: absolute;
-    color: #FF0000;
 }

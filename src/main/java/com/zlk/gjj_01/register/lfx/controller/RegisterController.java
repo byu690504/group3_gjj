@@ -28,14 +28,13 @@ public class RegisterController {
 
     @RequestMapping(value = "/toUnitRegister")
     public String toUnitRegister(){
-        return "beforeRegister";
+        return "registerByUnitName";
     }
 
     @RequestMapping(value = "/beforeRegister")
-    @ResponseBody
     public ModelAndView beforeRegister(String unitName){
         ModelAndView mv=new ModelAndView();
-        unitName="腾讯";
+        /*unitName="腾讯";*/
         Unit unit = loginService.findByUnitName(unitName);
         if(unit!=null){
             UnitRegister unitRegister = unitRegisterService.findUnitRegisterByUnitId(unit.getUnitId());
@@ -44,16 +43,16 @@ public class RegisterController {
                 mv.addObject("urId",unitRegister.getUnitRegisterId());
                 mv.addObject("uName",unitRegister.getUnit().getUnitName());
                 mv.addObject("uCode",unitRegister.getUnit().getUnitCode());
-                mv.setViewName("centre");
+                mv.setViewName("registerByUnitName");
                 return mv;
             }else {
                 mv.addObject("unitName",unitName);
-                mv.setViewName("unitRegister");
+                mv.setViewName("registerRequest");
                 return mv;
             }
         }else {
-            mv.addObject("msg","该单位未注册");
-            mv.setViewName("login");
+            mv.addObject("msg","该单位未注册，请核实信息");
+            mv.setViewName("registerByUnitName");
             return mv;
         }
     }

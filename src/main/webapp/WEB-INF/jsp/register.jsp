@@ -12,12 +12,12 @@
     <link rel="stylesheet" href="<%=request.getContextPath() %>/css/register.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/layui/css/layui.css" media="all">
     <script src="<%=request.getContextPath() %>/js/jquery.min.js"></script>
-    <script src="<%=request.getContextPath() %>/layui/layui.all.js"></script>
+    <script src="<%=request.getContextPath() %>/layui/layui.all.js" charset="utf-8"></script>
 </head>
-<body class="layui-layout-body">
+<body>
     <div id="body">
         <div id="header">
-            <span>新单位用户注册 --> 录入注册信息</span>
+            <span>单位用户注册 --> 录入注册信息</span>
         </div>
         <div id="register">
             <div id="span1">
@@ -36,14 +36,12 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">证件名称</label>
                     <div class="layui-input-inline">
-                        <label>
-                            <select name="cardName" required lay-verify="required">
-                                <option value="">请选择证件名称</option>
-                                <option value="身份证号">身份证号</option>
-                                <option value="军官证号">军官证号</option>
-                                <option value="护照">护照</option>
-                            </select>
-                        </label>
+                        <select name="cardName" required lay-verify="required">
+                            <option value="">请选择证件名称</option>
+                            <option value="身份证号">身份证号</option>
+                            <option value="军官证号">军官证号</option>
+                            <option value="护照">护照</option>
+                        </select>
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -76,12 +74,12 @@
                         <input type="password" name="agentPassword" id="agentPassword" required lay-verify="required" placeholder="请输入登录密码" autocomplete="off" class="layui-input">
                     </div>
                 </div>
-                <div class="layui-form-item">
+                <%--<div class="layui-form-item">
                     <label class="layui-form-label">确认密码</label>
                     <div class="layui-input-inline">
                         <input type="password" id="validateAgentPassword" required lay-verify="required|validateAgentPassword" placeholder="请再次录入" autocomplete="off" class="layui-input">
                     </div>
-                </div>
+                </div>--%>
                 <div class="layui-form-item">
                     <label class="layui-form-label">验证码</label>
                     <div class="layui-input-inline">
@@ -92,9 +90,8 @@
                 </div>
                 <div class="layui-form-item">
                     <div class="layui-input-block layui-input-inline">
-                        <!--<input type="submit" class="layui-btn" value="提交">-->
-                        <button type="submit" class="layui-btn" lay-filter="register">提交</button>
-                        <input type="reset" class="layui-btn" value="重置">
+                        <button type="submit" class="layui-btn" lay-filter="">提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                     </div>
                 </div>
             </form>
@@ -105,7 +102,7 @@
             var form=layui.form;
             var $ = layui.jquery;
             form.render();
-            form.verify({
+            /*form.verify({
                 //正则验证身份证
                 validateCardNumber:[
                     /(^$)|(^\d{15}$)|(^\d{17}(x|X|\d)$)/,
@@ -128,14 +125,14 @@
                         return '两次密码输入不一致';
                     }
                 }
-            });
+            });*/
         });
         layui.use('form', function(){
             var form = layui.form;
+            var layer=layui.layer;
             //监听提交
             form.on('submit(register)', function(data){
-                layer.msg(JSON.stringify(data.field));
-                return false;
+                return true;
             });
         });
     </script>
