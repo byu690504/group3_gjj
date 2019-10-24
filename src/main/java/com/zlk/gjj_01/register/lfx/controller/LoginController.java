@@ -2,6 +2,7 @@ package com.zlk.gjj_01.register.lfx.controller;
 
 import com.zlk.gjj_01.register.entity.Agent;
 import com.zlk.gjj_01.register.entity.Unit;
+import com.zlk.gjj_01.register.lfx.dao.AgentDao;
 import com.zlk.gjj_01.register.lfx.service.LoginService;
 import com.zlk.gjj_01.register.util.AgentCodeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,8 @@ import java.util.Map;
 public class LoginController {
     @Autowired
     private LoginService loginService;
+    @Autowired
+    private AgentDao agentDao;
 
     @RequestMapping(value = "/toLogin")
     public String toLogin(){
@@ -54,8 +57,8 @@ public class LoginController {
             agent.setAgentPassword("lfx");
             for(;;) {
                 String agentCode=AgentCodeUtil.getAgentCode();
-                String agentPassword = loginService.findAgentByAgentCode(agentCode);
-                if (agentPassword == null) {
+                Agent agent1 = loginService.findAgentByAgentCode(agentCode);
+                if (agent1 == null) {
                     agent.setAgentCode(agentCode);
                     break;
                 }
@@ -79,19 +82,27 @@ public class LoginController {
         if(checkCode.toLowerCase().equals(code.toLowerCase())){
             agent.setAgentCode("8301193716");
             agent.setAgentPassword("lfx1");
-            String agentPassword = loginService.findAgentByAgentCode(agent.getAgentCode());
-            if(agentPassword==null){
+            Agent agent1 = loginService.findAgentByAgentCode(agent.getAgentCode());
+            if(agent1==null){
                 map.put("error","该用户代码不存在");
                 return "login";
-            }else if(!agentPassword.equals(agent.getAgentPassword())){
+            }else if(!(agent1.getAgentPassword()).equals(agent.getAgentPassword())){
                 map.put("error","密码错误");
                 return "login";
             }else {
+                request.getSession().setAttribute("agent", agent1.getAgentName());
                 return "success";
             }
         }else {
             map.put("error","验证码错误");
             return "login";
         }
+    }
+    @RequestMapping(value = "/test")
+    @ResponseBody
+    public String test(){
+        Integer flag1=agentDao.agentAuth("4028f5816df640ee016df641b1b10000");
+        System.out.println(flag1);
+        return null;
     }
 }

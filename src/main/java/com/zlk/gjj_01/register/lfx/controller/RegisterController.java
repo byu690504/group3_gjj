@@ -11,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
@@ -66,5 +68,18 @@ public class RegisterController {
         /*unitRegisterService.save(unitRegister);*/
         loginService.save(unit);
         return "unitRegister";
+    }
+    @RequestMapping(value = "/agentAuth")
+    @ResponseBody
+    public ModelAndView agentAuth(HttpServletRequest request){
+        String agentName = (String)request.getSession().getAttribute("agent");
+        Agent agent = loginService.findAgentByAgentName(agentName);
+        ModelAndView mv=new ModelAndView();
+        mv.addObject("aName",agent.getAgentName());
+        mv.addObject("aCardName",agent.getCardName());
+        mv.addObject("aCardNumber",agent.getCardNumber());
+        mv.addObject("aPhone",agent.getAgentPhone());
+        mv.setViewName("service/agentAuth");
+        return mv;
     }
 }
