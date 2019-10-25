@@ -12,4 +12,6 @@ import org.springframework.stereotype.Repository;
 public interface SecondAssistMessageDao extends JpaRepository<SecondAssistMessage,String> {
     @Query("select secondAssistMessageId from SecondAssistMessage sec where sec.deptName=?1")
     String findSecIdBySecName(String secName);
+    @Query("from SecondAssistMessage sec where sec.deptCode=?1")
+    SecondAssistMessage findSecBySecCode(String deptCode);
 }

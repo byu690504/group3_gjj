@@ -15,7 +15,7 @@
     <script src="<%=request.getContextPath() %>/layui/layui.all.js"></script>
 </head>
 <body>
-    <div id="body">
+    <div>
         <div id="header">
             <span>单位用户业务授权 --> 录入业务授权申请信息</span>
         </div>

@@ -15,7 +15,7 @@
     <script src="<%=request.getContextPath() %>/layui/layui.all.js"></script>
 </head>
 <body>
-    <div id="body">
+    <div>
         <div id="header">
             <span>单位开户申请 --> 录入开户申请信息</span>
         </div>

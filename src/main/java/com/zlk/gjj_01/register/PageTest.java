@@ -61,4 +61,9 @@ public class PageTest {
     public String test10(){
         return "secondaryManage";
     }
+
+    @RequestMapping("/page11")
+    public String test11(){
+        return "remitInventory";
+    }
 }

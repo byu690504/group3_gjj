@@ -81,7 +81,7 @@
             var $ = layui.$;
             table.render({
                 elem : '#secondaryManageList',
-                url : '<%=request.getContextPath() %>/second/secList',
+                url : '<%=request.getContextPath() %>/second/list',
                 page : true,
                 cols : [ [
                     {field : 'secondAssistMessageId',title : '序号',align : 'center',width : 150},
@@ -100,7 +100,7 @@
                             '</div>'
                     }
                 ] ],
-                limits : [5, 10, 15],
+                limits : [3, 10, 15],
                 toolbar :
                     '<div class="layui-btn-group" style="padding: 15px;">' +
                         '<button type="button" class="layui-btn" lay-event="add" lay-filter="">' +
@@ -108,7 +108,7 @@
                         '</button>'+
                     '</div>'
             });
-
+            //监听行工具事件
             table.on('tool(secondary)', function (obj) {
                 var data=obj.data;
                 if(obj.event === 'del'){
@@ -119,14 +119,15 @@
                         obj.del();
                         $.ajax({
                             type : "POST",
-                            url : "<%=request.getContextPath() %>/second/delete?Id="+data.secondAssistMessageId,
+                            url : "<%=request.getContextPath() %>/second/delete?secondAssistMessageId="+data.secondAssistMessageId,
                             success : function (msg) {
-                                layer.alert(msg.msg);
+                                //layer.alert(msg.msg);
                                 layer.close(index);
                             }
                         });
                     });
                 }else if (obj.event === 'edit'){
+                    layer.msg(" 编辑操作");
                     $("#secondAssistMessageId").val(data.secondAssistMessageId);
                     $("#deptCode").val(data.deptCode);
                     $("#deptNumber").val(data.deptNumber);
@@ -165,7 +166,6 @@
         layui.use(['form'], function(){
             var form = layui.form;
             form.render();
-            var laydate = layui.laydate;
             //监听提交
             form.on('submit()', function(data){
                 return true;

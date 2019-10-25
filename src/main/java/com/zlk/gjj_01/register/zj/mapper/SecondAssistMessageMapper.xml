@@ -8,7 +8,7 @@
         <result column="dept_name" property="deptName" javaType="java.lang.String"></result>
     </resultMap>
     <select id="findSecondLimit" parameterType="com.zlk.gjj_01.register.util.Pagination" resultMap="secondAssistMessageEntityMap">
-        select * from second_assist_message limit #{startPage},#{page}
+        select * from second_assist_message limit #{startPage},#{limit}
     </select>
     <select id="findSecondCount" parameterType="com.zlk.gjj_01.register.util.Pagination" resultType="java.lang.Integer">
         select count(1) from second_assist_message

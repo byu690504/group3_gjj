@@ -13,12 +13,13 @@ import com.zlk.gjj_01.register.zj.dao.RemitInventoryDao;
 import com.zlk.gjj_01.register.zj.dao.SecondAssistMessageDao;
 import com.zlk.gjj_01.register.zj.dao.UnitOpenAccountDao;
 import com.zlk.gjj_01.register.zj.service.RemitInventoryService;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,15 +35,18 @@ public class RemitInventoryController {
     @Autowired
     private RemitInventoryService remitInventoryService;
     @RequestMapping(value = "/toList")
-    public String toList()throws Exception{
-        return "beforeRem";
+    public ModelAndView toList(String record)throws Exception{
+        ModelAndView mv=new ModelAndView();
+        mv.addObject("record",record);
+        mv.setViewName("remitInventory");
+        return mv;
     }
     @RequestMapping(value = "/list")
     @ResponseBody
     public Map<String,Object> remList(Pagination pagination)throws Exception{
-        pagination.setRecord("是");
-        pagination.setPage(1);
-        pagination.setLimit(2);
+        /*pagination.setRecord("是");*/
+        /*pagination.setPage(1);
+        pagination.setLimit(2);*/
         pagination.setStartPage((pagination.getPage()-1)*pagination.getLimit());
         List<RemitInventory> List=remitInventoryService.findRemLimit(pagination);
         Integer count=remitInventoryService.findRemitCount(pagination);
@@ -54,78 +58,54 @@ public class RemitInventoryController {
     }
     @RequestMapping(value = "/beforeRem")
     @ResponseBody
-    public String check(String unitRegisterId){
-        /*unitRegisterId="1";*/
-        UnitOpenAccount unitOpenAccount=unitOpenAccountDao.findUoaIdByUrId(unitRegisterId);
+    public String check(HttpServletRequest request){
+        String urId = (String) request.getSession().getAttribute("urId");
+        UnitOpenAccount unitOpenAccount=unitOpenAccountDao.findUoaIdByUrId(urId);
         if(unitOpenAccount==null){
             System.out.println("该单位不是开户单位，不可进行汇缴清册编辑");
+            return null;
         }else {
-            return "addList";//跳转添加页面
+            return "remitInventory";//跳转添加页面
         }
-        return null;
     }
     @RequestMapping(value = "/add")
-    @ResponseBody
-    public String add(){
+    public String add(HttpServletRequest request,RemitInventory remitInventory,SecondAssistMessage secondAssistMessage){
         UnitRegister unitRegister=new UnitRegister();
-        /*unitRegister.setUnitRegisterId("2");*/
-        SecondAssistMessage secondAssistMessage=new SecondAssistMessage();
-        /*secondAssistMessage.setDeptName("销售部3");*/
-        String secId = secondAssistMessageDao.findSecIdBySecName(secondAssistMessage.getDeptName());
-        secondAssistMessage.setSecondAssistMessageId(secId);
-        RemitInventory remitInventory1=new RemitInventory();
-//        remitInventory1.setEmpCardNumber("410004444X");
-//        remitInventory1.setEmpName("小刘");
-//        remitInventory1.setEmpCardName("身份证");
-//        remitInventory1.setEmpCountry("中国");
-//        remitInventory1.setRecord("是");
-        remitInventory1.setEmpDepositeBase(DepositeBaseUtil.mothod());
-        remitInventory1.setSecondAssistMessage(secondAssistMessage);
-        remitInventory1.setUnitRegister(unitRegister);
-        remitInventoryDao.save(remitInventory1);
-        return null;
+        /*String urId= (String) request.getSession().getAttribute("urId");*/
+        unitRegister.setUnitRegisterId("2");
+        /*unitRegister.setUnitRegisterId(urId);*/
+        SecondAssistMessage sec = secondAssistMessageDao.findSecBySecCode(secondAssistMessage.getDeptCode());
+        secondAssistMessage.setSecondAssistMessageId(sec.getSecondAssistMessageId());
+        remitInventory.setSecondAssistMessage(secondAssistMessage);
+        remitInventory.setUnitRegister(unitRegister);
+        remitInventoryDao.save(remitInventory);
+        return "remitInventory";
     }
-    /*@RequestMapping(value = "/update")
+    @RequestMapping(value = "/update")
     @ResponseBody
-    public String update(){
-        //通过员工姓名和代办部门判断该单位是否为新开户单位
-        String businessAgentDept="租赁";
-        String empName="阿华";
-        List<UnitOpenAccount> unitOpenAccounts=unitOpenAccountDao.findUnitByDept(businessAgentDept);
-        //System.out.println(unitOpenAccounts.toString());
-        List<RemitInventory> remitInventories=remitInventoryDao.findRemByName(empName);
-        //System.out.println(remitInventories.toString());
-        if(unitOpenAccounts.size() ==0 || remitInventories.size() !=0){
-            System.out.println("该单位不是开户单位，不可进行汇缴清册编辑");
+    public String update(RemitInventory remitInventory) {
+        //系统以“姓名”、“证件名称”、“证件号码”为关键字在中心系统数据库中查找是否存在相同记录
+        String remId = remitInventory.getRemitInventoryId();
+        if (remitInventoryDao.findNameById(remId).equals(remitInventory.getEmpName()) &&
+                remitInventoryDao.findCardNameById(remId).equals(remitInventory.getEmpCardName()) &&
+                remitInventoryDao.findNumById(remId).equals(remitInventory.getEmpCardNumber())) {
+            //如存在三项同时相同的记录即判定为已办理过个人登记
+            System.out.println("已办理过个人登记");
+            RemitInventory remitInventory1 = remitInventoryDao.findById(remitInventory.getRemitInventoryId()).get();
+                /*remitInventory1.setEmpName("阿一");
+                remitInventory1.setEmpNumber("100002");*/
+            remitInventoryDao.save(remitInventory1);
+        } else {
+            //若不存在姓名、证件名称及证件号码三项同时相同的记录，即判定为未办理过个人登记
+            //调用个人登记方法
+            System.out.println("***无匹配信息，检查录入信息");
+            //限制五次登录次数
+            DepositeBaseUtil.login();
+            //生成个人登记号
+            String personalId = DepositeBaseUtil.getUUID();
+            System.out.println(personalId);
             return null;
-        }else if(unitOpenAccounts.size() !=0 && remitInventories.size() ==0){
-            //系统以“姓名”、“证件名称”、“证件号码”为关键字在中心系统数据库中查找是否存在相同记录
-            RemitInventory remitInventory=new RemitInventory();
-            remitInventory.setEmpName("小华");
-            remitInventory.setEmpCardNumber("41000000000000000000X");
-            remitInventory.setEmpCardName("身份证");
-            String remId="402869816df784e2016df7851a9a0000";
-            if(remitInventoryDao.findNameById(remId).equals(remitInventory.getEmpName()) &&
-            remitInventoryDao.findCardNameById(remId).equals(remitInventory.getEmpCardName()) &&
-            remitInventoryDao.findNumById(remId).equals(remitInventory.getEmpCardNumber())){
-                //如存在三项同时相同的记录即判定为已办理过个人登记
-                System.out.println("已办理过个人登记");
-                RemitInventory remitInventory1=remitInventoryDao.findById("402869816df784e2016df7851a9a0000").get();
-                remitInventory1.setEmpName("阿一");
-                remitInventory1.setEmpNumber("100002");
-                remitInventoryDao.save(remitInventory1);
-            }else {
-                //若不存在姓名、证件名称及证件号码三项同时相同的记录，即判定为未办理过个人登记
-                //调用个人登记方法
-                System.out.println("***无匹配信息，检查录入信息");
-                //限制五次登录次数
-                DepositeBaseUtil.login();
-                //生成个人登记号
-                String personalId=DepositeBaseUtil.getUUID();
-                System.out.println(personalId);
-                return null;
-            }
         }
         return null;
-    }*/
+    }
 }

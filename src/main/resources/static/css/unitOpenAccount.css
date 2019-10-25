@@ -1,6 +1,5 @@
-#body{
+body{
     background-color: #F8F8F8;
-    height: 1500px;
     overflow: auto;
 }
 #header{
@@ -25,7 +24,7 @@
     margin-top: 40px;
     background-color: #FFFFFF;
     padding-top: 80px;
-    padding-bottom: 80px;
+    padding-bottom: 10px;
     width: 360px;
     box-shadow: 5px 5px 9px #B8B8B8;
 }

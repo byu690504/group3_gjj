@@ -10,16 +10,17 @@ import com.zlk.gjj_01.register.zj.dao.RemitInventoryDao;
 import com.zlk.gjj_01.register.zj.dao.SecondAssistMessageDao;
 import com.zlk.gjj_01.register.zj.service.SecondAssistMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@RestController
+@Controller
 @RequestMapping(value = "/second")
 public class SecondAssistMessageController {
     @Autowired
@@ -30,14 +31,12 @@ public class SecondAssistMessageController {
     private SecondAssistMessageService secondAssistMessageService;
     @RequestMapping(value = "/toList")
     public String toList(){
-        return "secList";
+        return "secondaryManage";
     }
-    @RequestMapping(value = "/secList")
+    @RequestMapping(value = "/list")
     @ResponseBody
     public Map<String,Object> secList(Pagination pagination)throws Exception{
-        /*pagination.setPage(1);
-        pagination.setLimit(2);
-        pagination.setStartPage((pagination.getPage()-1)*pagination.getLimit());*/
+        pagination.setStartPage((pagination.getPage()-1)*pagination.getLimit());
         List<SecondAssistMessage> List=secondAssistMessageService.findSecondLimit(pagination);
         Integer count=secondAssistMessageService.findSecondCount(pagination);
         Map<String,Object> map=new HashMap<>();
@@ -48,17 +47,18 @@ public class SecondAssistMessageController {
     }
     @RequestMapping(value = "/add")
     @ResponseBody
-    public String add(SecondAssistMessage secondAssistMessage){
-        SecondAssistMessage secondAssistMessage1=new SecondAssistMessage();
-        /*secondAssistMessage1.setDeptName("销售部3");
+    public String add(HttpServletRequest httpServletRequesta,SecondAssistMessage secondAssistMessage){
+        /*SecondAssistMessage secondAssistMessage1=new SecondAssistMessage();
+        *//*secondAssistMessage1.setDeptName("销售部3");
         secondAssistMessage1.setDeptCode("XS3");
-        secondAssistMessage1.setDeptNumber("007");*/
+        secondAssistMessage1.setDeptNumber("007");*//*
         RemitInventory remitInventory=new RemitInventory();
-        /*remitInventory.setEmpName("小赵");*/
+        *//*remitInventory.setEmpName("小赵");*//*
         remitInventory.setSecondAssistMessage(secondAssistMessage1);
         secondAssistMessage1.getRemitInventoryList().add(remitInventory);
-        secondAssistMessageDao.save(secondAssistMessage1);
-        return null;
+        secondAssistMessageDao.save(secondAssistMessage1);*/
+        return "secondaryManage";
+
     }
     @RequestMapping(value = "/update")
     @ResponseBody
