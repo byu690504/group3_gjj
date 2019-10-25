@@ -29,7 +29,7 @@
                     <li class="layui-nav-item layui-nav-itemed">
                         <dl class="layui-nav-child">
                             <dd>
-                                <a href="<%=request.getContextPath() %>/" target="pageCenter">单位登记申请</a>
+                                <a href="<%=request.getContextPath() %>/unitRegister/toUnitRegister" target="pageCenter">单位登记申请</a>
                             </dd>
                             <dd>
                                 <a href="<%=request.getContextPath() %>/" target="pageCenter">单位经办人授权</a>

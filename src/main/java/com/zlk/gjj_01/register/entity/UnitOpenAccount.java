@@ -48,8 +48,6 @@ public class UnitOpenAccount {
     private String confirmEmpInventory;//每月汇缴是否需要确认人员清册
     @Column(name = "accept_the_information_service_of_the_center")
     private String acceptTheInformationServiceOfTheCenter;//是否接受中心信息服务
-    @Column(name = "remit")
-    private String remit;//缴款方式
     @OneToOne(targetEntity = UnitRegister.class)
     @JoinColumn(name = "unit_register_id")
     private UnitRegister unitRegister;

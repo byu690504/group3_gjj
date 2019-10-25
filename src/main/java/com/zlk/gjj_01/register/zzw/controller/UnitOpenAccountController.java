@@ -1,13 +1,16 @@
 package com.zlk.gjj_01.register.zzw.controller;
 
+import com.zlk.gjj_01.register.entity.Agent;
 import com.zlk.gjj_01.register.entity.UnitOpenAccount;
 import com.zlk.gjj_01.register.entity.UnitRegister;
+import com.zlk.gjj_01.register.util.certUtil;
 import com.zlk.gjj_01.register.zzw.service.UnitOpenAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.util.Map;
 
@@ -16,7 +19,7 @@ import java.util.Map;
  * @version 1.0
  * @date 2019/10/22 11:11
  */
-@RestController
+@Controller
 @RequestMapping("/unitOpenAccount")
 public class UnitOpenAccountController {
 
@@ -27,8 +30,7 @@ public class UnitOpenAccountController {
     public String toUnitOpenAccount(){ return "unitOpenAccount";}
 
     @RequestMapping("/unitOpenAccount")
-    @ResponseBody
-    public String unitOpenAccount(UnitRegister unitRegister,UnitOpenAccount unitOpenAccount, Map map) throws ParseException {
+    public String unitOpenAccount(UnitRegister unitRegister,UnitOpenAccount unitOpenAccount, Map map,HttpServletRequest request) throws ParseException {
         /*unitRegister.setUnitRegisterId("1");
         unitOpenAccount.setRemit("单位自筹");//资金来源选择“单位自筹”，拨款单位项关闭不允许输入
         unitOpenAccount.setAcceptTheInformationServiceOfTheCenter("是");
@@ -47,8 +49,19 @@ public class UnitOpenAccountController {
         unitRegister.setUnitOpenAccount(unitOpenAccount);*/
         unitOpenAccount.setUnitRegister(unitRegister);
         unitOpenAccountService.save(unitOpenAccount);
+        String agentName1= (String) request.getSession().getAttribute("agent");
+        unitOpenAccountService.agentAuth(certUtil.getAgentAuth(),agentName1);
 
-        return "unitOpenAccount";
+        for(;;) {
+            String agentName=certUtil.getAgentAuth();
+            Agent agent1 = unitOpenAccountService.findAgentByAgentName(agentName);
+            if (agent1 == null) {
+                unitOpenAccountService.agentAuth(certUtil.getAgentAuth(),agentName);
+                break;
+            }
+        }
+
+        return "unitBusinessPower";
     }
 
     @RequestMapping("/unitOpenAccount1")
@@ -71,7 +84,7 @@ public class UnitOpenAccountController {
         unitOpenAccount.setAppropriationUnit("市财政");//财政拨款单位○市财政○区县财政
         unitOpenAccount.setMoneySource("单位自筹");
         unitOpenAccount.setBusinessKind("住房补贴");*/
-
+        unitOpenAccount.setUnitRegister(unitRegister);
         unitOpenAccountService.save1(unitOpenAccount);
 
         return "unitOpenAccount";

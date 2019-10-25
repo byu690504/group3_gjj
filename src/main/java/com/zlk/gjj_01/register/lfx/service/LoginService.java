@@ -10,5 +10,6 @@ public interface LoginService {
     Agent save(Agent agent);
     Unit save(Unit unit);
     Unit findByUnitName(String unitName);
-    String findAgentByAgentCode(String agentCode);
+    Agent findAgentByAgentCode(String agentCode);
+    Agent findAgentByAgentName(String agentName);
 }

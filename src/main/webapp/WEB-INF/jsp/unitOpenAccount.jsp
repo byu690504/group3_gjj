@@ -23,7 +23,7 @@
             <div id="span1">
                 <span>单位开户申请</span>
             </div>
-            <form action="<%=request.getContextPath() %>/unitOpenAccount/" method="post" class="layui-form">
+            <form action="<%=request.getContextPath() %>/unitOpenAccount/unitOpenAccount" method="post" class="layui-form">
                 <div class="layui-form-item">
                     <label class="layui-form-label">单位登记号</label>
                     <div class="layui-input-inline">
@@ -304,7 +304,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">统发单位名称</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="appropriationUnit" id="appropriationUnit" lay-verify="" placeholder="请输入统发单位名称" autocomplete="off" class="layui-input">
+                            <input type="text" name="t" id="appropriationUnit" lay-verify="" placeholder="请输入统发单位名称" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                 </div>
