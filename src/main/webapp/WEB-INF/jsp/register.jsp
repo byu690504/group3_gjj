@@ -15,7 +15,7 @@
     <script src="<%=request.getContextPath() %>/layui/layui.all.js" charset="utf-8"></script>
 </head>
 <body>
-    <div id="body">
+    <div>
         <div id="header">
             <span>单位用户注册 --> 录入注册信息</span>
         </div>
@@ -24,6 +24,9 @@
                 <span>单位注册信息</span>
             </div>
             <form action="<%=request.getContextPath() %>/login/register" method="post" class="layui-form">
+                <div class="layui-form-text layui-inline" id="span2">
+                    <span>${error}</span>
+                </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">姓名</label>
                     <div class="layui-input-inline">

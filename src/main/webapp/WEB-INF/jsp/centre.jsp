@@ -29,7 +29,7 @@
                     <li class="layui-nav-item layui-nav-itemed">
                         <dl class="layui-nav-child">
                             <dd>
-                                <a href="<%=request.getContextPath() %>/" target="pageCenter">单位登记申请</a>
+                                <a href="<%=request.getContextPath() %>/test/page5" target="pageCenter">单位登记申请</a>
                             </dd>
                             <dd>
                                 <a href="<%=request.getContextPath() %>/" target="pageCenter">单位经办人授权</a>
@@ -41,10 +41,10 @@
                                 <a href="<%=request.getContextPath() %>/" target="pageCenter">单位用户业务授权</a>
                             </dd>
                             <dd>
-                                <a href="<%=request.getContextPath() %>/" target="pageCenter">单位编辑汇缴清册</a>
+                                <a href="<%=request.getContextPath() %>/" target="pageCenter">二级管理辅助信息</a>
                             </dd>
                             <dd>
-                                <a href="<%=request.getContextPath() %>/" target="pageCenter">个人登记</a>
+                                <a href="<%=request.getContextPath() %>/" target="pageCenter">单位编辑汇缴清册</a>
                             </dd>
                         </dl>
                     </li>
@@ -53,7 +53,7 @@
         </div>
         <!-- 主体区域 -->
         <div class="layui-body layui-bg-white">
-            <iframe name="pageCenter" id="iframe" frameborder="1"></iframe>
+            <iframe name="pageCenter" frameborder="1"></iframe>
         </div>
     </div>
 </body>

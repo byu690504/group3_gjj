@@ -130,7 +130,6 @@
                     $("#").val(data.productId);
                     $("#").val(data.productName);
                     $("#").val(data.productKind);
-                    $("#").val(data.productState);
                     form.render();
                     layer.open({
                         type : 1,

@@ -1,15 +1,15 @@
 <%--
   Created by IntelliJ IDEA.
   User: kaiguan
-  Date: 2019/10/24
-  Time: 11:05
+  Date: 2019/10/25
+  Time: 9:15
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>单位登记申请前确认单位名称</title>
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/registerByUnitName.css">
+    <title>单位编辑汇缴清册前确认单位登记号</title>
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/remitInventoryByUnitRegisterId.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/layui/css/layui.css" media="all">
     <script src="<%=request.getContextPath() %>/js/jquery.min.js"></script>
     <script src="<%=request.getContextPath() %>/layui/layui.all.js"></script>
@@ -17,17 +17,17 @@
 <body>
     <div>
         <div id="header">
-            <span>单位用户登记申请 --> 如已登记请确认单位名称</span>
+            <span>单位用户编辑汇缴清册 --> 如已登记请确认单位登记号</span>
         </div>
-        <div id="registerByUnitName">
+        <div id="remitInventoryByUnitRegisterId">
             <div id="span1">
-                <span>确认单位名称</span>
+                <span>确认单位登记号</span>
             </div>
-            <form action="<%=request.getContextPath() %>/unitRegister/beforeRegister" method="post" class="layui-form">
+            <form action="<%=request.getContextPath() %>/" method="post" class="layui-form">
                 <div class="layui-form-item">
-                    <label class="layui-form-label">单位名称</label>
+                    <label class="layui-form-label">单位登记号</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="unitName" id="unitName" required lay-verify="required" placeholder="请输入单位名称" autocomplete="off" class="layui-input">
+                        <input type="text" name="unitName" id="unitName" required lay-verify="required" placeholder="请输入单位登记号" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -39,6 +39,5 @@
             </form>
         </div>
     </div>
-
 </body>
 </html>
