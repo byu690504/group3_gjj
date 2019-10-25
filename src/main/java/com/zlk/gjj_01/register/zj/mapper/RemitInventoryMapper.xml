@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlk.gjj_01.register.zj.mapper.RemitInventoryMapper">
+    <resultMap id="remitInventoryEntityMap" type="com.zlk.gjj_01.register.entity.RemitInventory">
+        <id column="remit_inventory_id" property="remitInventoryId" javaType="java.lang.String"></id>
+        <result column="money_source" property="moneySource" javaType="java.lang.String"></result>
+        <result column="emp_number" property="empNumber" javaType="java.lang.String"></result>
+        <result column="emp_name" property="empName" javaType="java.lang.String"></result>
+        <result column="emp_card_name" property="empCardName" javaType="java.lang.String"></result>
+        <result column="emp_country" property="empCountry" javaType="java.lang.String"></result>
+        <result column="emp_card_number" property="empCardNumber" javaType="java.lang.String"></result>
+        <result column="emp_deposite_base" property="empDepositeBase" javaType="java.lang.Integer"></result>
+        <result column="record" property="record" javaType="java.lang.String"></result>
+        <!--<result column="second_assist_message_id" property="secondAssistMessage" javaType="java.lang.String"></result>
+        <result column="unit_register_id" property="unitRegister" javaType="java.lang.String"></result>-->
+    </resultMap>
+    <select id="findRemLimit" parameterType="com.zlk.gjj_01.register.util.Pagination" resultMap="remitInventoryEntityMap">
+        select * from remit_inventory ri
+        <where>
+            <if test="record!=null and record!='' ">
+                #{record}=record
+            </if>
+        </where>
+        limit #{startPage},#{limit}
+    </select>
+    <select id="findRemitCount" parameterType="com.zlk.gjj_01.register.util.Pagination" resultType="java.lang.Integer">
+        select count(1) from remit_inventory
+        <where>
+            <if test="record!=null and record!='' ">
+                #{record}=record
+            </if>
+        </where>
+    </select>
+</mapper>

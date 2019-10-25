@@ -27,10 +27,10 @@ public class SecondAssistMessage {
     /*二级管理辅助ID*/
     @Column(name = "second_assist_message_id")
     private String secondAssistMessageId;
-    /*部门编号*/
+    /*部门代码*/
     @Column(name = "dept_code")
     private String deptCode;
-    /*部门人数*/
+    /*部门编号*/
     @Column(name = "dept_number")
     private  String deptNumber;
     /*部门名*/

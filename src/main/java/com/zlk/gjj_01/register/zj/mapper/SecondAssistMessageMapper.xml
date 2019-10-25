@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlk.gjj_01.register.zj.mapper.SecondAssistMessageMapper">
+    <resultMap id="secondAssistMessageEntityMap" type="com.zlk.gjj_01.register.entity.SecondAssistMessage">
+        <id column="second_assist_message_id" property="secondAssistMessageId" javaType="java.lang.String"></id>
+        <result column="dept_code" property="deptCode" javaType="java.lang.String"></result>
+        <result column="dept_number" property="deptNumber" javaType="java.lang.String"></result>
+        <result column="dept_name" property="deptName" javaType="java.lang.String"></result>
+    </resultMap>
+    <select id="findSecondLimit" parameterType="com.zlk.gjj_01.register.util.Pagination" resultMap="secondAssistMessageEntityMap">
+        select * from second_assist_message limit #{startPage},#{limit}
+    </select>
+    <select id="findSecondCount" parameterType="com.zlk.gjj_01.register.util.Pagination" resultType="java.lang.Integer">
+        select count(1) from second_assist_message
+    </select>
+</mapper>
