@@ -71,9 +71,8 @@ public class RemitInventoryController {
     @RequestMapping(value = "/add")
     public String add(HttpServletRequest request,RemitInventory remitInventory,SecondAssistMessage secondAssistMessage){
         UnitRegister unitRegister=new UnitRegister();
-        /*String urId= (String) request.getSession().getAttribute("urId");*/
-        unitRegister.setUnitRegisterId("2");
-        /*unitRegister.setUnitRegisterId(urId);*/
+        String urId= (String) request.getSession().getAttribute("urId");
+        unitRegister.setUnitRegisterId(urId);
         SecondAssistMessage sec = secondAssistMessageDao.findSecBySecCode(secondAssistMessage.getDeptCode());
         secondAssistMessage.setSecondAssistMessageId(sec.getSecondAssistMessageId());
         remitInventory.setSecondAssistMessage(secondAssistMessage);

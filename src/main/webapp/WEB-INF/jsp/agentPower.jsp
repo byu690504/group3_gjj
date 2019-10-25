@@ -23,7 +23,7 @@
             <div id="span1">
                 <span>单位经办人授权</span>
             </div>
-            <form action="<%=request.getContextPath() %>/" method="post" class="layui-form">
+            <form action="<%=request.getContextPath() %>/" class="layui-form">
                 <div class="layui-form-item">
                     <label class="layui-form-label">单位登记号</label>
                     <div class="layui-input-inline">
@@ -40,7 +40,7 @@
                     <label class="layui-form-label">经办人1证件名称</label>
                     <div class="layui-input-inline">
                         <select name="agentCardName" lay-verify="required">
-                            <option value="${aCardName}"><%--请选择证件名称--%></option>
+                            <option value="${aCardName}">${aCardName}<%--请选择证件名称--%></option>
                             <option value="身份证号">身份证号</option>
                             <option value="军官证号">军官证号</option>
                             <option value="护照">护照</option>
@@ -119,7 +119,7 @@
                 </div>--%>
                 <div class="layui-form-item">
                     <div class="layui-input-block layui-input-inline">
-                        <button type="button" class="layui-btn layui-btn-norma" lay-submit lay-filter="sub">提交</button>
+                        <button type="submit" class="layui-btn layui-btn-norma" lay-submit lay-filter="sub">提交</button>
                         <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                     </div>
                 </div>
@@ -141,7 +141,7 @@
             var form = layui.form;
             //监听提交
             form.on('submit(sub)', function(data){
-                return false;
+                return true;
             });
         });
     </script>

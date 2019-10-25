@@ -55,8 +55,8 @@
                                     公积金联名卡制卡情况
                                 </a>
                                 <ol class="layui-nav-child">
-                                    <li><a href="<%=request.getContextPath() %>/remit/toList?record='是' " target="pageCenter">已制卡人员名单</a></li>
-                                    <li><a href="<%=request.getContextPath() %>/remit/toList?record='否' " target="pageCenter">未制卡人员名单</a></li>
+                                    <li><a href="<%=request.getContextPath() %>/remit/toList?record=是 " target="pageCenter">已制卡人员名单</a></li>
+                                    <li><a href="<%=request.getContextPath() %>/remit/toList?record=否 " target="pageCenter">未制卡人员名单</a></li>
                                 </ol>
                             </dd>
                             <dd>
