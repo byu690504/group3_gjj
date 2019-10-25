@@ -42,7 +42,7 @@
     </div>--%>
 
     <div class="layui-fluid">
-        <table class="layui-table" id="alreadyCard" lay-filter=""></table>
+        <table class="layui-table" id="alreadyCard" lay-filter="alreadyCard"></table>
     </div>
 
     <script type="text/javascript">
@@ -56,16 +56,12 @@
                 url : '<%=request.getContextPath() %>/',
                 page : true,
                 cols : [ [
-                    {field : '',title : '序号',align : 'center',width : 100},
-                    {field : '',title : '职工编号',align : 'center',width : 100},
-                    {field : '',title : '姓名',align : 'center',width : 150},
-                    {field : '',title : '证件名称',align : 'center',width : 150},
-                    {field : '',title : '国别',align : 'center',width : 150},
-                    {field : '',title : '缴存基数',align : 'center',width : 150},
-                    {field : '',title : '单位月缴存额',align : 'center',width : 150},
-                    {field : '',title : '个人月缴存额',align : 'center',width : 150},
-                    {field : '',title : '月缴存额合计',align : 'center',width : 150},
-                    {field : '',title : '二级管理辅助信息',align : 'center',width : 150},
+                    {field : '',title : '序号',align : 'center',width : 200},
+                    {field : '',title : '职工编号',align : 'center',width : 300},
+                    {field : '',title : '姓名',align : 'center',width : 300},
+                    {field : '',title : '证件名称',align : 'center',width : 300},
+                    {field : '',title : '证件号码',align : 'center',width : 300},
+                    {field : '',title : '办理状态',align : 'center',width : 300}
                 ] ],
                 limits : 15,
                 toolbar :
@@ -74,11 +70,16 @@
                     '<div class="layui-inline">' +
                     '<input class="layui-input" name="" value="" autocomplete="off" lay-event="echoURId" readonly />' +
                     '</div>' +
-                    '<button type="button" class="layui-btn" lay-event="add" lay-filter="" style="margin-left: 40px">' +
-                    '<i class="layui-icon layui-icon-add-1"></i>' +
-                    '</button>'+
                     '</div>'
             });
+
+            table.on('toolbar(alreadyCard)', function (obj) {
+                var data=obj.data;
+                if (obj.event === 'echoURId') {
+                    $("#").val(data.productId);
+                    form.render();
+                }
+            })
         });
 
         layui.use(['form'], function(){

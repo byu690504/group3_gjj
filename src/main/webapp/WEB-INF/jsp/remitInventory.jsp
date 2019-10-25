@@ -312,6 +312,7 @@
             });
 
             table.on('toolbar(inventory)', function (obj) {
+                var data=obj.data;
                 if(obj.event === 'add'){
                     form.render();
                     layer.open({
