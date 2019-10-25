@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: kaiguan
@@ -27,7 +28,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">单位名称</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="unitName" id="unitName" required lay-verify="required" placeholder="请输入单位名称" autocomplete="off" class="layui-input">
+                    <input type="text" value="${unitName}" name="unitName" id="unitName" required lay-verify="required" placeholder="请输入单位名称" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
@@ -35,6 +36,26 @@
                     <button type="submit" class="layui-btn" lay-filter="">提交</button>
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
+            </div>
+            <div class="layui-form-text layui-inline">
+                <c:if test="${msg!=null}">
+                    <span>${msg}</span>
+                </c:if>
+            </div></br>
+            <div class="layui-form-text layui-inline">
+                <c:if test="${urId!=null}">
+                    <span>单位登记号为:${urId}</span>
+                </c:if>
+            </div></br>
+            <div class="layui-form-text layui-inline">
+                <c:if test="${uName!=null}">
+                    <span>单位名称为:${uName}</span>
+                </c:if>
+            </div></br>
+            <div class="layui-form-text layui-inline">
+                <c:if test="${uCode!=null}">
+                    <span>组织机构代码为:${uCode}</span>
+                </c:if>
             </div>
         </form>
     </div>

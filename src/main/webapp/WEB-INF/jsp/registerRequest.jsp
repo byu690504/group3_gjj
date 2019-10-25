@@ -27,7 +27,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">单位名称</label>
                     <div class="layui-input-inline">
-                        <input type="hidden" value="${unitName}" name="unitName" id="unitName" required lay-verify="required" placeholder="请输入单位名称" autocomplete="off" class="layui-input">
+                        <input type="text" readonly value="${unitName}" name="unitName" id="unitName" required lay-verify="required" placeholder="请输入单位名称" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -108,7 +108,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">单位成立时间</label>
                     <div class="layui-input-inline">
-                        <input type="text" class="layui-input laydate" name="unitEstablishTime" id="unitEstablishTime" placeholder="请选择时间">
+                        <input type="text" class="layui-input laydate" name="unitTime" id="unitTime" placeholder="请选择时间">
                     </div>
                 </div>
                 <div class="layui-form-item">

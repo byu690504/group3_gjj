@@ -12,4 +12,5 @@ public interface LoginService {
     Unit findByUnitName(String unitName);
     Agent findAgentByAgentCode(String agentCode);
     Agent findAgentByAgentName(String agentName);
+    Agent findAgentByAgentAuth(String agentAuth);
 }

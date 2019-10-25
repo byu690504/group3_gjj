@@ -29,6 +29,8 @@ public class Agent {
     private String cardNumber;
     @Column(name = "agent_phone")
     private String agentPhone;
+    @Column(name = "agent_auth")
+    private String agentAuth;
     /*@Column(name = "unit_id")
     private String unitId;*/
     /*@Column(name = "unit_register_id")

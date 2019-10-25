@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 public interface UnitDao extends JpaRepository<Unit,String> {
     @Query("from Unit where unitName=?1")
     Unit findByUnitName(String unitName);
+    @Query("from Unit u where u.unitRegister.unitRegisterId=?1")
+    Unit findUnitByUrId(String urId);
 }

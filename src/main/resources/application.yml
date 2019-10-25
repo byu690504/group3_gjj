@@ -27,7 +27,8 @@ spring:
     view:
       prefix: /WEB-INF/jsp/
       suffix: .jsp
-#  #thymeleaf模板配置
+    static-path-pattern: /**
+  #  #thymeleaf模板配置
 #  thymeleaf:
 #    prefix: classpath:/templates/
 #    suffix: .html

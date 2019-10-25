@@ -25,7 +25,22 @@
             $("#login").show();
             $("#login").siblings().hide();
         })
+        $("#imgCode").click(function () {
+            var time = new Date().getTime();
+            $("#imgCode").attr("src", "<%=request.getContextPath()%>/checkCodeServlet")
+        });
     })
+</script>
+<script type="text/javascript">
+    layui.use(['form'], function(){
+        var form = layui.form;
+        form.render();
+        var laydate = layui.laydate;
+        //监听提交
+        form.on('submit()', function(data){
+            return true;
+        });
+    });
 </script>
 <body class="layui-layout-body">
     <div id="body">
@@ -62,7 +77,7 @@
                     <div class="layui-input-inline">
                         <input type="text" name="code" id="code" required lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input">
                         <br>
-                        <img src="<%=request.getContextPath() %>/checkCodeServlet">
+                        <img src="<%=request.getContextPath()%>/checkCodeServlet">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -98,7 +113,7 @@
                     <div class="layui-input-inline">
                         <input type="text" name="code" id="ccode" required lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input">
                         <br>
-                        <img src="<%=request.getContextPath() %>/checkCodeServlet">
+                        <img id="imgCode" src="<%=request.getContextPath() %>/checkCodeServlet">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -112,16 +127,5 @@
         </div>
         </div>
     </div>
-    <script type="text/javascript">
-        layui.use(['form'], function(){
-            var form = layui.form;
-            form.render();
-            var laydate = layui.laydate;
-            //监听提交
-            form.on('submit()', function(data){
-                return true;
-            });
-        });
-    </script>
 </body>
 </html>

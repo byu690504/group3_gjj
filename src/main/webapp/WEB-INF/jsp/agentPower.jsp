@@ -27,20 +27,20 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">单位登记号</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="agentName" id="agentName" required lay-verify="required" placeholder="请输入单位登记号" autocomplete="off" class="layui-input">
+                        <input type="text" readonly value="${urId}" name="unitRegisterId" id="unitRegisterId" required lay-verify="required" placeholder="请输入单位登记号" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">经办人1姓名</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="agentName" id="agentName" required lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">
+                        <input type="text" value="${aName}" name="agentName" id="agentName" required lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">经办人1证件名称</label>
                     <div class="layui-input-inline">
-                        <select name="cardName" required lay-verify="required">
-                            <option value="">请选择证件名称</option>
+                        <select name="agentCardName" required lay-verify="required">
+                            <option value="${aCardName}"><%--请选择证件名称--%></option>
                             <option value="身份证号">身份证号</option>
                             <option value="军官证号">军官证号</option>
                             <option value="护照">护照</option>
@@ -50,10 +50,10 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">经办人1证件号码</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="agentName" id="agentName" required lay-verify="required" placeholder="请输入证件号码" autocomplete="off" class="layui-input">
+                        <input type="text" value="${aCardNumber}" name="agentCardNumber" id="agentCardNumber" required lay-verify="required" placeholder="请输入证件号码" autocomplete="off" class="layui-input">
                     </div>
                 </div>
-                <div class="layui-form-item">
+                <%--<div class="layui-form-item">
                     <label class="layui-form-label">经办人2姓名</label>
                     <div class="layui-input-inline">
                         <input type="text" name="agentName" id="agentName" lay-verify="" placeholder="请输入姓名" autocomplete="off" class="layui-input">
@@ -104,19 +104,19 @@
                     <div class="layui-input-inline">
                         <input type="text" name="agentName" id="agentName" required lay-verify="required" placeholder="请输入办公电话" autocomplete="off" class="layui-input">
                     </div>
-                </div>
+                </div>--%>
                 <div class="layui-form-item">
                     <label class="layui-form-label">手机号</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="agentName" id="agentName" required lay-verify="required" placeholder="请输入手机号" autocomplete="off" class="layui-input">
+                        <input type="text" value="${aPhone}" name="agentPhone" id="agentPhone" required lay-verify="required" placeholder="请输入手机号" autocomplete="off" class="layui-input">
                     </div>
                 </div>
-                <div class="layui-form-item">
+                <%--<div class="layui-form-item">
                     <label class="layui-form-label">电子邮箱</label>
                     <div class="layui-input-inline">
                         <input type="text" name="agentName" id="agentName" required lay-verify="required" placeholder="请输入电子邮箱" autocomplete="off" class="layui-input">
                     </div>
-                </div>
+                </div>--%>
                 <div class="layui-form-item">
                     <div class="layui-input-block layui-input-inline">
                         <button type="submit" class="layui-btn" lay-filter="">提交</button>
