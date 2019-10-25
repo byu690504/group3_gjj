@@ -47,4 +47,8 @@ public class RemitManager {
     @OneToOne(targetEntity = UnitOpenAccount.class)
     @JoinColumn(name = "appropriation_unit")
     private UnitOpenAccount unitOpenAccount;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 158b5151f21e56590e01f252d44d2b966877d489
 }
