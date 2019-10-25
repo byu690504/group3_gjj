@@ -16,6 +16,6 @@ public interface UnitOpenAccountService {
     UnitOpenAccount save1(UnitOpenAccount unitOpenAccount);
     UnitOpenAccount findUnitOpenAccountByAppropriationUnit(String appropriationUnit);
     UnitOpenAccount findUnitOpenAccountByUnitOpenAccountId(String unitOpenAccountId);
-    Integer agentAuth(String cert,String agentName);
+    Integer agentAuth(String cert, String agentName);
     Agent findAgentByAgentName(String agentName);
 }

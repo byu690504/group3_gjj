@@ -26,7 +26,7 @@ public interface UnitOpenAccountDao extends JpaRepository<UnitOpenAccount, Strin
     @Transactional
     @Modifying
     @Query("update Agent set agentAuth=?1 where agentName=?2")
-    Integer agentAuth(String cert,String agName);
+    Integer agentAuth(String cert, String agName);
     @Query("from Agent a where a.agentName=?1")
     Agent findAgentByAgentName(String agentName);
 }
