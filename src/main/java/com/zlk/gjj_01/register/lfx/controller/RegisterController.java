@@ -81,10 +81,15 @@ public class RegisterController {
     @RequestMapping(value = "/toAgentAuth")
     @ResponseBody
     public ModelAndView toAgentAuth(HttpServletRequest request){
+        ModelAndView mv=new ModelAndView();
         String agentName = (String)request.getSession().getAttribute("agent");
         String urId = (String) request.getSession().getAttribute("urId");
+        if(urId==null){
+            mv.addObject("msg","请先进行单位登记");
+            mv.setViewName("registerByUnitName");
+            return mv;
+        }
         Agent agent = loginService.findAgentByAgentName(agentName);
-        ModelAndView mv=new ModelAndView();
         mv.addObject("urId",urId);
         mv.addObject("aName",agent.getAgentName());
         mv.addObject("aCardName",agent.getCardName());

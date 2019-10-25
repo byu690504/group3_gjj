@@ -11,7 +11,7 @@
     <title>二级管理辅助信息</title>
     <link rel="stylesheet" href="<%=request.getContextPath() %>/layui/css/layui.css" media="all">
     <script src="<%=request.getContextPath() %>/js/jquery.min.js"></script>
-    <script src="<%=request.getContextPath() %>/layui/layui.all.js"></script>
+    <script src="<%=request.getContextPath() %>/layui/layui.js"></script>
 </head>
 <body>
     <div class="layui-fluid">
@@ -23,24 +23,24 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">部门编号</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="agentName" id="" required lay-verify="" placeholder="请输入部门编号" autocomplete="off" class="layui-input">
+                    <input type="text" name="agentName" id="" lay-verify="required|number" placeholder="请输入部门编号" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">部门名称</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="agentName" id="" required lay-verify="" placeholder="请输入部门名称" autocomplete="off" class="layui-input">
+                    <input type="text" name="agentName" id="" lay-verify="required" placeholder="请输入部门名称" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">部门代码</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="agentName" id="" required lay-verify="" placeholder="请输入部门代码" autocomplete="off" class="layui-input">
+                    <input type="text" name="agentName" id="" lay-verify="required|number" placeholder="请输入部门代码" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <div class="layui-input-block layui-input-inline">
-                    <button type="submit" class="layui-btn" lay-filter="">提交</button>
+                    <button type="button" class="layui-btn layui-btn-norma" lay-submit lay-filter="sub">提交</button>
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
             </div>
@@ -55,18 +55,18 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">部门名称</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="agentName" id="" required lay-verify="" placeholder="请输入部门名称" autocomplete="off" class="layui-input">
+                    <input type="text" name="agentName" id="" lay-verify="required" placeholder="请输入部门名称" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">部门代码</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="agentName" id="" required lay-verify="" placeholder="请输入部门代码" autocomplete="off" class="layui-input">
+                    <input type="text" name="agentName" id="" lay-verify="required|number" placeholder="请输入部门代码" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <div class="layui-input-block layui-input-inline">
-                    <button type="submit" class="layui-btn" lay-filter="">提交</button>
+                    <button type="button" class="layui-btn layui-btn-norma" lay-submit lay-filter="sub">提交</button>
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
             </div>
@@ -100,7 +100,7 @@
                             '</div>'
                     }
                 ] ],
-                limits : [5, 10, 15],
+                limits : 10,
                 toolbar :
                     '<div class="layui-btn-group" style="padding: 15px;">' +
                         '<button type="button" class="layui-btn" lay-event="add" lay-filter="">' +
@@ -130,7 +130,6 @@
                     $("#").val(data.productId);
                     $("#").val(data.productName);
                     $("#").val(data.productKind);
-                    $("#").val(data.productState);
                     form.render();
                     layer.open({
                         type : 1,
@@ -162,13 +161,11 @@
             });
         });
 
-        layui.use(['form'], function(){
+        layui.use('form', function(){
             var form = layui.form;
-            form.render();
-            var laydate = layui.laydate;
             //监听提交
-            form.on('submit()', function(data){
-                return true;
+            form.on('submit(sub)', function(data){
+                return false;
             });
         });
     </script>

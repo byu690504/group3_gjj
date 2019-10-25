@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Getter
 @Setter
-@Table
+@Table(name = "agent")
 @Entity
 public class Agent {
 

@@ -12,10 +12,10 @@
     <link rel="stylesheet" href="<%=request.getContextPath() %>/css/index.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/layui/css/layui.css" media="all">
     <script src="<%=request.getContextPath() %>/js/jquery.min.js"></script>
-    <script src="<%=request.getContextPath() %>/layui/layui.all.js"></script>
+    <script src="<%=request.getContextPath() %>/layui/layui.js"></script>
 </head>
 <body class="layui-layout-body">
-    <div id="body">
+    <div>
         <div id="header">
             <span>北京住房公积金网</span>
         </div>
