@@ -44,25 +44,43 @@
                                 <a href="<%=request.getContextPath() %>/" target="pageCenter">单位用户业务授权</a>
                             </dd>
                             <dd>
+                                <a href="<%=request.getContextPath() %>/remit/update" target="pageCenter">个人登记</a>
                                 <a href="<%=request.getContextPath() %>/" target="pageCenter">二级管理辅助信息</a>
                             </dd>
                             <dd>
-                                <a href="<%=request.getContextPath() %>/" target="pageCenter">单位编辑汇缴清册</a>
+                                <a href="<%=request.getContextPath() %>/remit/update" target="pageCenter">单位编辑汇缴清册</a>
                             </dd>
                             <dd>
                                 <a href="javascript:;">
                                     公积金联名卡制卡情况
                                 </a>
                                 <ol class="layui-nav-child">
-                                    <li><a href="<%=request.getContextPath() %>/" target="pageCenter">已制卡人员名单</a></li>
-                                    <li><a href="<%=request.getContextPath() %>/" target="pageCenter">未制卡人员名单</a></li>
+                                    <li><a href="<%=request.getContextPath() %>/remit/toList?record='是' " target="pageCenter">已制卡人员名单</a></li>
+                                    <li><a href="<%=request.getContextPath() %>/remit/toList?record='否' " target="pageCenter">未制卡人员名单</a></li>
                                 </ol>
                             </dd>
                             <dd>
+<<<<<<< HEAD
+                                <a href="<%=request.getContextPath() %>/" target="pageCenter">单位开户信息变更功能</a>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a class="" href="">
+                            公积金联名卡制卡情况
+                        </a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a href="<%=request.getContextPath() %>/remit/list" target="pageCenter">已制卡人员名单</a>
+                            </dd>
+                            <dd>
+                                <a href="<%=request.getContextPath() %>/remit/list" target="pageCenter">未制卡人员名单</a>
+=======
                                 <a href="<%=request.getContextPath() %>/" target="pageCenter">单位登记信息变更功能</a>
                             </dd>
                             <dd>
                                 <a href="<%=request.getContextPath() %>/" target="pageCenter">单位开户信息变更功能</a>
+>>>>>>> 368bc694cd668cf7da8d7151f5934ccdea79c316
                             </dd>
                         </dl>
                     </li>

@@ -19,23 +19,23 @@
     </div>
 
     <div id="addForm" hidden="hidden" style="padding: 25px">
-        <form action="<%=request.getContextPath() %>/" method="post" class="layui-form">
+        <form action="<%=request.getContextPath()%>/remit/add" method="post" class="layui-form">
             <div class="layui-form-item">
                 <label class="layui-form-label">职工编号</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="agentName" id="" lay-verify="required|number" placeholder="请输入职工编号" autocomplete="off" class="layui-input">
+                    <input type="text" name="empNumber" lay-verify="required|number" placeholder="请输入职工编号" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">姓名</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="agentName" id="" lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">
+                    <input type="text" name="empName" lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">证件名称</label>
                 <div class="layui-input-inline">
-                    <select name="principalCardName" lay-verify="required">
+                    <select name="empCardName" lay-verify="required">
                         <option value="">请选择证件名称</option>
                         <option value="身份证号">身份证号</option>
                         <option value="军官证号">军官证号</option>
@@ -46,37 +46,37 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">国别</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="agentName" id="" lay-verify="required" placeholder="请输入国别" autocomplete="off" class="layui-input">
+                    <input type="text" name="empCountry" lay-verify="required" placeholder="请输入国别" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">证件号码</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="agentName" id="" lay-verify="required|identity" placeholder="请输入证件号码" autocomplete="off" class="layui-input">
+                    <input type="text" name="empCardNumber" lay-verify="required|identity" placeholder="请输入证件号码" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">缴存基数</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="agentName" id="" lay-verify="required|number" placeholder="请输入缴存基数" autocomplete="off" class="layui-input">
+                    <input type="text" name="empDepositeBase" lay-verify="required|number" placeholder="请输入缴存基数" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">单位月缴存额</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="agentName" id="" lay-verify="required|number" placeholder="请输入单位月缴存额" autocomplete="off" class="layui-input">
+                    <input type="text" name="agentName" lay-verify="required|number" placeholder="请输入单位月缴存额" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">个人月缴存额</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="agentName" id="" lay-verify="required|number" placeholder="请输入个人月缴存额" autocomplete="off" class="layui-input">
+                    <input type="text" name="agentName" lay-verify="required|number" placeholder="请输入个人月缴存额" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">月缴存额合计</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="agentName" id="" lay-verify="required|number" placeholder="" autocomplete="off" class="layui-input">
+                    <input type="text" name="agentName" lay-verify="required|number" placeholder="" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
@@ -90,13 +90,13 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">部门编号</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="agentName" id="" lay-verify="required|number" placeholder="请输入部门编号" autocomplete="off" class="layui-input">
+                        <input type="text" name="deptNumber" lay-verify="required|number" placeholder="请输入部门编号" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">部门名称</label>
                     <div class="layui-input-inline">
-                        <select name="principalCardName" lay-verify="required">
+                        <select name="deptName" lay-verify="required">
                             <option value="">请选择部门名称</option>
                             <option value="人事部">人事部</option>
                             <option value="财务部">财务部</option>
@@ -107,7 +107,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">部门代码</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="agentName" id="" lay-verify="required" placeholder="请输入部门代码" autocomplete="off" class="layui-input">
+                        <input type="text" name="deptCode" lay-verify="required" placeholder="请输入部门代码" autocomplete="off" class="layui-input">
                     </div>
                 </div>
             </div>
@@ -121,23 +121,23 @@
     </div>
 
     <div id="editForm" hidden="hidden" style="padding: 25px">
-        <form action="<%=request.getContextPath() %>/" method="post" class="layui-form">
+        <form action="<%=request.getContextPath() %>" method="post" class="layui-form">
             <div class="layui-form-item">
                 <label class="layui-form-label">职工编号</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="agentName" id="" readonly lay-verify="" placeholder="" autocomplete="off" class="layui-input">
+                    <input type="text" name="empNumber" id="empNumber" readonly lay-verify="" placeholder="" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">姓名</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="agentName" id="" readonly lay-verify="" placeholder="" autocomplete="off" class="layui-input">
+                    <input type="text" name="empName" id="empName" readonly lay-verify="" placeholder="" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">证件名称</label>
                 <div class="layui-input-inline">
-                    <select name="principalCardName" lay-verify="required">
+                    <select name="empCardName" lay-verify="required">
                         <option value="">请选择证件名称</option>
                         <option value="身份证号">身份证号</option>
                         <option value="军官证号">军官证号</option>
@@ -148,37 +148,36 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">国别</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="agentName" id="" lay-verify="required" placeholder="请输入国别" autocomplete="off" class="layui-input">
+                    <input type="text" name="empCountry" id="empCountry" lay-verify="required" placeholder="请输入国别" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">证件号码</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="agentName" id="" lay-verify="required" placeholder="请输入证件号码" autocomplete="off" class="layui-input">
+                    <input type="text" name="empCardNumber" id="empCardNumber" lay-verify="required" placeholder="请输入证件号码" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">缴存基数</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="agentName" id="" lay-verify="required|number" placeholder="请输入缴存基数" autocomplete="off" class="layui-input">
+                    <input type="text" name="empDepositeBase" id="empDepositeBase" lay-verify="required|number" placeholder="请输入缴存基数" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">单位月缴存额</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="agentName" id="" lay-verify="required|number" placeholder="请输入单位月缴存额" autocomplete="off" class="layui-input">
+                    <input type="text" name="agentName" id="agentName" lay-verify="required|number" placeholder="请输入单位月缴存额" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">个人月缴存额</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="agentName" id="" lay-verify="required|number" placeholder="请输入个人月缴存额" autocomplete="off" class="layui-input">
+                    <input type="text" name="agentName" required lay-verify="" placeholder="请输入个人月缴存额" autocomplete="off" class="layui-input">
                 </div>
-            </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">月缴存额合计</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="agentName" id="" lay-verify="required|number" placeholder="" autocomplete="off" class="layui-input">
+                    <input type="text" name="agentName" required lay-verify="" placeholder="" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
@@ -192,13 +191,13 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">部门编号</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="agentName" id="" lay-verify="number" placeholder="请输入部门编号" autocomplete="off" class="layui-input">
+                        <input type="text" name="deptNumber" lay-verify="number" placeholder="请输入部门编号" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">部门名称</label>
                     <div class="layui-input-inline">
-                        <select name="principalCardName" lay-verify="">
+                        <select name="deptName" lay-verify="">
                             <option value="">请选择部门名称</option>
                             <option value="人事部">人事部</option>
                             <option value="财务部">财务部</option>
@@ -209,7 +208,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">部门代码</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="agentName" id="" lay-verify="number" placeholder="请输入部门代码" autocomplete="off" class="layui-input">
+                        <input type="text" name="deptCode" ay-verify="number" placeholder="请输入部门代码" autocomplete="off" class="layui-input">
                     </div>
                 </div>
             </div>
@@ -230,20 +229,20 @@
             var $ = layui.$;
             table.render({
                 elem : '#remitInventoryList',
-                url : '<%=request.getContextPath() %>/',
+                url : '<%=request.getContextPath() %>/remit/list?record=${recode}',
                 page : true,
                 cols : [ [
-                    {field : '',title : '序号',align : 'center',width : 100},
-                    {field : '',title : '职工编号',align : 'center',width : 100},
-                    {field : '',title : '姓名',align : 'center',width : 150},
-                    {field : '',title : '证件名称',align : 'center',width : 150},
-                    {field : '',title : '国别',align : 'center',width : 150},
-                    {field : '',title : '证件号码',align : 'center',width : 150},
-                    {field : '',title : '缴存基数',align : 'center',width : 150},
+                    {field : 'remitInventoryId',title : '序号',align : 'center',width : 100},
+                    {field : 'empNumber',title : '职工编号',align : 'center',width : 100},
+                    {field : 'empName',title : '姓名',align : 'center',width : 150},
+                    {field : 'empCardName',title : '证件名称',align : 'center',width : 150},
+                    {field : 'empCountry',title : '国别',align : 'center',width : 150},
+                    {field : 'empCardNumber',title : '证件号码',align : 'center',width : 150},
+                    {field : 'empDepositeBase',title : '缴存基数',align : 'center',width : 150},
                     {field : '',title : '单位月缴存额',align : 'center',width : 150},
                     {field : '',title : '个人月缴存额',align : 'center',width : 150},
                     {field : '',title : '月缴存额合计',align : 'center',width : 150},
-                    {field : '',title : '二级管理辅助信息',align : 'center',width : 150},
+                    {field : 'secondAssistMessage',title : '二级管理辅助信息',align : 'center',width : 150},
                     {fixed : 'right',title : '操作',width : 200,align : 'center',
                         toolbar :
                             '<div class="layui-btn-group">' +
@@ -279,7 +278,7 @@
                         obj.del();
                         $.ajax({
                             type : "POST",
-                            url : "<%=request.getContextPath() %>/*/*?Id="+data.entityId,
+                            url : "<%=request.getContextPath() %>/remit/delete?remitInventoryId="+data.remitInventoryId,
                             success : function (msg) {
                                 layer.alert(msg.msg);
                                 layer.close(index);
@@ -287,16 +286,14 @@
                         });
                     });
                 }else if (obj.event === 'edit'){
-                    $("#").val(data.productId);
-                    $("#").val(data.productName);
-                    $("#").val(data.productKind);
-                    $("#").val(data.productState);
-                    $("#").val(data.productState);
-                    $("#").val(data.productName);
-                    $("#").val(data.productName);
-                    $("#").val(data.productKind);
-                    $("#").val(data.productState);
-                    $("#").val(data.productKind);
+                    $("#remitInventoryId").val(data.remitInventoryId);
+                    $("#moneySource").val(data.moneySource);
+                    $("#empNumber").val(data.empNumber);
+                    $("#empName").val(data.empName);
+                    $("#empCardName").val(data.empCardName);
+                    $("#empCountry").val(data.empCountry);
+                    $("#empCardNumber").val(data.empCardNumber);
+                    $("#empDepositeBase").val(data.empDepositeBase);
                     form.render();
                     layer.open({
                         type : 1,

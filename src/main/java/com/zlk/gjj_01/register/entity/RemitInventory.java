@@ -5,9 +5,6 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
 
 /**
  * 缴费管理实体类
@@ -21,27 +18,42 @@ public class RemitInventory {
     @Column(name = "remit_inventory_id")
     @GeneratedValue(generator = "myGenerator")
     @GenericGenerator(name = "myGenerator",strategy = "uuid")
-    private String remitInventoryId;
-    /*@Column(name ="unit_register_id" )
-    private String unitRegisterId;*/
+    private String remitInventoryId;//缴费方式申请表id
     @Column(name = "money_source")
-    private String moneySource;
+    private String moneySource;//资金来源
     @Column(name = "emp_number")
-    private String empNumber;
+    private String empNumber;//员工编号
     @Column(name = "emp_name")
-    private String empName;
+    private String empName;//员工名字
     @Column(name = "emp_card_name")
-    private String empCardName;
+    private String empCardName;//员工证件名字
     @Column(name = "emp_country")
-    private String empCountry;
+    private String empCountry;//员工国别
     @Column(name = "emp_card_number")
-    private String empCardNumber;
+    private String empCardNumber;//员工卡编号
     @Column(name = "emp_deposite_base")
-    private String empDepositeBase;
+    private Integer empDepositeBase;//缴存基数
+    @Column(name = "record")
+    private String record;//联名卡记录
     @ManyToOne(targetEntity = SecondAssistMessage.class)
     @JoinColumn(name = "second_assist_message_id")
-    private SecondAssistMessage secondAssistMessage;
+    private SecondAssistMessage secondAssistMessage;//二级缓存
     @OneToOne(targetEntity = UnitRegister.class)
     @JoinColumn(name = "unit_register_id")
-    private UnitRegister unitRegister;
+    private UnitRegister unitRegister;//单位注册
+
+    @Override
+    public String toString() {
+        return "RemitInventory{" +
+                "remitInventoryId='" + remitInventoryId + '\'' +
+                ", moneySource='" + moneySource + '\'' +
+                ", empNumber='" + empNumber + '\'' +
+                ", empName='" + empName + '\'' +
+                ", empCardName='" + empCardName + '\'' +
+                ", empCountry='" + empCountry + '\'' +
+                ", empCardNumber='" + empCardNumber + '\'' +
+                ", empDepositeBase=" + empDepositeBase +
+                ", record='" + record + '\'' +
+                '}';
+    }
 }

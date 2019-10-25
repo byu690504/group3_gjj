@@ -2,12 +2,8 @@ package com.zlk.gjj_01.register.entity;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "unit_register")
@@ -44,6 +40,4 @@ public class UnitRegister {
     private UnitOpenAccount unitOpenAccount;
     @OneToOne(targetEntity = RemitInventory.class,mappedBy = "unitRegister")
     private RemitInventory remitInventory;
-    @OneToOne(targetEntity = RemitManager.class,mappedBy = "unitRegister")
-    private RemitManager remitManager;
 }

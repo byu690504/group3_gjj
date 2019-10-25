@@ -46,7 +46,6 @@ public class RemitManagerController {
         remitManager.setPaySystemNumber("1234");
         remitManager.setProceedsDate(DateUtil.stringToDate("2019-10-22"));
         remitManager.setUnitRegister(unitRegister);*/
-        unitRegister.setRemitManager(remitManager);
         remitManagerService.save1(remitManager);
 
         return "remitManager1";
@@ -62,7 +61,6 @@ public class RemitManagerController {
         remitManager.setRemitUnitBank("中国工商银行");
         remitManager.setRemitUnitAccount("78437228543");
         remitManager.setUnitRegister(unitRegister);*/
-        unitRegister.setRemitManager(remitManager);
         remitManagerService.save2(remitManager);
 
         return "remitManager2";
@@ -76,7 +74,6 @@ public class RemitManagerController {
         remitManager.setRemitWay("财政统发");
         unitOpenAccount.setAppropriationUnit("市财政");
         remitManager.setUnitRegister(unitRegister);*/
-        unitRegister.setRemitManager(remitManager);
         remitManagerService.save3(remitManager);
 
         return "remitManager3";
