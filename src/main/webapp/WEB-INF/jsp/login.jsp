@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="<%=request.getContextPath() %>/css/login.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/layui/css/layui.css" media="all">
     <script src="<%=request.getContextPath() %>/js/jquery.min.js"></script>
-    <script src="<%=request.getContextPath() %>/layui/layui.all.js"></script>
+    <script src="<%=request.getContextPath() %>/layui/layui.js"></script>
 </head>
 <script type="">
     $(function () {
@@ -51,26 +51,26 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">用户名</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="agentCode" id="agentName" required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                            <input type="text" name="agentCode" id="agentName" lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">密码</label>
                         <div class="layui-input-inline">
-                            <input type="password" name="agentPassword" id="agentPassword" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                            <input type="password" name="agentPassword" id="agentPassword"  lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">验证码</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="code" id="code" required lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input">
+                            <input type="text" name="code" id="code" lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input">
                             <br>
                             <img src="<%=request.getContextPath() %>/checkCodeServlet">
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <div class="layui-input-block layui-input-inline">
-                            <button type="submit" class="layui-btn" lay-filter="">登录</button>
+                            <button type="button" class="layui-btn layui-btn-norma" lay-submit lay-filter="sub">登录</button>
                             <a href="<%=request.getContextPath() %>/login/toRegister" type="button" class="layui-btn layui-btn-primary">注册</a>
                         </div>
                     </div>
@@ -90,7 +90,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">CA证书</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="agentCode" id="agentAuth" required lay-verify="required" placeholder="请输入CA证书" autocomplete="off" class="layui-input">
+                            <input type="text" name="agentCode" id="agentAuth" lay-verify="required" placeholder="请输入CA证书" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <%--<div class="layui-form-item">
@@ -102,14 +102,14 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">验证码</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="code" id="ccode" required lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input">
+                            <input type="text" name="code" id="ccode" lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input">
                             <br>
                             <img src="<%=request.getContextPath() %>/checkCodeServlet">
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <div class="layui-input-block layui-input-inline">
-                            <input type="submit" class="layui-btn layui-btn-warm" value="登录">
+                            <button type="button" class="layui-btn layui-btn-norma" lay-submit lay-filter="sub">登录</button>
                             <a href="<%=request.getContextPath() %>/login/toRegister" type="button" class="layui-btn layui-btn-primary">注册</a>
                         </div>
                     </div>
@@ -118,13 +118,11 @@
         </div>
     </div>
     <script type="text/javascript">
-        layui.use(['form'], function(){
+        layui.use('form', function(){
             var form = layui.form;
-            form.render();
-            var laydate = layui.laydate;
             //监听提交
-            form.on('submit()', function(data){
-                return true;
+            form.on('submit(sub)', function(data){
+                return false;
             });
         });
     </script>
