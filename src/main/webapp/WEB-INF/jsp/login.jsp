@@ -70,7 +70,7 @@
                     </div>
                     <div class="layui-form-item">
                         <div class="layui-input-block layui-input-inline">
-                            <button type="button" class="layui-btn layui-btn-norma" lay-submit lay-filter="sub">登录</button>
+                            <button type="submit" class="layui-btn layui-btn-norma" lay-submit lay-filter="sub">登录</button>
                             <a href="<%=request.getContextPath() %>/login/toRegister" type="button" class="layui-btn layui-btn-primary">注册</a>
                         </div>
                     </div>
@@ -109,7 +109,7 @@
                     </div>
                     <div class="layui-form-item">
                         <div class="layui-input-block layui-input-inline">
-                            <button type="button" class="layui-btn layui-btn-norma" lay-submit lay-filter="sub">登录</button>
+                            <button type="submit" class="layui-btn layui-btn-norma" lay-submit lay-filter="sub">登录</button>
                             <a href="<%=request.getContextPath() %>/login/toRegister" type="button" class="layui-btn layui-btn-primary">注册</a>
                         </div>
                     </div>
@@ -122,7 +122,7 @@
             var form = layui.form;
             //监听提交
             form.on('submit(sub)', function(data){
-                return false;
+                return true;
             });
         });
     </script>
