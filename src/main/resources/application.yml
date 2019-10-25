@@ -17,18 +17,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
-    password: root
-    url: jdbc:mysql://localhost:3306/gjj?characterEncoding=utf-8&useUnicode=true&useSSL=true&serverTimezone=UTC
-  #thymeleaf模板配置
-#  thymeleaf:
-#    prefix: classpath:/templates/
-#    suffix: .html
-#    mode: HTML5
-#    encoding: UTF-8
-#    servlet:
-#      content-type: text/html
-#    #关掉缓存
-#    cache: false
+    password: 123456
+    url: jdbc:mysql://192.168.124.6:3306/gjj?characterEncoding=utf-8&useUnicode=true&useSSL=true&serverTimezone=UTC
     type: com.alibaba.druid.pool.DruidDataSource
     tomcat:
       max-active: 20
@@ -37,17 +27,6 @@ spring:
     view:
       prefix: /WEB-INF/jsp/
       suffix: .jsp
-#  #thymeleaf模板配置
-#  thymeleaf:
-#    prefix: classpath:/templates/
-#    suffix: .html
-#    mode: LEGACYHTML5
-#    encoding: UTF-8
-#    servlet:
-#      content-type: text/html
-#    #关掉缓存
-#    cache: false
-#所有/**请求的静态资源都会被处理
   resources:
     chain:
       strategy:
