@@ -126,7 +126,20 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">经办人证件名称</label>
                     <div class="layui-input-inline">
+<<<<<<< HEAD
                         <input type="text" name="agentCardName" id="agentCardName" lay-verify="required" placeholder="请输入证件名称" autocomplete="off" class="layui-input">
+=======
+<<<<<<< HEAD
+                        <select name="agentCardName" required lay-verify="required">
+                            <option value="">请选择证件名称</option>
+                            <option value="身份证号">身份证号</option>
+                            <option value="军官证号">军官证号</option>
+                            <option value="护照">护照</option>
+                        </select>
+=======
+                        <input type="text" name="agentCardName" id="agentCardName" required lay-verify="required" placeholder="请输入证件名称" autocomplete="off" class="layui-input">
+>>>>>>> cc971383d6190210a88783eb621ed9ba8c5db31d
+>>>>>>> 81ec9b902627532b7e93e74cf0b58d22249c7eed
                     </div>
                 </div>
                 <div class="layui-form-item">

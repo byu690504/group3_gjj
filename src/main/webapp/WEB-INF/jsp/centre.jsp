@@ -38,7 +38,7 @@
                                 <a href="<%=request.getContextPath() %>/" target="pageCenter">单位经办人授权</a>
                             </dd>
                             <dd>
-                                <a href="<%=request.getContextPath() %>/" target="pageCenter">单位开户</a>
+                                <a href="<%=request.getContextPath() %>/unitOpenAccount/toUnitOpenAccount" target="pageCenter">单位开户</a>
                             </dd>
                             <dd>
                                 <a href="<%=request.getContextPath() %>/" target="pageCenter">单位用户业务授权</a>

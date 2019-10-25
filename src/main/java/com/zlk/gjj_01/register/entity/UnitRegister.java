@@ -44,4 +44,6 @@ public class UnitRegister {
     private UnitOpenAccount unitOpenAccount;
     @OneToOne(targetEntity = RemitInventory.class,mappedBy = "unitRegister")
     private RemitInventory remitInventory;
+    @OneToOne(targetEntity = RemitManager.class,mappedBy = "unitRegister")
+    private RemitManager remitManager;
 }

@@ -23,23 +23,35 @@
             <div id="span1">
                 <span>单位开户申请</span>
             </div>
-            <form action="<%=request.getContextPath() %>/" method="post" class="layui-form">
+            <form action="<%=request.getContextPath() %>/unitOpenAccount/unitOpenAccount" method="post" class="layui-form">
                 <div class="layui-form-item">
                     <label class="layui-form-label">单位登记号</label>
                     <div class="layui-input-inline">
+<<<<<<< HEAD
                         <input type="text" name="agentName" id="agentName" lay-verify="required|number" placeholder="请输入单位登记号" autocomplete="off" class="layui-input">
+=======
+                        <input type="text" name="unitRegisterId" id="unitRegisterId" required lay-verify="required" placeholder="请输入单位登记号" autocomplete="off" class="layui-input">
+>>>>>>> 81ec9b902627532b7e93e74cf0b58d22249c7eed
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">单位名称</label>
                     <div class="layui-input-inline">
+<<<<<<< HEAD
                         <input type="text" name="agentName" id="agentName" lay-verify="required" placeholder="请输入单位名称" autocomplete="off" class="layui-input">
+=======
+                        <input type="text" name="unitName" id="unitName" required lay-verify="required" placeholder="请输入单位名称" autocomplete="off" class="layui-input">
+>>>>>>> 81ec9b902627532b7e93e74cf0b58d22249c7eed
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">业务种类</label>
                     <div class="layui-input-inline">
+<<<<<<< HEAD
                         <select name="cardName" lay-verify="required">
+=======
+                        <select name="businessKind" required lay-verify="required">
+>>>>>>> 81ec9b902627532b7e93e74cf0b58d22249c7eed
                             <option value="">请选择业务种类</option>
                             <option value="住房公积金">住房公积金</option>
                             <option value="住房补贴">住房补贴</option>
@@ -54,7 +66,11 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">资金来源</label>
                     <div class="layui-input-inline">
+<<<<<<< HEAD
                         <select name="cardName" lay-verify="required">
+=======
+                        <select name="moneySource" required lay-verify="required">
+>>>>>>> 81ec9b902627532b7e93e74cf0b58d22249c7eed
                             <option value="">请选择资金来源</option>
                             <option value="单位自筹">单位自筹</option>
                             <option value="财政拨款">财政拨款</option>
@@ -65,7 +81,11 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">开通二级辅助信息</label>
                     <div class="layui-input-inline">
+<<<<<<< HEAD
                         <select name="cardName" lay-verify="required">
+=======
+                        <select name="secondAssistMessage" required lay-verify="required">
+>>>>>>> 81ec9b902627532b7e93e74cf0b58d22249c7eed
                             <option value="">请选择是否开通</option>
                             <option value="是">是</option>
                             <option value="否">否</option>
@@ -75,9 +95,13 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">财政拨款单位</label>
                     <div class="layui-input-inline">
+<<<<<<< HEAD
                         <select name="cardName" lay-verify="required">
+=======
+                        <select name="appropriationUnit" lay-verify="">
+>>>>>>> 81ec9b902627532b7e93e74cf0b58d22249c7eed
                             <option value="">请选择拨款单位</option>
-                            <option value="财政">财政</option>
+                            <option value="市财政">市财政</option>
                             <option value="区县财政">区县财政</option>
                         </select>
                     </div>
@@ -85,25 +109,33 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">业务经办部门</label>
                     <div class="layui-input-inline">
+<<<<<<< HEAD
                         <input type="text" name="agentName" id="agentName" lay-verify="required" placeholder="请输入业务经办部门" autocomplete="off" class="layui-input">
+=======
+                        <input type="text" name="businessAgentDept" id="businessAgentDept" required lay-verify="required" placeholder="请输入业务经办部门" autocomplete="off" class="layui-input">
+>>>>>>> 81ec9b902627532b7e93e74cf0b58d22249c7eed
                     </div>
                 </div>
-                <div class="layui-form-item">
+                <%--<div class="layui-form-item">
                     <label class="layui-form-label">联系电话</label>
                     <div class="layui-input-inline">
                         <input type="text" name="agentName" id="agentName" lay-verify="required|phone" placeholder="请输入联系电话" autocomplete="off" class="layui-input">
                     </div>
-                </div>
-                <div class="layui-form-item">
+                </div>--%>
+                <%--<div class="layui-form-item">
                     <label class="layui-form-label">单位预算代码</label>
                     <div class="layui-input-inline">
                         <input type="text" name="agentName" id="agentName" lay-verify="required|number" placeholder="请输入单位预算代码" autocomplete="off" class="layui-input">
                     </div>
-                </div>
+                </div>--%>
                 <div class="layui-form-item">
                     <label class="layui-form-label">发薪日期</label>
                     <div class="layui-input-inline">
+<<<<<<< HEAD
                         <select name="cardName" lay-verify="required">
+=======
+                        <select name="payoffDate" required lay-verify="">
+>>>>>>> 81ec9b902627532b7e93e74cf0b58d22249c7eed
                             <option value="">请选择发薪日期</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -145,7 +177,11 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">首次汇缴月份</label>
                     <div class="layui-input-inline">
+<<<<<<< HEAD
                         <select name="cardName" lay-verify="required">
+=======
+                        <select name="firstRemitMonth" required lay-verify="">
+>>>>>>> 81ec9b902627532b7e93e74cf0b58d22249c7eed
                             <option value="">请选择汇缴月份</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -165,7 +201,11 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">跨年清册核定月份</label>
                     <div class="layui-input-inline">
+<<<<<<< HEAD
                         <select name="cardName" lay-verify="required">
+=======
+                        <select name="approvedMonthOfCrossYearInventory" lay-verify="">
+>>>>>>> 81ec9b902627532b7e93e74cf0b58d22249c7eed
                             <option value="">请选择核定月份</option>
                             <option value="1月">1月</option>
                             <option value="7月">7月</option>
@@ -175,19 +215,31 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">单位缴存比例</label>
                     <div class="layui-input-inline">
+<<<<<<< HEAD
                         <input type="text" name="agentName" id="agentName" lay-verify="required|number" placeholder="请输入单位缴存比例" autocomplete="off" class="layui-input">
+=======
+                        <input type="text" name="unitDepositProportion" id="unitDepositProportion" required lay-verify="required" placeholder="请输入单位缴存比例" autocomplete="off" class="layui-input">
+>>>>>>> 81ec9b902627532b7e93e74cf0b58d22249c7eed
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">个人缴存比例</label>
                     <div class="layui-input-inline">
+<<<<<<< HEAD
                         <input type="text" name="agentName" id="agentName" lay-verify="required|number" placeholder="一般默认50%" autocomplete="off" class="layui-input">
+=======
+                        <input type="text" name="personDepositProportion" id="personDepositProportion" required lay-verify="required" placeholder="一般默认50%" autocomplete="off" class="layui-input">
+>>>>>>> 81ec9b902627532b7e93e74cf0b58d22249c7eed
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">每月汇缴是否需要确认人员清册</label>
                     <div class="layui-input-inline">
+<<<<<<< HEAD
                         <select name="cardName" lay-verify="required">
+=======
+                        <select name="confirmEmpInventory" required lay-verify="required">
+>>>>>>> 81ec9b902627532b7e93e74cf0b58d22249c7eed
                             <option value="">请选择是否确认</option>
                             <option value="是">是</option>
                             <option value="否">否</option>
@@ -197,7 +249,11 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">是否接受中心信息服务</label>
                     <div class="layui-input-inline">
+<<<<<<< HEAD
                         <select name="cardName" lay-verify="required">
+=======
+                        <select name="acceptTheInformationServiceOfTheCenter" required lay-verify="required">
+>>>>>>> 81ec9b902627532b7e93e74cf0b58d22249c7eed
                             <option value="">请选择是否接受</option>
                             <option value="是">是</option>
                             <option value="否">否</option>
@@ -212,7 +268,7 @@
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">缴款方式</label>
-                    <div class="layui-input-block" id="payMethod" >
+                    <div class="layui-input-block" name="remitWay" id="payMethod" >
                         <input type="radio" name="t" value="委托收款" title="委托收款" lay-filter="aaa"/>
                         <input type="radio" name="t" value="主动汇款" title="主动汇款" lay-filter="aaa"/>
                         <input type="radio" name="t" value="转账支票" title="转账支票" lay-filter="aaa"/>
@@ -224,37 +280,37 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">委托收款单位名称</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="agentName" id="agentName" lay-verify="" placeholder="请输入单位名称" autocomplete="off" class="layui-input">
+                            <input type="text" name="proceedsUnitName" id="proceedsUnitName" lay-verify="" placeholder="请输入单位名称" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">委托收款单位账号</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="agentName" id="agentName" lay-verify="" placeholder="请输入单位账号" autocomplete="off" class="layui-input">
+                            <input type="text" name="proceedsUnitAccount" id="proceedsUnitAccount" lay-verify="" placeholder="请输入单位账号" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">托收单位开户银行名称</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="agentName" id="agentName" lay-verify="" placeholder="请输入开户银行名称" autocomplete="off" class="layui-input">
+                            <input type="text" name="proceedsUnitBank" id="proceedsUnitBank" lay-verify="" placeholder="请输入开户银行名称" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">银行交换号</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="agentName" id="agentName" lay-verify="" placeholder="请输入银行交换号" autocomplete="off" class="layui-input">
+                            <input type="text" name="bankNumberChange" id="bankNumberChange" lay-verify="" placeholder="请输入银行交换号" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">支付系统号</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="agentName" id="agentName" lay-verify="" placeholder="请输入支付系统号" autocomplete="off" class="layui-input">
+                            <input type="text" name="paySystemNumber" id="paySystemNumber" lay-verify="" placeholder="请输入支付系统号" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">托收日期</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="agentName" id="agentName" lay-verify="" placeholder="请输入托收日期" autocomplete="off" class="layui-input">
+                            <input type="text" name="proceedsDate" id="proceedsDate" lay-verify="" placeholder="请输入托收日期" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                 </div>
@@ -262,23 +318,23 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">汇款单位名称</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="agentName" id="agentName" lay-verify="" placeholder="请输入汇款单位名称" autocomplete="off" class="layui-input">
+                            <input type="text" name="remitUnitName" id="remitUnitName" lay-verify="" placeholder="请输入汇款单位名称" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">汇款单位开户银行</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="agentName" id="agentName" lay-verify="" placeholder="请输入开户银行名称" autocomplete="off" class="layui-input">
+                            <input type="text" name="remitUnitBank" id="remitUnitBank" lay-verify="" placeholder="请输入开户银行名称" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">汇款账号</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="agentName" id="agentName" lay-verify="" placeholder="请输入汇款账号" autocomplete="off" class="layui-input">
+                            <input type="text" name="remitUnitAccount" id="remitUnitAccount" lay-verify="" placeholder="请输入汇款账号" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                 </div>
-                <div class="zz">
+               <%-- <div class="zz">
                     <div class="layui-form-item">
                         <label class="layui-form-label">单位开户银行</label>
                         <div class="layui-input-inline">
@@ -299,12 +355,12 @@
                             <input type="text" name="agentName" id="agentName" lay-verify="" placeholder="请输入缴款网点" autocomplete="off" class="layui-input">
                         </div>
                     </div>
-                </div>
+                </div>--%>
                 <div class="cz">
                     <div class="layui-form-item">
                         <label class="layui-form-label">统发单位名称</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="agentName" id="agentName" lay-verify="" placeholder="请输入统发单位名称" autocomplete="off" class="layui-input">
+                            <input type="text" name="t" id="appropriationUnit" lay-verify="" placeholder="请输入统发单位名称" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                 </div>
