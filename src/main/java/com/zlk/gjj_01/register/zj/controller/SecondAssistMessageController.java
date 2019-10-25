@@ -5,14 +5,17 @@ package com.zlk.gjj_01.register.zj.controller;
 
 import com.zlk.gjj_01.register.entity.RemitInventory;
 import com.zlk.gjj_01.register.entity.SecondAssistMessage;
+import com.zlk.gjj_01.register.util.Pagination;
 import com.zlk.gjj_01.register.zj.dao.RemitInventoryDao;
 import com.zlk.gjj_01.register.zj.dao.SecondAssistMessageDao;
 import com.zlk.gjj_01.register.zj.service.SecondAssistMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,15 +26,35 @@ public class SecondAssistMessageController {
     private SecondAssistMessageDao secondAssistMessageDao;
     @Autowired
     private RemitInventoryDao remitInventoryDao;
+    @Autowired
+    private SecondAssistMessageService secondAssistMessageService;
+    @RequestMapping(value = "/toList")
+    public String toList(){
+        return "secList";
+    }
+    @RequestMapping(value = "/secList")
+    @ResponseBody
+    public Map<String,Object> secList(Pagination pagination)throws Exception{
+        /*pagination.setPage(1);
+        pagination.setLimit(2);
+        pagination.setStartPage((pagination.getPage()-1)*pagination.getLimit());*/
+        List<SecondAssistMessage> List=secondAssistMessageService.findSecondLimit(pagination);
+        Integer count=secondAssistMessageService.findSecondCount(pagination);
+        Map<String,Object> map=new HashMap<>();
+        map.put("code",0);
+        map.put("count",count);
+        map.put("data",List);
+        return map;
+    }
     @RequestMapping(value = "/add")
     @ResponseBody
     public String add(SecondAssistMessage secondAssistMessage){
         SecondAssistMessage secondAssistMessage1=new SecondAssistMessage();
-        secondAssistMessage1.setDeptName("销售部3");
+        /*secondAssistMessage1.setDeptName("销售部3");
         secondAssistMessage1.setDeptCode("XS3");
-        secondAssistMessage1.setDeptNumber("007");
+        secondAssistMessage1.setDeptNumber("007");*/
         RemitInventory remitInventory=new RemitInventory();
-        remitInventory.setEmpName("小赵");
+        /*remitInventory.setEmpName("小赵");*/
         remitInventory.setSecondAssistMessage(secondAssistMessage1);
         secondAssistMessage1.getRemitInventoryList().add(remitInventory);
         secondAssistMessageDao.save(secondAssistMessage1);
@@ -40,10 +63,10 @@ public class SecondAssistMessageController {
     @RequestMapping(value = "/update")
     @ResponseBody
     public String update(SecondAssistMessage secondAssistMessage){
-        SecondAssistMessage secondAssistMessage1=secondAssistMessageDao.findById("402869816df28f8a016df29124400000").get();
-        secondAssistMessage1.setDeptName("食堂");
+        SecondAssistMessage secondAssistMessage1=secondAssistMessageDao.findById(secondAssistMessage.getSecondAssistMessageId()).get();
+        /*secondAssistMessage1.setDeptName("食堂");
         secondAssistMessage1.setDeptCode("ST");
-        secondAssistMessage1.setDeptNumber("006");
+        secondAssistMessage1.setDeptNumber("006");*/
         secondAssistMessageDao.save(secondAssistMessage1);
         return null;
     }
@@ -53,7 +76,7 @@ public class SecondAssistMessageController {
         //联表查询 两个表
         //判断是否为空
         //调用方法 再删除
-        secondAssistMessageId="402869816df37044016df37163d60000";
+        /*secondAssistMessageId="402869816df37044016df37163d60000";*/
         List<RemitInventory> remList=remitInventoryDao.findRemBySecId(secondAssistMessageId);
         if(remList.size()!=0){
             map.put("error","仍有职工在该部门，不允许删除，到部门维护中修改后再删除");

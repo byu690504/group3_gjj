@@ -13,19 +13,15 @@ import com.zlk.gjj_01.register.zj.dao.RemitInventoryDao;
 import com.zlk.gjj_01.register.zj.dao.SecondAssistMessageDao;
 import com.zlk.gjj_01.register.zj.dao.UnitOpenAccountDao;
 import com.zlk.gjj_01.register.zj.service.RemitInventoryService;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 @Controller
 @RequestMapping(value = "/remit")
 public class RemitInventoryController {
@@ -35,14 +31,31 @@ public class RemitInventoryController {
     private SecondAssistMessageDao secondAssistMessageDao;
     @Autowired
     private UnitOpenAccountDao unitOpenAccountDao;
+    @Autowired
+    private RemitInventoryService remitInventoryService;
     @RequestMapping(value = "/toList")
     public String toList()throws Exception{
         return "beforeRem";
     }
+    @RequestMapping(value = "/list")
+    @ResponseBody
+    public Map<String,Object> remList(Pagination pagination)throws Exception{
+        pagination.setRecord("是");
+        pagination.setPage(1);
+        pagination.setLimit(2);
+        pagination.setStartPage((pagination.getPage()-1)*pagination.getLimit());
+        List<RemitInventory> List=remitInventoryService.findRemLimit(pagination);
+        Integer count=remitInventoryService.findRemitCount(pagination);
+        Map<String,Object> map=new HashMap<>();
+        map.put("code",0);
+        map.put("count",count);
+        map.put("data",List);
+        return map;
+    }
     @RequestMapping(value = "/beforeRem")
     @ResponseBody
     public String check(String unitRegisterId){
-        unitRegisterId="1";
+        /*unitRegisterId="1";*/
         UnitOpenAccount unitOpenAccount=unitOpenAccountDao.findUoaIdByUrId(unitRegisterId);
         if(unitOpenAccount==null){
             System.out.println("该单位不是开户单位，不可进行汇缴清册编辑");
@@ -55,17 +68,17 @@ public class RemitInventoryController {
     @ResponseBody
     public String add(){
         UnitRegister unitRegister=new UnitRegister();
-        unitRegister.setUnitRegisterId("2");
+        /*unitRegister.setUnitRegisterId("2");*/
         SecondAssistMessage secondAssistMessage=new SecondAssistMessage();
-        secondAssistMessage.setDeptName("销售部3");
+        /*secondAssistMessage.setDeptName("销售部3");*/
         String secId = secondAssistMessageDao.findSecIdBySecName(secondAssistMessage.getDeptName());
         secondAssistMessage.setSecondAssistMessageId(secId);
         RemitInventory remitInventory1=new RemitInventory();
-        remitInventory1.setEmpCardNumber("410004444X");
-        remitInventory1.setEmpName("小刘");
-        remitInventory1.setEmpCardName("身份证");
-        remitInventory1.setEmpCountry("中国");
-        remitInventory1.setRecord("是");
+//        remitInventory1.setEmpCardNumber("410004444X");
+//        remitInventory1.setEmpName("小刘");
+//        remitInventory1.setEmpCardName("身份证");
+//        remitInventory1.setEmpCountry("中国");
+//        remitInventory1.setRecord("是");
         remitInventory1.setEmpDepositeBase(DepositeBaseUtil.mothod());
         remitInventory1.setSecondAssistMessage(secondAssistMessage);
         remitInventory1.setUnitRegister(unitRegister);
@@ -115,33 +128,4 @@ public class RemitInventoryController {
         }
         return null;
     }*/
-    @RequestMapping(value = "/list")
-    @ResponseBody
-    public Page<RemitInventory> list(Pagination pagination){
-        Map map=new HashMap();
-        pagination.setStartPage(1);
-        pagination.setLimit(2);
-        /*List<RemitInventory> remList = remitInventoryDao.findRemitInventoryLimit(pagination.getStartPage(), pagination.getLimit());
-        Integer count = remitInventoryDao.findRemitInventoryCount(pagination.getStartPage(), pagination.getLimit());
-        System.out.println(count);*/
-        Page<RemitInventory> remList = remitInventoryDao.findAll(new PageRequest(pagination.getStartPage(), pagination.getLimit()));
-        for(RemitInventory r:remList){
-            System.out.println(r.getRemitInventoryId());
-        }
-        /*map.put("code","0");
-        map.put("data",remList);
-        map.put("count",remList.getSize());*/
-        return remList;
-    }
-    @RequestMapping(value = "/find")
-    @ResponseBody
-    public boolean find(String record){
-        record="是";
-        if(){
-
-        }else{
-
-        }
-    }
-    return null;
 }

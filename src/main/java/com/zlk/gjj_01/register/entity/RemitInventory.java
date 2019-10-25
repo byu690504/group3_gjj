@@ -54,8 +54,6 @@ public class RemitInventory {
                 ", empCardNumber='" + empCardNumber + '\'' +
                 ", empDepositeBase=" + empDepositeBase +
                 ", record='" + record + '\'' +
-                ", secondAssistMessage=" + secondAssistMessage +
-                ", unitRegister=" + unitRegister +
                 '}';
     }
 }

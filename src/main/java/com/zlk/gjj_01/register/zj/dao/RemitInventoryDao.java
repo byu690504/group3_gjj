@@ -4,16 +4,10 @@ package com.zlk.gjj_01.register.zj.dao;
  */
 
 import com.zlk.gjj_01.register.entity.RemitInventory;
-import com.zlk.gjj_01.register.util.Pagination;
-import org.apache.ibatis.annotations.Param;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
@@ -44,5 +38,5 @@ public interface RemitInventoryDao extends JpaRepository<RemitInventory,String> 
     @Query(value = "select count(remit_inventory_id) from remit_inventory limit 0,1",nativeQuery = true)
     Integer findRemitInventoryCount(Integer startPage, Integer limit);*/
     @Query("from RemitInventory r where r.record=?1")
-    RemitInventory findByRecord(String record);
+    List<RemitInventory> findByRecord(String record);
 }

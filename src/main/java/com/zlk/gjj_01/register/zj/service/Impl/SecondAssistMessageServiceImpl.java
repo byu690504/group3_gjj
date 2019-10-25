@@ -1,20 +1,26 @@
 package com.zlk.gjj_01.register.zj.service.Impl;
 
-import com.zlk.gjj_01.register.entity.RemitInventory;
-import com.zlk.gjj_01.register.zj.dao.RemitInventoryDao;
+import com.zlk.gjj_01.register.entity.SecondAssistMessage;
+import com.zlk.gjj_01.register.util.Pagination;
+import com.zlk.gjj_01.register.zj.mapper.SecondAssistMessageMapper;
 import com.zlk.gjj_01.register.zj.service.SecondAssistMessageService;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import java.util.List;
+
 
 @Service
 public class SecondAssistMessageServiceImpl implements SecondAssistMessageService {
-    @Resource
-    RemitInventoryDao remitInventoryDao;
-    /*@Override
-    public Page<RemitInventory> findRemitInventoryLimit(String record, Pageable pageable) {
-        return remitInventoryDao.findRemitInventoryLimit(record,pageable);
-    }*/
+    @Autowired
+    private SecondAssistMessageMapper secondAssistMessageMapper;
+    @Override
+    public List<SecondAssistMessage> findSecondLimit(Pagination pagination) {
+        return secondAssistMessageMapper.findSecondLimit(pagination);
+    }
+
+    @Override
+    public Integer findSecondCount(Pagination pagination) {
+        return secondAssistMessageMapper.findSecondCount(pagination);
+    }
 }

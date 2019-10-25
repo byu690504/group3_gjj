@@ -1,0 +1,31 @@
+#body{
+    background-color: #F8F8F8;
+    height: 700px;
+    overflow: auto;
+}
+#header{
+    width: 100%;
+    padding-top: 40px;
+    background-color: #B8B8B8;
+    margin-bottom: 5px;
+}
+#header span{
+    font-size: 25px;
+    font-family: 楷体;
+    color: #0066CC;
+}
+#register{
+    margin-left: 400px;
+    margin-top: 40px;
+    background-color: #FFFFFF;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    width: 360px;
+    box-shadow: 5px 5px 9px #B8B8B8;
+}
+#span1{
+    margin-top: -55px;
+    margin-left: 115px;
+    margin-bottom: 30px;
+    font-size: 20px;
+}

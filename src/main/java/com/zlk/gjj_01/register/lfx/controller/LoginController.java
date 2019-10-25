@@ -32,26 +32,26 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/register")
-    @ResponseBody
+    /*@ResponseBody*/
     public String register(Map map, Agent agent,Unit unit, HttpServletRequest request, String code){
         String checkCode =(String)request.getSession().getAttribute("checkCode");
-        checkCode="1";
-        code=checkCode;
+        /*checkCode="1";
+        code=checkCode;*/
         if(checkCode.toLowerCase().equals(code.toLowerCase())){
-            agent.setAgentName("lfx");
+            /*agent.setAgentName("lfx");
             agent.setCardName("身份证");
-            agent.setCardNumber("111111111444444444");
+            agent.setCardNumber("111111111444444444");*/
             List<Agent> agentList = loginService.findAll();
             for(Agent a:agentList){
                 if(a.getCardNumber().equals(agent.getCardNumber())){
                     map.put("error","该证件号已经注册");
-                    return "login";
+                    return "register";
                 }
             }
-            agent.setAgentPhone("11111111111");
+            /*agent.setAgentPhone("11111111111");
             unit.setUnitEmail("1111111111@qq.com");
             unit.setUnitName("阿里巴巴");
-            agent.setAgentPassword("lfx");
+            agent.setAgentPassword("lfx");*/
             for(;;) {
                 String agentCode=AgentCodeUtil.getAgentCode();
                 String agentPassword = loginService.findAgentByAgentCode(agentCode);
@@ -63,22 +63,22 @@ public class LoginController {
             agent.setUnit(unit);
             unit.getAgentList().add(agent);
             loginService.save(agent);
-            return "register";
+            return "login";
         }else {
             map.put("error","验证码错误");
-            return "login";
+            return "register";
         }
     }
 
     @RequestMapping(value = "/login")
-    @ResponseBody
+    /*@ResponseBody*/
     public String login(Agent agent,HttpServletRequest request,String code,Map map){
         String checkCode=(String) request.getSession().getAttribute("checkCode");
-        checkCode="1";
-        code=checkCode;
+        /*checkCode="1";
+        code=checkCode;*/
         if(checkCode.toLowerCase().equals(code.toLowerCase())){
-            agent.setAgentCode("8301193716");
-            agent.setAgentPassword("lfx1");
+            /*agent.setAgentCode("8301193716");
+            agent.setAgentPassword("lfx1");*/
             String agentPassword = loginService.findAgentByAgentCode(agent.getAgentCode());
             if(agentPassword==null){
                 map.put("error","该用户代码不存在");
@@ -87,7 +87,7 @@ public class LoginController {
                 map.put("error","密码错误");
                 return "login";
             }else {
-                return "success";
+                return "centre";
             }
         }else {
             map.put("error","验证码错误");

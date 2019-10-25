@@ -1,22 +1,17 @@
 package com.zlk.gjj_01.register.util;
 
-/**
- * 分页工具类
- */
 public class Pagination {
-    //每页显示条数
-    private Integer limit;
-    //当前页
     private Integer page;
-    //起始页
     private Integer startPage;
+    private Integer limit;
+    private String record;
 
-    public Integer getLimit() {
-        return limit;
+    public String getRecord() {
+        return record;
     }
 
-    public void setLimit(Integer limit) {
-        this.limit = limit;
+    public void setRecord(String record) {
+        this.record = record;
     }
 
     public Integer getPage() {
@@ -35,4 +30,11 @@ public class Pagination {
         this.startPage = startPage;
     }
 
+    public Integer getLimit() {
+        return limit;
+    }
+
+    public void setLimit(Integer limit) {
+        this.limit = limit;
+    }
 }
