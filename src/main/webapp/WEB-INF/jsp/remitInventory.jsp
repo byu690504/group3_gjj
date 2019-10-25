@@ -113,7 +113,7 @@
             </div>
             <div class="layui-form-item">
                 <div class="layui-input-block layui-input-inline">
-                    <button type="button" class="layui-btn layui-btn-norma" lay-submit lay-filter="sub">提交</button>
+                    <button type="submit" class="layui-btn layui-btn-norma" lay-submit lay-filter="sub">提交</button>
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
             </div>
@@ -214,7 +214,7 @@
             </div>
             <div class="layui-form-item">
                 <div class="layui-input-block layui-input-inline">
-                    <button type="button" class="layui-btn layui-btn-norma" lay-submit lay-filter="sub">提交</button>
+                    <button type="submit" class="layui-btn layui-btn-norma" lay-submit lay-filter="sub">提交</button>
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
             </div>
@@ -231,6 +231,7 @@
                 elem : '#remitInventoryList',
                 url : '<%=request.getContextPath() %>/remit/list?record=${recode}',
                 page : true,
+                height : 500,
                 cols : [ [
                     {field : 'remitInventoryId',title : '序号',align : 'center',width : 100},
                     {field : 'empNumber',title : '职工编号',align : 'center',width : 100},
@@ -315,7 +316,7 @@
                     layer.open({
                         type : 1,
                         title : '添加职工汇缴信息',
-                        area : '420px',
+                        area : ['70%','70%'],
                         moveType : 1,
                         resize : false,
                         anim : 4,

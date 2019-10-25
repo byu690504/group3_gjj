@@ -48,7 +48,7 @@
                                 <a href="<%=request.getContextPath() %>/second/toList" target="pageCenter">二级管理辅助信息</a>
                             </dd>
                             <dd>
-                                <a href="<%=request.getContextPath() %>/remit/update" target="pageCenter">单位编辑汇缴清册</a>
+                                <a href="<%=request.getContextPath() %>/remit/toList" target="pageCenter">单位编辑汇缴清册</a>
                             </dd>
                             <dd>
                                 <a href="javascript:;">

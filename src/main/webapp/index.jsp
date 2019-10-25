@@ -12,7 +12,7 @@
 </head>
 <body>
     <script>
-        location.href="<%=request.getContextPath() %>/login/toIndex";
+        location.href="<%=request.getContextPath() %>/login/toLogin";
     </script>
 </body>
 </html>

@@ -83,6 +83,7 @@
                 elem : '#secondaryManageList',
                 url : '<%=request.getContextPath() %>/second/list',
                 page : true,
+                height : 500,
                 cols : [ [
                     {field : 'secondAssistMessageId',title : '序号',align : 'center',width : 150},
                     {field : 'deptNumber',title : '部门编号',align : 'center',width : 300},
@@ -152,7 +153,7 @@
                     layer.open({
                         type : 1,
                         title : '添加部门',
-                        area : '420px',
+                        area : ['70%','70%'],
                         moveType : 1,
                         resize : false,
                         anim : 4,
