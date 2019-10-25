@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="<%=request.getContextPath() %>/css/center.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/layui/css/layui.css" media="all">
     <script src="<%=request.getContextPath() %>/js/jquery.min.js"></script>
-    <script src="<%=request.getContextPath() %>/layui/layui.all.js"></script>
+    <script src="<%=request.getContextPath() %>/layui/layui.js"></script>
 </head>
 <body class="layui-layout-body">
     <div class="layui-layout layui-layout-admin">
@@ -27,7 +27,7 @@
             <div class="layui-side-scroll">
                 <ul class="layui-nav layui-nav-tree" lay-filter="">
                     <li class="layui-nav-item layui-nav-itemed">
-                        <a class="" href="">
+                        <a href="javascript:;">
                             公积金管理中心
                         </a>
                         <dl class="layui-nav-child">
@@ -38,7 +38,7 @@
                                 <a href="<%=request.getContextPath() %>/" target="pageCenter">单位经办人授权</a>
                             </dd>
                             <dd>
-                                <a href="<%=request.getContextPath() %>/" target="pageCenter">单位开户</a>
+                                <a href="<%=request.getContextPath() %>/unitOpenAccount/toUnitOpenAccount" target="pageCenter">单位开户</a>
                             </dd>
                             <dd>
                                 <a href="<%=request.getContextPath() %>/" target="pageCenter">单位用户业务授权</a>
@@ -51,9 +51,16 @@
                                 <a href="<%=request.getContextPath() %>/remit/update" target="pageCenter">单位编辑汇缴清册</a>
                             </dd>
                             <dd>
-                                <a href="<%=request.getContextPath() %>/" target="pageCenter">单位登记信息变更功能</a>
+                                <a href="javascript:;">
+                                    公积金联名卡制卡情况
+                                </a>
+                                <ol class="layui-nav-child">
+                                    <li><a href="<%=request.getContextPath() %>/remit/toList?record='是' " target="pageCenter">已制卡人员名单</a></li>
+                                    <li><a href="<%=request.getContextPath() %>/remit/toList?record='否' " target="pageCenter">未制卡人员名单</a></li>
+                                </ol>
                             </dd>
                             <dd>
+<<<<<<< HEAD
                                 <a href="<%=request.getContextPath() %>/" target="pageCenter">单位开户信息变更功能</a>
                             </dd>
                         </dl>
@@ -68,6 +75,12 @@
                             </dd>
                             <dd>
                                 <a href="<%=request.getContextPath() %>/remit/list" target="pageCenter">未制卡人员名单</a>
+=======
+                                <a href="<%=request.getContextPath() %>/" target="pageCenter">单位登记信息变更功能</a>
+                            </dd>
+                            <dd>
+                                <a href="<%=request.getContextPath() %>/" target="pageCenter">单位开户信息变更功能</a>
+>>>>>>> 368bc694cd668cf7da8d7151f5934ccdea79c316
                             </dd>
                         </dl>
                     </li>
@@ -81,7 +94,7 @@
     </div>
 </body>
 <script>
-    layui.use('element', function() {
+    layui.use('element', function(){
     });
 </script>
 </html>

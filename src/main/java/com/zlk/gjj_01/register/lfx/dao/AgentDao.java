@@ -16,8 +16,8 @@ public interface AgentDao extends JpaRepository<Agent,String> {
     Agent findAgentByAgentCode(String agentCode);
     @Transactional
     @Modifying
-    @Query("update Agent set agentPhone=33333333333 where agentName=(select ur.agentName from UnitRegister ur where ur.unitRegisterId=?1)")
-    Integer agentAuth(String agName);
+    @Query("update Agent set agentAuth=?1 where agentName=?2")
+    Integer agentAuth(String cert,String agName);
     @Query("from Agent a where a.agentName=?1")
     Agent findAgentByAgentName(String agentName);
 }

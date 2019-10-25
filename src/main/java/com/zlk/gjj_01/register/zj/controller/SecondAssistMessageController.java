@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -46,7 +47,6 @@ public class SecondAssistMessageController {
         return map;
     }
     @RequestMapping(value = "/add")
-    @ResponseBody
     public String add(HttpServletRequest httpServletRequesta,SecondAssistMessage secondAssistMessage){
         /*SecondAssistMessage secondAssistMessage1=new SecondAssistMessage();
         *//*secondAssistMessage1.setDeptName("销售部3");
@@ -55,19 +55,15 @@ public class SecondAssistMessageController {
         RemitInventory remitInventory=new RemitInventory();
         *//*remitInventory.setEmpName("小赵");*//*
         remitInventory.setSecondAssistMessage(secondAssistMessage1);
-        secondAssistMessage1.getRemitInventoryList().add(remitInventory);
-        secondAssistMessageDao.save(secondAssistMessage1);*/
+        secondAssistMessage1.getRemitInventoryList().add(remitInventory);*/
+        secondAssistMessageDao.save(secondAssistMessage);
         return "secondaryManage";
 
     }
     @RequestMapping(value = "/update")
     @ResponseBody
-    public String update(SecondAssistMessage secondAssistMessage){
-        SecondAssistMessage secondAssistMessage1=secondAssistMessageDao.findById(secondAssistMessage.getSecondAssistMessageId()).get();
-        /*secondAssistMessage1.setDeptName("食堂");
-        secondAssistMessage1.setDeptCode("ST");
-        secondAssistMessage1.setDeptNumber("006");*/
-        secondAssistMessageDao.save(secondAssistMessage1);
+    public Map<String,Object> update(String secondAssistMessageId){
+        List<SecondAssistMessage> secList = secondAssistMessageDao.findSecById(secondAssistMessageId);
         return null;
     }
     @RequestMapping(value = "/delete")

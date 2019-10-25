@@ -32,6 +32,16 @@ spring:
     cache: false
     password:
     url: jdbc:mysql://123:3306/gjj?characterEncoding=utf-8
+  #thymeleaf模板配置
+#  thymeleaf:
+#    prefix: classpath:/templates/
+#    suffix: .html
+#    mode: HTML5
+#    encoding: UTF-8
+#    servlet:
+#      content-type: text/html
+#    #关掉缓存
+#    cache: false
     type: com.alibaba.druid.pool.DruidDataSource
     tomcat:
       max-active: 20
@@ -50,7 +60,7 @@ spring:
 #      content-type: text/html
 #    #关掉缓存
 #    cache: false
-  #所有/**请求的静态资源都会被处理
+#所有/**请求的静态资源都会被处理
   resources:
     chain:
       strategy:
