@@ -50,6 +50,12 @@
                 </div>
             </div>
             <div class="layui-form-item">
+                <label class="layui-form-label">证件号码</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="agentName" id="" required lay-verify="" placeholder="请输入证件号码" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
                 <label class="layui-form-label">缴存基数</label>
                 <div class="layui-input-inline">
                     <input type="text" name="agentName" id="" required lay-verify="" placeholder="请输入缴存基数" autocomplete="off" class="layui-input">
@@ -146,6 +152,12 @@
                 </div>
             </div>
             <div class="layui-form-item">
+                <label class="layui-form-label">证件号码</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="agentName" id="" required lay-verify="" placeholder="请输入证件号码" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
                 <label class="layui-form-label">缴存基数</label>
                 <div class="layui-input-inline">
                     <input type="text" name="agentName" id="" required lay-verify="" placeholder="请输入缴存基数" autocomplete="off" class="layui-input">
@@ -226,6 +238,7 @@
                     {field : '',title : '姓名',align : 'center',width : 150},
                     {field : '',title : '证件名称',align : 'center',width : 150},
                     {field : '',title : '国别',align : 'center',width : 150},
+                    {field : '',title : '证件号码',align : 'center',width : 150},
                     {field : '',title : '缴存基数',align : 'center',width : 150},
                     {field : '',title : '单位月缴存额',align : 'center',width : 150},
                     {field : '',title : '个人月缴存额',align : 'center',width : 150},
@@ -283,6 +296,7 @@
                     $("#").val(data.productName);
                     $("#").val(data.productKind);
                     $("#").val(data.productState);
+                    $("#").val(data.productKind);
                     form.render();
                     layer.open({
                         type : 1,

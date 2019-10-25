@@ -25,8 +25,11 @@
         <!-- 左侧导航区域 -->
         <div class="layui-side layui-bg-black">
             <div class="layui-side-scroll">
-                <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                <ul class="layui-nav layui-nav-tree" lay-filter="">
                     <li class="layui-nav-item layui-nav-itemed">
+                        <a class="" href="">
+                            公积金管理中心
+                        </a>
                         <dl class="layui-nav-child">
                             <dd>
                                 <a href="<%=request.getContextPath() %>/test/page5" target="pageCenter">单位登记申请</a>
@@ -45,6 +48,25 @@
                             </dd>
                             <dd>
                                 <a href="<%=request.getContextPath() %>/" target="pageCenter">单位编辑汇缴清册</a>
+                            </dd>
+                            <dd>
+                                <a href="<%=request.getContextPath() %>/" target="pageCenter">单位登记信息变更功能</a>
+                            </dd>
+                            <dd>
+                                <a href="<%=request.getContextPath() %>/" target="pageCenter">单位开户信息变更功能</a>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a class="" href="">
+                            公积金联名卡制卡情况
+                        </a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a href="<%=request.getContextPath() %>/" target="pageCenter">已制卡人员名单</a>
+                            </dd>
+                            <dd>
+                                <a href="<%=request.getContextPath() %>/" target="pageCenter">未制卡人员名单</a>
                             </dd>
                         </dl>
                     </li>

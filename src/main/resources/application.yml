@@ -18,7 +18,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: 123456
-    url: jdbc:mysql://123:3306/gjj?characterEncoding=utf-8
+    url: jdbc:mysql://192.168.124.6:3306/gjj?characterEncoding=utf-8
     type: com.alibaba.druid.pool.DruidDataSource
     tomcat:
       max-active: 20
