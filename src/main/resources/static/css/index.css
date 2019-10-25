@@ -1,6 +1,5 @@
-#body{
+body{
     background-color: #F8F8F8;
-    height: 2000px;
     overflow: auto;
 }
 #header{

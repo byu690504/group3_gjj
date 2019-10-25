@@ -15,7 +15,7 @@
     <script src="<%=request.getContextPath() %>/layui/layui.all.js"></script>
 </head>
 <body class="layui-layout-body">
-    <div id="body">
+    <div>
         <div id="header">
             <span>北京住房公积金网</span>
         </div>

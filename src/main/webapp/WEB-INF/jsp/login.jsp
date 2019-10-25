@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: kaiguan
@@ -7,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>单位用户登录</title>
@@ -15,101 +15,106 @@
     <script src="<%=request.getContextPath() %>/js/jquery.min.js"></script>
     <script src="<%=request.getContextPath() %>/layui/layui.all.js"></script>
 </head>
-<script>
+<script type="">
     $(function () {
-        $("#cclogin").click(function () {
-            $("#clogin").show();
-            $("#clogin").siblings().hide();
+        $("#caLogin").click(function () {
+            $("#cLogin").show();
+            $("#cLogin").siblings().hide();
         })
-        $("#ulogin").click(function () {
+        $("#usLogin").click(function () {
             $("#login").show();
             $("#login").siblings().hide();
         })
     })
 </script>
 <body class="layui-layout-body">
-    <div id="body">
+    <div>
         <div id="header">
             <span>单位用户登录 --> 输入登录信息</span>
         </div>
-        <div id="span1">
-            <button id="cclogin">CA证书登陆</button>
-            <button id="ulogin">单位用户登录</button>
+        <div id="select">
+            <button id="caLogin" class="layui-btn layui-btn-warm">CA证书登陆</button>
+            <button id="usLogin" class="layui-btn">单位用户登录</button>
         </div>
         <div>
-        <div id="login">
-            <form action="<%=request.getContextPath() %>/login/login" method="post" class="layui-form">
-                <input type="hidden" value="${msg}" id="msg">
-                <div class="layui-form-text layui-inline" id="span2">
-                    <c:if test="${error!=null}">
-                        <span>${error}</span>
-                    </c:if>
+            <div id="login">
+                <div id="span1">
+                    <span>单位用户登录</span>
                 </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">用户名</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="agentCode" id="agentName" required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                <form action="<%=request.getContextPath() %>/login/login" method="post" class="layui-form">
+                    <input type="hidden" value="${msg}" id="msg">
+                    <div class="layui-form-text layui-inline" id="error1">
+                        <c:if test="${error!=null}">
+                            <span>${error}</span>
+                        </c:if>
                     </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">密码</label>
-                    <div class="layui-input-inline">
-                        <input type="password" name="agentPassword" id="agentPassword" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">用户名</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="agentCode" id="agentName" required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                        </div>
                     </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">验证码</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="code" id="code" required lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input">
-                        <br>
-                        <img src="<%=request.getContextPath() %>/checkCodeServlet">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">密码</label>
+                        <div class="layui-input-inline">
+                            <input type="password" name="agentPassword" id="agentPassword" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                        </div>
                     </div>
-                </div>
-                <div class="layui-form-item">
-                    <div class="layui-input-block layui-input-inline">
-                        <button type="submit" class="layui-btn" lay-filter="">登录</button>
-                        <a href="<%=request.getContextPath() %>/login/toRegister" type="button" class="layui-btn">注册</a>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">验证码</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="code" id="code" required lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input">
+                            <br>
+                            <img src="<%=request.getContextPath() %>/checkCodeServlet">
+                        </div>
                     </div>
-                </div>
-            </form>
-        </div>
-        <div id="clogin" hidden>
-            <form action="<%=request.getContextPath() %>/login/login" method="post" class="layui-form">
-                <input type="hidden" value="${msg}" id="cmsg">
-                <div class="layui-form-text layui-inline" id="cspan2">
-                    <c:if test="${error!=null}">
-                        <span>${error}</span>
-                    </c:if>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">CA证书</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="agentCode" id="agentAuth" required lay-verify="required" placeholder="请输入CA证书" autocomplete="off" class="layui-input">
+                    <div class="layui-form-item">
+                        <div class="layui-input-block layui-input-inline">
+                            <button type="submit" class="layui-btn" lay-filter="">登录</button>
+                            <a href="<%=request.getContextPath() %>/login/toRegister" type="button" class="layui-btn layui-btn-primary">注册</a>
+                        </div>
                     </div>
+                </form>
+            </div>
+            <div id="cLogin" hidden>
+                <div id="span2">
+                    <span>CA证书登陆</span>
                 </div>
-                <%--<div class="layui-form-item">
-                    <label class="layui-form-label">密码</label>
-                    <div class="layui-input-inline">
-                        <input type="password" name="agentPassword" id="agentPassword" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                <form action="<%=request.getContextPath() %>/login/login" method="post" class="layui-form">
+                    <input type="hidden" value="${msg}" id="cmsg">
+                    <div class="layui-form-text layui-inline" id="error2">
+                        <c:if test="${error!=null}">
+                            <span>${error}</span>
+                        </c:if>
                     </div>
-                </div>--%>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">验证码</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="code" id="ccode" required lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input">
-                        <br>
-                        <img src="<%=request.getContextPath() %>/checkCodeServlet">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">CA证书</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="agentCode" id="agentAuth" required lay-verify="required" placeholder="请输入CA证书" autocomplete="off" class="layui-input">
+                        </div>
                     </div>
-                </div>
-                <div class="layui-form-item">
-                    <div class="layui-input-block layui-input-inline">
-                        <input type="submit" class="layui-btn" value="登录">
-                        <!--<input type="reset" class="layui-btn" value="重置">-->
-                        <a href="<%=request.getContextPath() %>/login/toRegister" type="button" class="layui-btn">注册</a>
+                    <%--<div class="layui-form-item">
+                        <label class="layui-form-label">密码</label>
+                        <div class="layui-input-inline">
+                            <input type="password" name="agentPassword" id="agentPassword" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>--%>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">验证码</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="code" id="ccode" required lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input">
+                            <br>
+                            <img src="<%=request.getContextPath() %>/checkCodeServlet">
+                        </div>
                     </div>
-                </div>
-            </form>
-        </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block layui-input-inline">
+                            <input type="submit" class="layui-btn layui-btn-warm" value="登录">
+                            <a href="<%=request.getContextPath() %>/login/toRegister" type="button" class="layui-btn layui-btn-primary">注册</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
     <script type="text/javascript">

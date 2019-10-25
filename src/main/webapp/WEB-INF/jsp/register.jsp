@@ -15,7 +15,7 @@
     <script src="<%=request.getContextPath() %>/layui/layui.all.js" charset="utf-8"></script>
 </head>
 <body>
-    <div id="body">
+    <div>
         <div id="header">
             <span>单位用户注册 --> 录入注册信息</span>
         </div>
