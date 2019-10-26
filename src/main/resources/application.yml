@@ -17,12 +17,14 @@ spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
+<<<<<<< HEAD
     password: 123456
     url: jdbc:mysql://192.168.124.6:3306/gjj?characterEncoding=utf-8&useUnicode=true&useSSL=true&serverTimezone=UTC
+=======
+    password:
+    url: jdbc:mysql://123:3306/gjj?characterEncoding=utf-8
+>>>>>>> 1f3725f60aa844297115a92bc9e8eba29be15c2d
     type: com.alibaba.druid.pool.DruidDataSource
-    tomcat:
-      max-active: 20
-      max-wait: 60000
   mvc:
     view:
       prefix: /WEB-INF/jsp/

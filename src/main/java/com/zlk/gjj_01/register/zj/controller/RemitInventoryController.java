@@ -11,8 +11,8 @@ import com.zlk.gjj_01.register.util.DepositeBaseUtil;
 import com.zlk.gjj_01.register.util.Pagination;
 import com.zlk.gjj_01.register.zj.dao.RemitInventoryDao;
 import com.zlk.gjj_01.register.zj.dao.SecondAssistMessageDao;
-import com.zlk.gjj_01.register.zj.dao.UnitOpenAccountDao;
 import com.zlk.gjj_01.register.zj.service.RemitInventoryService;
+import com.zlk.gjj_01.register.zzw.dao.UnitOpenAccountDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -71,9 +71,8 @@ public class RemitInventoryController {
     @RequestMapping(value = "/add")
     public String add(HttpServletRequest request,RemitInventory remitInventory,SecondAssistMessage secondAssistMessage){
         UnitRegister unitRegister=new UnitRegister();
-        /*String urId= (String) request.getSession().getAttribute("urId");*/
-        unitRegister.setUnitRegisterId("2");
-        /*unitRegister.setUnitRegisterId(urId);*/
+        String urId= (String) request.getSession().getAttribute("urId");
+        unitRegister.setUnitRegisterId(urId);
         SecondAssistMessage sec = secondAssistMessageDao.findSecBySecCode(secondAssistMessage.getDeptCode());
         secondAssistMessage.setSecondAssistMessageId(sec.getSecondAssistMessageId());
         remitInventory.setSecondAssistMessage(secondAssistMessage);

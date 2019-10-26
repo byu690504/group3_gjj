@@ -2,7 +2,9 @@ package com.zlk.gjj_01.register.lfx.controller;
 
 import com.zlk.gjj_01.register.entity.Agent;
 import com.zlk.gjj_01.register.entity.Unit;
+import com.zlk.gjj_01.register.entity.UnitRegister;
 import com.zlk.gjj_01.register.lfx.dao.AgentDao;
+import com.zlk.gjj_01.register.lfx.dao.UnitRegisterDao;
 import com.zlk.gjj_01.register.lfx.service.LoginService;
 import com.zlk.gjj_01.register.util.AgentCodeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +25,7 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
     @Autowired
-    private AgentDao agentDao;
+    private UnitRegisterDao unitRegisterDao;
 
     @RequestMapping(value = "/toIndex")
     public String toIndex(){
@@ -40,16 +42,12 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/register")
-    /*@ResponseBody*/
     public ModelAndView register(Agent agent, Unit unit, HttpServletRequest request, String code){
         ModelAndView mv=new ModelAndView();
         String checkCode =(String)request.getSession().getAttribute("checkCode");
-        checkCode="1";
-        code=checkCode;
+        /*checkCode="1";
+        code=checkCode;*/
         if(checkCode.toLowerCase().equals(code.toLowerCase())){
-            /*agent.setAgentName("lfx");
-            agent.setCardName("身份证");
-            agent.setCardNumber("111111111444444444");*/
             List<Agent> agentList = loginService.findAll();
             for(Agent a:agentList){
                 if(a.getCardNumber().equals(agent.getCardNumber())){
@@ -58,10 +56,6 @@ public class LoginController {
                     return mv;
                 }
             }
-            /*agent.setAgentPhone("11111111111");
-            unit.setUnitEmail("1111111111@qq.com");
-            unit.setUnitName("阿里巴巴");
-            agent.setAgentPassword("lfx");*/
             for(;;) {
                 String agentCode=AgentCodeUtil.getAgentCode();
                 Agent agent1 = loginService.findAgentByAgentCode(agentCode);
@@ -84,28 +78,40 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/login")
-    /*@ResponseBody*/
     public String login(Agent agent,HttpServletRequest request,String code,Map map){
         String checkCode=(String) request.getSession().getAttribute("checkCode");
-        checkCode="1";
-        code=checkCode;
-        if(checkCode.toLowerCase().equals(code.toLowerCase())){
-            /*agent.setAgentCode("8301193716");
-            agent.setAgentPassword("lfx1");*/
-            Agent agent1 = loginService.findAgentByAgentCode(agent.getAgentCode());
-            if(agent1==null){
-            /*agent.setAgentCode("8301193716");
-            agent.setAgentPassword("lfx1");
-            String agentPassword = loginService.findAgentByAgentCode(agent.getAgentCode());
-            if(agentPassword==null){*/
-                map.put("error","该用户代码不存在");
-                return "login";
-            }else if(!(agent1.getAgentPassword()).equals(agent.getAgentPassword())){
-                map.put("error","密码错误");
-                return "login";
+        /*checkCode="1";
+        code=checkCode;*/
+        if(checkCode.toLowerCase().equals(code.toLowerCase())) {
+            if(agent.getAgentAuth()==null){
+                Agent agent1 = loginService.findAgentByAgentCode(agent.getAgentCode());
+                if (agent1 == null) {
+                    map.put("error", "该用户代码不存在");
+                    return "login";
+                } else if (!(agent1.getAgentPassword()).equals(agent.getAgentPassword())) {
+                    map.put("error", "密码错误");
+                    return "login";
+                } else {
+                    UnitRegister ur = unitRegisterDao.findUrByAgentName(agent1.getAgentName());
+                    if(ur!=null){
+                        request.getSession().setAttribute("urId", ur.getUnitRegisterId());
+                    }
+                    request.getSession().setAttribute("agent", agent1.getAgentName());
+                    return "centre";
+                }
             }else {
-                request.getSession().setAttribute("agent", agent1.getAgentName());
-                return "centre";
+                Agent agent1 = loginService.findAgentByAgentAuth(agent.getAgentAuth());
+                if(agent1==null){
+                    map.put("error","该CA证书不存在");
+                    return "login";
+                }else {
+                    UnitRegister ur = unitRegisterDao.findUrByAgentName(agent1.getAgentName());
+                    if(ur!=null){
+                        request.getSession().setAttribute("urId", ur.getUnitRegisterId());
+                    }
+                    request.getSession().setAttribute("agent", agent1.getAgentName());
+                    return "centre";
+                }
             }
         }else {
             map.put("error","验证码错误");
