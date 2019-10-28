@@ -62,9 +62,16 @@ public class SecondAssistMessageController {
     }
     @RequestMapping(value = "/update")
     @ResponseBody
-    public Map<String,Object> update(String secondAssistMessageId){
-        List<SecondAssistMessage> secList = secondAssistMessageDao.findSecById(secondAssistMessageId);
-        return null;
+    public ModelAndView update(String secondAssistMessageId){
+        ModelAndView mv=new ModelAndView();
+        Integer update=secondAssistMessageService.updateSecondAssistMassage(secondAssistMessageId);
+        if(update==1){
+            mv.addObject("msg","修改成功");
+            mv.setViewName("secondaryManage");
+            return mv;
+        }else{
+            return null;
+        }
     }
     @RequestMapping(value = "/delete")
     @ResponseBody
@@ -72,7 +79,6 @@ public class SecondAssistMessageController {
         //联表查询 两个表
         //判断是否为空
         //调用方法 再删除
-        /*secondAssistMessageId="402869816df37044016df37163d60000";*/
         List<RemitInventory> remList=remitInventoryDao.findRemBySecId(secondAssistMessageId);
         if(remList.size()!=0){
             map.put("error","仍有职工在该部门，不允许删除，到部门维护中修改后再删除");
@@ -82,6 +88,6 @@ public class SecondAssistMessageController {
             secondAssistMessageDao.deleteById(secondAssistMessageId);
             System.out.println("删除成功");
         }
-        return null;
+        return "secondaryManage";
     }
 }

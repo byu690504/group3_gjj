@@ -12,7 +12,7 @@ import java.util.List;
 
 @Repository
 public interface RemitInventoryDao extends JpaRepository<RemitInventory,String> {
-    //通过二级辅助信息查找
+    //通过二级辅助信息id查找
     @Query("from RemitInventory rem where rem.secondAssistMessage.secondAssistMessageId=?1")
     List<RemitInventory> findRemBySecId(String secId);
     //通过员工姓名查找缴费记录
@@ -27,16 +27,6 @@ public interface RemitInventoryDao extends JpaRepository<RemitInventory,String> 
     //通过缴费号查找员工身份证号
     @Query("select r.empCardNumber from RemitInventory r where r.remitInventoryId=?1")
     String findNumById(String remId);
-    /*//分页查询数据
-    @Transactional
-    @Modifying
-    @Query(value = "select * from remit_inventory limit 0,1",nativeQuery = true)
-    List<RemitInventory> findRemitInventoryLimit(Integer startPage, Integer limit);
-    //分页查询总数
-    @Transactional
-    @Modifying
-    @Query(value = "select count(remit_inventory_id) from remit_inventory limit 0,1",nativeQuery = true)
-    Integer findRemitInventoryCount(Integer startPage, Integer limit);*/
     @Query("from RemitInventory r where r.record=?1")
     List<RemitInventory> findByRecord(String record);
 }

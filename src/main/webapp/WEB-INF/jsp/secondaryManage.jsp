@@ -136,7 +136,7 @@
                     form.render();
                     layer.open({
                         type : 1,
-                        title : '修改部门',
+                        title : '编辑二级管理部门',
                         area : '420px',
                         moveType : 1,
                         resize : false,
@@ -152,7 +152,7 @@
                     form.render();
                     layer.open({
                         type : 1,
-                        title : '添加部门',
+                        title : '添加二级管理部门',
                         area : ['70%','70%'],
                         moveType : 1,
                         resize : false,

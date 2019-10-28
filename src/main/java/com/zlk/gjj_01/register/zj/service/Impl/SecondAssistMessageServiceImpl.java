@@ -22,4 +22,9 @@ public class SecondAssistMessageServiceImpl implements SecondAssistMessageServic
     public Integer findSecondCount(Pagination pagination) {
         return secondAssistMessageMapper.findSecondCount(pagination);
     }
+
+    @Override
+    public Integer updateSecondAssistMassage(String secondAssistMessageId) {
+        return secondAssistMessageMapper.updateSecondAssistMassage(secondAssistMessageId);
+    }
 }
