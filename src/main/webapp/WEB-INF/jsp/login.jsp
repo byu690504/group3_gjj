@@ -15,33 +15,22 @@
     <script src="<%=request.getContextPath() %>/js/jquery.min.js"></script>
     <script src="<%=request.getContextPath() %>/layui/layui.js"></script>
 </head>
-<script type="">
+<script type="text/javascript">
     $(function () {
         $("#caLogin").click(function () {
             $("#cLogin").show();
             $("#cLogin").siblings().hide();
-        })
+        });
         $("#usLogin").click(function () {
             $("#login").show();
             $("#login").siblings().hide();
-        })
+        });
         $("#imgCode").click(function () {
             var time = new Date().getTime();
             $("#imgCode").attr("src", "<%=request.getContextPath()%>/checkCodeServlet")
         });
-    })
-</script>
-<%--<script type="text/javascript">
-    layui.use(['form'], function(){
-        var form = layui.form;
-        form.render();
-        var laydate = layui.laydate;
-        //监听提交
-        form.on('submit()', function(data){
-            return true;
-        });
     });
-</script>--%>
+</script>
 <body class="layui-layout-body">
     <div>
         <div id="header">
@@ -135,6 +124,7 @@
     <script type="text/javascript">
         layui.use('form', function(){
             var form = layui.form;
+            form.render();
             //监听提交
             form.on('submit(sub)', function(data){
                 return true;

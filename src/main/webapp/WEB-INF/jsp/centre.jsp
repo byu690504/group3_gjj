@@ -60,10 +60,10 @@
                                 </ol>
                             </dd>
                             <dd>
-                                <a href="<%=request.getContextPath() %>/" target="pageCenter">单位开户信息变更功能</a>
+                                <a href="<%=request.getContextPath() %>/test/page12" target="pageCenter">单位登记信息变更功能</a>
                             </dd>
-                        </dl>
-                    </li>
+                            <dd>
+                                <a href="<%=request.getContextPath() %>/" target="pageCenter">单位开户信息变更功能</a>
                             </dd>
                         </dl>
                     </li>

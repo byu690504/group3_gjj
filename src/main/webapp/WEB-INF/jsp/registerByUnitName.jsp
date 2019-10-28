@@ -21,47 +21,45 @@
             <span>单位用户登记申请 --> 如已登记请确认单位名称</span>
         </div>
         <form action="<%=request.getContextPath() %>/unitRegister/beforeRegister" method="post" class="layui-form">
-
-        <div id="registerByUnitName">
-            <div id="span1">
-                <span>确认单位名称</span>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">单位名称</label>
-                <div class="layui-input-inline">
-                    <input type="text" value="${unitName}" name="unitName" id="unitName" lay-verify="required" placeholder="请输入单位名称" autocomplete="off" class="layui-input">
+            <div id="registerByUnitName">
+                <div id="span1">
+                    <span>确认单位名称</span>
                 </div>
-            </div>
-            <div class="layui-form-text layui-inline">
-                <c:if test="${msg!=null}">
-                    <span>${msg}</span>
-                </c:if>
-            </div></br>
-            <div class="layui-form-text layui-inline">
-                <c:if test="${urId!=null}">
-                    <span>单位登记号为:${urId}</span>
-                </c:if>
-            </div></br>
-            <div class="layui-form-text layui-inline">
-                <c:if test="${uName!=null}">
-                    <span>单位名称为:${uName}</span>
-                </c:if>
-            </div></br>
-            <div class="layui-form-text layui-inline">
-                <c:if test="${uCode!=null}">
-                    <span>组织机构代码为:${uCode}</span>
-                </c:if>
-            </div>
-
+                <div class="layui-form-item">
+                    <label class="layui-form-label">单位名称</label>
+                    <div class="layui-input-inline">
+                        <input type="text" value="${unitName}" name="unitName" id="unitName" lay-verify="required" placeholder="请输入单位名称" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-text layui-inline">
+                    <c:if test="${msg!=null}">
+                        <span>${msg}</span>
+                    </c:if>
+                </div></br>
+                <div class="layui-form-text layui-inline">
+                    <c:if test="${urId!=null}">
+                        <span>单位登记号为:${urId}</span>
+                    </c:if>
+                </div></br>
+                <div class="layui-form-text layui-inline">
+                    <c:if test="${uName!=null}">
+                        <span>单位名称为:${uName}</span>
+                    </c:if>
+                </div></br>
+                <div class="layui-form-text layui-inline">
+                    <c:if test="${uCode!=null}">
+                        <span>组织机构代码为:${uCode}</span>
+                    </c:if>
+                </div>
                 <div class="layui-form-item">
                     <div class="layui-input-block layui-input-inline">
-                        <button type="submit" class="layui-btn layui-btn-norma" lay-submit lay-filter="sub"/>提交
+                        <button type="submit" class="layui-btn" lay-submit lay-filter="sub"/>提交
                         <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                     </div>
                 </div>
-        </div>
-            </form>
-        </div>
+            </div>
+        </form>
+    </div>
     <script type="text/javascript">
         layui.use('form', function(){
             var form = layui.form;

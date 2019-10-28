@@ -27,7 +27,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">单位登记号</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="unitRegisterId" id="unitRegisterId" lay-verify="required|number" placeholder="请输入单位登记号" autocomplete="off" class="layui-input">
+                        <input type="text" name="unitRegisterId" id="unitRegisterId" lay-verify="required|NumAndAbc" placeholder="请输入单位登记号" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -55,7 +55,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">资金来源</label>
                     <div class="layui-input-inline">
-                        <select name="moneySource" required lay-verify="required">
+                        <select name="moneySource" lay-verify="required">
                             <option value="">请选择资金来源</option>
                             <option value="单位自筹">单位自筹</option>
                             <option value="财政拨款">财政拨款</option>
@@ -86,22 +86,21 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">业务经办部门</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="businessAgentDept" id="businessAgentDept" required lay-verify="required" placeholder="请输入业务经办部门" autocomplete="off" class="layui-input">
-
+                        <input type="text" name="businessAgentDept" id="businessAgentDept" lay-verify="required" placeholder="请输入业务经办部门" autocomplete="off" class="layui-input">
                     </div>
                 </div>
-                <%--<div class="layui-form-item">
+                <div class="layui-form-item">
                     <label class="layui-form-label">联系电话</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="agentName" id="agentName" lay-verify="required|phone" placeholder="请输入联系电话" autocomplete="off" class="layui-input">
+                        <input type="text" name="" id="" lay-verify="phone" placeholder="请输入联系电话" autocomplete="off" class="layui-input">
                     </div>
-                </div>--%>
-                <%--<div class="layui-form-item">
+                </div>
+                <div class="layui-form-item">
                     <label class="layui-form-label">单位预算代码</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="agentName" id="agentName" lay-verify="required|number" placeholder="请输入单位预算代码" autocomplete="off" class="layui-input">
+                        <input type="text" name="" id="" lay-verify="number" placeholder="请输入单位预算代码" autocomplete="off" class="layui-input">
                     </div>
-                </div>--%>
+                </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">发薪日期</label>
                     <div class="layui-input-inline">
@@ -168,7 +167,6 @@
                     <label class="layui-form-label">跨年清册核定月份</label>
                     <div class="layui-input-inline">
                         <select name="approvedMonthOfCrossYearInventory" lay-verify="required">
-
                             <option value="">请选择核定月份</option>
                             <option value="1月">1月</option>
                             <option value="7月">7月</option>
@@ -203,7 +201,6 @@
                     <label class="layui-form-label">是否接受中心信息服务</label>
                     <div class="layui-input-inline">
                         <select name="acceptTheInformationServiceOfTheCenter" lay-verify="required">
-
                             <option value="">请选择是否接受</option>
                             <option value="是">是</option>
                             <option value="否">否</option>
@@ -218,105 +215,160 @@
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">缴款方式</label>
-                    <div class="layui-input-block" name="remitWay" id="payMethod" >
-                        <input type="radio" name="t" value="委托收款" title="委托收款" lay-filter="aaa"/>
-                        <input type="radio" name="t" value="主动汇款" title="主动汇款" lay-filter="aaa"/>
-                        <input type="radio" name="t" value="转账支票" title="转账支票" lay-filter="aaa"/>
-                        <input type="radio" name="t" value="现金刷卡" title="现金刷卡" lay-filter="aaa"/>
-                        <input type="radio" name="t" value="财政统发" title="财政统发" lay-filter="aaa"/>
+                    <div class="layui-input-block" name="">
+                        <input type="radio" name="" id="entrustFun" lay-filter=""/>
+                        <input type="radio" name="" id="accordFun" lay-filter=""/>
+                        <input type="radio" name="" id="transferFun" lay-filter=""/>
+                        <input type="radio" name="" id="cashFun" lay-filter=""/>
+                        <input type="radio" name="" id="financeFun" lay-filter=""/>
                     </div>
                 </div>
-                <div class="wt">
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">委托收款单位名称</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="proceedsUnitName" id="proceedsUnitName" lay-verify="" placeholder="请输入单位名称" autocomplete="off" class="layui-input">
-                        </div>
+                <div id="entrust" hidden>
+                    <div id="entrustSpan">
+                        <span>委托收款信息</span>
                     </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">委托收款单位账号</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="proceedsUnitAccount" id="proceedsUnitAccount" lay-verify="" placeholder="请输入单位账号" autocomplete="off" class="layui-input">
+                    <form action="<%=request.getContextPath() %>/" method="post" class="layui-form">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">委托收款单位名称</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="proceedsUnitName" id="proceedsUnitName" lay-verify="required" placeholder="请输入单位名称" autocomplete="off" class="layui-input">
+                            </div>
                         </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">托收单位开户银行名称</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="proceedsUnitBank" id="proceedsUnitBank" lay-verify="" placeholder="请输入开户银行名称" autocomplete="off" class="layui-input">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">委托收款单位账号</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="proceedsUnitAccount" id="proceedsUnitAccount" lay-verify="required|number" placeholder="请输入单位账号" autocomplete="off" class="layui-input">
+                            </div>
                         </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">银行交换号</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="bankNumberChange" id="bankNumberChange" lay-verify="" placeholder="请输入银行交换号" autocomplete="off" class="layui-input">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">托收单位开户银行名称</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="proceedsUnitBank" id="proceedsUnitBank" lay-verify="required" placeholder="请输入开户银行名称" autocomplete="off" class="layui-input">
+                            </div>
                         </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">支付系统号</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="paySystemNumber" id="paySystemNumber" lay-verify="" placeholder="请输入支付系统号" autocomplete="off" class="layui-input">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">银行交换号</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="bankNumberChange" id="bankNumberChange" lay-verify="required|number" placeholder="请输入银行交换号" autocomplete="off" class="layui-input">
+                            </div>
                         </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">托收日期</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="proceedsDate" id="proceedsDate" lay-verify="" placeholder="请输入托收日期" autocomplete="off" class="layui-input">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">支付系统号</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="paySystemNumber" id="paySystemNumber" lay-verify="required" placeholder="请输入支付系统号" autocomplete="off" class="layui-input">
+                            </div>
                         </div>
-                    </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">托收日期</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="proceedsDate" id="proceedsDate" lay-verify="required" placeholder="请输入托收日期" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button type="submit" class="layui-btn" lay-submit lay-filter="sub">登录</button>
+                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="zd">
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">汇款单位名称</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="remitUnitName" id="remitUnitName" lay-verify="" placeholder="请输入汇款单位名称" autocomplete="off" class="layui-input">
-                        </div>
+                <div id="accord" hidden>
+                    <div id="accordSpan">
+                        <span>主动汇款信息</span>
                     </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">汇款单位开户银行</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="remitUnitBank" id="remitUnitBank" lay-verify="" placeholder="请输入开户银行名称" autocomplete="off" class="layui-input">
+                    <form action="<%=request.getContextPath() %>/" method="post" class="layui-form">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">汇款单位名称</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="remitUnitName" id="remitUnitName" lay-verify="required" placeholder="请输入汇款单位名称" autocomplete="off" class="layui-input">
+                            </div>
                         </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">汇款账号</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="remitUnitAccount" id="remitUnitAccount" lay-verify="" placeholder="请输入汇款账号" autocomplete="off" class="layui-input">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">汇款单位开户银行</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="remitUnitBank" id="remitUnitBank" lay-verify="required|number" placeholder="请输入开户银行名称" autocomplete="off" class="layui-input">
+                            </div>
                         </div>
-                    </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">汇款账号</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="remitUnitAccount" id="remitUnitAccount" lay-verify="required|number" placeholder="请输入汇款账号" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button type="submit" class="layui-btn" lay-submit lay-filter="sub">登录</button>
+                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-               <%-- <div class="zz">
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">单位开户银行</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="agentName" id="agentName" lay-verify="" placeholder="请输入单位开户银行" autocomplete="off" class="layui-input">
-                        </div>
+                <div id="transfer" hidden>
+                    <div id="transferSpan">
+                        <span>转账支票信息</span>
                     </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">账号</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="agentName" id="agentName" lay-verify="" placeholder="请输入账号" autocomplete="off" class="layui-input">
+                    <form action="<%=request.getContextPath() %>/" method="post" class="layui-form">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">单位开户银行</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="" id="" lay-verify="required|number" placeholder="请输入单位开户银行" autocomplete="off" class="layui-input">
+                            </div>
                         </div>
-                    </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">账号</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="" id="" lay-verify="required|number" placeholder="请输入账号" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button type="submit" class="layui-btn" lay-submit lay-filter="sub">登录</button>
+                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="xj">
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">缴款网点</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="agentName" id="agentName" lay-verify="" placeholder="请输入缴款网点" autocomplete="off" class="layui-input">
-                        </div>
+                <div id="cash" hidden>
+                    <div id="cashSpan">
+                        <span>现金刷卡信息</span>
                     </div>
-                </div>--%>
-                <div class="cz">
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">统发单位名称</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="t" id="appropriationUnit" lay-verify="" placeholder="请输入统发单位名称" autocomplete="off" class="layui-input">
+                    <form action="<%=request.getContextPath() %>/" method="post" class="layui-form">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">缴款网点</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="" id="" lay-verify="required" placeholder="请输入缴款网点" autocomplete="off" class="layui-input">
+                            </div>
                         </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button type="submit" class="layui-btn" lay-submit lay-filter="sub">登录</button>
+                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div id="finance" hidden>
+                    <div id="financeSpan">
+                        <span>财政统发信息</span>
                     </div>
+                    <form action="<%=request.getContextPath() %>/" method="post" class="layui-form">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">统发单位名称</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="" id="appropriationUnit" lay-verify="required" placeholder="请输入统发单位名称" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button type="submit" class="layui-btn" lay-submit lay-filter="sub">登录</button>
+                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
                 <div class="layui-form-item">
-                    <div class="layui-input-block layui-input-inline">
-                        <button type="submit" class="layui-btn" lay-submit lay-filter="">提交</button>
+                    <div class="layui-input-block">
+                        <button type="submit" class="layui-btn" lay-submit lay-filter="sub">提交</button>
                         <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                     </div>
                 </div>
@@ -327,11 +379,44 @@
         layui.use('form', function(){
             var form = layui.form;
             //监听提交
-            form.on('submit()', function(data){
+            form.on('submit(sub)', function(data){
                 return true;
             });
         });
-        layui.use('form', function () {
+        $(function () {
+            $("#entrustFun").click(function () {
+                $("#entrust").show();
+                $("#entrust").siblings().hide();
+            });
+            $("#accordFun").click(function () {
+                $("#accord").show();
+                $("#accord").siblings().hide();
+            });
+            $("#transferFun").click(function () {
+                $("#transfer").show();
+                $("#transfer").siblings().hide();
+            });
+            $("#cashFun").click(function () {
+                $("#cash").show();
+                $("#cash").siblings().hide();
+            });
+            $("#financeFun").click(function () {
+                $("#finance").show();
+                $("#finance").siblings().hide();
+            });
+        });
+        layui.use(['form','jquery'], function () {
+            var form=layui.form;
+            var $ = layui.jquery;
+            form.render();
+            form.verify({
+                NumAndAbc:[
+                    /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{30,40}$/,
+                    '单位登记号须为字母和数字的组合'
+                ]
+            });
+        });
+        /*layui.use('form', function () {
             var form = layui.form;
             form.on('radio(aaa)', function (data) {
                 if ($('#payMethod input[name="t"]:checked ').val() == "委托收款") {
@@ -366,7 +451,7 @@
                 }
                 form.render();
             });
-        });
+        });*/
     </script>
 </body>
 </html>
