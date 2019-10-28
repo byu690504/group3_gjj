@@ -32,7 +32,7 @@
                 </div>
                 <div class="layui-form-item">
                     <div class="layui-input-block layui-input-inline">
-                        <button type="button" class="layui-btn layui-btn-norma" lay-submit lay-filter="sub">提交</button>
+                        <button type="submit" class="layui-btn" lay-submit lay-filter="sub">提交</button>
                         <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
             var form = layui.form;
             //监听提交
             form.on('submit(sub)', function(data){
-                return false;
+                return true;
             });
         });
     </script>

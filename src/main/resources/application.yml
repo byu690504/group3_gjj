@@ -17,6 +17,7 @@ spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
+<<<<<<< HEAD
     password: root
     url: jdbc:mysql://localhost:3306/gjj?characterEncoding=utf-8&useUnicode=true&useSSL=true&serverTimezone=UTC
 
@@ -30,6 +31,10 @@ spring:
       content-type: text/html
     #关掉缓存
     cache: false
+=======
+    password: 123456
+    url: jdbc:mysql://192.168.124.6:3306/gjj?characterEncoding=utf-8
+>>>>>>> 8c46f8996a767960e4e17d134cf6a2c5de85d4ca
     type: com.alibaba.druid.pool.DruidDataSource
   mvc:
     view:
@@ -42,4 +47,4 @@ spring:
           enabled: true
           paths: /**
 server:
-  port: 8080
+  port: 8081

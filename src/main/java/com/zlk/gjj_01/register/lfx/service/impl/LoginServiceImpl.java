@@ -40,6 +40,11 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
+    public String findUnitNameByAgentName(String agentName) {
+        return agentDao.findUnitNameByAgentName(agentName);
+    }
+
+    @Override
     public Agent findAgentByAgentCode(String agentCode) {
         return agentDao.findAgentByAgentCode(agentCode);
     }
