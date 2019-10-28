@@ -1,6 +1,7 @@
 package com.zlk.gjj_01.register.zzw.dao;
 
 import com.zlk.gjj_01.register.entity.Agent;
+import com.zlk.gjj_01.register.entity.Unit;
 import com.zlk.gjj_01.register.entity.UnitOpenAccount;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -31,4 +32,7 @@ public interface UnitOpenAccountDao extends JpaRepository<UnitOpenAccount, Strin
     Agent findAgentByAgentName(String agentName);
     @Query("from UnitOpenAccount u where u.unitRegister.unitRegisterId=?1")
     UnitOpenAccount findUoaIdByUrId(String unitRegisterId);
+
+    @Query("from Unit u where u.unitName=?1")
+    Unit findUnitByUnitName(String unitName);
 }

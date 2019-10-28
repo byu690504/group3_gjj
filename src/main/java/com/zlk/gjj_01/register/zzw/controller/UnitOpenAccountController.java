@@ -91,20 +91,25 @@ public class UnitOpenAccountController {
         return "unitOpenAccount";
     }
 
-    @RequestMapping(value = "/toAgentAuth")
+    @RequestMapping(value = "/toUnitOpenAccount")
     @ResponseBody
-    public ModelAndView toAgentAuth(HttpServletRequest request){
-        ModelAndView mv=new ModelAndView();
+    public ModelAndView toUnitOpenAccount(HttpServletRequest request){
+        ModelAndView mv = new ModelAndView();
+
         String agentName = (String)request.getSession().getAttribute("agent");
+        String unitName = (String)request.getSession().getAttribute("unit");
         String urId = (String) request.getSession().getAttribute("urId");
         if(urId==null){
             mv.addObject("msg","请先进行单位登记");
             mv.setViewName("registerByUnitName");
             return mv;
         }
+        String appropriationUnit = (String) request.getSession().getAttribute("unitOpenAccount");
         Agent agent = unitOpenAccountService.findAgentByAgentName(agentName);
         mv.addObject("urId",urId);
+        //mv.addObject("unitName",unit.getUnitName());
         mv.addObject("aName",agent.getAgentName());
+        mv.addObject("aPhone",agent.getAgentPhone());
         mv.addObject("aCardName",agent.getCardName());
         mv.addObject("aCardNumber",agent.getCardNumber());
         mv.addObject("aPhone",agent.getAgentPhone());
