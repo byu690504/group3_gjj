@@ -55,7 +55,7 @@
                         <input type="radio" name="t" value="非证书用户" title="非证书用户" lay-filter="aaa"/>
                     </div>
                 </div>
-                <div class="zs">
+                <div class="check1">
                     <div class="layui-form-item">
                         <label class="layui-form-label">单位名称</label>
                         <div class="layui-input-inline">
@@ -146,30 +146,35 @@
             </form>
         </div>
     </div>
+
     <script type="text/javascript">
+        layui.use(['form','jquery'], function(){
+            var form = layui.form;
+            var $= layui.$;
+            form.on('radio(aaa)', function(data){
+                alert(data.value); //被点击的radio的value值
+                if(data.value == 1){
+                    $("#check1").show();
+                }else{
+                    $("#check1").hide();
+                }
+            });
+
+            form.on('radio(bbb)', function(data){
+                alert(data.value); //被点击的radio的value值
+                if(data.value == 1){
+                    $("#check2").show();
+                }else{
+                    $("#check2").hide();
+                }
+            });
+        });
+
         layui.use('form', function(){
             var form = layui.form;
             //监听提交
             form.on('submit(sub)', function(data){
                 return true;
-            });
-        });
-        layui.use('form', function () {
-            var form = layui.form;
-            form.on('radio(aaa)', function (data) {
-                if ($('#userType input[name="t"]:checked ').val() == "证书用户") {
-                    $(".zs").show();
-                }
-                else {
-                    $(".zs").hide();
-                }
-                if ($('#userType input[name="t"]:checked ').val() == "非证书用户") {
-                    $(".fzs").show();
-                }
-                else {
-                    $(".fzs").hide();
-                }
-                //form.render();
             });
         });
     </script>

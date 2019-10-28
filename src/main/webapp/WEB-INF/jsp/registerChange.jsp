@@ -5,6 +5,7 @@
   Time: 12:38
   To change this template use File | Settings | File Templates.
 --%>
+<%@ page isELIgnored="false"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -27,7 +28,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">单位名称</label>
                     <div class="layui-input-block">
-                        <input type="text" readonly value="${unitName}" name="unitName" id="unitName" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                        <input type="text" readonly value="${}" name="unitName" id="unitName" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -117,9 +118,6 @@
             var form=layui.form;
             var $ = layui.jquery;
             form.render();
-            form.verify({
-
-            });
         });
         layui.use(['form','laydate'], function() {
             var form = layui.form;
