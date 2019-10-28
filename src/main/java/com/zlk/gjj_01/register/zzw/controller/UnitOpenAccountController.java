@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
@@ -89,4 +90,26 @@ public class UnitOpenAccountController {
 
         return "unitOpenAccount";
     }
+
+    @RequestMapping(value = "/toAgentAuth")
+    @ResponseBody
+    public ModelAndView toAgentAuth(HttpServletRequest request){
+        ModelAndView mv=new ModelAndView();
+        String agentName = (String)request.getSession().getAttribute("agent");
+        String urId = (String) request.getSession().getAttribute("urId");
+        if(urId==null){
+            mv.addObject("msg","请先进行单位登记");
+            mv.setViewName("registerByUnitName");
+            return mv;
+        }
+        Agent agent = unitOpenAccountService.findAgentByAgentName(agentName);
+        mv.addObject("urId",urId);
+        mv.addObject("aName",agent.getAgentName());
+        mv.addObject("aCardName",agent.getCardName());
+        mv.addObject("aCardNumber",agent.getCardNumber());
+        mv.addObject("aPhone",agent.getAgentPhone());
+        mv.setViewName("agentPower");
+        return mv;
+    }
+
 }

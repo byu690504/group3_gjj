@@ -12,6 +12,11 @@ import javax.transaction.Transactional;
 
 @Repository
 public interface AgentDao extends JpaRepository<Agent,String> {
+    /**
+     *
+     * @param agentCode
+     * @return
+     */
     @Query("from Agent where agentCode=?1")
     Agent findAgentByAgentCode(String agentCode);
     @Transactional
@@ -20,4 +25,6 @@ public interface AgentDao extends JpaRepository<Agent,String> {
     Integer agentAuth(String cert,String agName);
     @Query("from Agent a where a.agentName=?1")
     Agent findAgentByAgentName(String agentName);
+    @Query("from Agent a where a.agentAuth=?1")
+    Agent findAgentByAgentAuth(String agentAuth);
 }

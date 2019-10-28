@@ -62,6 +62,16 @@
                 </div>
             </div>
             <div class="layui-form-item">
+                <label class="layui-form-label">证件名称</label>
+                <div class="layui-input-inline">
+                    <select name="record" lay-verify="required">
+                        <option value="">请选择是否办卡</option>
+                        <option value="是">是</option>
+                        <option value="否">否</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
                 <label class="layui-form-label">单位月缴存额</label>
                 <div class="layui-input-inline">
                     <input type="text" name="agentName" lay-verify="required|number" placeholder="请输入单位月缴存额" autocomplete="off" class="layui-input">
@@ -113,7 +123,7 @@
             </div>
             <div class="layui-form-item">
                 <div class="layui-input-block layui-input-inline">
-                    <button type="button" class="layui-btn layui-btn-norma" lay-submit lay-filter="sub">提交</button>
+                    <button type="submit" class="layui-btn layui-btn-norma" lay-submit lay-filter="sub">提交</button>
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
             </div>
@@ -214,7 +224,7 @@
             </div>
             <div class="layui-form-item">
                 <div class="layui-input-block layui-input-inline">
-                    <button type="button" class="layui-btn layui-btn-norma" lay-submit lay-filter="sub">提交</button>
+                    <button type="submit" class="layui-btn layui-btn-norma" lay-submit lay-filter="sub">提交</button>
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
             </div>
@@ -229,8 +239,9 @@
             var $ = layui.$;
             table.render({
                 elem : '#remitInventoryList',
-                url : '<%=request.getContextPath() %>/remit/list?record=${recode}',
+                url : '<%=request.getContextPath() %>/remit/list?record=${record}',
                 page : true,
+                height : 500,
                 cols : [ [
                     {field : 'remitInventoryId',title : '序号',align : 'center',width : 100},
                     {field : 'empNumber',title : '职工编号',align : 'center',width : 100},
@@ -239,6 +250,7 @@
                     {field : 'empCountry',title : '国别',align : 'center',width : 150},
                     {field : 'empCardNumber',title : '证件号码',align : 'center',width : 150},
                     {field : 'empDepositeBase',title : '缴存基数',align : 'center',width : 150},
+                    {field : 'record',title : '是否办卡',align : 'center',width : 150},
                     {field : '',title : '单位月缴存额',align : 'center',width : 150},
                     {field : '',title : '个人月缴存额',align : 'center',width : 150},
                     {field : '',title : '月缴存额合计',align : 'center',width : 150},
@@ -315,7 +327,7 @@
                     layer.open({
                         type : 1,
                         title : '添加职工汇缴信息',
-                        area : '420px',
+                        area : ['70%','70%'],
                         moveType : 1,
                         resize : false,
                         anim : 4,
@@ -333,7 +345,7 @@
             var form = layui.form;
             //监听提交
             form.on('submit(sub)', function(data){
-                return false;
+                return true;
             });
         });
 
