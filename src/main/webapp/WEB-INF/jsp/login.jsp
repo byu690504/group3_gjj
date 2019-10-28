@@ -74,7 +74,7 @@
                     </div>
                     <div class="layui-form-item">
                         <div class="layui-input-block layui-input-inline">
-                            <button type="submit" class="layui-btn layui-btn-norma" lay-submit lay-filter="sub">登录</button>
+                            <button type="submit" class="layui-btn" lay-submit lay-filter="sub">登录</button>
                             <a href="<%=request.getContextPath() %>/login/toRegister" type="button" class="layui-btn layui-btn-primary">注册</a>
                         </div>
                     </div>
@@ -94,7 +94,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">CA证书</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="agentCode" id="agentAuth" lay-verify="required" placeholder="请输入CA证书" autocomplete="off" class="layui-input">
+                            <input type="text" name="agentAuth" id="agentAuth" lay-verify="required" placeholder="请输入CA证书" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <%--<div class="layui-form-item">
