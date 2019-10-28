@@ -29,4 +29,8 @@ public interface UnitOpenAccountDao extends JpaRepository<UnitOpenAccount, Strin
     Integer agentAuth(String cert, String agName);
     @Query("from Agent a where a.agentName=?1")
     Agent findAgentByAgentName(String agentName);
+
+    //通过单位登记号查找开户号
+    @Query("from UnitOpenAccount u where u.unitRegister.unitRegisterId=?1")
+    UnitOpenAccount findUoaIdByUrId(String unitRegisterId);
 }
