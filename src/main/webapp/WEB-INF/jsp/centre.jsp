@@ -43,7 +43,7 @@
                                 </a>
                                 <ol class="layui-nav-child">
                                     <li><a href="<%=request.getContextPath() %>/unitOpenAccount/toUnitOpenAccount" target="pageCenter">单位开户</a></li>
-                                    <li><a href="<%=request.getContextPath() %>/" target="pageCenter">缴款方式管理</a></li>
+                                    <li><a href="<%=request.getContextPath() %>/test/page13" target="pageCenter">缴款方式管理</a></li>
                                 </ol>
                             </dd>
                             <dd>

@@ -15,11 +15,11 @@ body{
 }
 #span1{
     margin-top: -55px;
-    margin-left: 330px;
+    margin-left: 350px;
     margin-bottom: 30px;
     font-size: 20px;
 }
-#unitOpenAccount{
+#payMethod{
     margin-left: 170px;
     margin-top: 40px;
     background-color: #FFFFFF;
@@ -34,19 +34,6 @@ body{
 .layui-input-block button{
     margin-left: 200px;
 }
-#span2{
-    margin-top: 20px;
-    margin-left: 350px;
-    margin-bottom: 20px;
-    font-size: 15px;
-}
-#span3{
-    margin-top: 20px;
-    margin-left: 360px;
-    margin-bottom: 20px;
-    font-size: 15px;
-}
-/*
 #financeSpan{
     margin-top: 20px;
     margin-left: 350px;
@@ -76,4 +63,4 @@ body{
     margin-left: 350px;
     margin-bottom: 40px;
     font-size: 15px;
-}*/
+}
