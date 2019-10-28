@@ -27,20 +27,37 @@ public class LoginController {
     @Autowired
     private UnitRegisterDao unitRegisterDao;
 
+    /**
+     * 跳转到首页
+     * @return
+     */
     @RequestMapping(value = "/toIndex")
     public String toIndex(){
         return "index";
     }
+
+    /**
+     * 跳转到登陆页面
+     * @return
+     */
     @RequestMapping(value = "/toLogin")
     public String toLogin(){
         return "login";
     }
 
+    /**
+     * 跳转到注册页面
+     * @return
+     */
     @RequestMapping(value = "/toRegister")
     public String toRegister(){
         return "register";
     }
 
+    /**
+     * 注册页面点击注册
+     * @return
+     */
     @RequestMapping(value = "/register")
     public ModelAndView register(Agent agent, Unit unit, HttpServletRequest request, String code){
         ModelAndView mv=new ModelAndView();
@@ -77,6 +94,10 @@ public class LoginController {
         }
     }
 
+    /**
+     * 登陆页面点击登陆
+     * @return
+     */
     @RequestMapping(value = "/login")
     public String login(Agent agent,HttpServletRequest request,String code,Map map){
         String checkCode=(String) request.getSession().getAttribute("checkCode");
