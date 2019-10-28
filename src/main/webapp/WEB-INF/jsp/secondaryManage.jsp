@@ -50,7 +50,13 @@
     <div id="editForm" hidden="hidden" style="padding: 25px">
         <form action="<%=request.getContextPath() %>/second/update" method="post" class="layui-form">
             <div class="layui-input-inline">
-                <input type="hidden" class="layui-input" name="customId" id="customId">
+                <input type="hidden" class="layui-input" name="second_assist_message_id" id="second_assist_message_id">
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">部门编号</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="deptNumber" id="deptNumber" lay-verify="required|number" placeholder="请输入部门编号" autocomplete="off" class="layui-input">
+                </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">部门名称</label>
@@ -145,6 +151,16 @@
                         content : $('#editForm')
                     });
                 }
+                form.on('submit(sub)', function (obj) {
+                    $.ajax({
+                        type: "POST",
+                        url: "<%=request.getContextPath()%>/second/update?",
+                        success: function (msg) {
+                            layer.msg(msg);
+                        }
+                    });
+                    //alert();
+                });
             });
 
             table.on('toolbar(secondary)', function (obj) {

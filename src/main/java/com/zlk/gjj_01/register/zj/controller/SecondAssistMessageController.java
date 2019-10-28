@@ -13,8 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -47,7 +45,7 @@ public class SecondAssistMessageController {
         return map;
     }
     @RequestMapping(value = "/add")
-    public String add(HttpServletRequest httpServletRequesta,SecondAssistMessage secondAssistMessage){
+    public String add(HttpServletRequest httpServletRequest,SecondAssistMessage secondAssistMessage){
         /*SecondAssistMessage secondAssistMessage1=new SecondAssistMessage();
         *//*secondAssistMessage1.setDeptName("销售部3");
         secondAssistMessage1.setDeptCode("XS3");
@@ -62,16 +60,16 @@ public class SecondAssistMessageController {
     }
     @RequestMapping(value = "/update")
     @ResponseBody
-    public ModelAndView update(String secondAssistMessageId){
-        ModelAndView mv=new ModelAndView();
-        Integer update=secondAssistMessageService.updateSecondAssistMassage(secondAssistMessageId);
-        if(update==1){
-            mv.addObject("msg","修改成功");
-            mv.setViewName("secondaryManage");
-            return mv;
+    public String update(SecondAssistMessage secondAssistMessage){
+        //查询id
+        //根据id修改信息 保存
+        Integer sec = secondAssistMessageService.updateSec(secondAssistMessage.getSecondAssistMessageId());
+        if(sec != null){
+            System.out.println("修改成功！");
         }else{
-            return null;
+            System.out.println("修改成功！");
         }
+        return "secondaryManage";
     }
     @RequestMapping(value = "/delete")
     @ResponseBody
@@ -88,6 +86,6 @@ public class SecondAssistMessageController {
             secondAssistMessageDao.deleteById(secondAssistMessageId);
             System.out.println("删除成功");
         }
-        return "secondaryManage";
+        return "删除成功！";
     }
 }

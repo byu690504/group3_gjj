@@ -27,8 +27,14 @@
         select count(1) from remit_inventory
         <where>
             <if test="record!=null and record!='' ">
-                #{record}=record
+                record=#{record}
             </if>
         </where>
     </select>
+    <update id="updateRem" parameterType="com.zlk.gjj_01.register.entity.RemitInventory">
+        update remit_inventory set emp_number={#empNumber},emp_name={#empName},emp_card_name={#empCardName}
+        emp_country={#empCountry},emp_deposite_base={#empDepositeBase},unit_monthly_deposit={#unitMonthlyDeposit},
+        personal_monthly_deposit={#personalMonthlyDeposit},total_monthly_deposit={#totalMonthlyDeposit},
+        record={#record} where remit_inventory_id={#remitInventoryId}
+    </update>
 </mapper>

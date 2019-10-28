@@ -15,18 +15,11 @@ public interface RemitInventoryDao extends JpaRepository<RemitInventory,String> 
     //通过二级辅助信息id查找
     @Query("from RemitInventory rem where rem.secondAssistMessage.secondAssistMessageId=?1")
     List<RemitInventory> findRemBySecId(String secId);
-    //通过员工姓名查找缴费记录
-    @Query("select remitInventoryId from RemitInventory r where r.empName=?1")
-    List<RemitInventory> findRemByName(String empName);
-    //通过缴费号查找员工姓名
-    @Query("select r.empName from RemitInventory r where r.remitInventoryId=?1")
-    String findNameById(String remId);
-    //通过缴费号查找员工身份类型
-    @Query("select r.empCardName from RemitInventory r where r.remitInventoryId=?1")
-    String findCardNameById(String remId);
-    //通过缴费号查找员工身份证号
-    @Query("select r.empCardNumber from RemitInventory r where r.remitInventoryId=?1")
-    String findNumById(String remId);
+    //通过record查找
     @Query("from RemitInventory r where r.record=?1")
     List<RemitInventory> findByRecord(String record);
+    //通过id查找
+    @Query("update RemitInventory r set r.empName=?1,r.empNumber=?2,r.empCardNumber=?3,r.empCountry=?4," +
+            "r.record=?5,r.moneySource=?6,r.empCardName=?7 where r.remitInventoryId=?1")
+    void findRemById(RemitInventory remitInventory);
 }

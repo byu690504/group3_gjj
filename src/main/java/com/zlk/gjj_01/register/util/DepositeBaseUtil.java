@@ -10,7 +10,7 @@ import java.util.UUID;
 
 public class DepositeBaseUtil {
     //存缴基数
-    public static Integer mothod(){
+    /*public static Integer mothod(){
         //输入工资(缴存基数)
         int num=900;
         int personal = 0;
@@ -32,9 +32,9 @@ public class DepositeBaseUtil {
         }
         int unit= (int) (num * 0.12);
         return personal;
-    }
+    }*/
     //登录限制次数
-    public static void login(){
+    /*public static void login(){
         //判断剩余登录的机会
         int m=5;
         while (true){
@@ -59,7 +59,7 @@ public class DepositeBaseUtil {
                 m--;
             }
         }
-    }
+    }*/
     //生成随机id
     public static String getUUID() {
         UUID uuid = UUID.randomUUID();

@@ -2,6 +2,7 @@ package com.zlk.gjj_01.register.zj.service.Impl;
 
 import com.zlk.gjj_01.register.entity.SecondAssistMessage;
 import com.zlk.gjj_01.register.util.Pagination;
+import com.zlk.gjj_01.register.zj.dao.SecondAssistMessageDao;
 import com.zlk.gjj_01.register.zj.mapper.SecondAssistMessageMapper;
 import com.zlk.gjj_01.register.zj.service.SecondAssistMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,9 @@ public class SecondAssistMessageServiceImpl implements SecondAssistMessageServic
     }
 
     @Override
-    public Integer updateSecondAssistMassage(String secondAssistMessageId) {
-        return secondAssistMessageMapper.updateSecondAssistMassage(secondAssistMessageId);
+    public Integer updateSec(String secondAssistMessageId) {
+        return secondAssistMessageMapper.updateSec(secondAssistMessageId);
     }
+
+
 }

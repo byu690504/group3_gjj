@@ -74,19 +74,19 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">单位月缴存额</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="agentName" lay-verify="required|number" placeholder="请输入单位月缴存额" autocomplete="off" class="layui-input">
+                    <input type="text" name="unitMonthlyDeposit" lay-verify="required|number" placeholder="请输入单位月缴存额" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">个人月缴存额</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="agentName" lay-verify="required|number" placeholder="请输入个人月缴存额" autocomplete="off" class="layui-input">
+                    <input type="text" name="personalMonthlyDeposit" lay-verify="required|number" placeholder="请输入个人月缴存额" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">月缴存额合计</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="agentName" lay-verify="required|number" placeholder="" autocomplete="off" class="layui-input">
+                    <input type="text" name="totalMonthlyDeposit" lay-verify="required|number" placeholder="" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
@@ -176,18 +176,18 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">单位月缴存额</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="agentName" id="agentName" lay-verify="required|number" placeholder="请输入单位月缴存额" autocomplete="off" class="layui-input">
+                    <input type="text" name="unitMonthlyDeposit" id="unitMonthlyDeposit" lay-verify="required|number" placeholder="请输入单位月缴存额" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">个人月缴存额</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="agentName" required lay-verify="" placeholder="请输入个人月缴存额" autocomplete="off" class="layui-input">
+                    <input type="text" name="personalMonthlyDeposit" id="personalMonthlyDeposit" required lay-verify="" placeholder="请输入个人月缴存额" autocomplete="off" class="layui-input">
                 </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">月缴存额合计</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="agentName" required lay-verify="" placeholder="" autocomplete="off" class="layui-input">
+                    <input type="text" name="totalMonthlyDeposit" id="totalMonthlyDeposit" required lay-verify="" placeholder="" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
@@ -251,9 +251,9 @@
                     {field : 'empCardNumber',title : '证件号码',align : 'center',width : 150},
                     {field : 'empDepositeBase',title : '缴存基数',align : 'center',width : 150},
                     {field : 'record',title : '是否办卡',align : 'center',width : 150},
-                    {field : '',title : '单位月缴存额',align : 'center',width : 150},
-                    {field : '',title : '个人月缴存额',align : 'center',width : 150},
-                    {field : '',title : '月缴存额合计',align : 'center',width : 150},
+                    {field : 'unitMonthlyDeposit',title : '单位月缴存额',align : 'center',width : 150},
+                    {field : 'personalMonthlyDeposit',title : '个人月缴存额',align : 'center',width : 150},
+                    {field : 'totalMonthlyDeposit',title : '月缴存额合计',align : 'center',width : 150},
                     {field : 'secondAssistMessage',title : '二级管理辅助信息',align : 'center',width : 150},
                     {fixed : 'right',title : '操作',width : 200,align : 'center',
                         toolbar :
@@ -299,13 +299,17 @@
                     });
                 }else if (obj.event === 'edit'){
                     $("#remitInventoryId").val(data.remitInventoryId);
-                    $("#moneySource").val(data.moneySource);
+                    //$("#moneySource").val(data.moneySource);
                     $("#empNumber").val(data.empNumber);
                     $("#empName").val(data.empName);
                     $("#empCardName").val(data.empCardName);
                     $("#empCountry").val(data.empCountry);
                     $("#empCardNumber").val(data.empCardNumber);
                     $("#empDepositeBase").val(data.empDepositeBase);
+                    $("#unitMonthlyDeposit").val(data.unitMonthlyDeposit);
+                    $("#personalMonthlyDeposit").val(data.personalMonthlyDeposit);
+                    $("#totalMonthlyDeposit").val(data.totalMonthlyDeposit);
+                    $("#record").val(data.record);
                     form.render();
                     layer.open({
                         type : 1,

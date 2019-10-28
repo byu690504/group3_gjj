@@ -7,7 +7,6 @@ import com.zlk.gjj_01.register.entity.RemitInventory;
 import com.zlk.gjj_01.register.entity.SecondAssistMessage;
 import com.zlk.gjj_01.register.entity.UnitOpenAccount;
 import com.zlk.gjj_01.register.entity.UnitRegister;
-import com.zlk.gjj_01.register.util.DepositeBaseUtil;
 import com.zlk.gjj_01.register.util.Pagination;
 import com.zlk.gjj_01.register.zj.dao.RemitInventoryDao;
 import com.zlk.gjj_01.register.zj.dao.SecondAssistMessageDao;
@@ -82,29 +81,9 @@ public class RemitInventoryController {
     }
     @RequestMapping(value = "/update")
     @ResponseBody
-    public String update(RemitInventory remitInventory) {
-        //系统以“姓名”、“证件名称”、“证件号码”为关键字在中心系统数据库中查找是否存在相同记录
-        String remId = remitInventory.getRemitInventoryId();
-        if (remitInventoryDao.findNameById(remId).equals(remitInventory.getEmpName()) &&
-                remitInventoryDao.findCardNameById(remId).equals(remitInventory.getEmpCardName()) &&
-                remitInventoryDao.findNumById(remId).equals(remitInventory.getEmpCardNumber())) {
-            //如存在三项同时相同的记录即判定为已办理过个人登记
-            System.out.println("已办理过个人登记");
-            RemitInventory remitInventory1 = remitInventoryDao.findById(remitInventory.getRemitInventoryId()).get();
-                /*remitInventory1.setEmpName("阿一");
-                remitInventory1.setEmpNumber("100002");*/
-            remitInventoryDao.save(remitInventory1);
-        } else {
-            //若不存在姓名、证件名称及证件号码三项同时相同的记录，即判定为未办理过个人登记
-            //调用个人登记方法
-            System.out.println("***无匹配信息，检查录入信息");
-            //限制五次登录次数
-            DepositeBaseUtil.login();
-            //生成个人登记号
-            String personalId = DepositeBaseUtil.getUUID();
-            System.out.println(personalId);
-            return null;
-        }
-        return null;
+    public void update(RemitInventory remitInventory) {
+        //通过id查询
+        //保存修改记录
+
     }
 }
