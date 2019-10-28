@@ -28,24 +28,38 @@ public class RegisterController {
     private LoginService loginService;
 
     @RequestMapping(value = "/toUnitRegister")
-    public String toUnitRegister(HttpServletRequest request,Map map){
+    public ModelAndView toUnitRegister(HttpServletRequest request,Map map){
+        ModelAndView mv=new ModelAndView();
         String urId = (String) request.getSession().getAttribute("urId");
         if(urId!=null){
             Unit unit = unitRegisterService.findUnitByUrId(urId);
-            map.put("unitName",unit.getUnitName());
+            mv.addObject("unitName",unit.getUnitName());
+            mv.addObject("msg","该单位已经登记");
+            mv.addObject("unitRegisterId",urId);
+            mv.addObject("uName",unit.getUnitName());
+            mv.addObject("uCode",unit.getUnitCode());
         }
-        return "registerByUnitName";
+        mv.setViewName("registerByUnitName");
+        return mv;
     }
 
     @RequestMapping(value = "/beforeRegister")
-    public ModelAndView beforeRegister(String unitName){
+    public ModelAndView beforeRegister(String unitName,HttpServletRequest request){
         ModelAndView mv=new ModelAndView();
+        String agentName = (String)request.getSession().getAttribute("agent");
+        String unitName1 = loginService.findUnitNameByAgentName(agentName);
+        if(!unitName1.equals(unitName)){
+            mv.addObject("msg","请填写自己的单位信息");
+            mv.setViewName("registerByUnitName");
+            return mv;
+        }
         Unit unit = loginService.findByUnitName(unitName);
         if(unit!=null){
             UnitRegister unitRegister = unitRegisterService.findUnitRegisterByUnitId(unit.getUnitId());
             if(unitRegister!=null){
                 mv.addObject("msg","该单位已经登记");
-                mv.addObject("urId",unitRegister.getUnitRegisterId());
+                mv.addObject("unitName",unitRegister.getUnit().getUnitName());
+                mv.addObject("unitRegisterId",unitRegister.getUnitRegisterId());
                 mv.addObject("uName",unitRegister.getUnit().getUnitName());
                 mv.addObject("uCode",unitRegister.getUnit().getUnitCode());
                 mv.setViewName("registerByUnitName");
@@ -91,7 +105,7 @@ public class RegisterController {
             return mv;
         }
         Agent agent = loginService.findAgentByAgentName(agentName);
-        mv.addObject("urId",urId);
+        mv.addObject("unitRegisterId",urId);
         mv.addObject("aName",agent.getAgentName());
         mv.addObject("aCardName",agent.getCardName());
         mv.addObject("aCardNumber",agent.getCardNumber());

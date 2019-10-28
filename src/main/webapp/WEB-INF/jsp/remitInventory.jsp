@@ -241,7 +241,7 @@
                 elem : '#remitInventoryList',
                 url : '<%=request.getContextPath() %>/remit/list?record=${record}',
                 page : true,
-                height : 600,
+                height : 550,
                 cols : [ [
                     {field : 'remitInventoryId',title : '序号',align : 'center',width : 100},
                     {field : 'empNumber',title : '职工编号',align : 'center',width : 100},

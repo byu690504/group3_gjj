@@ -261,7 +261,11 @@
                         <div class="layui-form-item">
                             <label class="layui-form-label">托收日期</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="proceedsDate" id="proceedsDate" lay-verify="required" placeholder="请输入托收日期" autocomplete="off" class="layui-input">
+                                <select name="proceedsDate" lay-verify="required">
+                                    <option value="">请选择托收日期</option>
+                                    <option value="1日">1日</option>
+                                    <option value="15日">15日</option>
+                                </select>
                             </div>
                         </div>
                         <div class="layui-form-item">

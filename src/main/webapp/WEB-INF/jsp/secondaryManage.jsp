@@ -83,7 +83,7 @@
                 elem : '#secondaryManageList',
                 url : '<%=request.getContextPath() %>/second/list',
                 page : true,
-                height : 600,
+                height : 550,
                 cols : [ [
                     {field : 'secondAssistMessageId',title : '序号',align : 'center',width : 150},
                     {field : 'deptNumber',title : '部门编号',align : 'center',width : 300},
