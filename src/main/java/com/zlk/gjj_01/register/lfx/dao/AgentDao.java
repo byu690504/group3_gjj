@@ -25,6 +25,8 @@ public interface AgentDao extends JpaRepository<Agent,String> {
     Integer agentAuth(String cert,String agName);
     @Query("from Agent a where a.agentName=?1")
     Agent findAgentByAgentName(String agentName);
+    @Query("select u.unitName from Unit u,Agent a where a.unit.unitId=u.unitId and a.agentName=?1")
+    String findUnitNameByAgentName(String agentName);
     @Query("from Agent a where a.agentAuth=?1")
     Agent findAgentByAgentAuth(String agentAuth);
 }

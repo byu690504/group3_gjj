@@ -38,7 +38,7 @@ public class RemitInventory {
     @ManyToOne(targetEntity = SecondAssistMessage.class)
     @JoinColumn(name = "second_assist_message_id")
     private SecondAssistMessage secondAssistMessage;//二级缓存
-    @OneToOne(targetEntity = UnitRegister.class)
+    @ManyToOne(targetEntity = UnitRegister.class)
     @JoinColumn(name = "unit_register_id")
     private UnitRegister unitRegister;//单位注册
 
