@@ -1,8 +1,11 @@
 package com.zlk.gjj_01.register.zzw.controller;
 
 import com.zlk.gjj_01.register.entity.Agent;
+import com.zlk.gjj_01.register.entity.Unit;
 import com.zlk.gjj_01.register.entity.UnitOpenAccount;
 import com.zlk.gjj_01.register.entity.UnitRegister;
+import com.zlk.gjj_01.register.lfx.service.UnitRegisterService;
+import com.zlk.gjj_01.register.util.DateUtil;
 import com.zlk.gjj_01.register.util.certUtil;
 import com.zlk.gjj_01.register.zzw.service.UnitOpenAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,69 +29,31 @@ public class UnitOpenAccountController {
 
     @Autowired
     private UnitOpenAccountService unitOpenAccountService;
+    @Autowired
+    private UnitRegisterService unitRegisterService;
 
-    @RequestMapping(value = "/toUnitOpenAccount")
-    public String toUnitOpenAccount(){ return "unitOpenAccount";}
+    /*@RequestMapping(value = "/toUnitOpenAccount")
+    public String toUnitOpenAccount(){
+        return "unitOpenAccount";
+    }*/
 
     @RequestMapping("/unitOpenAccount")
-    public String unitOpenAccount(UnitRegister unitRegister,UnitOpenAccount unitOpenAccount, Map map,HttpServletRequest request) throws ParseException {
-        /*unitRegister.setUnitRegisterId("1");
-        unitOpenAccount.setRemit("单位自筹");//资金来源选择“单位自筹”，拨款单位项关闭不允许输入
-        unitOpenAccount.setAcceptTheInformationServiceOfTheCenter("是");
-        unitOpenAccount.setConfirmEmpInventory("是");
-        unitOpenAccount.setUnitDepositProportion("12%");
-        unitOpenAccount.setPersonDepositProportion("12%");
-        unitOpenAccount.setApprovedMonthOfCrossYearInventory("7月");
-        unitOpenAccount.setFirstRemitMonth(3);
-        unitOpenAccount.setPayoffDate(12);
-        unitOpenAccount.setBusinessAgentDept("财政局");
-        unitOpenAccount.setSecondAssistMessage("是");
-        //unitOpenAccount.setAppropriationUnit("市财政");
-        unitOpenAccount.setMoneySource("单位自筹");
-        unitOpenAccount.setBusinessKind("住房补贴");
-        unitOpenAccount.setUnitRegister(unitRegister);
-        unitRegister.setUnitOpenAccount(unitOpenAccount);*/
+    public ModelAndView unitOpenAccount(Unit unit,UnitRegister unitRegister,UnitOpenAccount unitOpenAccount, Map map,HttpServletRequest request) throws ParseException {
         unitOpenAccount.setUnitRegister(unitRegister);
         unitOpenAccountService.save(unitOpenAccount);
         String agentName1= (String) request.getSession().getAttribute("agent");
         unitOpenAccountService.agentAuth(certUtil.getAgentAuth(),agentName1);
 
-        for(;;) {
-            String agentName=certUtil.getAgentAuth();
-            Agent agent1 = unitOpenAccountService.findAgentByAgentName(agentName);
-            if (agent1 == null) {
-                unitOpenAccountService.agentAuth(certUtil.getAgentAuth(),agentName);
-                break;
-            }
-        }
+        Unit unit1 = unitOpenAccountService.findUnitByUnitName(unit.getUnitName());
+        unit.setUnitName(unit1.getUnitName());
+        unit.setUnitRegister(unitRegister);
+        unitRegister.setUnit(unit);
+        unitOpenAccountService.save(unit);
+        ModelAndView mv=new ModelAndView();
+        mv.setViewName("unitOpenAccount");
+        request.getSession().setAttribute("unitRegisterId",unitRegister.getUnitRegisterId());
+        return mv;
 
-        return "unitBusinessPower";
-    }
-
-    @RequestMapping("/unitOpenAccount1")
-    @ResponseBody
-    public String unitOpenAccount1(UnitRegister unitRegister,UnitOpenAccount unitOpenAccount, Map map) throws ParseException {
-        /*unitRegister.setUnitRegisterId("2");
-
-        unitOpenAccount.setUnitRegister(unitRegister);
-        unitRegister.setUnitOpenAccount(unitOpenAccount);
-        unitOpenAccount.setRemit("财政拨款");//资金来源选择“财政拨款”，拨款单位允许输入
-        unitOpenAccount.setAcceptTheInformationServiceOfTheCenter("是");
-        unitOpenAccount.setConfirmEmpInventory("是");
-        unitOpenAccount.setUnitDepositProportion("12%");
-        unitOpenAccount.setPersonDepositProportion("12%");
-        unitOpenAccount.setApprovedMonthOfCrossYearInventory("7月");
-        unitOpenAccount.setFirstRemitMonth(3);
-        unitOpenAccount.setPayoffDate(12);
-        unitOpenAccount.setBusinessAgentDept("财政局");
-        unitOpenAccount.setSecondAssistMessage("是");
-        unitOpenAccount.setAppropriationUnit("市财政");//财政拨款单位○市财政○区县财政
-        unitOpenAccount.setMoneySource("单位自筹");
-        unitOpenAccount.setBusinessKind("住房补贴");*/
-        unitOpenAccount.setUnitRegister(unitRegister);
-        unitOpenAccountService.save1(unitOpenAccount);
-
-        return "unitOpenAccount";
     }
 
     @RequestMapping(value = "/toUnitOpenAccount")
@@ -96,24 +61,20 @@ public class UnitOpenAccountController {
     public ModelAndView toUnitOpenAccount(HttpServletRequest request){
         ModelAndView mv = new ModelAndView();
 
-        String agentName = (String)request.getSession().getAttribute("agent");
-        String unitName = (String)request.getSession().getAttribute("unit");
-        String urId = (String) request.getSession().getAttribute("urId");
-        if(urId==null){
-            mv.addObject("msg","请先进行单位登记");
-            mv.setViewName("registerByUnitName");
-            return mv;
+        String agentName = (String)request.getSession().getAttribute("agentName");
+        String unitName = (String)request.getSession().getAttribute("unitName");
+        String unitRegisterId = (String) request.getSession().getAttribute("unitRegisterId");
+        if(unitRegisterId==null){
+            //UnitRegister unitRegister = unitRegisterService.findUnitRegisterByUnitId(unit.getUnitId());
+            Agent agent = unitOpenAccountService.findAgentByAgentName(agentName);
+            Unit unit = unitOpenAccountService.findUnitByUnitName(unitName);
+            //mv.addObject("unitRegisterId",unitRegister.getUnitRegisterId());
+            mv.addObject("unitName",unit.getUnitName());
+            mv.addObject("agentName",agent.getAgentName());
+            mv.addObject("agentPhone",agent.getAgentPhone());
+
         }
-        String appropriationUnit = (String) request.getSession().getAttribute("unitOpenAccount");
-        Agent agent = unitOpenAccountService.findAgentByAgentName(agentName);
-        mv.addObject("urId",urId);
-        //mv.addObject("unitName",unit.getUnitName());
-        mv.addObject("aName",agent.getAgentName());
-        mv.addObject("aPhone",agent.getAgentPhone());
-        mv.addObject("aCardName",agent.getCardName());
-        mv.addObject("aCardNumber",agent.getCardNumber());
-        mv.addObject("aPhone",agent.getAgentPhone());
-        mv.setViewName("agentPower");
+        mv.setViewName("unitOpenAccount");
         return mv;
     }
 

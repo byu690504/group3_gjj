@@ -34,9 +34,9 @@ public class RemitManagerController {
     @RequestMapping("/toUnitOpenAccount")
     public String toRemitManager(){return "remitManager";}
 
-    @RequestMapping("/remitManager1")
+    @RequestMapping("/remitManager")
     @ResponseBody
-    public String remitManager1(RemitManager remitManager, UnitRegister unitRegister, Map map) throws ParseException {
+    public String remitManager(RemitManager remitManager, UnitRegister unitRegister, Map map) throws ParseException {
         /*unitRegister.setUnitRegisterId("1");
         remitManager.setRemitWay("委托收款");
         remitManager.setProceedsUnitName("华龙区财政局");
@@ -46,48 +46,20 @@ public class RemitManagerController {
         remitManager.setPaySystemNumber("1234");
         remitManager.setProceedsDate(DateUtil.stringToDate("2019-10-22"));
         remitManager.setUnitRegister(unitRegister);*/
-        remitManagerService.save1(remitManager);
+        remitManagerService.save(remitManager);
 
-        return "remitManager1";
+        return "payMethod";
     }
 
-    @RequestMapping("/remitManager2")
-    @ResponseBody
-    public String remitManager2(RemitManager remitManager, UnitRegister unitRegister, Map map) throws ParseException {
-
-        /*unitRegister.setUnitRegisterId("2");
-        remitManager.setRemitWay("主动汇款");
-        remitManager.setRemitUnitName("中原油田");
-        remitManager.setRemitUnitBank("中国工商银行");
-        remitManager.setRemitUnitAccount("78437228543");
-        remitManager.setUnitRegister(unitRegister);*/
-        remitManagerService.save2(remitManager);
-
-        return "remitManager2";
-    }
-
-    @RequestMapping("/remitManager3")
-    @ResponseBody
-    public String remitManager3(RemitManager remitManager, UnitRegister unitRegister,UnitOpenAccount unitOpenAccount, Map map) throws ParseException {
-
-        /*unitRegister.setUnitRegisterId("2");
-        remitManager.setRemitWay("财政统发");
-        unitOpenAccount.setAppropriationUnit("市财政");
-        remitManager.setUnitRegister(unitRegister);*/
-        remitManagerService.save3(remitManager);
-
-        return "remitManager3";
-    }
-
-    /*@RequestMapping("/appropriationUnit")
+    @RequestMapping("/appropriationUnit")
     @ResponseBody
     public ModelAndView appropriationUnit(HttpServletRequest request){
         String appropriationUnit = (String)request.getSession().getAttribute("unitOpenAccount");
         UnitOpenAccount unitOpenAccount = unitOpenAccountService.findUnitOpenAccountByAppropriationUnit(appropriationUnit);
         ModelAndView mv = new ModelAndView();
         mv.addObject(unitOpenAccount.getAppropriationUnit());
-        mv.setViewName("/remitManager/appropriationUnit");
+        mv.setViewName("/payMethod");
         return mv;
-    }*/
+    }
 }
 

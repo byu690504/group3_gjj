@@ -45,6 +45,6 @@ public class Unit {
     private UnitRegister unitRegister;
     @OneToMany(targetEntity = Agent.class,mappedBy = "unit")
     private List<Agent> agentList=new ArrayList<>();
-    @OneToOne(targetEntity = UnitOpenAccount.class,mappedBy = "unit",cascade = CascadeType.ALL)
-    private UnitOpenAccount unitOpenAccount;
+    @OneToMany(targetEntity = UnitOpenAccount.class,mappedBy = "unit")
+    private List<UnitOpenAccount> unitOpenAccountList=new ArrayList<>();
 }

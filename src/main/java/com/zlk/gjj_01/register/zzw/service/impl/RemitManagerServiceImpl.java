@@ -18,17 +18,7 @@ public class RemitManagerServiceImpl implements RemitManagerService {
     private RemitManagerDao remitManagerDao;
 
     @Override
-    public RemitManager save1(RemitManager remitManager) {
-        return remitManagerDao.save(remitManager);
-    }
-
-    @Override
-    public RemitManager save2(RemitManager remitManager) {
-        return remitManagerDao.save(remitManager);
-    }
-
-    @Override
-    public RemitManager save3(RemitManager remitManager) {
+    public RemitManager save(RemitManager remitManager) {
         return remitManagerDao.save(remitManager);
     }
 

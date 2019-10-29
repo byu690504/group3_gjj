@@ -1,6 +1,7 @@
 package com.zlk.gjj_01.register.zzw.service;
 
 import com.zlk.gjj_01.register.entity.Agent;
+import com.zlk.gjj_01.register.entity.Unit;
 import com.zlk.gjj_01.register.entity.UnitOpenAccount;
 
 import java.util.List;
@@ -13,9 +14,9 @@ import java.util.List;
 public interface UnitOpenAccountService {
     List<UnitOpenAccount> findAll();
     UnitOpenAccount save(UnitOpenAccount unitOpenAccount);
-    UnitOpenAccount save1(UnitOpenAccount unitOpenAccount);
+    Unit save(Unit unit);
     UnitOpenAccount findUnitOpenAccountByAppropriationUnit(String appropriationUnit);
-    UnitOpenAccount findUnitOpenAccountByUnitOpenAccountId(String unitOpenAccountId);
     Integer agentAuth(String cert, String agentName);
     Agent findAgentByAgentName(String agentName);
+    Unit findUnitByUnitName(String unitName);
 }

@@ -23,7 +23,7 @@
             <div id="span1">
                 <span>单位经办人授权</span>
             </div>
-            <form action="<%=request.getContextPath() %>/" class="layui-form">
+            <form action="<%=request.getContextPath() %>/unitRegister/agentAuth" class="layui-form">
                 <div class="layui-form-item">
                     <label class="layui-form-label">单位登记号</label>
                     <div class="layui-input-inline">

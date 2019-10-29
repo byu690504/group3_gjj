@@ -1,8 +1,10 @@
 package com.zlk.gjj_01.register.zzw.service.impl;
 
 import com.zlk.gjj_01.register.entity.Agent;
+import com.zlk.gjj_01.register.entity.Unit;
 import com.zlk.gjj_01.register.entity.UnitOpenAccount;
 import com.zlk.gjj_01.register.lfx.dao.AgentDao;
+import com.zlk.gjj_01.register.lfx.dao.UnitDao;
 import com.zlk.gjj_01.register.zzw.dao.UnitOpenAccountDao;
 import com.zlk.gjj_01.register.zzw.service.UnitOpenAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,8 @@ public class UnitOpenAccountServiceImpl implements UnitOpenAccountService {
     private UnitOpenAccountDao unitOpenAccountDao;
     @Autowired
     private AgentDao agentDao;
+    @Autowired
+    private UnitDao unitDao;
 
     @Override
     public List<UnitOpenAccount> findAll() {
@@ -34,8 +38,8 @@ public class UnitOpenAccountServiceImpl implements UnitOpenAccountService {
     }
 
     @Override
-    public UnitOpenAccount save1(UnitOpenAccount unitOpenAccount) {
-        return unitOpenAccountDao.save(unitOpenAccount);
+    public Unit save(Unit unit) {
+        return unitDao.save(unit);
     }
 
     @Override
@@ -44,17 +48,17 @@ public class UnitOpenAccountServiceImpl implements UnitOpenAccountService {
     }
 
     @Override
-    public UnitOpenAccount findUnitOpenAccountByUnitOpenAccountId(String unitOpenAccountId) {
-        return unitOpenAccountDao.findUnitOpenAccountByUnitOpenAccountId(unitOpenAccountId);
-    }
-
-    @Override
     public Integer agentAuth(String cert, String agentName) {
-        return agentDao.agentAuth(cert,agentName);
+        return unitOpenAccountDao.agentAuth(cert,agentName);
     }
 
     @Override
     public Agent findAgentByAgentName(String agentName) {
-        return agentDao.findAgentByAgentName(agentName);
+        return unitOpenAccountDao.findAgentByAgentName(agentName);
+    }
+
+    @Override
+    public Unit findUnitByUnitName(String unitName) {
+        return unitOpenAccountDao.findUnitByUnitName(unitName);
     }
 }

@@ -37,8 +37,8 @@
                     </c:if>
                 </div></br>
                 <div class="layui-form-text layui-inline">
-                    <c:if test="${urId!=null}">
-                        <span>单位登记号为:${urId}</span>
+                    <c:if test="${unitRegisterId!=null}">
+                        <span>单位登记号为:${unitRegisterId}</span>
                     </c:if>
                 </div></br>
                 <div class="layui-form-text layui-inline">

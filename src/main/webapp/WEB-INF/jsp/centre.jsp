@@ -38,13 +38,21 @@
                                 <a href="<%=request.getContextPath() %>/unitRegister/toAgentAuth" target="pageCenter">单位经办人授权</a>
                             </dd>
                             <dd>
-                                <a href="<%=request.getContextPath() %>/unitOpenAccount/toUnitOpenAccount" target="pageCenter">单位开户</a>
+                                <a href="javascript:;">
+                                    单位开户功能
+                                </a>
+                                <ol class="layui-nav-child">
+                                    <li><a href="<%=request.getContextPath() %>/unitOpenAccount/toUnitOpenAccount" target="pageCenter">单位开户</a></li>
+                                    <li><a href="<%=request.getContextPath() %>/remitManager/toRemitManager" target="pageCenter">缴款方式管理</a></li>
+                                </ol>
                             </dd>
                             <dd>
                                 <a href="<%=request.getContextPath() %>/" target="pageCenter">单位用户业务授权</a>
                             </dd>
                             <dd>
                                 <a href="<%=request.getContextPath() %>/remit/update" target="pageCenter">个人登记</a>
+                            </dd>
+                            <dd>
                                 <a href="<%=request.getContextPath() %>/second/toList" target="pageCenter">二级管理辅助信息</a>
                             </dd>
                             <dd>
