@@ -54,25 +54,26 @@
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">部门编号</label>
-                <div class="layui-input-inline">
+                <div class="layui-input-block">
                     <input type="text" name="deptNumber" id="deptNumber" lay-verify="required|number" placeholder="请输入部门编号" autocomplete="off" class="layui-input">
                 </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">部门名称</label>
-                <div class="layui-input-block">
-                    <input type="text" name="deptName" id="deptName" lay-verify="required" placeholder="请输入部门名称" autocomplete="off" class="layui-input">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">部门名称</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="deptName" id="deptName" lay-verify="required" placeholder="请输入部门名称" autocomplete="off" class="layui-input">
+                    </div>
                 </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">部门代码</label>
-                <div class="layui-input-block">
-                    <input type="text" name="deptCode" id="deptCode" lay-verify="required|number" placeholder="请输入部门代码" autocomplete="off" class="layui-input">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">部门代码</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="deptCode" id="deptCode" lay-verify="required|number" placeholder="请输入部门代码" autocomplete="off" class="layui-input">
+                    </div>
                 </div>
-            </div>
-            <div class="layui-form-item">
-                <div class="layui-input-block">
-                    <button type="submit" class="layui-btn" lay-submit lay-filter="sub">提交</button>
-                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button type="submit" class="layui-btn" lay-submit lay-filter="sub">提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
                 </div>
             </div>
         </form>
