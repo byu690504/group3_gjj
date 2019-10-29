@@ -17,6 +17,7 @@
     <div class="layui-fluid">
         <table class="layui-table" id="secondaryManageList" lay-filter="secondary"></table>
     </div>
+
     <div id="addForm" hidden="hidden" style="padding: 25px">
         <form action="<%=request.getContextPath()%>/second/add" method="post" class="layui-form">
             <div class="layui-form-item">
