@@ -26,29 +26,33 @@
             <form action="<%=request.getContextPath() %>/" method="post" class="layui-form">
                 <div class="layui-form-item">
                     <label class="layui-form-label">经办人姓名</label>
-                    <div class="layui-input-inline">
+                    <div class="layui-input-block">
                         <input type="text" name="agentName" id="agentName" lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">经办人证件号码</label>
-                    <div class="layui-input-inline">
+                    <div class="layui-input-block">
                         <input type="text" name="agentCardNumber" id="agentCardNumber" lay-verify="required|identity" placeholder="请输入证件号码" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <div class="layui-input-block">
-                        <button type="button" class="layui-btn" lay-submit lay-filter="sub">提交</button>
+                        <button type="submit" class="layui-btn" lay-submit lay-filter="sub">提交</button>
                         <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
-    <script type="javascript">
-        layui.use('form', function() {
-            var form = layui.form;
+    <script type="text/javascript">
+        layui.use(['form','jquery'], function () {
+            var form=layui.form;
+            var $ = layui.jquery;
             form.render();
+        });
+        layui.use(['form','laydate'], function() {
+            var form = layui.form;
             //监听提交
             form.on('submit(sub)', function(data){
                 return true;

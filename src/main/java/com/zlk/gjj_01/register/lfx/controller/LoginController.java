@@ -62,8 +62,6 @@ public class LoginController {
     public ModelAndView register(Agent agent, Unit unit, HttpServletRequest request, String code){
         ModelAndView mv=new ModelAndView();
         String checkCode =(String)request.getSession().getAttribute("checkCode");
-        /*checkCode="1";
-        code=checkCode;*/
         if(checkCode.toLowerCase().equals(code.toLowerCase())){
             List<Agent> agentList = loginService.findAll();
             for(Agent a:agentList){
@@ -101,8 +99,6 @@ public class LoginController {
     @RequestMapping(value = "/login")
     public String login(Agent agent,HttpServletRequest request,String code,Map map){
         String checkCode=(String) request.getSession().getAttribute("checkCode");
-        /*checkCode="1";
-        code=checkCode;*/
         if(checkCode.toLowerCase().equals(code.toLowerCase())) {
             if(agent.getAgentAuth()==null){
                 Agent agent1 = loginService.findAgentByAgentCode(agent.getAgentCode());

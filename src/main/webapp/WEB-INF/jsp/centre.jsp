@@ -50,7 +50,7 @@
                                 <a href="<%=request.getContextPath() %>/" target="pageCenter">单位用户业务授权</a>
                             </dd>
                             <dd>
-                                <a href="<%=request.getContextPath() %>/remit/update" target="pageCenter">个人登记</a>
+                                <a href="<%=request.getContextPath() %>/test/page15" target="pageCenter">个人登记</a>
                             </dd>
                             <dd>
                                 <a href="<%=request.getContextPath() %>/second/toList" target="pageCenter">二级管理辅助信息</a>
@@ -68,10 +68,10 @@
                                 </ol>
                             </dd>
                             <dd>
-                                <a href="<%=request.getContextPath() %>/test/page12" target="pageCenter">单位登记信息变更功能</a>
+                                <a href="<%=request.getContextPath() %>/change/toRegisterChange" target="pageCenter">单位登记信息变更功能</a>
                             </dd>
                             <dd>
-                                <a href="<%=request.getContextPath() %>/" target="pageCenter">单位开户信息变更功能</a>
+                                <a href="<%=request.getContextPath() %>/change/toOpenAccountChange" target="pageCenter">单位开户信息变更功能</a>
                             </dd>
                         </dl>
                     </li>
