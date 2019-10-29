@@ -46,7 +46,6 @@
                     <span>单位用户登录</span>
                 </div>
                 <form action="<%=request.getContextPath() %>/login/login" method="post" class="layui-form">
-                    <input type="hidden" value="${msg}" id="msg">
                     <div class="layui-form-text layui-inline" id="error1">
                         <c:if test="${error!=null}">
                             <span>${error}</span>
@@ -85,7 +84,6 @@
                     <span>CA证书登陆</span>
                 </div>
                 <form action="<%=request.getContextPath() %>/login/login" method="post" class="layui-form">
-                    <input type="hidden" value="${msg}" id="cmsg">
                     <div class="layui-form-text layui-inline" id="error2">
                         <c:if test="${error!=null}">
                             <span>${error}</span>

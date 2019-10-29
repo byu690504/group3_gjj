@@ -31,29 +31,30 @@
                         <input type="text" value="${unitName}" name="unitName" id="unitName" lay-verify="required" placeholder="请输入单位名称" autocomplete="off" class="layui-input">
                     </div>
                 </div>
-                <div class="layui-form-text layui-inline">
+                <div class="layui-form-text div_msg">
                     <c:if test="${msg!=null}">
-                        <span>${msg}</span>
+                        ${msg}
                     </c:if>
                 </div></br>
-                <div class="layui-form-text layui-inline">
+                <div class="layui-form-text div_msg">
                     <c:if test="${unitRegisterId!=null}">
-                        <span>单位登记号为:${unitRegisterId}</span>
+                        单位登记号为:${unitRegisterId}
                     </c:if>
                 </div></br>
-                <div class="layui-form-text layui-inline">
+                <div class="layui-form-text div_msg">
                     <c:if test="${uName!=null}">
-                        <span>单位名称为:${uName}</span>
+                        单位名称为:${uName}
                     </c:if>
                 </div></br>
-                <div class="layui-form-text layui-inline">
+                <div class="layui-form-text div_msg">
                     <c:if test="${uCode!=null}">
-                        <span>组织机构代码为:${uCode}</span>
+                        组织机构代码为:${uCode}
                     </c:if>
                 </div>
+
                 <div class="layui-form-item">
                     <div class="layui-input-block layui-input-inline">
-                        <button type="submit" class="layui-btn" lay-submit lay-filter="sub"/>提交
+                        <button type="submit" class="layui-btn" lay-submit lay-filter="sub"/>确认
                         <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                     </div>
                 </div>
