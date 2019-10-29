@@ -90,10 +90,10 @@
                 page : true,
                 height : 550,
                 cols : [ [
-                    {field : 'secondAssistMessageId',title : '序号',align : 'center',width : 150},
-                    {field : 'deptNumber',title : '部门编号',align : 'center',width : 300},
-                    {field : 'deptName',title : '部门名称',align : 'center',width : 300},
-                    {field : 'deptCode',title : '部门代码',align : 'center',width : 300},
+                    {field : 'secondAssistMessageId',title : '序号',align : 'center',width : 300},
+                    {field : 'deptNumber',title : '部门编号',align : 'center',width : 280},
+                    {field : 'deptName',title : '部门名称',align : 'center',width : 280},
+                    {field : 'deptCode',title : '部门代码',align : 'center',width : 280},
                     {fixed : 'right',title : '操作',width : 280,align : 'center',
                         toolbar :
                             '<div class="layui-btn-group">' +
@@ -127,7 +127,7 @@
                             type : "POST",
                             url : "<%=request.getContextPath() %>/second/delete?secondAssistMessageId="+data.secondAssistMessageId,
                             success : function (msg) {
-                                layer.alert(msg.msg);
+                                layer.alert("删除成功！");
                                 layer.close(index);
                             }
                         });

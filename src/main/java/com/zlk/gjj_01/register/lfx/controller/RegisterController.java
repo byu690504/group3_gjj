@@ -3,6 +3,7 @@ package com.zlk.gjj_01.register.lfx.controller;
 import com.zlk.gjj_01.register.entity.Agent;
 import com.zlk.gjj_01.register.entity.Unit;
 import com.zlk.gjj_01.register.entity.UnitRegister;
+import com.zlk.gjj_01.register.lfx.dao.UnitRegisterDao;
 import com.zlk.gjj_01.register.lfx.service.LoginService;
 import com.zlk.gjj_01.register.lfx.service.UnitRegisterService;
 import com.zlk.gjj_01.register.util.DateUtil;
@@ -101,7 +102,8 @@ public class RegisterController {
         ModelAndView mv=new ModelAndView();
         mv.addObject("msg","登记成功，请进行经办人授权");
         mv.setViewName("registerByUnitName");
-        request.getSession().setAttribute("urId",unitRegister.getUnitRegisterId());
+        UnitRegister unitRegister1 = unitRegisterService.findUnitRegisterByUnitId(unit.getUnitId());
+        request.getSession().setAttribute("urId",unitRegister1.getUnitRegisterId());
         return mv;
     }
 

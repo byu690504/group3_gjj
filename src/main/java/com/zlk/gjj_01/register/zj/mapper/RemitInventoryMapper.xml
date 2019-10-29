@@ -11,6 +11,9 @@
         <result column="emp_card_number" property="empCardNumber" javaType="java.lang.String"></result>
         <result column="emp_deposite_base" property="empDepositeBase" javaType="java.lang.Integer"></result>
         <result column="record" property="record" javaType="java.lang.String"></result>
+        <result column="unit_monthly_deposit" property="unitMonthlyDeposit" javaType="java.lang.Integer"></result>
+        <result column="personal_monthly_deposit" property="personalMonthlyDeposit" javaType="java.lang.Integer"></result>
+        <result column="total_monthly_deposit" property="totalMonthlyDeposit" javaType="java.lang.Integer"></result>
         <!--<result column="second_assist_message_id" property="secondAssistMessage" javaType="java.lang.String"></result>
         <result column="unit_register_id" property="unitRegister" javaType="java.lang.String"></result>-->
     </resultMap>
@@ -32,9 +35,9 @@
         </where>
     </select>
     <update id="updateRem" parameterType="com.zlk.gjj_01.register.entity.RemitInventory">
-        update remit_inventory set emp_number=#{empNumber},emp_name=#{empName},emp_card_name=#{empCardName}
-        emp_country=#{empCountry},emp_deposite_base=#{empDepositeBase},unit_monthly_deposit=#{unitMonthlyDeposit},
-        personal_monthly_deposit=#{personalMonthlyDeposit},total_monthly_deposit=#{totalMonthlyDeposit},
+        update remit_inventory set emp_number=#{empNumber},emp_name=#{empName},emp_card_name=#{empCardName},
+        emp_card_number=#{empCardNumber},emp_country=#{empCountry},emp_deposite_base=#{empDepositeBase},
+        unit_monthly_deposit=#{unitMonthlyDeposit},personal_monthly_deposit=#{personalMonthlyDeposit},total_monthly_deposit=#{totalMonthlyDeposit},
         record=#{record} where remit_inventory_id=#{remitInventoryId}
     </update>
 </mapper>

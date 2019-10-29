@@ -14,6 +14,7 @@
     <script src="<%=request.getContextPath() %>/layui/layui.all.js"></script>
 </head>
 <body>
+    <span>单位登记号为:${unitRegisterId}</span>
     <div class="layui-fluid">
         <table class="layui-table" id="remitInventoryList" lay-filter="inventory"></table>
     </div>
@@ -171,6 +172,16 @@
                 </div>
             </div>
             <div class="layui-form-item">
+                <label class="layui-form-label">是否办卡</label>
+                <div class="layui-input-block">
+                    <select name="record" id="record" lay-verify="required">
+                        <option value="">请选择是否办卡</option>
+                        <option value="是">是</option>
+                        <option value="否">否</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
                 <label class="layui-form-label">缴存基数</label>
                 <div class="layui-input-block">
                     <input type="text" name="empDepositeBase" id="empDepositeBase" lay-verify="required|positiveInt" placeholder="请输入缴存基数" autocomplete="off" class="layui-input">
@@ -313,7 +324,6 @@
                     '<div class="layui-btn-group" style="padding: 15px;">' +
                     '单位登记号：' +
                     '<div class="layui-inline">' +
-                    '<input class="layui-input" name="" value="" autocomplete="off" lay-event="echoURId" readonly />' +
                     '</div>' +
                     '<button type="submit" class="layui-btn" lay-event="add" lay-filter="sub" style="margin-left: 40px">' +
                     '<i class="layui-icon layui-icon-add-1"></i>' +
@@ -325,7 +335,6 @@
                 var data=obj.data;
                 if (obj.event === 'edit'){
                     $("#remitInventoryId").val(data.remitInventoryId);
-                    //$("#moneySource").val(data.moneySource);
                     $("#empNumber").val(data.empNumber);
                     $("#empName").val(data.empName);
                     $("#empCardName").val(data.empCardName);
@@ -365,7 +374,7 @@
                         content : $('#addForm')
                     });
                 }else if (obj.event === 'echoURId') {
-                    $("#").val(data.productId);
+                    $("#remitInventoryId").val(data.remitInventoryId);
                     form.render();
                 }
             });

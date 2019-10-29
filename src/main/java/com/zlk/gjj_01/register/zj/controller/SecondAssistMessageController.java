@@ -81,7 +81,7 @@ public class SecondAssistMessageController {
         //调用方法 再删除
         List<RemitInventory> remList=remitInventoryDao.findRemBySecId(secondAssistMessageId);
         if(remList.size()!=0){
-            map.put("error","仍有职工在该部门，不允许删除，到部门维护中修改后再删除");
+            map.put("msg","仍有职工在该部门，不允许删除，到部门维护中修改后再删除");
             System.out.println("删除失败");
             return null;
         }else {

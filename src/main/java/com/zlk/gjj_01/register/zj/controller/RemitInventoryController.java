@@ -6,7 +6,6 @@ package com.zlk.gjj_01.register.zj.controller;
 import com.zlk.gjj_01.register.entity.RemitInventory;
 import com.zlk.gjj_01.register.entity.SecondAssistMessage;
 import com.zlk.gjj_01.register.entity.UnitOpenAccount;
-import com.zlk.gjj_01.register.entity.UnitRegister;
 import com.zlk.gjj_01.register.util.Pagination;
 import com.zlk.gjj_01.register.zj.dao.RemitInventoryDao;
 import com.zlk.gjj_01.register.zj.dao.SecondAssistMessageDao;
@@ -34,8 +33,21 @@ public class RemitInventoryController {
     @Autowired
     private RemitInventoryService remitInventoryService;
     @RequestMapping(value = "/toList")
-    public ModelAndView toList(String record)throws Exception{
+    public ModelAndView toList(String record,HttpServletRequest request)throws Exception{
         ModelAndView mv=new ModelAndView();
+        String urId = (String) request.getSession().getAttribute("urId");
+        if(urId==null){
+            mv.addObject("msg","请先进行单位登记");
+            mv.setViewName("registerByUnitName");
+            return mv;
+        }
+        UnitOpenAccount unitOpenAccount=unitOpenAccountDao.findUoaIdByUrId(urId);
+        if(unitOpenAccount==null){
+            mv.addObject("msg","请先进行单位开户");
+            mv.setViewName("unitOpenAccount");
+            return mv;
+        }
+        mv.addObject("unitRegisterId",urId);
         mv.addObject("record",record);
         mv.setViewName("remitInventory");
         return mv;
@@ -52,18 +64,6 @@ public class RemitInventoryController {
         map.put("data",List);
         return map;
     }
-    @RequestMapping(value = "/beforeRem")
-    @ResponseBody
-    public String check(HttpServletRequest request){
-        String urId = (String) request.getSession().getAttribute("urId");
-        UnitOpenAccount unitOpenAccount=unitOpenAccountDao.findUoaIdByUrId(urId);
-        if(unitOpenAccount==null){
-            System.out.println("该单位不是开户单位，不可进行汇缴清册编辑");
-            return null;
-        }else {
-            return "remitInventory";//跳转添加页面
-        }
-    }
     /*@RequestMapping(value = "/add")
     public String add(HttpServletRequest request,RemitInventory remitInventory,SecondAssistMessage secondAssistMessage){
         UnitRegister unitRegister=new UnitRegister();
@@ -78,21 +78,20 @@ public class RemitInventoryController {
     }*/
     @RequestMapping(value = "/add")
     public String add(RemitInventory remitInventory){
+
         remitInventoryDao.save(remitInventory);
         return "remitInventory";
     }
     @RequestMapping(value = "/update")
     @ResponseBody
-    public void update(RemitInventory remitInventory) {
-        /*ModelAndView mv=new ModelAndView();
+    public ModelAndView update(RemitInventory remitInventory) {
+        ModelAndView mv=new ModelAndView();
         Integer result=remitInventoryService.updateRem(remitInventory);
         if(result==1){
             mv.setViewName("remitInventory");
             return mv;
         }else{
             return null;
-        }*/
-        remitInventoryDao.findRemById(remitInventory);
+        }
     }
-
 }
