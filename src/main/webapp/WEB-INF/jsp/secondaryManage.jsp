@@ -171,18 +171,6 @@
                 return true;
             });
         });
-
-        /*layui.use(['form','jquery'], function () {
-            var form=layui.form;
-            var $ = layui.jquery;
-            form.render();
-            form.verify({
-                NumAndAbc:[
-                    /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,35}$/,
-                    '部门编号须为字母和数字的组合'
-                ]
-            });
-        });*/
     </script>
 </body>
 </html>

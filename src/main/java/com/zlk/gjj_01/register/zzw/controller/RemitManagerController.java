@@ -1,9 +1,10 @@
 package com.zlk.gjj_01.register.zzw.controller;
 
 import com.zlk.gjj_01.register.entity.RemitManager;
+import com.zlk.gjj_01.register.entity.Unit;
 import com.zlk.gjj_01.register.entity.UnitOpenAccount;
 import com.zlk.gjj_01.register.entity.UnitRegister;
-import com.zlk.gjj_01.register.util.DateUtil;
+import com.zlk.gjj_01.register.lfx.service.UnitRegisterService;
 import com.zlk.gjj_01.register.zzw.service.RemitManagerService;
 import com.zlk.gjj_01.register.zzw.service.UnitOpenAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import java.sql.Date;
 import java.text.ParseException;
 import java.util.Map;
 
@@ -30,9 +30,23 @@ public class RemitManagerController {
     private RemitManagerService remitManagerService;
     @Autowired
     private UnitOpenAccountService unitOpenAccountService;
+    @Autowired
+    private UnitRegisterService unitRegisterService;
 
-    @RequestMapping("/toUnitOpenAccount")
-    public String toRemitManager(){return "remitManager";}
+    @RequestMapping("/toRemitManager")
+    public ModelAndView toRemitManager(HttpServletRequest request){
+        ModelAndView mv=new ModelAndView();
+        String urId = (String) request.getSession().getAttribute("urId");
+
+        UnitOpenAccount unitOpenAccount = unitOpenAccountService.findUnitByUrId(urId);
+        Unit unit = unitRegisterService.findUnitByUrId(urId);
+        mv.addObject("businessKind",unitOpenAccount.getBusinessKind());
+        mv.addObject("moneySource",unitOpenAccount.getMoneySource());
+        mv.addObject("unitName",unit.getUnitName());
+        mv.addObject("unitRegisterId",urId);
+        mv.setViewName("payMethod");
+        return mv;
+    }
 
     @RequestMapping("/remitManager")
     @ResponseBody
@@ -48,17 +62,18 @@ public class RemitManagerController {
         remitManager.setUnitRegister(unitRegister);*/
         remitManagerService.save(remitManager);
 
-        return "payMethod";
+        return "unitBusinessPower";
     }
 
     @RequestMapping("/appropriationUnit")
     @ResponseBody
     public ModelAndView appropriationUnit(HttpServletRequest request){
-        String appropriationUnit = (String)request.getSession().getAttribute("unitOpenAccount");
-        UnitOpenAccount unitOpenAccount = unitOpenAccountService.findUnitOpenAccountByAppropriationUnit(appropriationUnit);
         ModelAndView mv = new ModelAndView();
-        mv.addObject(unitOpenAccount.getAppropriationUnit());
-        mv.setViewName("/payMethod");
+        String urId = (String) request.getSession().getAttribute("urId");
+        UnitOpenAccount unitOpenAccount = remitManagerService.findUnitByUrId(urId);
+
+        mv.addObject("appropriationUnit",unitOpenAccount.getAppropriationUnit());
+        mv.setViewName("payMethod");
         return mv;
     }
 }

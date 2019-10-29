@@ -18,21 +18,19 @@ import javax.transaction.Transactional;
 @Repository
 public interface UnitOpenAccountDao extends JpaRepository<UnitOpenAccount, String> {
 
-    @Query("from UnitOpenAccount where appropriationUnit = ?1")
-    public UnitOpenAccount findUnitOpenAccountByAppropriationUnit(String appropriationUnit);
-
-    @Query("from UnitOpenAccount where unitOpenAccountId = ?1")
-    public UnitOpenAccount findUnitOpenAccountByUnitOpenAccountId(String unitOpenAccountId);
-
-    @Transactional
-    @Modifying
-    @Query("update Agent set agentAuth=?1 where agentName=?2")
-    Integer agentAuth(String cert, String agName);
-    @Query("from Agent a where a.agentName=?1")
-    Agent findAgentByAgentName(String agentName);
     @Query("from UnitOpenAccount u where u.unitRegister.unitRegisterId=?1")
     UnitOpenAccount findUoaIdByUrId(String unitRegisterId);
 
     @Query("from Unit u where u.unitName=?1")
     Unit findUnitByUnitName(String unitName);
+
+    @Query("from Agent a where a.agentName=?1")
+    Agent findAgentByAgentName(String agentName);
+
+    @Query("from UnitOpenAccount where appropriationUnit = ?1")
+    public UnitOpenAccount findUnitOpenAccountByAppropriationUnit(String appropriationUnit);
+
+    @Query("from UnitOpenAccount u where u.unitRegister.unitRegisterId=?1")
+    UnitOpenAccount findUnitByUrId(String urId);
+
 }

@@ -15,8 +15,8 @@ public interface UnitOpenAccountService {
     List<UnitOpenAccount> findAll();
     UnitOpenAccount save(UnitOpenAccount unitOpenAccount);
     Unit save(Unit unit);
-    UnitOpenAccount findUnitOpenAccountByAppropriationUnit(String appropriationUnit);
-    Integer agentAuth(String cert, String agentName);
-    Agent findAgentByAgentName(String agentName);
     Unit findUnitByUnitName(String unitName);
+    Agent findAgentByAgentName(String agentName);
+    UnitOpenAccount findUnitOpenAccountByAppropriationUnit(String appropriationUnit);
+    UnitOpenAccount findUnitByUrId(String urId);
 }

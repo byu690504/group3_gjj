@@ -10,6 +10,6 @@ import com.zlk.gjj_01.register.entity.UnitOpenAccount;
  */
 public interface RemitManagerService {
     RemitManager save(RemitManager remitManager);
-    RemitManager findByRemitWay(String remitWay);
     UnitOpenAccount findUnitOpenAccountByAppropriationUnit(String appropriationUnit);
+    UnitOpenAccount findUnitByUrId(String urId);
 }

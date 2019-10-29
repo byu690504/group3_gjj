@@ -55,7 +55,4 @@ public class UnitOpenAccount {
     private UnitRegister unitRegister;
     @OneToOne(targetEntity = RemitManager.class,mappedBy = "unitOpenAccount")
     private RemitManager remitManager;
-    @ManyToOne(targetEntity = Unit.class)
-    @JoinColumn(name = "unit_name")
-    private Unit unit;
 }

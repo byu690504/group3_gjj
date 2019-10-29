@@ -4,9 +4,10 @@ import com.zlk.gjj_01.register.entity.Agent;
 import com.zlk.gjj_01.register.entity.Unit;
 import com.zlk.gjj_01.register.entity.UnitOpenAccount;
 import com.zlk.gjj_01.register.entity.UnitRegister;
+import com.zlk.gjj_01.register.lfx.service.LoginService;
 import com.zlk.gjj_01.register.lfx.service.UnitRegisterService;
 import com.zlk.gjj_01.register.util.DateUtil;
-import com.zlk.gjj_01.register.util.certUtil;
+import com.zlk.gjj_01.register.util.CertUtil;
 import com.zlk.gjj_01.register.zzw.service.UnitOpenAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,51 +32,44 @@ public class UnitOpenAccountController {
     private UnitOpenAccountService unitOpenAccountService;
     @Autowired
     private UnitRegisterService unitRegisterService;
+    @Autowired
+    private LoginService loginService;
 
-    /*@RequestMapping(value = "/toUnitOpenAccount")
-    public String toUnitOpenAccount(){
-        return "unitOpenAccount";
+    @RequestMapping(value = "/toUnitOpenAccount")
+    public ModelAndView toUnitOpenAccount(HttpServletRequest request){
+        ModelAndView mv=new ModelAndView();
+        String urId = (String) request.getSession().getAttribute("urId");
+        String agentName = (String)request.getSession().getAttribute("agent");
+        if(urId==null){
+            mv.addObject("msg","请先进行单位登记");
+            mv.setViewName("registerByUnitName");
+            return mv;
+        }
+        Unit unit = unitRegisterService.findUnitByUrId(urId);
+        Agent agent = loginService.findAgentByAgentName(agentName);
+        mv.addObject("unitName",unit.getUnitName());
+        mv.addObject("agentName",agent.getAgentName());
+        mv.addObject("agentPhone",agent.getAgentPhone());
+        mv.addObject("unitRegisterId",urId);
+        mv.setViewName("unitOpenAccount");
+        return mv;
+    }
+
+    /*@RequestMapping(value = "/toRemitManager")
+    public String toRemitManager(){
+        return "payMethod";
     }*/
 
     @RequestMapping("/unitOpenAccount")
-    public ModelAndView unitOpenAccount(Unit unit,UnitRegister unitRegister,UnitOpenAccount unitOpenAccount, Map map,HttpServletRequest request) throws ParseException {
+    public ModelAndView unitOpenAccount(UnitRegister unitRegister,UnitOpenAccount unitOpenAccount,HttpServletRequest request) throws ParseException {
         unitOpenAccount.setUnitRegister(unitRegister);
         unitOpenAccountService.save(unitOpenAccount);
-        String agentName1= (String) request.getSession().getAttribute("agent");
-        unitOpenAccountService.agentAuth(certUtil.getAgentAuth(),agentName1);
 
-        Unit unit1 = unitOpenAccountService.findUnitByUnitName(unit.getUnitName());
-        unit.setUnitName(unit1.getUnitName());
-        unit.setUnitRegister(unitRegister);
-        unitRegister.setUnit(unit);
-        unitOpenAccountService.save(unit);
         ModelAndView mv=new ModelAndView();
-        mv.setViewName("unitOpenAccount");
-        request.getSession().setAttribute("unitRegisterId",unitRegister.getUnitRegisterId());
+        mv.addObject("msg","单位开户成功，请进行缴款");
+        mv.setViewName("payMethod");
         return mv;
 
-    }
-
-    @RequestMapping(value = "/toUnitOpenAccount")
-    @ResponseBody
-    public ModelAndView toUnitOpenAccount(HttpServletRequest request){
-        ModelAndView mv = new ModelAndView();
-
-        String agentName = (String)request.getSession().getAttribute("agentName");
-        String unitName = (String)request.getSession().getAttribute("unitName");
-        String unitRegisterId = (String) request.getSession().getAttribute("unitRegisterId");
-        if(unitRegisterId==null){
-            //UnitRegister unitRegister = unitRegisterService.findUnitRegisterByUnitId(unit.getUnitId());
-            Agent agent = unitOpenAccountService.findAgentByAgentName(agentName);
-            Unit unit = unitOpenAccountService.findUnitByUnitName(unitName);
-            //mv.addObject("unitRegisterId",unitRegister.getUnitRegisterId());
-            mv.addObject("unitName",unit.getUnitName());
-            mv.addObject("agentName",agent.getAgentName());
-            mv.addObject("agentPhone",agent.getAgentPhone());
-
-        }
-        mv.setViewName("unitOpenAccount");
-        return mv;
     }
 
 }

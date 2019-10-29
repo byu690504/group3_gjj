@@ -27,7 +27,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">单位登记号</label>
                     <div class="layui-input-inline">
-                        <input type="text" value="${unitRegisterId}" name="unitRegisterId" id="unitRegisterId" lay-verify="required|number" placeholder="请输入单位登记号" autocomplete="off" class="layui-input">
+                        <input type="text" value="${unitRegisterId}" name="unitRegisterId" id="unitRegisterId" lay-verify="required|NumAndAbc" placeholder="请输入单位登记号" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -91,7 +91,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">联系电话</label>
                     <div class="layui-input-block">
-                        <input type="text" value="${aPhone}" name="agentPhone" id="agentPhone" lay-verify="phone" placeholder="请输入联系电话" autocomplete="off" class="layui-input">
+                        <input type="text" value="${agentPhone}" name="agentPhone" id="agentPhone" lay-verify="phone" placeholder="请输入联系电话" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -208,7 +208,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">接受经办人</label>
                     <div class="layui-input-block">
-                        <input type="text" value="${aName}" name="agentName" id="agentName" lay-verify="required" placeholder="请输入经办人姓名" autocomplete="off" class="layui-input">
+                        <input type="text" value="${agentName}" name="agentName" id="agentName" lay-verify="required" placeholder="请输入经办人姓名" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <%--<div class="layui-form-item">

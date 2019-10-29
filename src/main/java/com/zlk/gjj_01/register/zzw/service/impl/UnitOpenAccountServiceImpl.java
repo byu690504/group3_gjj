@@ -43,18 +43,18 @@ public class UnitOpenAccountServiceImpl implements UnitOpenAccountService {
     }
 
     @Override
+    public Agent findAgentByAgentName(String agentName) {
+        return unitOpenAccountDao.findAgentByAgentName(agentName);
+    }
+
+    @Override
     public UnitOpenAccount findUnitOpenAccountByAppropriationUnit(String appropriationUnit) {
         return unitOpenAccountDao.findUnitOpenAccountByAppropriationUnit(appropriationUnit);
     }
 
     @Override
-    public Integer agentAuth(String cert, String agentName) {
-        return unitOpenAccountDao.agentAuth(cert,agentName);
-    }
-
-    @Override
-    public Agent findAgentByAgentName(String agentName) {
-        return unitOpenAccountDao.findAgentByAgentName(agentName);
+    public UnitOpenAccount findUnitByUrId(String urId) {
+        return unitOpenAccountDao.findUnitByUrId(urId);
     }
 
     @Override

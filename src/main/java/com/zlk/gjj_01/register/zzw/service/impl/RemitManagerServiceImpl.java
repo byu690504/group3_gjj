@@ -23,12 +23,12 @@ public class RemitManagerServiceImpl implements RemitManagerService {
     }
 
     @Override
-    public RemitManager findByRemitWay(String remitWay) {
-        return remitManagerDao.findByRemitWay(remitWay);
+    public UnitOpenAccount findUnitOpenAccountByAppropriationUnit(String appropriationUnit) {
+        return remitManagerDao.findUnitOpenAccountByAppropriationUnit(appropriationUnit);
     }
 
     @Override
-    public UnitOpenAccount findUnitOpenAccountByAppropriationUnit(String appropriationUnit) {
-        return remitManagerDao.findUnitOpenAccountByAppropriationUnit(appropriationUnit);
+    public UnitOpenAccount findUnitByUrId(String urId) {
+        return remitManagerDao.findUnitByUrId(urId);
     }
 }

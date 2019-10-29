@@ -3,6 +3,7 @@ package com.zlk.gjj_01.register.lfx.controller;
 import com.zlk.gjj_01.register.entity.Agent;
 import com.zlk.gjj_01.register.entity.Unit;
 import com.zlk.gjj_01.register.entity.UnitRegister;
+import com.zlk.gjj_01.register.lfx.dao.UnitRegisterDao;
 import com.zlk.gjj_01.register.lfx.service.LoginService;
 import com.zlk.gjj_01.register.lfx.service.UnitRegisterService;
 import com.zlk.gjj_01.register.util.DateUtil;
@@ -27,6 +28,10 @@ public class RegisterController {
     @Autowired
     private LoginService loginService;
 
+    /**
+     * 跳转到登记前信息核实页面
+     * @return
+     */
     @RequestMapping(value = "/toUnitRegister")
     public ModelAndView toUnitRegister(HttpServletRequest request,Map map){
         ModelAndView mv=new ModelAndView();
@@ -43,6 +48,10 @@ public class RegisterController {
         return mv;
     }
 
+    /**
+     * 登记前信息核实页面点击确认后
+     * @return
+     */
     @RequestMapping(value = "/beforeRegister")
     public ModelAndView beforeRegister(String unitName,HttpServletRequest request){
         ModelAndView mv=new ModelAndView();
@@ -76,6 +85,10 @@ public class RegisterController {
         }
     }
 
+    /**
+     * 登记页面点击确认后
+     * @return
+     */
     @RequestMapping(value = "/unitRegister")
     @ResponseBody
     public ModelAndView unitRegister(Unit unit, UnitRegister unitRegister,String unitTime,HttpServletRequest request) throws ParseException {
@@ -89,10 +102,15 @@ public class RegisterController {
         ModelAndView mv=new ModelAndView();
         mv.addObject("msg","登记成功，请进行经办人授权");
         mv.setViewName("registerByUnitName");
-        request.getSession().setAttribute("urId",unitRegister.getUnitRegisterId());
+        UnitRegister unitRegister1 = unitRegisterService.findUnitRegisterByUnitId(unit.getUnitId());
+        request.getSession().setAttribute("urId",unitRegister1.getUnitRegisterId());
         return mv;
     }
 
+    /**
+     * 跳转到经办人授权页面
+     * @return
+     */
     @RequestMapping(value = "/toAgentAuth")
     @ResponseBody
     public ModelAndView toAgentAuth(HttpServletRequest request){
@@ -114,6 +132,10 @@ public class RegisterController {
         return mv;
     }
 
+    /**
+     * 经办人授权页面点击确认后
+     * @return
+     */
     @RequestMapping(value = "/agentAuth")
     @ResponseBody
     public ModelAndView agentAuth(){

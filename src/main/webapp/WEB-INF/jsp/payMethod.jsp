@@ -27,7 +27,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">单位登记号</label>
                     <div class="layui-input-block">
-                        <input type="text" readonly value="${urId}" name="unitRegisterId" id="unitRegisterId" value="" lay-verify="" placeholder="" autocomplete="off" class="layui-input">
+                        <input type="text" readonly value="${unitRegisterId}" name="unitRegisterId" id="unitRegisterId" value="" lay-verify="" placeholder="" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -39,13 +39,13 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">业务种类</label>
                     <div class="layui-input-block">
-                        <input type="text" readonly name="businessKind" id="businessKind" value="" lay-verify="" placeholder="" autocomplete="off" class="layui-input">
+                        <input type="text" readonly value="${businessKind}" name="businessKind" id="businessKind" value="" lay-verify="" placeholder="" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">资金来源</label>
                     <div class="layui-input-block">
-                        <input type="text" readonly name="moneySource" id="moneySource" value="" lay-verify="" placeholder="" autocomplete="off" class="layui-input">
+                        <input type="text" readonly value="${moneySource}" name="moneySource" id="moneySource" value="" lay-verify="" placeholder="" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
