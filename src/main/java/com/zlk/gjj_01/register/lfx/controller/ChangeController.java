@@ -7,6 +7,7 @@ import com.zlk.gjj_01.register.lfx.service.UnitRegisterService;
 import com.zlk.gjj_01.register.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.MatrixVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -20,6 +21,21 @@ public class ChangeController {
     private UnitRegisterService unitRegisterService;
     @Autowired
     private LoginService loginService;
+
+    @RequestMapping(value = "/toPersonRegister")
+    public String toPersonRegister(){
+        return "remitInventoryByUserName";
+    }
+
+    @RequestMapping(value = "/toUnitBusinessPower")
+    public String toUnitBusinessPower(){
+        return "unitBusinessPower";
+    }
+
+    @RequestMapping(value = "/toCentreMain")
+    public String toCentreMain(){
+        return "centreMain";
+    }
 
     @RequestMapping(value = "/toRegisterChange")
     public ModelAndView toRegisterChange(HttpServletRequest request){
@@ -58,6 +74,16 @@ public class ChangeController {
     @RequestMapping(value = "/toOpenAccountChange")
     public String toOpenAccountChange(){
         return "openAccountChange";
+    }
+
+    @RequestMapping(value = "/personRegister")
+    public ModelAndView personRegister(String agentName,String agentCardNumber){
+        ModelAndView mv=new ModelAndView();
+        mv.addObject("agentName",agentName);
+        mv.addObject("agentCardNumber",agentCardNumber);
+        mv.addObject("msg","登记成功");
+        mv.setViewName("remitInventoryByUserName");
+        return mv;
     }
 
     @RequestMapping(value = "/registerChange")
