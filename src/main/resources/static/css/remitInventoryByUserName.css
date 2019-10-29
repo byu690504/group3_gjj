@@ -15,16 +15,28 @@ body{
 }
 #span1{
     margin-top: -55px;
-    margin-left: 115px;
+    margin-left: 320px;
     margin-bottom: 30px;
     font-size: 20px;
 }
-#remitInventoryByUnitRegisterId{
-    margin-left: 400px;
+#remitInventoryByUserName{
+    margin-left: 170px;
     margin-top: 40px;
     background-color: #FFFFFF;
     padding-top: 80px;
     padding-bottom: 80px;
-    width: 360px;
+    width: 800px;
     box-shadow: 5px 5px 9px #B8B8B8;
+}
+.layui-input-block .layui-input{
+    width: 650px;
+}
+.layui-input-block button{
+    margin-left: 200px;
+}
+.div_msg{
+    width: 100% !important;
+    font-size: 15px;
+    text-align: center;
+    color: red;
 }

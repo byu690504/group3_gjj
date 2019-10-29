@@ -47,10 +47,10 @@
                                 </ol>
                             </dd>
                             <dd>
-                                <a href="<%=request.getContextPath() %>/" target="pageCenter">单位用户业务授权</a>
+                                <a href="<%=request.getContextPath() %>/change/toUnitBusinessPower" target="pageCenter">单位用户业务授权</a>
                             </dd>
                             <dd>
-                                <a href="<%=request.getContextPath() %>/remit/update" target="pageCenter">个人登记</a>
+                                <a href="<%=request.getContextPath() %>/change/toPersonRegister" target="pageCenter">个人登记</a>
                             </dd>
                             <dd>
                                 <a href="<%=request.getContextPath() %>/second/toList" target="pageCenter">二级管理辅助信息</a>
@@ -80,7 +80,7 @@
         </div>
         <!-- 主体区域 -->
         <div class="layui-body layui-bg-white">
-            <iframe name="pageCenter" frameborder="1"></iframe>
+            <iframe name="pageCenter" frameborder="1" src="<%=request.getContextPath() %>/change/toCentreMain"></iframe>
         </div>
     </div>
 </body>

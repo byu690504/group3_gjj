@@ -93,8 +93,8 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">二级管理辅助信息</label>
                 <div class="layui-input-block">
-                    <input type="radio" name="r" value="1" title="勾选" lay-filter="aaa">
-                    <input type="radio" name="r" value="0" title="缺省" lay-filter="aaa">
+                    <input type="radio" name="a" value="1" title="勾选" lay-filter="aaa">
+                    <input type="radio" name="a" value="0" title="缺省" lay-filter="aaa">
                 </div>
             </div>
             <div id="check1" style="display: none;">
@@ -306,7 +306,6 @@
                     {field : 'unitMonthlyDeposit',title : '单位月缴存额',align : 'center',width : 150},
                     {field : 'personalMonthlyDeposit',title : '个人月缴存额',align : 'center',width : 150},
                     {field : 'totalMonthlyDeposit',title : '月缴存额合计',align : 'center',width : 150},
-                    {field : 'secondAssistMessage',title : '二级管理辅助信息',align : 'center',width : 150},
                     {fixed : 'right',title : '操作',width : 200,align : 'center',
                         toolbar :
                             '<div class="layui-btn-group">' +
@@ -374,7 +373,7 @@
                         content : $('#addForm')
                     });
                 }else if (obj.event === 'echoURId') {
-                    $("#remitInventoryId").val(data.remitInventoryId);
+                    $("#").val(data.remitInventoryId);
                     form.render();
                 }
             });

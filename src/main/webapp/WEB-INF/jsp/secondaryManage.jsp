@@ -17,7 +17,6 @@
     <div class="layui-fluid">
         <table class="layui-table" id="secondaryManageList" lay-filter="secondary"></table>
     </div>
-
     <div id="addForm" hidden="hidden" style="padding: 25px">
         <form action="<%=request.getContextPath()%>/second/add" method="post" class="layui-form">
             <div class="layui-form-item">
@@ -39,7 +38,7 @@
                 </div>
             </div>
             <div class="layui-form-item">
-                <div class="layui-input-block">
+                <div class="layui-input-block" style="margin-left: 300px;">
                     <button type="submit" class="layui-btn" lay-submit lay-filter="sub">提交</button>
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
@@ -57,23 +56,23 @@
                 <div class="layui-input-block">
                     <input type="text" name="deptNumber" id="deptNumber" lay-verify="required|number" placeholder="请输入部门编号" autocomplete="off" class="layui-input">
                 </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">部门名称</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="deptName" id="deptName" lay-verify="required" placeholder="请输入部门名称" autocomplete="off" class="layui-input">
-                    </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">部门名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="deptName" id="deptName" lay-verify="required" placeholder="请输入部门名称" autocomplete="off" class="layui-input">
                 </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">部门代码</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="deptCode" id="deptCode" lay-verify="required|number" placeholder="请输入部门代码" autocomplete="off" class="layui-input">
-                    </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">部门代码</label>
+                <div class="layui-input-block">
+                    <input type="text" name="deptCode" id="deptCode" lay-verify="required|number" placeholder="请输入部门代码" autocomplete="off" class="layui-input">
                 </div>
-                <div class="layui-form-item">
-                    <div class="layui-input-block">
-                        <button type="submit" class="layui-btn" lay-submit lay-filter="sub">提交</button>
-                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-                    </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block" style="margin-left: 300px;">
+                    <button type="submit" class="layui-btn" lay-submit lay-filter="sub">提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
             </div>
         </form>
@@ -134,7 +133,7 @@
                         });
                     });
                 }else if (obj.event === 'edit'){
-                    layer.msg(" 编辑操作");
+                    //layer.msg(" 编辑操作");
                     $("#secondAssistMessageId").val(data.secondAssistMessageId);
                     $("#deptCode").val(data.deptCode);
                     $("#deptNumber").val(data.deptNumber);
@@ -156,7 +155,7 @@
                         type: "POST",
                         url: "<%=request.getContextPath()%>/second/update?",
                         success: function (msg) {
-                            layer.msg(msg);
+                            layer.msg("编辑成功！");
                         }
                     });
                     //alert();
