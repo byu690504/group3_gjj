@@ -55,6 +55,7 @@
                 elem : '#alreadyCard',
                 url : '<%=request.getContextPath() %>/',
                 page : true,
+                height : 550,
                 cols : [ [
                     {field : '',title : '序号',align : 'center',width : 200},
                     {field : '',title : '职工编号',align : 'center',width : 300},
@@ -63,12 +64,12 @@
                     {field : '',title : '证件号码',align : 'center',width : 300},
                     {field : '',title : '办理状态',align : 'center',width : 300}
                 ] ],
-                limits : 15,
+                limits : 10,
                 toolbar :
                     '<div class="layui-btn-group" style="padding: 15px;">' +
                     '单位登记号：' +
                     '<div class="layui-inline">' +
-                    '<input class="layui-input" name="" value="" autocomplete="off" lay-event="echoURId" readonly />' +
+                    '<input class="layui-input" name="" value="" autocomplete="off" lay-event="" readonly />' +
                     '</div>' +
                     '</div>'
             });

@@ -92,8 +92,8 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">二级管理辅助信息</label>
                 <div class="layui-input-block">
-                    <input type="radio" name="r" value="1" title="勾选" lay-filter="aaa">
-                    <input type="radio" name="r" value="0" title="缺省" lay-filter="aaa">
+                    <input type="radio" name="a" value="1" title="勾选" lay-filter="aaa">
+                    <input type="radio" name="a" value="0" title="缺省" lay-filter="aaa">
                 </div>
             </div>
             <div id="check1" style="display: none;">
@@ -196,16 +196,16 @@
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">二级管理辅助信息</label>
-                <div class="layui-input-block" id="secondary2" >
-                    <input type="radio" name="i" value="1" title="勾选" lay-filter="bbb"/>
-                    <input type="radio" name="i" value="0" title="缺省" lay-filter="bbb"/>
+                <div class="layui-input-block">
+                    <input type="radio" name="b" value="1" title="勾选" lay-filter="bbb">
+                    <input type="radio" name="b" value="0" title="缺省" lay-filter="bbb">
                 </div>
             </div>
-            <div class="check2" style="display: none;">
+            <div id="check2" style="display: none;">
                 <div class="layui-form-item">
                     <label class="layui-form-label">部门编号</label>
                     <div class="layui-input-block">
-                        <input type="text" name="deptNumber" lay-verify="number" placeholder="请输入部门编号" autocomplete="off" class="layui-input">
+                        <input type="text" name="deptNumber" lay-verify="required|number" placeholder="请输入部门编号" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -222,7 +222,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">部门代码</label>
                     <div class="layui-input-block">
-                        <input type="text" name="deptCode" ay-verify="number" placeholder="请输入部门代码" autocomplete="off" class="layui-input">
+                        <input type="text" name="deptCode" lay-verify="required" placeholder="请输入部门代码" autocomplete="off" class="layui-input">
                     </div>
                 </div>
             </div>
@@ -295,7 +295,6 @@
                     {field : '',title : '单位月缴存额',align : 'center',width : 150},
                     {field : '',title : '个人月缴存额',align : 'center',width : 150},
                     {field : '',title : '月缴存额合计',align : 'center',width : 150},
-                    {field : 'secondAssistMessage',title : '二级管理辅助信息',align : 'center',width : 150},
                     {fixed : 'right',title : '操作',width : 200,align : 'center',
                         toolbar :
                             '<div class="layui-btn-group">' +
@@ -324,8 +323,6 @@
             table.on('tool(inventory)', function (obj) {
                 var data=obj.data;
                 if (obj.event === 'edit'){
-                    $("#remitInventoryId").val(data.remitInventoryId);
-                    $("#moneySource").val(data.moneySource);
                     $("#empNumber").val(data.empNumber);
                     $("#empName").val(data.empName);
                     $("#empCardName").val(data.empCardName);
