@@ -51,11 +51,11 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">用户类型</label>
                     <div class="layui-input-block" id="userType" >
-                        <input type="radio" name="t" value="证书用户" title="证书用户" lay-filter="aaa"/>
-                        <input type="radio" name="t" value="非证书用户" title="非证书用户" lay-filter="aaa"/>
+                        <input type="radio" name="r" value="1" title="证书用户" lay-filter="aaa">
+                        <input type="radio" name="r" value="0" title="非证书用户" lay-filter="aaa">
                     </div>
                 </div>
-                <div class="check1">
+                <div id="check1" style="display: none;">
                     <div class="layui-form-item">
                         <label class="layui-form-label">单位名称</label>
                         <div class="layui-input-inline">
@@ -63,7 +63,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="fzs">
+                <div id="check2" style="display: none;">
                     <div class="layui-form-item">
                         <label class="layui-form-label">经办人1</label>
                         <div class="layui-input-inline">
@@ -155,17 +155,10 @@
                 alert(data.value); //被点击的radio的value值
                 if(data.value == 1){
                     $("#check1").show();
-                }else{
-                    $("#check1").hide();
-                }
-            });
-
-            form.on('radio(bbb)', function(data){
-                alert(data.value); //被点击的radio的value值
-                if(data.value == 1){
-                    $("#check2").show();
-                }else{
                     $("#check2").hide();
+                }else{
+                    $("#check2").show();
+                    $("#check1").hide();
                 }
             });
         });
