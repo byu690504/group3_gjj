@@ -126,7 +126,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">经办人证件名称</label>
                     <div class="layui-input-inline">
-                        <select name="agentCardName" required lay-verify="required">
+                        <select name="agentCardName" lay-verify="required">
                             <option value="">请选择证件名称</option>
                             <option value="身份证号">身份证号</option>
                             <option value="军官证号">军官证号</option>
@@ -141,7 +141,7 @@
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <div class="layui-input-block layui-input-inline">
+                    <div class="layui-input-block">
                         <button type="submit" class="layui-btn" lay-submit lay-filter="sub">提交</button>
                         <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                     </div>

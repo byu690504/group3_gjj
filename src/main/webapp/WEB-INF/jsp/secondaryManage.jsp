@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div class="layui-form-item">
-                <div class="layui-input-block">
+                <div class="layui-input-block" style="margin-left: 300px;">
                     <button type="submit" class="layui-btn" lay-submit lay-filter="sub">提交</button>
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
@@ -65,7 +65,7 @@
                 </div>
             </div>
             <div class="layui-form-item">
-                <div class="layui-input-block">
+                <div class="layui-input-block" style="margin-left: 300px;">
                     <button type="submit" class="layui-btn" lay-submit lay-filter="sub">提交</button>
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>

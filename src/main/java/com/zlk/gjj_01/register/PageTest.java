@@ -76,4 +76,14 @@ public class PageTest {
     public String test13(){
         return "payMethod";
     }
+
+    @RequestMapping("/page14")
+    public String test14(){
+        return "centreMain";
+    }
+
+    @RequestMapping("/page15")
+    public String test15(){
+        return "remitInventoryByUserName";
+    }
 }

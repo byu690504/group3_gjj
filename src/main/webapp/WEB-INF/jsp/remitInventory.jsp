@@ -295,7 +295,6 @@
                     {field : '',title : '单位月缴存额',align : 'center',width : 150},
                     {field : '',title : '个人月缴存额',align : 'center',width : 150},
                     {field : '',title : '月缴存额合计',align : 'center',width : 150},
-                    {field : 'secondAssistMessage',title : '二级管理辅助信息',align : 'center',width : 150},
                     {fixed : 'right',title : '操作',width : 200,align : 'center',
                         toolbar :
                             '<div class="layui-btn-group">' +

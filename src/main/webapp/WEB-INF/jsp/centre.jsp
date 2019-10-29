@@ -80,9 +80,7 @@
         </div>
         <!-- 主体区域 -->
         <div class="layui-body layui-bg-white">
-            <iframe name="pageCenter" frameborder="1">
-                <a href="<%=request.getContextPath() %>/" target="pageCenter"></a>
-            </iframe>
+            <iframe name="pageCenter" frameborder="1" src="<%=request.getContextPath() %>/test/page14"></iframe>
         </div>
     </div>
 </body>

@@ -53,13 +53,22 @@
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">资金来源</label>
-                    <div class="layui-input-block">
-                        <select name="moneySource" lay-verify="required">
-                            <option value="">请选择资金来源</option>
-                            <option value="单位自筹">单位自筹</option>
-                            <option value="财政拨款">财政拨款</option>
-                            <option value="财政拨款和单位自筹">财政拨款和单位自筹</option>
-                        </select>
+                    <div class="layui-input-block" name="moneySource" lay-verify="required">
+                        <input type="radio" name="a" value="0" title="单位自筹" lay-filter="aaa">
+                        <input type="radio" name="a" value="1" title="财政拨款" lay-filter="aaa">
+                        <input type="radio" name="a" value="1" title="财政拨款和单位自筹" lay-filter="aaa">
+                    </div>
+                </div>
+                <div id="check1" style="display: none">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">财政拨款单位</label>
+                        <div class="layui-input-block">
+                            <select name="appropriationUnit" lay-verify="required">
+                                <option value="">请选择拨款单位</option>
+                                <option value="市财政">市财政</option>
+                                <option value="区县财政">区县财政</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -69,16 +78,6 @@
                             <option value="">请选择是否开通</option>
                             <option value="是">是</option>
                             <option value="否">否</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">财政拨款单位</label>
-                    <div class="layui-input-block">
-                        <select name="appropriationUnit" lay-verify="required">
-                            <option value="">请选择拨款单位</option>
-                            <option value="市财政">市财政</option>
-                            <option value="区县财政">区县财政</option>
                         </select>
                     </div>
                 </div>
@@ -404,6 +403,19 @@
     </script>--%>
 
     <script type="text/javascript">
+        layui.use(['form','jquery'], function(){
+            var form = layui.form;
+            var $= layui.$;
+            form.on('radio(aaa)', function(data){
+                alert(data.value); //被点击的radio的value值
+                if(data.value == 1){
+                    $("#check1").show();
+                }else{
+                    $("#check1").hide();
+                }
+            });
+        });
+
         layui.use('form', function(){
             var form = layui.form;
             form.render();
@@ -412,6 +424,7 @@
                 return true;
             });
         });
+
         layui.use(['form','jquery'], function () {
             var form=layui.form;
             form.verify({
