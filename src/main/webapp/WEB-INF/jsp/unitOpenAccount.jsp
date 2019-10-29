@@ -53,7 +53,7 @@
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">资金来源</label>
-                    <div class="layui-input-block" name="moneySource" lay-verify="required">
+                    <div class="layui-input-block" name="moneySource">
                         <input type="radio" name="a" value="0" title="单位自筹" lay-filter="aaa">
                         <input type="radio" name="a" value="1" title="财政拨款" lay-filter="aaa">
                         <input type="radio" name="a" value="1" title="财政拨款和单位自筹" lay-filter="aaa">
@@ -407,7 +407,7 @@
             var form = layui.form;
             var $= layui.$;
             form.on('radio(aaa)', function(data){
-                alert(data.value); //被点击的radio的value值
+                //alert(data.value); //被点击的radio的value值
                 if(data.value == 1){
                     $("#check1").show();
                 }else{

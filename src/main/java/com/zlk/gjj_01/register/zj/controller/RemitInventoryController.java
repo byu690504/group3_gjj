@@ -33,22 +33,22 @@ public class RemitInventoryController {
     @Autowired
     private RemitInventoryService remitInventoryService;
     @RequestMapping(value = "/toList")
-    public ModelAndView toList(String record,HttpServletRequest request)throws Exception{
-        ModelAndView mv=new ModelAndView();
+    public ModelAndView toList(String record, HttpServletRequest request) throws Exception {
+        ModelAndView mv = new ModelAndView();
         String urId = (String) request.getSession().getAttribute("urId");
-//        if(urId==null){
-//            mv.addObject("msg","请先进行单位登记");
-//            mv.setViewName("registerByUnitName");
-//            return mv;
-//        }
-//        UnitOpenAccount unitOpenAccount=unitOpenAccountDao.findUoaIdByUrId(urId);
-//        if(unitOpenAccount==null){
-//            mv.addObject("msg","请先进行单位开户");
-//            mv.setViewName("unitOpenAccount");
-//            return mv;
-//        }
-        mv.addObject("unitRegisterId",urId);
-        mv.addObject("record",record);
+        if (urId == null) {
+            mv.addObject("msg", "请先进行单位登记");
+            mv.setViewName("registerByUnitName");
+            return mv;
+        }
+        UnitOpenAccount unitOpenAccount = unitOpenAccountDao.findUoaIdByUrId(urId);
+        if (unitOpenAccount == null) {
+            mv.addObject("msg", "请先进行单位开户");
+            mv.setViewName("unitOpenAccount");
+            return mv;
+        }
+        mv.addObject("unitRegisterId", urId);
+        mv.addObject("record", record);
         mv.setViewName("remitInventory");
         return mv;
     }
