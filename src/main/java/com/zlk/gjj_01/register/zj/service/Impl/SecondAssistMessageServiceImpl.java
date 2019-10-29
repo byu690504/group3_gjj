@@ -25,8 +25,8 @@ public class SecondAssistMessageServiceImpl implements SecondAssistMessageServic
     }
 
     @Override
-    public Integer updateSec(String secondAssistMessageId) {
-        return secondAssistMessageMapper.updateSec(secondAssistMessageId);
+    public Integer updateSec(SecondAssistMessage secondAssistMessage) {
+        return secondAssistMessageMapper.updateSec(secondAssistMessage);
     }
 
 

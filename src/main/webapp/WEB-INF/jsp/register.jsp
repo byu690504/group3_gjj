@@ -90,7 +90,7 @@
                 </div>
                 <div class="layui-form-item">
                     <div class="layui-input-block layui-input-inline">
-                        <button type="submit" class="layui-btn layui-btn-norma" lay-submit lay-filter="sub">提交</button>
+                        <button type="submit" class="layui-btn" lay-submit lay-filter="sub">提交</button>
                         <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                     </div>
                 </div>
@@ -105,7 +105,7 @@
             form.verify({
                 NumAndAbc:[
                     /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,10}$/,
-                    '密码必须为字母和数字的组合,且不能有空格'
+                    '密码必须为字母和数字的组合,且长度要在6-10位之间'
                 ],
                 //校验两次密码是否一致
                 validatePassword:function (value) {

@@ -20,6 +20,7 @@ public interface RemitInventoryDao extends JpaRepository<RemitInventory,String> 
     List<RemitInventory> findByRecord(String record);
     //通过id查找
     @Query("update RemitInventory r set r.empName=?1,r.empNumber=?2,r.empCardNumber=?3,r.empCountry=?4," +
-            "r.record=?5,r.moneySource=?6,r.empCardName=?7 where r.remitInventoryId=?1")
+            "r.record=?5,r.unitMonthlyDeposit=?6,r.empCardName=?7,r.personalMonthlyDeposit=?8," +
+            "r.totalMonthlyDeposit=?9 where r.remitInventoryId=?1")
     void findRemById(RemitInventory remitInventory);
 }

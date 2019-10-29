@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -60,16 +61,17 @@ public class SecondAssistMessageController {
     }
     @RequestMapping(value = "/update")
     @ResponseBody
-    public String update(SecondAssistMessage secondAssistMessage){
+    public ModelAndView update(SecondAssistMessage secondAssistMessage){
         //查询id
         //根据id修改信息 保存
-        Integer sec = secondAssistMessageService.updateSec(secondAssistMessage.getSecondAssistMessageId());
-        if(sec != null){
-            System.out.println("修改成功！");
+        ModelAndView mv=new ModelAndView();
+        Integer result=secondAssistMessageService.updateSec(secondAssistMessage);
+        if(result==1){
+            mv.setViewName("secondaryManage");
+            return mv;
         }else{
-            System.out.println("修改成功！");
+            return null;
         }
-        return "secondaryManage";
     }
     @RequestMapping(value = "/delete")
     @ResponseBody

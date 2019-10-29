@@ -27,7 +27,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">单位名称</label>
                     <div class="layui-input-inline">
-                        <input type="text" readonly value="${unitName}" name="unitName" id="unitName" lay-verify="required" placeholder="请输入单位名称" autocomplete="off" class="layui-input">
+                        <input type="text" readonly value="${unitName}" name="unitName" id="unitName" lay-verify="" placeholder="" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -161,6 +161,7 @@
         layui.use(['form','laydate'], function() {
             var form = layui.form;
             var laydate = layui.laydate;
+            form.render();
             //监听提交
             form.on('submit(sub)', function(data){
                 return true;

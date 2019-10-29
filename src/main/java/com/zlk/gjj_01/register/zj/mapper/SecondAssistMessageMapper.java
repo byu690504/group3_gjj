@@ -10,5 +10,5 @@ import java.util.List;
 public interface SecondAssistMessageMapper {
     List<SecondAssistMessage> findSecondLimit(Pagination pagination);
     Integer findSecondCount(Pagination pagination);
-    Integer updateSec(String secondAssistMessageId);
+    Integer updateSec(SecondAssistMessage secondAssistMessage);
 }

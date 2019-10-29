@@ -22,25 +22,25 @@
         <form action="<%=request.getContextPath()%>/second/add" method="post" class="layui-form">
             <div class="layui-form-item">
                 <label class="layui-form-label">部门编号</label>
-                <div class="layui-input-inline">
+                <div class="layui-input-block">
                     <input type="text" name="deptNumber" lay-verify="required|number" placeholder="请输入部门编号" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">部门名称</label>
-                <div class="layui-input-inline">
+                <div class="layui-input-block">
                     <input type="text" name="deptName" lay-verify="required" placeholder="请输入部门名称" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">部门代码</label>
-                <div class="layui-input-inline">
+                <div class="layui-input-block">
                     <input type="text" name="deptCode" lay-verify="required|number" placeholder="请输入部门代码" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
-                <div class="layui-input-block layui-input-inline">
-                    <button type="submit" class="layui-btn layui-btn-norma" lay-submit lay-filter="sub">提交</button>
+                <div class="layui-input-block">
+                    <button type="submit" class="layui-btn" lay-submit lay-filter="sub">提交</button>
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
             </div>
@@ -50,29 +50,28 @@
     <div id="editForm" hidden="hidden" style="padding: 25px">
         <form action="<%=request.getContextPath() %>/second/update" method="post" class="layui-form">
             <div class="layui-input-inline">
-                <input type="hidden" class="layui-input" name="second_assist_message_id" id="second_assist_message_id">
+                <input type="hidden" class="layui-input" name="secondAssistMessageId" id="secondAssistMessageId">
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">部门编号</label>
                 <div class="layui-input-inline">
                     <input type="text" name="deptNumber" id="deptNumber" lay-verify="required|number" placeholder="请输入部门编号" autocomplete="off" class="layui-input">
                 </div>
-            </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">部门名称</label>
-                <div class="layui-input-inline">
+                <div class="layui-input-block">
                     <input type="text" name="deptName" id="deptName" lay-verify="required" placeholder="请输入部门名称" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">部门代码</label>
-                <div class="layui-input-inline">
+                <div class="layui-input-block">
                     <input type="text" name="deptCode" id="deptCode" lay-verify="required|number" placeholder="请输入部门代码" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
-                <div class="layui-input-block layui-input-inline">
-                    <button type="submit" class="layui-btn layui-btn-norma" lay-submit lay-filter="sub">提交</button>
+                <div class="layui-input-block">
+                    <button type="submit" class="layui-btn" lay-submit lay-filter="sub">提交</button>
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
             </div>
@@ -89,7 +88,7 @@
                 elem : '#secondaryManageList',
                 url : '<%=request.getContextPath() %>/second/list',
                 page : true,
-                height : 500,
+                height : 550,
                 cols : [ [
                     {field : 'secondAssistMessageId',title : '序号',align : 'center',width : 150},
                     {field : 'deptNumber',title : '部门编号',align : 'center',width : 300},
@@ -98,7 +97,7 @@
                     {fixed : 'right',title : '操作',width : 280,align : 'center',
                         toolbar :
                             '<div class="layui-btn-group">' +
-                                '<button type="submit" class="layui-btn" lay-event="edit">' +
+                                '<button type="submit" class="layui-btn" lay-event="edit" lay-filter="sub">' +
                                     '<i class="layui-icon layui-icon-edit"></i>' +
                                 '</button>'+
                                 '<button type="button" class="layui-btn layui-btn-danger" lay-event="del">' +
@@ -110,7 +109,7 @@
                 limits : 10,
                 toolbar :
                     '<div class="layui-btn-group" style="padding: 15px;">' +
-                        '<button type="submit" class="layui-btn" lay-event="add" lay-filter="">' +
+                        '<button type="submit" class="layui-btn" lay-event="add" lay-filter="sub">' +
                             '<i class="layui-icon layui-icon-add-1"></i>' +
                         '</button>'+
                     '</div>'
@@ -128,7 +127,7 @@
                             type : "POST",
                             url : "<%=request.getContextPath() %>/second/delete?secondAssistMessageId="+data.secondAssistMessageId,
                             success : function (msg) {
-                                layer.alert(msg);
+                                layer.alert(msg.msg);
                                 layer.close(index);
                             }
                         });
@@ -143,7 +142,7 @@
                     layer.open({
                         type : 1,
                         title : '编辑二级管理部门',
-                        area : '420px',
+                        area : '800px',
                         moveType : 1,
                         resize : false,
                         anim : 4,
@@ -169,7 +168,7 @@
                     layer.open({
                         type : 1,
                         title : '添加二级管理部门',
-                        area : ['70%','70%'],
+                        area : '800px',
                         moveType : 1,
                         resize : false,
                         anim : 4,

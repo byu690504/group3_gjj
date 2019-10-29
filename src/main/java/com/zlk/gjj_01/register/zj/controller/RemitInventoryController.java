@@ -43,9 +43,6 @@ public class RemitInventoryController {
     @RequestMapping(value = "/list")
     @ResponseBody
     public Map<String,Object> remList(Pagination pagination)throws Exception{
-        /*pagination.setRecord("是");*/
-        /*pagination.setPage(1);
-        pagination.setLimit(2);*/
         pagination.setStartPage((pagination.getPage()-1)*pagination.getLimit());
         List<RemitInventory> List=remitInventoryService.findRemLimit(pagination);
         Integer count=remitInventoryService.findRemitCount(pagination);
@@ -67,7 +64,7 @@ public class RemitInventoryController {
             return "remitInventory";//跳转添加页面
         }
     }
-    @RequestMapping(value = "/add")
+    /*@RequestMapping(value = "/add")
     public String add(HttpServletRequest request,RemitInventory remitInventory,SecondAssistMessage secondAssistMessage){
         UnitRegister unitRegister=new UnitRegister();
         String urId= (String) request.getSession().getAttribute("urId");
@@ -78,12 +75,24 @@ public class RemitInventoryController {
         remitInventory.setUnitRegister(unitRegister);
         remitInventoryDao.save(remitInventory);
         return "remitInventory";
+    }*/
+    @RequestMapping(value = "/add")
+    public String add(RemitInventory remitInventory){
+        remitInventoryDao.save(remitInventory);
+        return "remitInventory";
     }
     @RequestMapping(value = "/update")
     @ResponseBody
     public void update(RemitInventory remitInventory) {
-        //通过id查询
-        //保存修改记录
-
+        /*ModelAndView mv=new ModelAndView();
+        Integer result=remitInventoryService.updateRem(remitInventory);
+        if(result==1){
+            mv.setViewName("remitInventory");
+            return mv;
+        }else{
+            return null;
+        }*/
+        remitInventoryDao.findRemById(remitInventory);
     }
+
 }

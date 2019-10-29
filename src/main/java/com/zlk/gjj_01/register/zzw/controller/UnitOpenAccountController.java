@@ -3,7 +3,7 @@ package com.zlk.gjj_01.register.zzw.controller;
 import com.zlk.gjj_01.register.entity.Agent;
 import com.zlk.gjj_01.register.entity.UnitOpenAccount;
 import com.zlk.gjj_01.register.entity.UnitRegister;
-import com.zlk.gjj_01.register.util.certUtil;
+import com.zlk.gjj_01.register.util.CertUtil;
 import com.zlk.gjj_01.register.zzw.service.UnitOpenAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -50,13 +50,13 @@ public class UnitOpenAccountController {
         unitOpenAccount.setUnitRegister(unitRegister);
         unitOpenAccountService.save(unitOpenAccount);
         String agentName1= (String) request.getSession().getAttribute("agent");
-        unitOpenAccountService.agentAuth(certUtil.getAgentAuth(),agentName1);
+        unitOpenAccountService.agentAuth(CertUtil.getAgentAuth(),agentName1);
 
         for(;;) {
-            String agentName=certUtil.getAgentAuth();
+            String agentName= CertUtil.getAgentAuth();
             Agent agent1 = unitOpenAccountService.findAgentByAgentName(agentName);
             if (agent1 == null) {
-                unitOpenAccountService.agentAuth(certUtil.getAgentAuth(),agentName);
+                unitOpenAccountService.agentAuth(CertUtil.getAgentAuth(),agentName);
                 break;
             }
         }

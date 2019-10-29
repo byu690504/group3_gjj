@@ -66,4 +66,14 @@ public class PageTest {
     public String test11(){
         return "remitInventory";
     }
+
+    @RequestMapping("/page12")
+    public String test12(){
+        return "registerChange";
+    }
+
+    @RequestMapping("/page13")
+    public String test13(){
+        return "payMethod";
+    }
 }
