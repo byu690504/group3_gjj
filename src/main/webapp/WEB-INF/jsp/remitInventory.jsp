@@ -14,12 +14,21 @@
     <script src="<%=request.getContextPath() %>/layui/layui.all.js"></script>
 </head>
 <body>
-    <span>单位登记号为:${unitRegisterId}</span>
-    <div class="layui-fluid">
-        <table class="layui-table" id="remitInventoryList" lay-filter="inventory"></table>
+    <div>
+        <div style="margin-bottom: -10px; margin-top: 15px; margin-left: 10px;">
+            <div class="layui-form-item">
+                <label class="layui-form-label">单位登记号</label>
+                <div class="layui-input-inline">
+                    <input type="text" value="${unitRegisterId}" readonly placeholder="" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+        <div class="layui-fluid">
+            <table class="layui-table" id="remitInventoryList" lay-filter="inventory"></table>
+        </div>
     </div>
 
-    <div id="addForm" hidden="hidden" style="padding: 25px">
+    <div id="addForm" hidden="hidden" style="padding: 25px;">
         <form action="<%=request.getContextPath()%>/remit/add" method="post" class="layui-form">
             <div class="layui-form-item">
                 <label class="layui-form-label">职工编号</label>
@@ -321,10 +330,7 @@
                 limits : 10,
                 toolbar :
                     '<div class="layui-btn-group" style="padding: 15px;">' +
-                    '单位登记号：' +
-                    '<div class="layui-inline">' +
-                    '</div>' +
-                    '<button type="submit" class="layui-btn" lay-event="add" lay-filter="sub" style="margin-left: 40px">' +
+                    '<button type="submit" class="layui-btn" lay-event="add" lay-filter="sub" style="margin-left: 5px">' +
                     '<i class="layui-icon layui-icon-add-1"></i>' +
                     '</button>'+
                     '</div>'
