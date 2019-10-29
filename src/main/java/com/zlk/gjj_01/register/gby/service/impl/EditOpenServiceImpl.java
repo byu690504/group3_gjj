@@ -4,9 +4,10 @@ import com.zlk.gjj_01.register.entity.Unit;
 import com.zlk.gjj_01.register.entity.UnitOpenAccount;
 import com.zlk.gjj_01.register.entity.UnitRegister;
 import com.zlk.gjj_01.register.gby.Dao.OpendDao;
-import com.zlk.gjj_01.register.gby.Dao.RegisterDao;
-import com.zlk.gjj_01.register.gby.Dao.UnitDao;
+
 import com.zlk.gjj_01.register.gby.service.EditOpenService;
+import com.zlk.gjj_01.register.lfx.dao.UnitDao;
+import com.zlk.gjj_01.register.lfx.dao.UnitRegisterDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,7 @@ public class EditOpenServiceImpl implements EditOpenService {
     @Autowired
     private OpendDao opendDao;
     @Autowired
-    private RegisterDao registerDao;
+    private UnitRegisterDao unitRegisterDao;
     @Autowired
     private UnitDao unitDao;
 
@@ -27,7 +28,7 @@ public class EditOpenServiceImpl implements EditOpenService {
 
     @Override
     public UnitRegister save(UnitRegister unitRegister) {
-        return registerDao.save(unitRegister);
+        return unitRegisterDao.save(unitRegister);
     }
 
     @Override

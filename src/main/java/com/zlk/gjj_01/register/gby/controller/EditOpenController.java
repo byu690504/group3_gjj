@@ -17,11 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 public class EditOpenController {
     @Autowired
     private EditOpenService editOpenService;
-    @RequestMapping("/as")
-    public String as() {
 
-        return "centre";
-    }
     @RequestMapping("/name")
     public String name() {
 

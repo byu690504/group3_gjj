@@ -14,6 +14,7 @@
     <script src="<%=request.getContextPath() %>/layui/layui.all.js"></script>
 </head>
 <body>
+    <span>单位登记号为:${unitRegisterId}</span>
     <div class="layui-fluid">
         <table class="layui-table" id="remitInventoryList" lay-filter="inventory"></table>
     </div>
@@ -74,19 +75,19 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">单位月缴存额</label>
                 <div class="layui-input-block">
-                    <input type="text" name="agentName" id="a" readonly lay-verify="" placeholder="" autocomplete="off" class="layui-input">
+                    <input type="text" name="unitMonthlyDeposit" id="a" readonly lay-verify="" placeholder="" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">个人月缴存额</label>
                 <div class="layui-input-block">
-                    <input type="text" name="agentName" id="b" readonly lay-verify="" placeholder="" autocomplete="off" class="layui-input">
+                    <input type="text" name="personalMonthlyDeposit" id="b" readonly lay-verify="" placeholder="" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">月缴存额合计</label>
                 <div class="layui-input-block">
-                    <input type="text" name="agentName" id="c" readonly lay-verify="" placeholder="" autocomplete="off" class="layui-input">
+                    <input type="text" name="totalMonthlyDeposit" id="c" readonly lay-verify="" placeholder="" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
@@ -131,26 +132,26 @@
     </div>
 
     <div id="editForm" hidden="hidden" style="padding: 25px">
-        <form action="<%=request.getContextPath() %>" method="post" class="layui-form">
+        <form action="<%=request.getContextPath() %>/remit/update" method="post" class="layui-form">
             <div class="layui-input-block">
-                <input type="hidden" class="layui-input" name="" id="">
+                <input type="hidden" class="layui-input" name="remitInventoryId" id="remitInventoryId">
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">职工编号</label>
                 <div class="layui-input-block">
-                    <input type="text" name="empNumber" id="empNumber" lay-verify="readonly" placeholder="" autocomplete="off" class="layui-input">
+                    <input type="text" name="empNumber" id="empNumber" lay-verify="readonly" placeholder="请输入员工编号" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">姓名</label>
                 <div class="layui-input-block">
-                    <input type="text" name="empName" id="empName" lay-verify="readonly" placeholder="" autocomplete="off" class="layui-input">
+                    <input type="text" name="empName" id="empName" lay-verify="readonly" placeholder="请输入姓名" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">证件名称</label>
                 <div class="layui-input-block">
-                    <select name="empCardName" lay-verify="required">
+                    <select name="empCardName" id="empCardName" lay-verify="required">
                         <option value="">请选择证件名称</option>
                         <option value="身份证号">身份证号</option>
                         <option value="军官证号">军官证号</option>
@@ -171,6 +172,16 @@
                 </div>
             </div>
             <div class="layui-form-item">
+                <label class="layui-form-label">是否办卡</label>
+                <div class="layui-input-block">
+                    <select name="record" id="record" lay-verify="required">
+                        <option value="">请选择是否办卡</option>
+                        <option value="是">是</option>
+                        <option value="否">否</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
                 <label class="layui-form-label">缴存基数</label>
                 <div class="layui-input-block">
                     <input type="text" name="empDepositeBase" id="empDepositeBase" lay-verify="required|positiveInt" placeholder="请输入缴存基数" autocomplete="off" class="layui-input">
@@ -179,26 +190,26 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">单位月缴存额</label>
                 <div class="layui-input-block">
-                    <input type="text" name="agentName" id="agentName" lay-verify="required|number" placeholder="请输入单位月缴存额" autocomplete="off" class="layui-input">
+                    <input type="text" name="unitMonthlyDeposit" id="unitMonthlyDeposit" lay-verify="required|number" placeholder="请输入单位月缴存额" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">个人月缴存额</label>
                 <div class="layui-input-block">
-                    <input type="text" name="agentName" lay-verify="readonly|number" placeholder="请输入个人月缴存额" autocomplete="off" class="layui-input">
+                    <input type="text" name="personalMonthlyDeposit" id="personalMonthlyDeposit" lay-verify="readonly|number" placeholder="请输入个人月缴存额" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">月缴存额合计</label>
                 <div class="layui-input-block">
-                    <input type="text" name="agentName" lay-verify="readonly" placeholder="" autocomplete="off" class="layui-input">
+                    <input type="text" name="totalMonthlyDeposit" id="totalMonthlyDeposit" lay-verify="readonly" placeholder="" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">二级管理辅助信息</label>
                 <div class="layui-input-block">
-                    <input type="radio" name="b" value="1" title="勾选" lay-filter="bbb">
-                    <input type="radio" name="b" value="0" title="缺省" lay-filter="bbb">
+                    <input type="radio" name="i" value="1" title="勾选" lay-filter="bbb">
+                    <input type="radio" name="i" value="0" title="缺省" lay-filter="bbb">
                 </div>
             </div>
             <div id="check2" style="display: none;">
@@ -240,7 +251,7 @@
             var form = layui.form;
             var $= layui.$;
             form.on('radio(aaa)', function(data){
-			    alert(data.value); //被点击的radio的value值
+			    //alert(data.value); //被点击的radio的value值
                 if(data.value == 1){
                     $("#check1").show();
                 }else{
@@ -249,7 +260,7 @@
             });
 
             form.on('radio(bbb)', function(data){
-                alert(data.value); //被点击的radio的value值
+                //alert(data.value); //被点击的radio的value值
                 if(data.value == 1){
                     $("#check2").show();
                 }else{
@@ -292,9 +303,9 @@
                     {field : 'empCardNumber',title : '证件号码',align : 'center',width : 150},
                     {field : 'record',title : '是否办卡',align : 'center',width : 150},
                     {field : 'empDepositeBase',title : '缴存基数',align : 'center',width : 150},
-                    {field : '',title : '单位月缴存额',align : 'center',width : 150},
-                    {field : '',title : '个人月缴存额',align : 'center',width : 150},
-                    {field : '',title : '月缴存额合计',align : 'center',width : 150},
+                    {field : 'unitMonthlyDeposit',title : '单位月缴存额',align : 'center',width : 150},
+                    {field : 'personalMonthlyDeposit',title : '个人月缴存额',align : 'center',width : 150},
+                    {field : 'totalMonthlyDeposit',title : '月缴存额合计',align : 'center',width : 150},
                     {fixed : 'right',title : '操作',width : 200,align : 'center',
                         toolbar :
                             '<div class="layui-btn-group">' +
@@ -312,7 +323,6 @@
                     '<div class="layui-btn-group" style="padding: 15px;">' +
                     '单位登记号：' +
                     '<div class="layui-inline">' +
-                    '<input class="layui-input" name="" value="" autocomplete="off" lay-event="echoURId" readonly />' +
                     '</div>' +
                     '<button type="submit" class="layui-btn" lay-event="add" lay-filter="sub" style="margin-left: 40px">' +
                     '<i class="layui-icon layui-icon-add-1"></i>' +
@@ -323,12 +333,17 @@
             table.on('tool(inventory)', function (obj) {
                 var data=obj.data;
                 if (obj.event === 'edit'){
+                    $("#remitInventoryId").val(data.remitInventoryId);
                     $("#empNumber").val(data.empNumber);
                     $("#empName").val(data.empName);
                     $("#empCardName").val(data.empCardName);
                     $("#empCountry").val(data.empCountry);
                     $("#empCardNumber").val(data.empCardNumber);
                     $("#empDepositeBase").val(data.empDepositeBase);
+                    $("#unitMonthlyDeposit").val(data.unitMonthlyDeposit);
+                    $("#personalMonthlyDeposit").val(data.personalMonthlyDeposit);
+                    $("#totalMonthlyDeposit").val(data.totalMonthlyDeposit);
+                    $("#record").val(data.record);
                     form.render();
                     layer.open({
                         type : 1,
@@ -358,7 +373,7 @@
                         content : $('#addForm')
                     });
                 }else if (obj.event === 'echoURId') {
-                    $("#").val(data.productId);
+                    $("#").val(data.remitInventoryId);
                     form.render();
                 }
             });

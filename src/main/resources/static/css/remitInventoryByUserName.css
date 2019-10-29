@@ -34,3 +34,9 @@ body{
 .layui-input-block button{
     margin-left: 200px;
 }
+.div_msg{
+    width: 100% !important;
+    font-size: 15px;
+    text-align: center;
+    color: red;
+}

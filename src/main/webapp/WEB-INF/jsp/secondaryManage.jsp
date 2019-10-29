@@ -17,7 +17,6 @@
     <div class="layui-fluid">
         <table class="layui-table" id="secondaryManageList" lay-filter="secondary"></table>
     </div>
-
     <div id="addForm" hidden="hidden" style="padding: 25px">
         <form action="<%=request.getContextPath()%>/second/add" method="post" class="layui-form">
             <div class="layui-form-item">
@@ -49,8 +48,14 @@
 
     <div id="editForm" hidden="hidden" style="padding: 25px">
         <form action="<%=request.getContextPath() %>/second/update" method="post" class="layui-form">
-            <div class="layui-input-block">
-                <input type="hidden" class="layui-input" name="customId" id="customId">
+            <div class="layui-input-inline">
+                <input type="hidden" class="layui-input" name="secondAssistMessageId" id="secondAssistMessageId">
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">部门编号</label>
+                <div class="layui-input-block">
+                    <input type="text" name="deptNumber" id="deptNumber" lay-verify="required|number" placeholder="请输入部门编号" autocomplete="off" class="layui-input">
+                </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">部门名称</label>
@@ -85,10 +90,10 @@
                 page : true,
                 height : 550,
                 cols : [ [
-                    {field : 'secondAssistMessageId',title : '序号',align : 'center',width : 150},
-                    {field : 'deptNumber',title : '部门编号',align : 'center',width : 300},
-                    {field : 'deptName',title : '部门名称',align : 'center',width : 300},
-                    {field : 'deptCode',title : '部门代码',align : 'center',width : 300},
+                    {field : 'secondAssistMessageId',title : '序号',align : 'center',width : 300},
+                    {field : 'deptNumber',title : '部门编号',align : 'center',width : 280},
+                    {field : 'deptName',title : '部门名称',align : 'center',width : 280},
+                    {field : 'deptCode',title : '部门代码',align : 'center',width : 280},
                     {fixed : 'right',title : '操作',width : 280,align : 'center',
                         toolbar :
                             '<div class="layui-btn-group">' +
@@ -122,13 +127,13 @@
                             type : "POST",
                             url : "<%=request.getContextPath() %>/second/delete?secondAssistMessageId="+data.secondAssistMessageId,
                             success : function (msg) {
-                                layer.alert(msg.msg);
+                                layer.alert("删除成功！");
                                 layer.close(index);
                             }
                         });
                     });
                 }else if (obj.event === 'edit'){
-                    layer.msg(" 编辑操作");
+                    //layer.msg(" 编辑操作");
                     $("#secondAssistMessageId").val(data.secondAssistMessageId);
                     $("#deptCode").val(data.deptCode);
                     $("#deptNumber").val(data.deptNumber);
@@ -136,7 +141,7 @@
                     form.render();
                     layer.open({
                         type : 1,
-                        title : '修改部门',
+                        title : '编辑二级管理部门',
                         area : '800px',
                         moveType : 1,
                         resize : false,
@@ -145,6 +150,16 @@
                         content : $('#editForm')
                     });
                 }
+                form.on('submit(sub)', function (obj) {
+                    $.ajax({
+                        type: "POST",
+                        url: "<%=request.getContextPath()%>/second/update?",
+                        success: function (msg) {
+                            layer.msg("编辑成功！");
+                        }
+                    });
+                    //alert();
+                });
             });
 
             table.on('toolbar(secondary)', function (obj) {
@@ -152,7 +167,7 @@
                     form.render();
                     layer.open({
                         type : 1,
-                        title : '添加部门',
+                        title : '添加二级管理部门',
                         area : '800px',
                         moveType : 1,
                         resize : false,

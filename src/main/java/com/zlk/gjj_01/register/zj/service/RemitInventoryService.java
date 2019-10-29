@@ -8,4 +8,5 @@ import java.util.List;
 public interface RemitInventoryService {
     List<RemitInventory> findRemLimit(Pagination pagination);
     Integer findRemitCount(Pagination pagination);
+    Integer updateRem(RemitInventory remitInventory);
 }

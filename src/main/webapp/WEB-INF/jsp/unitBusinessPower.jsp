@@ -152,7 +152,7 @@
             var form = layui.form;
             var $= layui.$;
             form.on('radio(aaa)', function(data){
-                alert(data.value); //被点击的radio的value值
+                //alert(data.value); //被点击的radio的value值
                 if(data.value == 1){
                     $("#check1").show();
                     $("#check2").hide();

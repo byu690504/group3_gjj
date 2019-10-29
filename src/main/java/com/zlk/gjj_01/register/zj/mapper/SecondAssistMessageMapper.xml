@@ -13,4 +13,8 @@
     <select id="findSecondCount" parameterType="com.zlk.gjj_01.register.util.Pagination" resultType="java.lang.Integer">
         select count(1) from second_assist_message
     </select>
+    <update id="updateSec" parameterType="com.zlk.gjj_01.register.entity.SecondAssistMessage">
+        update second_assist_message set dept_code=#{deptCode},dept_number=#{deptNumber},dept_name=#{deptName}
+        where second_assist_message_id=#{secondAssistMessageId}
+    </update>
 </mapper>
