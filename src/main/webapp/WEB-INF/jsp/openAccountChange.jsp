@@ -19,11 +19,11 @@
         <div id="header">
             <span>单位开户信息变更 --> 录入开户变更信息</span>
         </div>
-        <div id="registerChange">
+        <div id="openAccountChange">
             <div id="span1">
                 <span>单位开户信息变更</span>
             </div>
-            <form action="<%=request.getContextPath() %>/change/registerChange" class="layui-form">
+            <form action="<%=request.getContextPath() %>/" class="layui-form">
                 <span>${msg}</span>
                 <input type="hidden" name="unitId" value="${unitId}">
                 <input type="hidden" name="unitRegisterId" value="${unitRegisterId}">

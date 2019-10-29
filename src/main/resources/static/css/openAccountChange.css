@@ -1,0 +1,41 @@
+body{
+    background-color: #F8F8F8;
+    overflow: auto;
+}
+#header{
+    width: 100%;
+    padding-top: 40px;
+    background-color: #B8B8B8;
+    margin-bottom: 5px;
+}
+#header span{
+    font-size: 25px;
+    font-family: 楷体;
+    color: #0066CC;
+}
+#span1{
+    margin-top: -55px;
+    margin-left: 310px;
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+form span{
+    margin-left: 180px;
+    color: #FF0000;
+    font-size: 20px;
+}
+#openAccountChange{
+    margin-left: 170px;
+    margin-top: 40px;
+    background-color: #FFFFFF;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    width: 800px;
+    box-shadow: 5px 5px 9px #B8B8B8;
+}
+.layui-input-block .layui-input{
+    width: 650px;
+}
+.layui-input-block button{
+    margin-left: 200px;
+}

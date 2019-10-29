@@ -9,7 +9,7 @@ body{
     margin-bottom: 5px;
 }
 #header span{
-    font-size: 30px;
+    font-size: 45px;
     font-family: 楷体;
     color: #FFFFFF;
     position: absolute;
@@ -19,18 +19,15 @@ body{
 #publicity{
     margin-left: 80px;
     width: 1200px;
-    background-color: #006699;
+    background: url("../img/publicity.jpg");
     padding-top: 90px;
     margin-bottom: 5px;
 }
-#turns{
+.layui-carousel{
     margin-left: 80px;
-    width: 830px;
-    background-color: #580000;
-    padding-top: 300px;
-    margin-bottom: 5px;
     float: left;
     margin-right: 50px;
+    box-shadow: 3px 3px 7px #B8B8B8;
 }
 #business{
     float: left;

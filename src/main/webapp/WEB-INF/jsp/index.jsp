@@ -14,16 +14,32 @@
     <script src="<%=request.getContextPath() %>/js/jquery.min.js"></script>
     <script src="<%=request.getContextPath() %>/layui/layui.js"></script>
 </head>
-<body class="layui-layout-body">
+<body>
     <div>
         <div id="header">
             <span>北京住房公积金网</span>
         </div>
-        <div id="publicity">
+        <div id="publicity" onclick="document.location.href='http://gjj.beijing.gov.cn/web/zxzt87/xxxcgcddsjdjs/index.html'">
 
         </div>
-        <div id="turns">
-
+        <div class="layui-carousel" id="t">
+            <div carousel-item="">
+                <div onclick="document.location.href='http://gjj.beijing.gov.cn/web/zt/xxdt71/index.html'">
+                    <img src="../img/carousel (1).jpg">
+                </div>
+                <div onclick="document.location.href='http://gjj.beijing.gov.cn/web/zwgk/_300583/351198/index.html'">
+                    <img src="../img/carousel (2).jpg">
+                </div>
+                <div onclick="document.location.href='http://gjj.beijing.gov.cn/web/bsznx/386727/index.html'">
+                    <img src="../img/carousel (3).jpg">
+                </div>
+                <div onclick="document.location.href='http://gjj.beijing.gov.cn/web/bmfw/ywwdfb/index.html'">
+                    <img src="../img/carousel (4).jpg">
+                </div>
+                <div onclick="document.location.href='http://gjj.beijing.gov.cn/web/zwgk/_300583/zxtc/index.html'">
+                    <img src="../img/carousel (5).jpg">
+                </div>
+            </div>
         </div>
         <div id="business">
             <div id="b1">
@@ -36,5 +52,25 @@
             </div>
         </div>
     </div>
+
+    <script src="<%=request.getContextPath() %>/layui/layui.js"></script>
+    <script type="text/javascript">
+        layui.use('carousel', function(){
+            var carousel = layui.carousel;
+            var ins = carousel.render({
+                elem: '#t',
+                width: '830px',
+                height: '300px',
+                interval: '1500'
+            });
+            //重置轮播
+            ins.reload({
+                elem: '#t',
+                width: '830px',
+                height: '300px',
+                interval: '1500'
+            });
+        });
+    </script>
 </body>
 </html>
