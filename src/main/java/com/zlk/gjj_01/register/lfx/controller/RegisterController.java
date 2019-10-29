@@ -55,15 +55,15 @@ public class RegisterController {
     @RequestMapping(value = "/beforeRegister")
     public ModelAndView beforeRegister(String unitName,HttpServletRequest request){
         ModelAndView mv=new ModelAndView();
-        String agentName = (String)request.getSession().getAttribute("agent");
-        String unitName1 = loginService.findUnitNameByAgentName(agentName);
-        if(!unitName1.equals(unitName)){
-            mv.addObject("msg","请填写自己的单位信息");
-            mv.setViewName("registerByUnitName");
-            return mv;
-        }
         Unit unit = loginService.findByUnitName(unitName);
         if(unit!=null){
+            String agentName = (String)request.getSession().getAttribute("agent");
+            String unitName1 = loginService.findUnitNameByAgentName(agentName);
+            if(!unitName1.equals(unitName)){
+                mv.addObject("msg","请填写自己的单位信息");
+                mv.setViewName("registerByUnitName");
+                return mv;
+            }
             UnitRegister unitRegister = unitRegisterService.findUnitRegisterByUnitId(unit.getUnitId());
             if(unitRegister!=null){
                 mv.addObject("msg","该单位已经登记");
