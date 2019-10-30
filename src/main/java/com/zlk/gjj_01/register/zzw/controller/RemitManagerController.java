@@ -34,12 +34,14 @@ public class RemitManagerController {
     private UnitRegisterService unitRegisterService;
 
     @RequestMapping("/toRemitManager")
+    @ResponseBody
     public ModelAndView toRemitManager(HttpServletRequest request){
         ModelAndView mv=new ModelAndView();
         String urId = (String) request.getSession().getAttribute("urId");
 
         UnitOpenAccount unitOpenAccount = unitOpenAccountService.findUnitByUrId(urId);
         Unit unit = unitRegisterService.findUnitByUrId(urId);
+        mv.addObject("appropriationUnit",unitOpenAccount.getAppropriationUnit());
         mv.addObject("businessKind",unitOpenAccount.getBusinessKind());
         mv.addObject("moneySource",unitOpenAccount.getMoneySource());
         mv.addObject("unitName",unit.getUnitName());
@@ -49,7 +51,6 @@ public class RemitManagerController {
     }
 
     @RequestMapping("/remitManager")
-    @ResponseBody
     public String remitManager(RemitManager remitManager, UnitRegister unitRegister, Map map) throws ParseException {
         /*unitRegister.setUnitRegisterId("1");
         remitManager.setRemitWay("委托收款");
@@ -62,17 +63,20 @@ public class RemitManagerController {
         remitManager.setUnitRegister(unitRegister);*/
         remitManagerService.save(remitManager);
 
+
         return "unitBusinessPower";
     }
 
     @RequestMapping("/appropriationUnit")
     @ResponseBody
     public ModelAndView appropriationUnit(HttpServletRequest request){
-        ModelAndView mv = new ModelAndView();
+        ModelAndView mv=new ModelAndView();
         String urId = (String) request.getSession().getAttribute("urId");
-        UnitOpenAccount unitOpenAccount = remitManagerService.findUnitByUrId(urId);
 
+        UnitOpenAccount unitOpenAccount = unitOpenAccountService.findUnitByUrId(urId);
+        Unit unit = unitRegisterService.findUnitByUrId(urId);
         mv.addObject("appropriationUnit",unitOpenAccount.getAppropriationUnit());
+        mv.addObject("unitRegisterId",urId);
         mv.setViewName("payMethod");
         return mv;
     }

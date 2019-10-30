@@ -10,6 +10,7 @@ import com.zlk.gjj_01.register.zzw.service.UnitOpenAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -41,6 +42,12 @@ public class UnitOpenAccountController {
             mv.setViewName("registerByUnitName");
             return mv;
         }
+        UnitOpenAccount unitOpenAccount = unitOpenAccountService.findUnitByUrId(urId);
+        if(unitOpenAccount!=null){
+            mv.addObject("msg","该单位已开过户");
+            mv.setViewName("centreMain");
+            return mv;
+        }
         Unit unit = unitRegisterService.findUnitByUrId(urId);
         Agent agent = loginService.findAgentByAgentName(agentName);
         mv.addObject("unitName",unit.getUnitName());
@@ -57,6 +64,7 @@ public class UnitOpenAccountController {
     }*/
 
     @RequestMapping("/unitOpenAccount")
+    @ResponseBody
     public ModelAndView unitOpenAccount(UnitRegister unitRegister,UnitOpenAccount unitOpenAccount,HttpServletRequest request) throws ParseException {
         unitOpenAccount.setUnitRegister(unitRegister);
         unitOpenAccountService.save(unitOpenAccount);

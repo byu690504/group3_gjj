@@ -47,7 +47,7 @@
                                 </ol>
                             </dd>
                             <dd>
-                                <a href="<%=request.getContextPath() %>/change/toUnitBusinessPower" target="pageCenter">单位用户业务授权</a>
+                                <a href="<%=request.getContextPath() %>/unitBusinessPower/toUnitBusinessPower" target="pageCenter">单位用户业务授权</a>
                             </dd>
                             <dd>
                                 <a href="<%=request.getContextPath() %>/change/toPersonRegister" target="pageCenter">个人登记</a>

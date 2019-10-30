@@ -53,17 +53,17 @@
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">资金来源</label>
-                    <div class="layui-input-block" name="moneySource" lay-verify="required">
-                        <input type="radio" name="a" value="0" title="单位自筹" lay-filter="aaa">
-                        <input type="radio" name="a" value="1" title="财政拨款" lay-filter="aaa">
-                        <input type="radio" name="a" value="1" title="财政拨款和单位自筹" lay-filter="aaa">
+                    <div class="layui-input-block" name="moneySource">
+                        <input type="radio" name="moneySource" value="0" title="单位自筹" lay-filter="aaa">
+                        <input type="radio" name="moneySource" value="1" title="财政拨款" lay-filter="aaa">
+                        <input type="radio" name="moneySource" value="1" title="财政拨款和单位自筹" lay-filter="aaa">
                     </div>
                 </div>
                 <div id="check1" style="display: none">
                     <div class="layui-form-item">
                         <label class="layui-form-label">财政拨款单位</label>
                         <div class="layui-input-block">
-                            <select name="appropriationUnit" lay-verify="required">
+                            <select name="appropriationUnit">
                                 <option value="">请选择拨款单位</option>
                                 <option value="市财政">市财政</option>
                                 <option value="区县财政">区县财政</option>
