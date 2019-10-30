@@ -56,7 +56,6 @@
                     单位开户Id为:${unitOpenAccountId}
                 </c:if>
             </div>
-
             <div class="layui-form-item">
                 <div class="layui-input-block layui-input-inline">
                     <button type="submit" class="layui-btn" lay-submit lay-filter="sub"/>确认

@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface OpendDao extends JpaRepository<UnitOpenAccount ,String>{
-    /*  通过单位登记号查找对应单位开户号*/
 
+    /*  通过单位登记号查找对应单位开户号*/
     @Query("from UnitOpenAccount u where u.unitRegister.unitRegisterId=?1")
     UnitOpenAccount findByUrId(String unitOpenAccountId);
 
