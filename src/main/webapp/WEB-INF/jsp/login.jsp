@@ -25,9 +25,9 @@
             $("#login").show();
             $("#login").siblings().hide();
         });
-        $("#imgCode").click(function () {
+        $(".imgCode").click(function () {
             var time = new Date().getTime();
-            $("#imgCode").attr("src", "<%=request.getContextPath()%>/checkCodeServlet")
+            $(".imgCode").attr("src", "<%=request.getContextPath()%>/checkCodeServlet?time" + time);
         });
     });
 </script>
@@ -68,7 +68,7 @@
                         <div class="layui-input-inline">
                             <input type="text" name="code" id="code" lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input">
                             <br>
-                            <img src="<%=request.getContextPath() %>/checkCodeServlet">
+                            <img src="<%=request.getContextPath() %>/checkCodeServlet" class="imgCode">
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -106,7 +106,7 @@
                         <div class="layui-input-inline">
                             <input type="text" name="code" id="ccode" lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input">
                             <br>
-                            <img src="<%=request.getContextPath() %>/checkCodeServlet">
+                            <img src="<%=request.getContextPath() %>/checkCodeServlet" class="imgCode">
                         </div>
                     </div>
                     <div class="layui-form-item">
