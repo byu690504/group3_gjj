@@ -10,7 +10,6 @@ import com.zlk.gjj_01.register.zzw.service.UnitOpenAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -44,8 +43,8 @@ public class UnitOpenAccountController {
         }
         UnitOpenAccount unitOpenAccount = unitOpenAccountService.findUnitByUrId(urId);
         if(unitOpenAccount!=null){
-            mv.addObject("msg","该单位已经开户");
-            mv.setViewName("unitOpenAccount");
+            mv.addObject("msg","该单位已经开户，请进行缴款");
+            mv.setViewName("payMethod");
             return mv;
         }
         Unit unit = unitRegisterService.findUnitByUrId(urId);
@@ -59,12 +58,20 @@ public class UnitOpenAccountController {
     }
 
     @RequestMapping("/unitOpenAccount")
-    @ResponseBody
     public ModelAndView unitOpenAccount(UnitRegister unitRegister,UnitOpenAccount unitOpenAccount,HttpServletRequest request) throws ParseException {
         unitOpenAccount.setUnitRegister(unitRegister);
         unitOpenAccountService.save(unitOpenAccount);
 
         ModelAndView mv=new ModelAndView();
+        String urId = (String) request.getSession().getAttribute("urId");
+        String agentName = (String)request.getSession().getAttribute("agent");
+        Unit unit = unitRegisterService.findUnitByUrId(urId);
+        Agent agent = loginService.findAgentByAgentName(agentName);
+        mv.addObject("appropriationUnit",unitOpenAccount.getAppropriationUnit());
+        mv.addObject("businessKind",unitOpenAccount.getBusinessKind());
+        mv.addObject("moneySource",unitOpenAccount.getMoneySource());
+        mv.addObject("unitName",unit.getUnitName());
+        mv.addObject("unitRegisterId",urId);
         mv.addObject("msg","单位开户成功，请进行缴款");
         mv.setViewName("payMethod");
         return mv;

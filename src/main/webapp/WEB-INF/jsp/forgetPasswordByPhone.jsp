@@ -23,14 +23,14 @@
             <div id="span1">
                 <span>确认手机号</span>
             </div>
-            <form action="<%=request.getContextPath()%>/" method="post" class="layui-form">
+            <form action="<%=request.getContextPath()%>/login/findPwd" method="post" class="layui-form">
                 <div class="layui-form-text layui-inline">
                     <span id="msg">${error}</span>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">手机号码</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="agentName" lay-verify="required|phone" placeholder="请输入手机号码" autocomplete="off" class="layui-input">
+                        <input type="text" name="agentPhone" lay-verify="required|phone" placeholder="请输入手机号码" autocomplete="off" class="layui-input">
                     </div>
                 </div><br>
                 <div class="layui-form-item">

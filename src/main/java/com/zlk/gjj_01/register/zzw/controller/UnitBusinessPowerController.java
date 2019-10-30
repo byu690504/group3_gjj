@@ -3,13 +3,13 @@ package com.zlk.gjj_01.register.zzw.controller;
 import com.zlk.gjj_01.register.entity.Agent;
 import com.zlk.gjj_01.register.entity.Unit;
 import com.zlk.gjj_01.register.entity.UnitBusinessPower;
+import com.zlk.gjj_01.register.entity.UnitRegister;
 import com.zlk.gjj_01.register.lfx.service.LoginService;
 import com.zlk.gjj_01.register.lfx.service.UnitRegisterService;
 import com.zlk.gjj_01.register.zzw.service.UnitBusinessPowerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -49,11 +49,22 @@ public class UnitBusinessPowerController {
     }
 
     @RequestMapping("/unitBusinessPower")
-    public String UnitBusinessPower(UnitBusinessPower unitBusinessPower, Map map) throws ParseException{
-
+    public ModelAndView UnitBusinessPower(UnitBusinessPower unitBusinessPower, UnitRegister unitRegister,HttpServletRequest request) throws ParseException{
         unitBusinessPowerService.save(unitBusinessPower);
 
-        return "secondaryManage";
+        ModelAndView mv=new ModelAndView();
+        String urId = (String) request.getSession().getAttribute("urId");
+        String agentName = (String)request.getSession().getAttribute("agent");
+        Unit unit = unitRegisterService.findUnitByUrId(urId);
+        Agent agent = loginService.findAgentByAgentName(agentName);
+        mv.addObject("unitName",unit.getUnitName());
+        mv.addObject("agentName",agent.getAgentName());
+        mv.addObject("agentCardName",agent.getCardName());
+        mv.addObject("agentCardNumber",agent.getCardNumber());
+        mv.addObject("agentPhone",agent.getAgentPhone());
+        mv.addObject("unitRegisterId",urId);
+        mv.setViewName("secondaryManage");
+        return mv;
     }
 
 }

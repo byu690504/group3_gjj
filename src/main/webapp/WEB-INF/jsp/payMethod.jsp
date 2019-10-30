@@ -202,11 +202,11 @@
                     <div id="financeSpan">
                         <span>财政统发信息</span>
                     </div>
-                    <form action="<%=request.getContextPath() %>/remitManager/appropriationUnit" method="post" class="layui-form">
+                    <form action="<%=request.getContextPath() %>/remitManager/remitManager" method="post" class="layui-form">
                         <div class="layui-form-item">
                             <label class="layui-form-label">统发单位名称</label>
                             <div class="layui-input-block">
-                                <input type="text" readonly value="${appropriationUnit}" name="appropriationUnit" lay-verify="" placeholder="" autocomplete="off" class="layui-input">
+                                <input type="text" readonly value="${appropriationUnit}" name="appropriationUnit" autocomplete="off" class="layui-input">
                             </div>
                         </div><br>
                         <div class="layui-form-item">

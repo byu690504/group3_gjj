@@ -10,13 +10,10 @@ import com.zlk.gjj_01.register.zzw.service.UnitOpenAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
-import java.util.Map;
 
 /**
  * @author 张照伟
@@ -35,14 +32,13 @@ public class RemitManagerController {
     private UnitRegisterService unitRegisterService;
 
     @RequestMapping("/toRemitManager")
-    @ResponseBody
     public ModelAndView toRemitManager(HttpServletRequest request){
         ModelAndView mv=new ModelAndView();
         String urId = (String) request.getSession().getAttribute("urId");
 
         UnitOpenAccount unitOpenAccount = unitOpenAccountService.findUnitByUrId(urId);
         Unit unit = unitRegisterService.findUnitByUrId(urId);
-
+        mv.addObject("appropriationUnit",unitOpenAccount.getAppropriationUnit());
         mv.addObject("businessKind",unitOpenAccount.getBusinessKind());
         mv.addObject("moneySource",unitOpenAccount.getMoneySource());
         mv.addObject("unitName",unit.getUnitName());
@@ -52,8 +48,7 @@ public class RemitManagerController {
     }
 
     @RequestMapping("/remitManager")
-    @ResponseBody
-    public ModelAndView remitManager(RemitManager remitManager, UnitRegister unitRegister, Map map) throws ParseException {
+    public ModelAndView remitManager(RemitManager remitManager, UnitRegister unitRegister,HttpServletRequest request) throws ParseException {
         /*unitRegister.setUnitRegisterId("1");
         remitManager.setRemitWay("委托收款");
         remitManager.setProceedsUnitName("华龙区财政局");
@@ -66,24 +61,22 @@ public class RemitManagerController {
         remitManagerService.save(remitManager);
 
         ModelAndView mv=new ModelAndView();
+
+        String urId = (String) request.getSession().getAttribute("urId");
+
+        UnitOpenAccount unitOpenAccount1 = unitOpenAccountService.findUnitByUrId(urId);
+        Unit unit = unitRegisterService.findUnitByUrId(urId);
+        mv.addObject("appropriationUnit",unitOpenAccount1.getAppropriationUnit());
+        mv.addObject("businessKind",unitOpenAccount1.getBusinessKind());
+        mv.addObject("moneySource",unitOpenAccount1.getMoneySource());
+        mv.addObject("unitName",unit.getUnitName());
+        mv.addObject("unitRegisterId",urId);
         mv.addObject("msg","缴款成功");
         mv.setViewName("unitBusinessPower");
 
         return mv;
     }
 
-    @RequestMapping("/appropriationUnit")
-    @ResponseBody
-    public ModelAndView appropriationUnit(HttpServletRequest request){
-        ModelAndView mv=new ModelAndView();
-        String urId = (String) request.getSession().getAttribute("urId");
 
-        UnitOpenAccount unitOpenAccount = unitOpenAccountService.findUnitByUrId(urId);
-        Unit unit = unitRegisterService.findUnitByUrId(urId);
-        mv.addObject("appropriationUnit",unitOpenAccount.getAppropriationUnit());
-        mv.addObject("unitRegisterId",urId);
-        mv.setViewName("payMethod");
-        return mv;
-    }
 }
 
