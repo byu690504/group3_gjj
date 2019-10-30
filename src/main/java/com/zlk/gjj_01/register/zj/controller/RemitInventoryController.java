@@ -4,7 +4,6 @@ package com.zlk.gjj_01.register.zj.controller;
  */
 
 import com.zlk.gjj_01.register.entity.RemitInventory;
-import com.zlk.gjj_01.register.entity.SecondAssistMessage;
 import com.zlk.gjj_01.register.entity.UnitOpenAccount;
 import com.zlk.gjj_01.register.util.Pagination;
 import com.zlk.gjj_01.register.zj.dao.RemitInventoryDao;
@@ -92,5 +91,11 @@ public class RemitInventoryController {
         }else{
             return null;
         }
+    }
+    @RequestMapping(value = "/delete")
+    @ResponseBody
+    public String delete(String remitInventoryId) {
+        remitInventoryDao.deleteById(remitInventoryId);
+        return "remitInventory";
     }
 }

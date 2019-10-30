@@ -326,12 +326,12 @@
                     {fixed : 'right',title : '操作',width : 200,align : 'center',
                         toolbar :
                             '<div class="layui-btn-group">' +
-                            '<button type="submit" class="layui-btn layui-btn-fluid" lay-event="edit" lay-filter="sub">' +
+                            '<button type="submit" class="layui-btn " lay-event="edit" lay-filter="sub">' +
                             '<i class="layui-icon layui-icon-edit"></i>' +
                             '</button>'+
-                            /*'<button type="button" class="layui-btn layui-btn-danger" lay-event="del">' +
+                            '<button type="button" class="layui-btn layui-btn-danger" lay-event="del">' +
                             '<i class="layui-icon layui-icon-delete"></i>' +
-                            '</button>'+*/
+                            '</button>'+
                             '</div>'
                     }
                 ] ],
@@ -368,6 +368,21 @@
                         anim : 4,
                         moveOut: true,
                         content : $('#editForm')
+                    });
+                }else if(obj.event === 'del'){
+                    layer.confirm('确定要删除吗', {
+                        title:'删除',
+                        anim : 6
+                    }, function (index) {
+                        obj.del();
+                        $.ajax({
+                            type : "POST",
+                            url : "<%=request.getContextPath() %>/remit/delete?remitInventoryId="+data.remitInventoryId,
+                            success : function (msg) {
+                                layer.alert("删除成功！");
+                                layer.close(index);
+                            }
+                        });
                     });
                 }
             });
