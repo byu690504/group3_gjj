@@ -18,27 +18,17 @@ public class RemitManagerServiceImpl implements RemitManagerService {
     private RemitManagerDao remitManagerDao;
 
     @Override
-    public RemitManager save1(RemitManager remitManager) {
+    public RemitManager save(RemitManager remitManager) {
         return remitManagerDao.save(remitManager);
-    }
-
-    @Override
-    public RemitManager save2(RemitManager remitManager) {
-        return remitManagerDao.save(remitManager);
-    }
-
-    @Override
-    public RemitManager save3(RemitManager remitManager) {
-        return remitManagerDao.save(remitManager);
-    }
-
-    @Override
-    public RemitManager findByRemitWay(String remitWay) {
-        return remitManagerDao.findByRemitWay(remitWay);
     }
 
     @Override
     public UnitOpenAccount findUnitOpenAccountByAppropriationUnit(String appropriationUnit) {
         return remitManagerDao.findUnitOpenAccountByAppropriationUnit(appropriationUnit);
+    }
+
+    @Override
+    public UnitOpenAccount findUnitByUrId(String urId) {
+        return remitManagerDao.findUnitByUrId(urId);
     }
 }

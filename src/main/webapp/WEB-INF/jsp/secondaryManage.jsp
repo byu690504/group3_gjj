@@ -134,7 +134,6 @@
                         });
                     });
                 }else if (obj.event === 'edit'){
-                    //layer.msg(" 编辑操作");
                     $("#secondAssistMessageId").val(data.secondAssistMessageId);
                     $("#deptCode").val(data.deptCode);
                     $("#deptNumber").val(data.deptNumber);

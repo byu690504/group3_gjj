@@ -46,14 +46,6 @@
                     '</div>' +
                     '</div>'
             });
-
-            table.on('toolbar(notYetCard)', function (obj) {
-                var data=obj.data;
-                if (obj.event === 'echoURId') {
-                    $("#").val(data.productId);
-                    form.render();
-                }
-            })
         });
 
         layui.use(['form'], function(){

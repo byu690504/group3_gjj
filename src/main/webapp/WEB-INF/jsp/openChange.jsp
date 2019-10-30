@@ -58,7 +58,7 @@
             </div>
             <div class="layui-form-item">
                 <div class="layui-input-block layui-input-inline">
-                    <button type="submit" class="layui-btn" lay-submit lay-filter="sub"/>确认
+                    <button type="submit" class="layui-btn" lay-submit lay-filter="sub">确认</button>
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
             </div>

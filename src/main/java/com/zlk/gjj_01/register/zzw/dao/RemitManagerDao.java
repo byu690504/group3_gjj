@@ -14,8 +14,11 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface RemitManagerDao extends JpaRepository<RemitManager, String> {
-    @Query("from RemitManager where remitWay=?1")
-    RemitManager findByRemitWay(String remitWay);
+
     @Query("from UnitOpenAccount where appropriationUnit = ?1")
     public UnitOpenAccount findUnitOpenAccountByAppropriationUnit(String appropriationUnit);
+
+    @Query("from UnitOpenAccount u where u.unitRegister.unitRegisterId=?1")
+    UnitOpenAccount findUnitByUrId(String urId);
+
 }
