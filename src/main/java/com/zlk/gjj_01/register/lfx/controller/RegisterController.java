@@ -74,7 +74,11 @@ public class RegisterController {
                 mv.setViewName("registerByUnitName");
                 return mv;
             }else {
+                Agent agent = loginService.findAgentByAgentName(agentName);
                 mv.addObject("unitName",unitName);
+                mv.addObject("aName",agent.getAgentName());
+                mv.addObject("aCardName",agent.getCardName());
+                mv.addObject("aCardNumber",agent.getCardNumber());
                 mv.setViewName("registerRequest");
                 return mv;
             }

@@ -21,7 +21,7 @@ public class UnitOpenAccount {
     @GeneratedValue(generator = "myGenerator")
     @GenericGenerator(name = "myGenerator",strategy = "uuid")
     @Column(name = "unit_open_account_id")
-    private String unitOpenAccountId;//单位开户申请id
+        private String unitOpenAccountId;//单位开户申请id
     /*@Column(name = "unit_register_id")
     private long unitRegisterId;//单位登记号*/
     @Column(name = "business_kind")

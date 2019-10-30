@@ -19,7 +19,7 @@ spring:
     username: root
     password: root
     url: jdbc:mysql://localhost:3306/gjj?characterEncoding=utf-8&useUnicode=true&useSSL=true&serverTimezone=UTC
-
+    type: com.alibaba.druid.pool.DruidDataSource
   #thymeleaf模板配置
   thymeleaf:
     prefix: classpath:/templates/
@@ -30,7 +30,6 @@ spring:
       content-type: text/html
     #关掉缓存
     cache: false
-    type: com.alibaba.druid.pool.DruidDataSource
   mvc:
     view:
       prefix: /WEB-INF/jsp/
@@ -42,4 +41,4 @@ spring:
           enabled: true
           paths: /**
 server:
-  port: 8081
+  port: 8080
