@@ -60,7 +60,7 @@ public class LoginController {
      */
     @RequestMapping(value = "/toFindPwd")
     public String toFindPwd(){
-        return "findPwd";
+        return "forgetPasswordByPhone";
     }
 
     /**
@@ -151,10 +151,11 @@ public class LoginController {
         Agent agent = loginService.findAgentByAgentPhone(agentPhone);
         if(agent==null){
             mv.addObject("error","该用户不存在,请核实手机号");
-            mv.setViewName("findPwd");
+            mv.setViewName("forgetPasswordByPhone");
             return mv;
         }else {
-            mv.setViewName("inputPwd");
+            mv.addObject("agentPhone",agentPhone);
+            mv.setViewName("forgetPasswordLaterAlterPassword");
             return mv;
         }
     }

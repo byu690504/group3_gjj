@@ -56,6 +56,11 @@
                             <span>注册成功，您的用户代码为:${msg}</span>
                         </c:if>
                     </div>
+                    <div class="layui-form-text layui-inline" id="error4">
+                        <c:if test="${msg1!=null}">
+                            <span>修改成功，您的新密码为:${msg1}</span>
+                        </c:if>
+                    </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">用户代码</label>
                         <div class="layui-input-inline">
@@ -77,7 +82,7 @@
                         </div>
                     </div>
                     <div id="forget1">
-                        <a href="<%=request.getContextPath() %>/" type="button" class="layui-btn">忘记密码</a>
+                        <a href="<%=request.getContextPath() %>/login/toFindPwd" type="button" class="layui-btn">忘记密码</a>
                     </div>
                     <div class="layui-form-item">
                         <div class="layui-input-block layui-input-inline">
@@ -118,7 +123,7 @@
                         </div>
                     </div>
                     <div id="forget2">
-                        <a href="<%=request.getContextPath() %>/" type="button" class="layui-btn">忘记密码</a>
+                        <a href="<%=request.getContextPath() %>/login/toFindPwd" type="button" class="layui-btn">忘记密码</a>
                     </div>
                     <div class="layui-form-item">
                         <div class="layui-input-block layui-input-inline">

@@ -23,12 +23,12 @@
             <div id="span1">
                 <span>修改密码</span>
             </div>
-            <form action="<%=request.getContextPath()%>/" method="post" class="layui-form">
+            <form action="<%=request.getContextPath()%>/login/inputPwd" method="post" class="layui-form">
                 <div class="layui-input-inline">
-                    <input type="hidden" class="layui-input" name="">
+                    <input type="hidden" class="layui-input" value="${agentPhone}" name="agentPhone">
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">登录密码</label>
+                    <label class="layui-form-label">输入新密码</label>
                     <div class="layui-input-inline">
                         <input type="password" name="agentPassword" id="agentPassword" lay-verify="required|NumAndAbc" placeholder="请输入登录密码" autocomplete="off" class="layui-input">
                     </div>
