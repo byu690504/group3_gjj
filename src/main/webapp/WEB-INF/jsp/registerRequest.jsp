@@ -27,13 +27,13 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">单位名称</label>
                     <div class="layui-input-inline">
-                        <input type="text" readonly value="${unitName}" name="unitName" id="unitName" lay-verify="" placeholder="" autocomplete="off" class="layui-input">
+                        <input type="text" readonly value="${unitName}" name="unitName" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">组织机构代码</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="unitCode" id="unitCode" lay-verify="required|number" placeholder="请输入组织机构代码" autocomplete="off" class="layui-input">
+                        <input type="text" name="unitCode" lay-verify="required|number" placeholder="请输入组织机构代码" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -51,19 +51,19 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">单位证件号码</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="unitCardNumber" id="unitCardNumber" lay-verify="required|number" placeholder="请输入单位证件号码" autocomplete="off" class="layui-input">
+                        <input type="text" name="unitCardNumber" lay-verify="required|number" placeholder="请输入单位证件号码" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">单位性质代码</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="unitNatureCode" id="unitNatureCode" lay-verify="required|number" placeholder="请输入单位性质代码" autocomplete="off" class="layui-input">
+                        <input type="text" name="unitNatureCode" lay-verify="required|number" placeholder="请输入单位性质代码" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">法人/负责人</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="principalName" id="principalName" lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">
+                        <input type="text" name="principalName" lay-verify="required|hanZi" placeholder="请输入姓名" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -80,19 +80,19 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">法人/负责人证件号码</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="principalCardNumber" id="principalCardNumber" lay-verify="required|identity" placeholder="请输入证件号码" autocomplete="off" class="layui-input">
+                        <input type="text" name="principalCardNumber" lay-verify="required|identity" placeholder="请输入证件号码" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">单位注册地址</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="unitRegisterAddress" id="unitRegisterAddress" lay-verify="required" placeholder="请输入单位注册地址" autocomplete="off" class="layui-input">
+                        <input type="text" name="unitRegisterAddress" lay-verify="required|hanZi" placeholder="请输入单位注册地址" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">单位办公地址</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="unitWorkAddress" id="unitWorkAddress" lay-verify="required" placeholder="请输入单位办公地址" autocomplete="off" class="layui-input">
+                        <input type="text" name="unitWorkAddress" lay-verify="required|hanZi" placeholder="请输入单位办公地址" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -114,19 +114,19 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">上级主管单位</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="superiorUnit" id="superiorUnit" lay-verify="required" placeholder="请输入上级主管单位" autocomplete="off" class="layui-input">
+                        <input type="text" name="superiorUnit" lay-verify="required|hanZi" placeholder="请输入上级主管单位" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">单位登记经办人姓名</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="agentName" id="agentName" value="${aName}" lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">
+                        <input type="text" readonly name="agentName" value="${aName}" lay-verify="" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">经办人证件名称</label>
                     <div class="layui-input-inline">
-                        <select name="agentCardName" lay-verify="required">
+                        <select name="agentCardName" readonly>
                             <option value="${aCardName}">${aCardName}</option>
                             <option value="身份证号">身份证号</option>
                             <option value="军官证号">军官证号</option>
@@ -137,7 +137,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">经办人证件号码</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="agentCardNumber" value="${aCardNumber}" id="agentCardNumber" lay-verify="required|identity" placeholder="请输入证件号码" autocomplete="off" class="layui-input">
+                        <input type="text" readonly name="agentCardNumber" value="${aCardNumber}" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -155,7 +155,10 @@
             var $ = layui.jquery;
             form.render();
             form.verify({
-
+                hanZi:[
+                    /^[\u4e00-\u9fa5]+$/,
+                    '请输入汉字'
+                ]
             });
         });
         layui.use(['form','laydate'], function() {

@@ -57,7 +57,7 @@
             yAxis: {},
             series: [{
                 name: '公司数量',
-                type: 'bar',
+                type: 'line',
                 data: [25, 20, 36, 10, 10]
             }]
         };

@@ -64,13 +64,13 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">用户代码</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="agentCode" id="agentName" lay-verify="required" placeholder="请输入用户代码" autocomplete="off" class="layui-input">
+                            <input type="text" name="agentCode" lay-verify="required" placeholder="请输入用户代码" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">密码</label>
                         <div class="layui-input-inline">
-                            <input type="password" name="agentPassword" id="agentPassword"  lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                            <input type="password" name="agentPassword" lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -105,7 +105,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">CA证书</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="agentAuth" id="agentAuth" lay-verify="required" placeholder="请输入CA证书" autocomplete="off" class="layui-input">
+                            <input type="text" name="agentAuth" lay-verify="required" placeholder="请输入CA证书" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <%--<div class="layui-form-item">

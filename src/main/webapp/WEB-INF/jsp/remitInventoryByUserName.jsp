@@ -27,13 +27,13 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">经办人姓名</label>
                     <div class="layui-input-block">
-                        <input type="text" name="agentName" value="${agentName}" id="agentName" lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">
+                        <input type="text" name="agentName" value="${agentName}" readonly autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">经办人证件号码</label>
                     <div class="layui-input-block">
-                        <input type="text" name="agentCardNumber" value="${agentCardNumber}" id="agentCardNumber" lay-verify="required|identity" placeholder="请输入证件号码" autocomplete="off" class="layui-input">
+                        <input type="text" name="agentCardNumber" value="${agentCardNumber}" readonly autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-text div_msg">

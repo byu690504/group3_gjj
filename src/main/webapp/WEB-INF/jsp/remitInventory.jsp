@@ -251,7 +251,7 @@
     </div>
 
     <script type="text/javascript">
-        layui.use(['form','jquery'], function(){
+        /*layui.use(['form','jquery'], function(){
             var form = layui.form;
             var $= layui.$;
             form.on('radio(aaa)', function(data){
@@ -271,7 +271,7 @@
                     $("#check2").hide();
                 }
             });
-        });
+        });*/
 
         $(function(){
             $('#d').bind('input propertychange', function() {

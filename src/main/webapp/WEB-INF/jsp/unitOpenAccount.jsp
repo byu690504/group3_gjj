@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>单位开户申请</title>
@@ -24,16 +25,21 @@
                 <span>单位开户申请</span>
             </div>
             <form action="<%=request.getContextPath() %>/unitOpenAccount/unitOpenAccount" method="post" class="layui-form">
+                <div class="layui-form-text layui-inline" style="margin-left: 65px; margin-bottom: 20px; margin-top: -20px; font-size: 20px; color: #FF0000;">
+                    <c:if test="${msg!=null}">
+                        <span>${msg}</span>
+                    </c:if>
+                </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">单位登记号</label>
                     <div class="layui-input-inline">
-                        <input type="text" value="${unitRegisterId}" name="unitRegisterId" id="unitRegisterId" lay-verify="required|NumAndAbc" placeholder="请输入单位登记号" autocomplete="off" class="layui-input">
+                        <input type="text" value="${unitRegisterId}" readonly name="unitRegisterId" lay-verify="required|NumAndAbc" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">单位名称</label>
                     <div class="layui-input-inline">
-                        <input type="text" value="${unitName}" name="unitName" id="unitName" lay-verify="required" placeholder="请输入单位名称" autocomplete="off" class="layui-input">
+                        <input type="text" value="${unitName}" readonly name="unitName" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -84,19 +90,19 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">业务经办部门</label>
                     <div class="layui-input-block">
-                        <input type="text" name="businessAgentDept" id="businessAgentDept" lay-verify="required" placeholder="请输入业务经办部门" autocomplete="off" class="layui-input">
+                        <input type="text" name="businessAgentDept" lay-verify="required|hanZi" placeholder="请输入业务经办部门" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">联系电话</label>
                     <div class="layui-input-block">
-                        <input type="text" value="${agentPhone}" name="agentPhone" id="agentPhone" lay-verify="phone" placeholder="请输入联系电话" autocomplete="off" class="layui-input">
+                        <input type="text" value="${agentPhone}" readonly name="agentPhone" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">单位预算代码</label>
                     <div class="layui-input-block">
-                        <input type="text" name="unitBudgetCode" id="unitBudgetCode" lay-verify="number" placeholder="请输入单位预算代码" autocomplete="off" class="layui-input">
+                        <input type="text" name="unitBudgetCode" lay-verify="number" placeholder="请输入单位预算代码" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -174,14 +180,14 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">单位缴存比例</label>
                     <div class="layui-input-block">
-                        <input type="text" name="unitDepositProportion" id="unitDepositProportion" lay-verify="required|number" placeholder="请输入单位缴存比例" autocomplete="off" class="layui-input">
+                        <input type="text" name="unitDepositProportion" lay-verify="required|number" placeholder="请输入单位缴存比例" autocomplete="off" class="layui-input">
 
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">个人缴存比例</label>
                     <div class="layui-input-block">
-                        <input type="text" name="personDepositProportion" id="personDepositProportion" lay-verify="required|number" placeholder="一般默认50%" autocomplete="off" class="layui-input">
+                        <input type="text" name="personDepositProportion" lay-verify="required|number" placeholder="一般默认50%" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -205,9 +211,9 @@
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">接受经办人</label>
+                    <label class="layui-form-label">受理经办人</label>
                     <div class="layui-input-block">
-                        <input type="text" value="${agentName}" name="agentName" id="agentName" lay-verify="required" placeholder="请输入经办人姓名" autocomplete="off" class="layui-input">
+                        <input type="text" value="${agentName}" readonly name="agentName" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -249,6 +255,10 @@
                 NumAndAbc:[
                     /^[0-9a-zA-Z]{6,32}$/,
                     '单位登记号可以是全数字或全字母,或数字和字母组合,且长度要在6-32位之间'
+                ],
+                hanZi:[
+                    /^[\u4e00-\u9fa5]+$/,
+                    '请输入汉字'
                 ]
             });
         });

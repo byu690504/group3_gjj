@@ -1,22 +1,17 @@
 package com.zlk.gjj_01.register.zzw.controller;
 
-import com.zlk.gjj_01.register.entity.RemitManager;
-import com.zlk.gjj_01.register.entity.Unit;
-import com.zlk.gjj_01.register.entity.UnitOpenAccount;
-import com.zlk.gjj_01.register.entity.UnitRegister;
+import com.zlk.gjj_01.register.entity.*;
+import com.zlk.gjj_01.register.lfx.service.LoginService;
 import com.zlk.gjj_01.register.lfx.service.UnitRegisterService;
 import com.zlk.gjj_01.register.zzw.service.RemitManagerService;
 import com.zlk.gjj_01.register.zzw.service.UnitOpenAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
-import java.util.Map;
 
 /**
  * @author 张照伟
@@ -33,9 +28,10 @@ public class RemitManagerController {
     private UnitOpenAccountService unitOpenAccountService;
     @Autowired
     private UnitRegisterService unitRegisterService;
+    @Autowired
+    private LoginService loginService;
 
     @RequestMapping("/toRemitManager")
-    @ResponseBody
     public ModelAndView toRemitManager(HttpServletRequest request){
         ModelAndView mv=new ModelAndView();
         String urId = (String) request.getSession().getAttribute("urId");
@@ -51,8 +47,16 @@ public class RemitManagerController {
         return mv;
     }
 
+    /**
+     * 保存到unitBusinessPowerjsp页面并回显
+     * @param remitManager
+     * @param unitRegister
+     * @param request
+     * @return
+     * @throws ParseException
+     */
     @RequestMapping("/remitManager")
-    public String remitManager(RemitManager remitManager, UnitRegister unitRegister, Map map) throws ParseException {
+    public ModelAndView remitManager(RemitManager remitManager, UnitRegister unitRegister,HttpServletRequest request) throws ParseException {
         /*unitRegister.setUnitRegisterId("1");
         remitManager.setRemitWay("委托收款");
         remitManager.setProceedsUnitName("华龙区财政局");
@@ -64,22 +68,28 @@ public class RemitManagerController {
         remitManager.setUnitRegister(unitRegister);*/
         remitManagerService.save(remitManager);
 
-
-        return "unitBusinessPower";
-    }
-
-    @RequestMapping("/appropriationUnit")
-    @ResponseBody
-    public ModelAndView appropriationUnit(HttpServletRequest request){
         ModelAndView mv=new ModelAndView();
-        String urId = (String) request.getSession().getAttribute("urId");
 
-        UnitOpenAccount unitOpenAccount = unitOpenAccountService.findUnitByUrId(urId);
+        String urId = (String) request.getSession().getAttribute("urId");
+        String agentName = (String)request.getSession().getAttribute("agent");
+        UnitOpenAccount unitOpenAccount1 = unitOpenAccountService.findUnitByUrId(urId);
         Unit unit = unitRegisterService.findUnitByUrId(urId);
-        mv.addObject("appropriationUnit",unitOpenAccount.getAppropriationUnit());
+        Agent agent = loginService.findAgentByAgentName(agentName);
+        mv.addObject("appropriationUnit",unitOpenAccount1.getAppropriationUnit());
+        mv.addObject("businessKind",unitOpenAccount1.getBusinessKind());
+        mv.addObject("moneySource",unitOpenAccount1.getMoneySource());
+        mv.addObject("unitName",unit.getUnitName());
+        mv.addObject("agentName",agent.getAgentName());
+        mv.addObject("agentCardName",agent.getCardName());
+        mv.addObject("agentCardNumber",agent.getCardNumber());
+        mv.addObject("agentPhone",agent.getAgentPhone());
         mv.addObject("unitRegisterId",urId);
-        mv.setViewName("payMethod");
+        mv.addObject("msg","缴款成功");
+        mv.setViewName("unitBusinessPower");
+
         return mv;
     }
+
+
 }
 

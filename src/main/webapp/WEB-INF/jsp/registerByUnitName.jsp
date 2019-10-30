@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: kaiguan
@@ -7,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>单位登记申请前确认单位名称</title>
@@ -28,38 +28,39 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">单位名称</label>
                     <div class="layui-input-inline">
-                        <input type="text" value="${unitName}" name="unitName" id="unitName" lay-verify="required" placeholder="请输入单位名称" autocomplete="off" class="layui-input">
+                        <input type="text" value="${unitName}" readonly name="unitName" lay-verify="" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-text div_msg">
                     <c:if test="${msg!=null}">
                         ${msg}
                     </c:if>
-                </div></br>
+                </div><br>
                 <div class="layui-form-text div_msg">
                     <c:if test="${unitRegisterId!=null}">
                         单位登记号为:${unitRegisterId}
                     </c:if>
-                </div></br>
+                </div><br>
                 <div class="layui-form-text div_msg">
                     <c:if test="${uName!=null}">
                         单位名称为:${uName}
                     </c:if>
-                </div></br>
+                </div><br>
                 <div class="layui-form-text div_msg">
                     <c:if test="${uCode!=null}">
                         组织机构代码为:${uCode}
                     </c:if>
-                </div>
+                </div><br>
                 <div class="layui-form-item">
-                    <div class="layui-input-block layui-input-inline">
-                        <button type="submit" class="layui-btn" lay-submit lay-filter="sub"/>确认
+                    <div class="layui-input-block">
+                        <button type="submit" class="layui-btn" lay-submit lay-filter="sub">确认</button>
                         <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                     </div>
                 </div>
             </div>
         </form>
     </div>
+
     <script type="text/javascript">
         layui.use('form', function(){
             var form = layui.form;

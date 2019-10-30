@@ -3,7 +3,6 @@ package com.zlk.gjj_01.register.zzw.service.impl;
 import com.zlk.gjj_01.register.entity.Agent;
 import com.zlk.gjj_01.register.entity.Unit;
 import com.zlk.gjj_01.register.entity.UnitOpenAccount;
-import com.zlk.gjj_01.register.lfx.dao.AgentDao;
 import com.zlk.gjj_01.register.lfx.dao.UnitDao;
 import com.zlk.gjj_01.register.zzw.dao.UnitOpenAccountDao;
 import com.zlk.gjj_01.register.zzw.service.UnitOpenAccountService;
@@ -21,8 +20,6 @@ import java.util.List;
 public class UnitOpenAccountServiceImpl implements UnitOpenAccountService {
     @Autowired
     private UnitOpenAccountDao unitOpenAccountDao;
-    @Autowired
-    private AgentDao agentDao;
     @Autowired
     private UnitDao unitDao;
 
