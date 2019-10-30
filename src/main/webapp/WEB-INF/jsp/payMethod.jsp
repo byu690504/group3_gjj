@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>缴款方式管理</title>
@@ -24,6 +25,11 @@
                 <span>缴款方式</span>
             </div>
             <form action="<%=request.getContextPath() %>/remitManager/remitManager" method="post" class="layui-form">
+                <div class="layui-form-text layui-inline" style="margin-left: 50px; margin-bottom: 20px; margin-top: -20px; font-size: 20px; color: #FF0000;">
+                    <c:if test="${msg!=null}">
+                        <span>${msg}</span>
+                    </c:if>
+                </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">单位登记号</label>
                     <div class="layui-input-block">

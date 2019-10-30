@@ -53,7 +53,7 @@ public class UnitBusinessPowerController {
 
         unitBusinessPowerService.save(unitBusinessPower);
 
-        return "secondaryManager";
+        return "secondaryManage";
     }
 
 }

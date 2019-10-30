@@ -42,7 +42,7 @@ public class RemitManagerController {
 
         UnitOpenAccount unitOpenAccount = unitOpenAccountService.findUnitByUrId(urId);
         Unit unit = unitRegisterService.findUnitByUrId(urId);
-        mv.addObject("appropriationUnit",unitOpenAccount.getAppropriationUnit());
+
         mv.addObject("businessKind",unitOpenAccount.getBusinessKind());
         mv.addObject("moneySource",unitOpenAccount.getMoneySource());
         mv.addObject("unitName",unit.getUnitName());
@@ -52,7 +52,8 @@ public class RemitManagerController {
     }
 
     @RequestMapping("/remitManager")
-    public String remitManager(RemitManager remitManager, UnitRegister unitRegister, Map map) throws ParseException {
+    @ResponseBody
+    public ModelAndView remitManager(RemitManager remitManager, UnitRegister unitRegister, Map map) throws ParseException {
         /*unitRegister.setUnitRegisterId("1");
         remitManager.setRemitWay("委托收款");
         remitManager.setProceedsUnitName("华龙区财政局");
@@ -64,8 +65,11 @@ public class RemitManagerController {
         remitManager.setUnitRegister(unitRegister);*/
         remitManagerService.save(remitManager);
 
+        ModelAndView mv=new ModelAndView();
+        mv.addObject("msg","缴款成功");
+        mv.setViewName("unitBusinessPower");
 
-        return "unitBusinessPower";
+        return mv;
     }
 
     @RequestMapping("/appropriationUnit")

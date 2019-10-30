@@ -44,8 +44,8 @@ public class UnitOpenAccountController {
         }
         UnitOpenAccount unitOpenAccount = unitOpenAccountService.findUnitByUrId(urId);
         if(unitOpenAccount!=null){
-            mv.addObject("msg","该单位已开过户");
-            mv.setViewName("centreMain");
+            mv.addObject("msg","该单位已经开户");
+            mv.setViewName("unitOpenAccount");
             return mv;
         }
         Unit unit = unitRegisterService.findUnitByUrId(urId);
@@ -57,11 +57,6 @@ public class UnitOpenAccountController {
         mv.setViewName("unitOpenAccount");
         return mv;
     }
-
-    /*@RequestMapping(value = "/toRemitManager")
-    public String toRemitManager(){
-        return "payMethod";
-    }*/
 
     @RequestMapping("/unitOpenAccount")
     @ResponseBody
