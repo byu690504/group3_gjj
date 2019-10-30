@@ -1,9 +1,7 @@
 package com.zlk.gjj_01.register.zzw.controller;
 
-import com.zlk.gjj_01.register.entity.RemitManager;
-import com.zlk.gjj_01.register.entity.Unit;
-import com.zlk.gjj_01.register.entity.UnitOpenAccount;
-import com.zlk.gjj_01.register.entity.UnitRegister;
+import com.zlk.gjj_01.register.entity.*;
+import com.zlk.gjj_01.register.lfx.service.LoginService;
 import com.zlk.gjj_01.register.lfx.service.UnitRegisterService;
 import com.zlk.gjj_01.register.zzw.service.RemitManagerService;
 import com.zlk.gjj_01.register.zzw.service.UnitOpenAccountService;
@@ -30,6 +28,8 @@ public class RemitManagerController {
     private UnitOpenAccountService unitOpenAccountService;
     @Autowired
     private UnitRegisterService unitRegisterService;
+    @Autowired
+    private LoginService loginService;
 
     @RequestMapping("/toRemitManager")
     public ModelAndView toRemitManager(HttpServletRequest request){
@@ -47,6 +47,14 @@ public class RemitManagerController {
         return mv;
     }
 
+    /**
+     * 保存到unitBusinessPowerjsp页面并回显
+     * @param remitManager
+     * @param unitRegister
+     * @param request
+     * @return
+     * @throws ParseException
+     */
     @RequestMapping("/remitManager")
     public ModelAndView remitManager(RemitManager remitManager, UnitRegister unitRegister,HttpServletRequest request) throws ParseException {
         /*unitRegister.setUnitRegisterId("1");
@@ -63,13 +71,18 @@ public class RemitManagerController {
         ModelAndView mv=new ModelAndView();
 
         String urId = (String) request.getSession().getAttribute("urId");
-
+        String agentName = (String)request.getSession().getAttribute("agent");
         UnitOpenAccount unitOpenAccount1 = unitOpenAccountService.findUnitByUrId(urId);
         Unit unit = unitRegisterService.findUnitByUrId(urId);
+        Agent agent = loginService.findAgentByAgentName(agentName);
         mv.addObject("appropriationUnit",unitOpenAccount1.getAppropriationUnit());
         mv.addObject("businessKind",unitOpenAccount1.getBusinessKind());
         mv.addObject("moneySource",unitOpenAccount1.getMoneySource());
         mv.addObject("unitName",unit.getUnitName());
+        mv.addObject("agentName",agent.getAgentName());
+        mv.addObject("agentCardName",agent.getCardName());
+        mv.addObject("agentCardNumber",agent.getCardNumber());
+        mv.addObject("agentPhone",agent.getAgentPhone());
         mv.addObject("unitRegisterId",urId);
         mv.addObject("msg","缴款成功");
         mv.setViewName("unitBusinessPower");
