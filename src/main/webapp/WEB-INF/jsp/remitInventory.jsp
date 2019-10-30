@@ -378,9 +378,6 @@
                         moveOut: true,
                         content : $('#addForm')
                     });
-                }else if (obj.event === 'echoURId') {
-                    $("#").val(data.remitInventoryId);
-                    form.render();
                 }
             });
         });
