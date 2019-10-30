@@ -55,14 +55,14 @@
                         <input type="radio" name="userType" value="0" title="非证书用户" lay-filter="aaa">
                     </div>
                 </div>
-                <%--<div id="check1" style="display: none;">
+                <div id="check1" style="display: none;">
                     <div class="layui-form-item">
                         <label class="layui-form-label">单位名称</label>
                         <div class="layui-input-inline">
                             <input type="text" name="agentName" id="agentName" lay-verify="" placeholder="请输入单位名称" autocomplete="off" class="layui-input">
                         </div>
                     </div>
-                </div>--%>
+                </div>
                 <div id="check2" style="display: none;">
                     <div class="layui-form-item">
                         <label class="layui-form-label">经办人1</label>
@@ -152,7 +152,7 @@
             var form = layui.form;
             var $= layui.$;
             form.on('radio(aaa)', function(data){
-                alert(data.value); //被点击的radio的value值
+                //alert(data.value); //被点击的radio的value值
                 if(data.value == 1){
                     $("#check1").show();
                     $("#check2").hide();

@@ -49,7 +49,6 @@ public class UnitBusinessPowerController {
     }
 
     @RequestMapping("/unitBusinessPower")
-    @ResponseBody
     public String UnitBusinessPower(UnitBusinessPower unitBusinessPower, Map map) throws ParseException{
 
         unitBusinessPowerService.save(unitBusinessPower);

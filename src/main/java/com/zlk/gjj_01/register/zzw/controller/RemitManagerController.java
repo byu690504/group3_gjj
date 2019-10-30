@@ -8,6 +8,7 @@ import com.zlk.gjj_01.register.lfx.service.UnitRegisterService;
 import com.zlk.gjj_01.register.zzw.service.RemitManagerService;
 import com.zlk.gjj_01.register.zzw.service.UnitOpenAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,7 +23,7 @@ import java.util.Map;
  * @version 1.0
  * @date 2019/10/23 14:36
  */
-@RestController
+@Controller
 @RequestMapping("/remitManager")
 public class RemitManagerController {
 
