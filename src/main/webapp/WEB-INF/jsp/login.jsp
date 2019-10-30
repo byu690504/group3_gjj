@@ -51,10 +51,15 @@
                             <span>${error}</span>
                         </c:if>
                     </div>
+                    <div class="layui-form-text layui-inline" id="error3">
+                        <c:if test="${msg!=null}">
+                            <span>注册成功，您的用户代码为:${msg}</span>
+                        </c:if>
+                    </div>
                     <div class="layui-form-item">
-                        <label class="layui-form-label">单位登记号</label>
+                        <label class="layui-form-label">用户代码</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="agentCode" id="agentName" lay-verify="required" placeholder="请输入单位登记号" autocomplete="off" class="layui-input">
+                            <input type="text" name="agentCode" id="agentName" lay-verify="required" placeholder="请输入用户代码" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">

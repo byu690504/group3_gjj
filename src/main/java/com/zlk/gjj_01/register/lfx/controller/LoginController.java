@@ -82,7 +82,7 @@ public class LoginController {
             agent.setUnit(unit);
             unit.getAgentList().add(agent);
             loginService.save(agent);
-            mv.addObject("error",agent.getAgentCode());
+            mv.addObject("msg",agent.getAgentCode());
             mv.setViewName("login");
             return mv;
         }else {

@@ -63,9 +63,9 @@
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">邮箱</label>
+                    <label class="layui-form-label">单位邮箱</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="unitEmail" id="unitEmail" lay-verify="required|email|emailPro" placeholder="请输入邮箱" autocomplete="off" class="layui-input">
+                        <input type="text" name="unitEmail" id="unitEmail" lay-verify="required|email|emailPro" placeholder="请输入单位邮箱" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -112,7 +112,7 @@
                     '邮箱格式不规范,请确认后再输入'
                 ],
                 hanZi:[
-                    /^[\u4e00-\u9fa5]{4,16}$/,
+                    /^[\u4e00-\u9fa5]{2,8}$/,
                     '请输入汉字,且只能输2-8个字'
                 ],
                 //校验两次密码是否一致
