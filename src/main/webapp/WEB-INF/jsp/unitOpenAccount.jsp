@@ -26,14 +26,14 @@
             <form action="<%=request.getContextPath() %>/unitOpenAccount/unitOpenAccount" method="post" class="layui-form">
                 <div class="layui-form-item">
                     <label class="layui-form-label">单位登记号</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="unitRegisterId" id="unitRegisterId" lay-verify="required|NumAndAbc" placeholder="请输入单位登记号" autocomplete="off" class="layui-input">
+                    <div class="layui-input-inline">
+                        <input type="text" value="${unitRegisterId}" name="unitRegisterId" id="unitRegisterId" lay-verify="required|NumAndAbc" placeholder="请输入单位登记号" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">单位名称</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="unitName" id="unitName" lay-verify="required" placeholder="请输入单位名称" autocomplete="off" class="layui-input">
+                    <div class="layui-input-inline">
+                        <input type="text" value="${unitName}" name="unitName" id="unitName" lay-verify="required" placeholder="请输入单位名称" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -54,16 +54,16 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">资金来源</label>
                     <div class="layui-input-block" name="moneySource">
-                        <input type="radio" name="a" value="0" title="单位自筹" lay-filter="aaa">
-                        <input type="radio" name="a" value="1" title="财政拨款" lay-filter="aaa">
-                        <input type="radio" name="a" value="1" title="财政拨款和单位自筹" lay-filter="aaa">
+                        <input type="radio" name="moneySource" value="0" title="单位自筹" lay-filter="aaa">
+                        <input type="radio" name="moneySource" value="1" title="财政拨款" lay-filter="aaa">
+                        <input type="radio" name="moneySource" value="1" title="财政拨款和单位自筹" lay-filter="aaa">
                     </div>
                 </div>
                 <div id="check1" style="display: none">
                     <div class="layui-form-item">
                         <label class="layui-form-label">财政拨款单位</label>
                         <div class="layui-input-block">
-                            <select name="appropriationUnit" lay-verify="required">
+                            <select name="appropriationUnit">
                                 <option value="">请选择拨款单位</option>
                                 <option value="市财政">市财政</option>
                                 <option value="区县财政">区县财政</option>
@@ -90,13 +90,13 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">联系电话</label>
                     <div class="layui-input-block">
-                        <input type="text" name="" id="a" lay-verify="phone" placeholder="请输入联系电话" autocomplete="off" class="layui-input">
+                        <input type="text" value="${agentPhone}" name="agentPhone" id="agentPhone" lay-verify="phone" placeholder="请输入联系电话" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">单位预算代码</label>
                     <div class="layui-input-block">
-                        <input type="text" name="" id="b" lay-verify="number" placeholder="请输入单位预算代码" autocomplete="off" class="layui-input">
+                        <input type="text" name="unitBudgetCode" id="unitBudgetCode" lay-verify="number" placeholder="请输入单位预算代码" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -207,7 +207,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">接受经办人</label>
                     <div class="layui-input-block">
-                        <input type="text" name="agentName" id="agentName" lay-verify="required" placeholder="请输入经办人姓名" autocomplete="off" class="layui-input">
+                        <input type="text" value="${agentName}" name="agentName" id="agentName" lay-verify="required" placeholder="请输入经办人姓名" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <%--<div class="layui-form-item">
@@ -230,7 +230,7 @@
                     <div id="entrustSpan">
                         <span>委托收款信息</span>
                     </div>
-                    <form action="<%=request.getContextPath() %>/" method="post" class="layui-form">
+                    <form action="<%=request.getContextPath() %>/remitManager/remitManager1" method="post" class="layui-form">
                         <div class="layui-form-item">
                             <label class="layui-form-label">委托收款单位名称</label>
                             <div class="layui-input-block">
@@ -283,7 +283,7 @@
                     <div id="accordSpan">
                         <span>主动汇款信息</span>
                     </div>
-                    <form action="<%=request.getContextPath() %>/" method="post" class="layui-form">
+                    <form action="<%=request.getContextPath() %>/remitManager/remitManager1" method="post" class="layui-form">
                         <div class="layui-form-item">
                             <label class="layui-form-label">汇款单位名称</label>
                             <div class="layui-input-block">
@@ -314,17 +314,25 @@
                     <div id="transferSpan">
                         <span>转账支票信息</span>
                     </div>
-                    <form action="<%=request.getContextPath() %>/" method="post" class="layui-form">
+                    <form action="<%=request.getContextPath() %>/remitManager/remitManager1" method="post" class="layui-form">
                         <div class="layui-form-item">
                             <label class="layui-form-label">单位开户银行</label>
                             <div class="layui-input-block">
+<<<<<<< HEAD
+                                <input type="text" name="unitBank" id="unitBank" lay-verify="required|number" placeholder="请输入单位开户银行" autocomplete="off" class="layui-input">
+=======
                                 <input type="text" name="" id="c" lay-verify="required|number" placeholder="请输入单位开户银行" autocomplete="off" class="layui-input">
+>>>>>>> 3677a730683f39206d9475a64c057d6763866764
                             </div>
                         </div>
                         <div class="layui-form-item">
                             <label class="layui-form-label">账号</label>
                             <div class="layui-input-block">
+<<<<<<< HEAD
+                                <input type="text" name="unitAccount" id="unitAccount" lay-verify="required|number" placeholder="请输入账号" autocomplete="off" class="layui-input">
+=======
                                 <input type="text" name="" id="d" lay-verify="required|number" placeholder="请输入账号" autocomplete="off" class="layui-input">
+>>>>>>> 3677a730683f39206d9475a64c057d6763866764
                             </div>
                         </div><br>
                         <div class="layui-form-item">
@@ -339,11 +347,11 @@
                     <div id="cashSpan">
                         <span>现金刷卡信息</span>
                     </div>
-                    <form action="<%=request.getContextPath() %>/" method="post" class="layui-form">
+                    <form action="<%=request.getContextPath() %>/remitManager/remitManager1" method="post" class="layui-form">
                         <div class="layui-form-item">
                             <label class="layui-form-label">缴款网点</label>
                             <div class="layui-input-block">
-                                <input type="text" name="" id="" lay-verify="required" placeholder="请输入缴款网点" autocomplete="off" class="layui-input">
+                                <input type="text" name="paymentPoint" id="paymentPoint" lay-verify="required" placeholder="请输入缴款网点" autocomplete="off" class="layui-input">
                             </div>
                         </div><br>
                         <div class="layui-form-item">
@@ -358,11 +366,11 @@
                     <div id="financeSpan">
                         <span>财政统发信息</span>
                     </div>
-                    <form action="<%=request.getContextPath() %>/" method="post" class="layui-form">
+                    <form action="<%=request.getContextPath() %>/remitManager/remitManager1" method="post" class="layui-form">
                         <div class="layui-form-item">
                             <label class="layui-form-label">统发单位名称</label>
                             <div class="layui-input-block">
-                                <input type="text" name="" id="appropriationUnit" lay-verify="required" placeholder="请输入统发单位名称" autocomplete="off" class="layui-input">
+                                <input type="text" value="${appropriationUnit}" name="appropriationUnit" id="appropriationUnit" lay-verify="required" placeholder="请输入统发单位名称" autocomplete="off" class="layui-input">
                             </div>
                         </div><br>
                         <div class="layui-form-item">

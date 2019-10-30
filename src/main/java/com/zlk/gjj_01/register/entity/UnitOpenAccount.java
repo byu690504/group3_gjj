@@ -21,7 +21,7 @@ public class UnitOpenAccount {
     @GeneratedValue(generator = "myGenerator")
     @GenericGenerator(name = "myGenerator",strategy = "uuid")
     @Column(name = "unit_open_account_id")
-    private String unitOpenAccountId;//单位开户申请id
+        private String unitOpenAccountId;//单位开户申请id
     /*@Column(name = "unit_register_id")
     private long unitRegisterId;//单位登记号*/
     @Column(name = "business_kind")
@@ -34,6 +34,8 @@ public class UnitOpenAccount {
     private String secondAssistMessage;//开通二级辅助信息
     @Column(name = "business_agent_dept")
     private String businessAgentDept;//业务经办部门
+    @Column(name = "unit_budget_code")
+    private String unitBudgetCode;//单位预算代码
     @Column(name = "payoff_date")
     private Integer payoffDate;//发薪日期  数字1-31
     @Column(name = "first_remit_month")

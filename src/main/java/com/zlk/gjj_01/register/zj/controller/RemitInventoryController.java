@@ -4,8 +4,6 @@ package com.zlk.gjj_01.register.zj.controller;
  */
 
 import com.zlk.gjj_01.register.entity.RemitInventory;
-import com.zlk.gjj_01.register.entity.SecondAssistMessage;
-import com.zlk.gjj_01.register.entity.UnitOpenAccount;
 import com.zlk.gjj_01.register.util.Pagination;
 import com.zlk.gjj_01.register.zj.dao.RemitInventoryDao;
 import com.zlk.gjj_01.register.zj.dao.SecondAssistMessageDao;
@@ -36,7 +34,7 @@ public class RemitInventoryController {
     public ModelAndView toList(String record, HttpServletRequest request) throws Exception {
         ModelAndView mv = new ModelAndView();
         String urId = (String) request.getSession().getAttribute("urId");
-        if (urId == null) {
+        /*if (urId == null) {
             mv.addObject("msg", "请先进行单位登记");
             mv.setViewName("registerByUnitName");
             return mv;
@@ -46,7 +44,7 @@ public class RemitInventoryController {
             mv.addObject("msg", "请先进行单位开户");
             mv.setViewName("unitOpenAccount");
             return mv;
-        }
+        }*/
         mv.addObject("unitRegisterId", urId);
         mv.addObject("record", record);
         mv.setViewName("remitInventory");
@@ -92,5 +90,11 @@ public class RemitInventoryController {
         }else{
             return null;
         }
+    }
+    @RequestMapping(value = "/delete")
+    @ResponseBody
+    public String delete(String remitInventoryId) {
+        remitInventoryDao.deleteById(remitInventoryId);
+        return "remitInventory";
     }
 }

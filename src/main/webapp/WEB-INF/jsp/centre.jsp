@@ -43,11 +43,11 @@
                                 </a>
                                 <ol class="layui-nav-child">
                                     <li><a href="<%=request.getContextPath() %>/unitOpenAccount/toUnitOpenAccount" target="pageCenter">单位开户</a></li>
-                                    <li><a href="<%=request.getContextPath() %>/test/page13" target="pageCenter">缴款方式管理</a></li>
+                                    <li><a href="<%=request.getContextPath() %>/remitManager/toRemitManager" target="pageCenter">缴款方式管理</a></li>
                                 </ol>
                             </dd>
                             <dd>
-                                <a href="<%=request.getContextPath() %>/change/toUnitBusinessPower" target="pageCenter">单位用户业务授权</a>
+                                <a href="<%=request.getContextPath() %>/unitBusinessPower/toUnitBusinessPower" target="pageCenter">单位用户业务授权</a>
                             </dd>
                             <dd>
                                 <a href="<%=request.getContextPath() %>/change/toPersonRegister" target="pageCenter">个人登记</a>
@@ -71,7 +71,7 @@
                                 <a href="<%=request.getContextPath() %>/change/toRegisterChange" target="pageCenter">单位登记信息变更功能</a>
                             </dd>
                             <dd>
-                                <a href="<%=request.getContextPath() %>/change/toOpenAccountChange" target="pageCenter">单位开户信息变更功能</a>
+                                <a href="<%=request.getContextPath() %>/openUnit/name" target="pageCenter">单位开户信息变更功能</a>
                             </dd>
                         </dl>
                     </li>

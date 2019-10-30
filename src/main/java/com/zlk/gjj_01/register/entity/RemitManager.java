@@ -44,6 +44,12 @@ public class RemitManager {
     private String remitUnitBank;//汇款单位开户银行名称
     @Column(name = "remit_unit_account")
     private String remitUnitAccount;//汇款单位账号
+    @Column(name = "unit_bank")
+    private String unitBank;//单位开户银行名称
+    @Column(name = "unit_account")
+    private String unitAccount;//单位账号
+    @Column(name = "payment_point")
+    private String paymentPoint;//缴款网点
     @OneToOne(targetEntity = UnitOpenAccount.class)
     @JoinColumn(name = "appropriation_unit")
     private UnitOpenAccount unitOpenAccount;

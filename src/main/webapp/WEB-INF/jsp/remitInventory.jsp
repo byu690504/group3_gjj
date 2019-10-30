@@ -14,12 +14,21 @@
     <script src="<%=request.getContextPath() %>/layui/layui.all.js"></script>
 </head>
 <body>
-    <span>单位登记号为:${unitRegisterId}</span>
-    <div class="layui-fluid">
-        <table class="layui-table" id="remitInventoryList" lay-filter="inventory"></table>
+    <div>
+        <div style="margin-bottom: -10px; margin-top: 15px; margin-left: 10px;">
+            <div class="layui-form-item">
+                <label class="layui-form-label">单位登记号</label>
+                <div class="layui-input-inline">
+                    <input type="text" value="${unitRegisterId}" readonly placeholder="" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+        <div class="layui-fluid">
+            <table class="layui-table" id="remitInventoryList" lay-filter="inventory"></table>
+        </div>
     </div>
 
-    <div id="addForm" hidden="hidden" style="padding: 25px">
+    <div id="addForm" hidden="hidden" style="padding: 25px;">
         <form action="<%=request.getContextPath()%>/remit/add" method="post" class="layui-form">
             <div class="layui-form-item">
                 <label class="layui-form-label">职工编号</label>
@@ -216,13 +225,13 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">部门编号</label>
                     <div class="layui-input-block">
-                        <input type="text" name="deptNumber" lay-verify="required|number" placeholder="请输入部门编号" autocomplete="off" class="layui-input">
+                        <input type="text" name="deptNumber" lay-verify="" placeholder="请输入部门编号" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">部门名称</label>
                     <div class="layui-input-block">
-                        <select name="deptName" lay-verify="required">
+                        <select name="deptName" lay-verify="">
                             <option value="">请选择部门名称</option>
                             <option value="人事部">人事部</option>
                             <option value="财务部">财务部</option>
@@ -233,7 +242,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">部门代码</label>
                     <div class="layui-input-block">
-                        <input type="text" name="deptCode" lay-verify="required" placeholder="请输入部门代码" autocomplete="off" class="layui-input">
+                        <input type="text" name="deptCode" lay-verify="" placeholder="请输入部门代码" autocomplete="off" class="layui-input">
                     </div>
                 </div>
             </div>
@@ -309,22 +318,19 @@
                     {fixed : 'right',title : '操作',width : 200,align : 'center',
                         toolbar :
                             '<div class="layui-btn-group">' +
-                            '<button type="submit" class="layui-btn layui-btn-fluid" lay-event="edit" lay-filter="sub">' +
+                            '<button type="submit" class="layui-btn " lay-event="edit" lay-filter="sub">' +
                             '<i class="layui-icon layui-icon-edit"></i>' +
                             '</button>'+
-                            /*'<button type="button" class="layui-btn layui-btn-danger" lay-event="del">' +
+                            '<button type="button" class="layui-btn layui-btn-danger" lay-event="del">' +
                             '<i class="layui-icon layui-icon-delete"></i>' +
-                            '</button>'+*/
+                            '</button>'+
                             '</div>'
                     }
                 ] ],
                 limits : 10,
                 toolbar :
                     '<div class="layui-btn-group" style="padding: 15px;">' +
-                    '单位登记号：' +
-                    '<div class="layui-inline">' +
-                    '</div>' +
-                    '<button type="submit" class="layui-btn" lay-event="add" lay-filter="sub" style="margin-left: 40px">' +
+                    '<button type="submit" class="layui-btn" lay-event="add" lay-filter="sub" style="margin-left: 5px">' +
                     '<i class="layui-icon layui-icon-add-1"></i>' +
                     '</button>'+
                     '</div>'
@@ -354,6 +360,21 @@
                         anim : 4,
                         moveOut: true,
                         content : $('#editForm')
+                    });
+                }else if(obj.event === 'del'){
+                    layer.confirm('确定要删除吗', {
+                        title:'删除',
+                        anim : 6
+                    }, function (index) {
+                        obj.del();
+                        $.ajax({
+                            type : "POST",
+                            url : "<%=request.getContextPath() %>/remit/delete?remitInventoryId="+data.remitInventoryId,
+                            success : function (msg) {
+                                layer.alert("删除成功！");
+                                layer.close(index);
+                            }
+                        });
                     });
                 }
             });
