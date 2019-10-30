@@ -57,4 +57,14 @@ public class LoginServiceImpl implements LoginService {
     public Agent findAgentByAgentAuth(String agentAuth) {
         return agentDao.findAgentByAgentAuth(agentAuth);
     }
+
+    @Override
+    public Agent findAgentByAgentPhone(String agentPhone) {
+        return agentDao.findAgentByAgentPhone(agentPhone);
+    }
+
+    @Override
+    public Integer findPwd(String agentPassword, String agentPhone) {
+        return agentDao.findPwd(agentPassword,agentPhone);
+    }
 }

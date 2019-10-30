@@ -55,6 +55,15 @@ public class LoginController {
     }
 
     /**
+     * 跳转到找回密码页面
+     * @return
+     */
+    @RequestMapping(value = "/toFindPwd")
+    public String toFindPwd(){
+        return "forgetPasswordByPhone";
+    }
+
+    /**
      * 注册页面点击注册
      * @return
      */
@@ -134,5 +143,29 @@ public class LoginController {
             map.put("error","验证码错误");
             return "login";
         }
+    }
+
+    @RequestMapping(value = "/findPwd")
+    public ModelAndView findPwd(String agentPhone){
+        ModelAndView mv=new ModelAndView();
+        Agent agent = loginService.findAgentByAgentPhone(agentPhone);
+        if(agent==null){
+            mv.addObject("error","该用户不存在,请核实手机号");
+            mv.setViewName("forgetPasswordByPhone");
+            return mv;
+        }else {
+            mv.addObject("agentPhone",agentPhone);
+            mv.setViewName("forgetPasswordLaterAlterPassword");
+            return mv;
+        }
+    }
+
+    @RequestMapping(value = "/inputPwd")
+    public ModelAndView inputPwd(String agentPassword,String agentPhone){
+        ModelAndView mv=new ModelAndView();
+        Integer flag = loginService.findPwd(agentPassword, agentPhone);
+        mv.addObject("msg1",agentPassword);
+        mv.setViewName("login");
+        return mv;
     }
 }

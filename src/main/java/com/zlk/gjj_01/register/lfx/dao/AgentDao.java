@@ -54,4 +54,23 @@ public interface AgentDao extends JpaRepository<Agent,String> {
      */
     @Query("from Agent a where a.agentAuth=?1")
     Agent findAgentByAgentAuth(String agentAuth);
+
+    /**
+     *通过手机号查找经办人
+     * @param agentPhone
+     * @return
+     */
+    @Query("from Agent a where a.agentPhone=?1")
+    Agent findAgentByAgentPhone(String agentPhone);
+
+    /**
+     * 找回密码
+     * @param agentPassword
+     * @param agentPhone
+     * @return
+     */
+    @Transactional
+    @Modifying
+    @Query("update Agent a set a.agentPassword=?1 where a.agentPhone=?2")
+    Integer findPwd(String agentPassword,String agentPhone);
 }
