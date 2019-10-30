@@ -60,4 +60,19 @@ public interface LoginService {
      * @return
      */
     Agent findAgentByAgentAuth(String agentAuth);
+
+    /**
+     * 通过手机号查找经办人
+     * @param agentPhone
+     * @return
+     */
+    Agent findAgentByAgentPhone(String agentPhone);
+
+    /**
+     * 找回密码
+     * @param agentPassword
+     * @param agentPhone
+     * @return
+     */
+    Integer findPwd(String agentPassword,String agentPhone);
 }

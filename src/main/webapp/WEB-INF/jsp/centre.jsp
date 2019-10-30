@@ -25,7 +25,7 @@
         <!-- 左侧导航区域 -->
         <div class="layui-side layui-bg-black">
             <div class="layui-side-scroll">
-                <ul class="layui-nav layui-nav-tree" lay-filter="">
+                <ul class="layui-nav layui-nav-tree">
                     <li class="layui-nav-item layui-nav-itemed">
                         <a href="javascript:;">
                             公积金管理中心

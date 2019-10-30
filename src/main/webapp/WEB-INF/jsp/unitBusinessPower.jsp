@@ -59,7 +59,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">单位名称</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="agentName" id="agentName" lay-verify="" placeholder="请输入单位名称" autocomplete="off" class="layui-input">
+                            <input type="text" name="unitName" lay-verify="" placeholder="请输入单位名称" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                 </div>
@@ -67,7 +67,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">经办人1</label>
                         <div class="layui-input-inline">
-                            <input type="text" value="${agentName}" name="agentName" id="agentName" lay-verify="" placeholder="请输入姓名" autocomplete="off" class="layui-input">
+                            <input type="text" value="${agentName}" name="" lay-verify="" placeholder="请输入姓名" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">

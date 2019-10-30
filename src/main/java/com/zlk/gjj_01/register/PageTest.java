@@ -86,4 +86,14 @@ public class PageTest {
     public String test15(){
         return "remitInventoryByUserName";
     }
+
+    @RequestMapping("/page16")
+    public String test16(){
+        return "forgetPasswordByPhone";
+    }
+
+    @RequestMapping("/page17")
+    public String test17(){
+        return "forgetPasswordLaterAlterPassword";
+    }
 }
