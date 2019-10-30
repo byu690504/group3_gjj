@@ -20,6 +20,16 @@ spring:
     password: 123456
     url: jdbc:mysql://192.168.124.6:3306/gjj?characterEncoding=utf-8
     type: com.alibaba.druid.pool.DruidDataSource
+  #thymeleaf模板配置
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML5
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    #关掉缓存
+    cache: false
   mvc:
     view:
       prefix: /WEB-INF/jsp/

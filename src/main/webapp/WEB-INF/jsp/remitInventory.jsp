@@ -56,7 +56,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">国别</label>
                 <div class="layui-input-block">
-                    <input type="text" name="empCountry" lay-verify="required" placeholder="请输入国别" autocomplete="off" class="layui-input">
+                    <input type="text" name="empCountry" lay-verify="" placeholder="请输入国别" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
@@ -110,13 +110,13 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">部门编号</label>
                     <div class="layui-input-block">
-                        <input type="text" name="deptNumber" lay-verify="required|number" placeholder="请输入部门编号" autocomplete="off" class="layui-input">
+                        <input type="text" name="deptNumber" lay-verify="number" placeholder="请输入部门编号" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">部门名称</label>
                     <div class="layui-input-block">
-                        <select name="deptName" lay-verify="required">
+                        <select name="deptName" lay-verify="">
                             <option value="">请选择部门名称</option>
                             <option value="人事部">人事部</option>
                             <option value="财务部">财务部</option>
@@ -127,7 +127,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">部门代码</label>
                     <div class="layui-input-block">
-                        <input type="text" name="deptCode" lay-verify="required" placeholder="请输入部门代码" autocomplete="off" class="layui-input">
+                        <input type="text" name="deptCode" lay-verify="number" placeholder="请输入部门代码" autocomplete="off" class="layui-input">
                     </div>
                 </div>
             </div>
@@ -171,7 +171,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">国别</label>
                 <div class="layui-input-block">
-                    <input type="text" name="empCountry" id="empCountry" lay-verify="required" placeholder="请输入国别" autocomplete="off" class="layui-input">
+                    <input type="text" name="empCountry" id="empCountry" lay-verify="" placeholder="请输入国别" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
@@ -199,19 +199,19 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">单位月缴存额</label>
                 <div class="layui-input-block">
-                    <input type="text" name="unitMonthlyDeposit" id="unitMonthlyDeposit" lay-verify="required|number" placeholder="请输入单位月缴存额" autocomplete="off" class="layui-input">
+                    <input type="text" name="unitMonthlyDeposit" readonly id="unitMonthlyDeposit" lay-verify="" placeholder="请输入单位月缴存额" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">个人月缴存额</label>
                 <div class="layui-input-block">
-                    <input type="text" name="personalMonthlyDeposit" id="personalMonthlyDeposit" lay-verify="readonly|number" placeholder="请输入个人月缴存额" autocomplete="off" class="layui-input">
+                    <input type="text" name="personalMonthlyDeposit" readonly id="personalMonthlyDeposit" lay-verify="" placeholder="请输入个人月缴存额" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">月缴存额合计</label>
                 <div class="layui-input-block">
-                    <input type="text" name="totalMonthlyDeposit" id="totalMonthlyDeposit" lay-verify="readonly" placeholder="" autocomplete="off" class="layui-input">
+                    <input type="text" name="totalMonthlyDeposit" readonly id="totalMonthlyDeposit" lay-verify="" placeholder="" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
@@ -225,13 +225,13 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">部门编号</label>
                     <div class="layui-input-block">
-                        <input type="text" name="deptNumber" lay-verify="required|number" placeholder="请输入部门编号" autocomplete="off" class="layui-input">
+                        <input type="text" name="deptNumber" lay-verify="number" placeholder="请输入部门编号" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">部门名称</label>
                     <div class="layui-input-block">
-                        <select name="deptName" lay-verify="required">
+                        <select name="deptName" lay-verify="">
                             <option value="">请选择部门名称</option>
                             <option value="人事部">人事部</option>
                             <option value="财务部">财务部</option>
@@ -242,7 +242,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">部门代码</label>
                     <div class="layui-input-block">
-                        <input type="text" name="deptCode" lay-verify="required" placeholder="请输入部门代码" autocomplete="off" class="layui-input">
+                        <input type="text" name="deptCode" lay-verify="number" placeholder="请输入部门代码" autocomplete="off" class="layui-input">
                     </div>
                 </div>
             </div>

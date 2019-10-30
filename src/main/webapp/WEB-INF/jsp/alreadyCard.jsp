@@ -14,33 +14,6 @@
     <script src="<%=request.getContextPath() %>/layui/layui.js"></script>
 </head>
 <body>
-    <%--<div class="layui-fluid">
-        <div class="layui-card">
-            <form class="layui-form" id="" onsubmit="return false">
-                <div class="layui-form layui-card-header layuiadmin-card-header-auto" lay-filter="">
-                    <div class="layui-inline">
-                        <label class="layui-form-label">单位登记号：</label>
-                        <div class="layui-input-inline">
-                            <input type="text" class="layui-input" id="" name="" placeholder="请输入单位登记号" width="80px" style="margin-right: 40px">
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">证件号码：</label>
-                        <div class="layui-input-inline">
-                            <input type="text" class="layui-input" id="" name="" placeholder="请输入证件号码" width="80px">
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <button class="layui-btn" lay-submit="" lay-filter="reloadlst_submit">查询</button>
-                    </div>
-                </div>
-            </form>
-            <div class="layui-card-body">
-                <table class="layui-table" id="makeCardCaseRefer" lay-filter=""></table>
-            </div>
-        </div>
-    </div>--%>
-
     <div class="layui-fluid">
         <table class="layui-table" id="alreadyCard" lay-filter="alreadyCard"></table>
     </div>

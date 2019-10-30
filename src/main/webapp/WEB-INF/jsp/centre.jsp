@@ -25,7 +25,7 @@
         <!-- 左侧导航区域 -->
         <div class="layui-side layui-bg-black">
             <div class="layui-side-scroll">
-                <ul class="layui-nav layui-nav-tree" lay-filter="">
+                <ul class="layui-nav layui-nav-tree">
                     <li class="layui-nav-item layui-nav-itemed">
                         <a href="javascript:;">
                             公积金管理中心
@@ -43,11 +43,11 @@
                                 </a>
                                 <ol class="layui-nav-child">
                                     <li><a href="<%=request.getContextPath() %>/unitOpenAccount/toUnitOpenAccount" target="pageCenter">单位开户</a></li>
-                                    <li><a href="<%=request.getContextPath() %>/test/page13" target="pageCenter">缴款方式管理</a></li>
+                                    <li><a href="<%=request.getContextPath() %>/remitManager/toRemitManager" target="pageCenter">缴款方式管理</a></li>
                                 </ol>
                             </dd>
                             <dd>
-                                <a href="<%=request.getContextPath() %>/change/toUnitBusinessPower" target="pageCenter">单位用户业务授权</a>
+                                <a href="<%=request.getContextPath() %>/unitBusinessPower/toUnitBusinessPower" target="pageCenter">单位用户业务授权</a>
                             </dd>
                             <dd>
                                 <a href="<%=request.getContextPath() %>/change/toPersonRegister" target="pageCenter">个人登记</a>

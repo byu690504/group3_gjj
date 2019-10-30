@@ -30,7 +30,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">经办人姓名</label>
                     <div class="layui-input-inline">
-                        <label for="agentName"></label><input type="text" name="agentName" id="agentName" lay-verify="required|hanZi" placeholder="请输入经办人姓名" autocomplete="off" class="layui-input">
+                        <input type="text" name="agentName" id="agentName" lay-verify="required|hanZi" placeholder="请输入经办人姓名" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -108,7 +108,7 @@
                     '密码必须为字母和数字的组合,且长度要在6-10位之间'
                 ],
                 emailPro:[
-                    /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,3}$/,
+                    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/,
                     '邮箱格式不规范,请确认后再输入'
                 ],
                 hanZi:[

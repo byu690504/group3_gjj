@@ -76,6 +76,9 @@
                             <img src="<%=request.getContextPath() %>/checkCodeServlet">
                         </div>
                     </div>
+                    <div id="forget1">
+                        <a href="<%=request.getContextPath() %>/" type="button" class="layui-btn">忘记密码</a>
+                    </div>
                     <div class="layui-form-item">
                         <div class="layui-input-block layui-input-inline">
                             <button type="submit" class="layui-btn" lay-submit lay-filter="sub">登录</button>
@@ -113,6 +116,9 @@
                             <br>
                             <img src="<%=request.getContextPath() %>/checkCodeServlet">
                         </div>
+                    </div>
+                    <div id="forget2">
+                        <a href="<%=request.getContextPath() %>/" type="button" class="layui-btn">忘记密码</a>
                     </div>
                     <div class="layui-form-item">
                         <div class="layui-input-block layui-input-inline">
