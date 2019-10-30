@@ -52,9 +52,9 @@
                         </c:if>
                     </div>
                     <div class="layui-form-item">
-                        <label class="layui-form-label">用户名</label>
+                        <label class="layui-form-label">单位登记号</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="agentCode" id="agentName" lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                            <input type="text" name="agentCode" id="agentName" lay-verify="required" placeholder="请输入单位登记号" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">

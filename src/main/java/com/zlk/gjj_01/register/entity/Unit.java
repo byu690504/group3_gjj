@@ -23,7 +23,7 @@ public class Unit {
     /**
      * 单位ID
      */
-    private String unitId;
+    private String  unitId;
     @Column(name = "unit_name")
     /**
      * 单位名称

@@ -28,9 +28,9 @@
                     <span id="msg">${error}</span>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">姓名</label>
+                    <label class="layui-form-label">经办人姓名</label>
                     <div class="layui-input-inline">
-                        <label for="agentName"></label><input type="text" name="agentName" id="agentName" lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">
+                        <label for="agentName"></label><input type="text" name="agentName" id="agentName" lay-verify="required|hanZi" placeholder="请输入经办人姓名" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -65,7 +65,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">邮箱</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="unitEmail" id="unitEmail" lay-verify="required|email" placeholder="请输入邮箱" autocomplete="off" class="layui-input">
+                        <input type="text" name="unitEmail" id="unitEmail" lay-verify="required|email|emailPro" placeholder="请输入邮箱" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -106,6 +106,14 @@
                 NumAndAbc:[
                     /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,10}$/,
                     '密码必须为字母和数字的组合,且长度要在6-10位之间'
+                ],
+                emailPro:[
+                    /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,3}$/,
+                    '邮箱格式不规范,请确认后再输入'
+                ],
+                hanZi:[
+                    /^[\u4e00-\u9fa5]{4,16}$/,
+                    '请输入汉字,且只能输2-8个字'
                 ],
                 //校验两次密码是否一致
                 validatePassword:function (value) {
