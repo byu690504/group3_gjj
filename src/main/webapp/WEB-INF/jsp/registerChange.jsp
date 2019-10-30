@@ -23,7 +23,7 @@
             <div id="span1">
                 <span>单位登记信息变更</span>
             </div>
-            <form action="<%=request.getContextPath() %>/change/registerChange" class="layui-form">
+                <form action="<%=request.getContextPath() %>/change/toRegisterChange" class="layui-form">
                 <span>${msg}</span>
                 <input type="hidden" name="unitId" value="${unitId}">
                 <input type="hidden" name="unitRegisterId" value="${unitRegisterId}">

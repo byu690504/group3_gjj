@@ -10,4 +10,5 @@ import java.util.List;
 public interface RemitInventoryMapper {
     List<RemitInventory> findRemLimit(Pagination pagination);
     Integer findRemitCount(Pagination pagination);
+    Integer updateRem(RemitInventory remitInventory);
 }

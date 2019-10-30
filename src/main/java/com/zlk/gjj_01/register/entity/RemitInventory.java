@@ -33,6 +33,12 @@ public class RemitInventory {
     private String empCardNumber;//员工卡编号
     @Column(name = "emp_deposite_base")
     private Integer empDepositeBase;//缴存基数
+    @Column(name = "unit_monthly_deposit")
+    private Integer unitMonthlyDeposit;//单位月缴存额
+    @Column(name = "personal_monthly_deposit ")
+    private Integer personalMonthlyDeposit;//个人月缴存额
+    @Column(name = "total_monthly_deposit")
+    private Integer totalMonthlyDeposit;//月缴存额合计
     @Column(name = "record")
     private String record;//联名卡记录
     @ManyToOne(targetEntity = SecondAssistMessage.class)
@@ -53,7 +59,12 @@ public class RemitInventory {
                 ", empCountry='" + empCountry + '\'' +
                 ", empCardNumber='" + empCardNumber + '\'' +
                 ", empDepositeBase=" + empDepositeBase +
+                ", unitMonthlyDeposit=" + unitMonthlyDeposit +
+                ", personalMonthlyDeposit=" + personalMonthlyDeposit +
+                ", totalMonthlyDeposit=" + totalMonthlyDeposit +
                 ", record='" + record + '\'' +
+                ", secondAssistMessage=" + secondAssistMessage +
+                ", unitRegister=" + unitRegister +
                 '}';
     }
 }

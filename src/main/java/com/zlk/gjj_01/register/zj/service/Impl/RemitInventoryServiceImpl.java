@@ -21,4 +21,9 @@ public class RemitInventoryServiceImpl implements RemitInventoryService {
     public Integer findRemitCount(Pagination pagination) {
         return remitInventoryMapper.findRemitCount(pagination);
     }
+
+    @Override
+    public Integer updateRem(RemitInventory remitInventory) {
+        return remitInventoryMapper.updateRem(remitInventory);
+    }
 }
