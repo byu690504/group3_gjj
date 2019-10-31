@@ -28,7 +28,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">单位名称</label>
                     <div class="layui-input-inline">
-                        <input type="text" value="${unitName}" readonly name="unitName" lay-verify="" autocomplete="off" class="layui-input">
+                        <input type="text" value="${unitName}" name="unitName" placeholder="请输入单位名称" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-text div_msg">

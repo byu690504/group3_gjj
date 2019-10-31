@@ -181,7 +181,6 @@
                     <label class="layui-form-label">单位缴存比例</label>
                     <div class="layui-input-block">
                         <input type="text" name="unitDepositProportion" lay-verify="required|number" placeholder="请输入单位缴存比例" autocomplete="off" class="layui-input">
-
                     </div>
                 </div>
                 <div class="layui-form-item">

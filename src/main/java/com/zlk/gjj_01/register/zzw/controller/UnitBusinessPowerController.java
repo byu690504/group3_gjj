@@ -36,6 +36,11 @@ public class UnitBusinessPowerController {
         ModelAndView mv=new ModelAndView();
         String urId = (String) request.getSession().getAttribute("urId");
         String agentName = (String)request.getSession().getAttribute("agent");
+        if(urId==null){
+            mv.addObject("msg","请先进行单位登记");
+            mv.setViewName("registerByUnitName");
+            return mv;
+        }
         Unit unit = unitRegisterService.findUnitByUrId(urId);
         Agent agent = loginService.findAgentByAgentName(agentName);
         mv.addObject("unitName",unit.getUnitName());
